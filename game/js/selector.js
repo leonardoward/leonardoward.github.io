@@ -38,6 +38,14 @@ var selectorState =  {
         level6.anchor.set(0.5);
         grid.add(level6);
 
+        var level7 = game.add.button(game.world.centerX-25 / 2, game.world.centerY+250, "p_level1", this.goLevel7,this);
+        level7.anchor.set(0.5);
+        grid.add(level7);
+
+        var level8 = game.add.button(game.world.centerX-25 / 2, game.world.centerY+250, "p_level2", this.goLevel8,this);
+        level8.anchor.set(0.5);
+        grid.add(level8);
+
         // var level7 = game.add.button(game.world.centerX-25 / 2, game.world.centerY+250, "c_level1", this.goLevel7,this);
         // level4.anchor.set(0.5);
         // grid.add(level7);
@@ -114,14 +122,14 @@ var selectorState =  {
 
     goLevel7: function(){
 
-        this.game.state.start('c_level1');
+        this.game.state.start('p_level1');
 
 
     },
 
     goLevel8: function(){
 
-        this.game.state.start('c_level1');
+        this.game.state.start('p_level2');
 
 
     },
