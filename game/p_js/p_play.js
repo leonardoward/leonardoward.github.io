@@ -193,7 +193,7 @@ var p_playState = {
         game.physics.arcade.overlap(player, laser1, this.killplayer,null,this);
         game.physics.arcade.overlap(player, laser2, this.killplayer,null,this);
         game.physics.arcade.collide(player, layer);
-        //game.physics.arcade.collide(player,enemies, this.killplayer,null,this);
+        game.physics.arcade.collide(player,enemies, this.killplayer,null,this);
         game.physics.arcade.collide(enemies,layer);
         game.physics.arcade.collide(enemies,doors);
         game.physics.arcade.collide(enemies,switch_1);
