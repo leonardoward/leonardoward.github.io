@@ -59,6 +59,8 @@ var menuState = {
 
         // var title = game.add.sprite(game.width / 2, 60, "gametitle");
         // title.anchor.set(0.5);
+        game.world.setBounds(0, 0, this.game.width, this.game.height);
+
         var grid = game.add.sprite(game.world.centerX, 100, "gridedition");
         grid.anchor.set(0.5);
 

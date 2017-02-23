@@ -2,7 +2,7 @@
 //####################################################################################
 //##                     Instanciación del Objeto que maneja el Juego              ##
 //####################################################################################
-var game = new Phaser.Game(1200, 600, Phaser.CANVAS, 'gameDiv');
+var game = new Phaser.Game(1200, 600, Phaser.AUTO, 'gameDiv');
 //Variables globales del juego de plataforma
 var player;
 var cursors;

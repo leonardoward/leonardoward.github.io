@@ -238,7 +238,7 @@ var c_level4= {
         //################################# Tutorial Screen  ##############################################
         black_screen = game.add.sprite(0,0,'black_screen');
         black_screen.alpha = 0.8;
-        title_text = game.add.text(game.width / 2 - 100, 20, 'Game Title', {font: '50px Arial', fill: '#ffffff'});
+        title_text = game.add.text(game.width / 2 - 100, 20, 'Electro Dash', {font: '50px Arial', fill: '#ffffff'});
         level_text = game.add.text(game.width / 2, 80, 'Nivel 4', {font: '20px Arial', fill: '#ffffff'});
         launch_zone_tut = game.add.sprite(0, 0, "explosion_square");
         launch_zone_tut.alpha = 0.5;

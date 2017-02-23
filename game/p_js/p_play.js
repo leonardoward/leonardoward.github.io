@@ -403,7 +403,15 @@ var p_playState = {
 
         if (exitKey.justUp)
         {
-          game.state.start('select');
+          mapa.fixedToCamera=false;
+          circuit.fixedToCamera=false;
+          game.world.fixedToCamera=false;
+          game.world.cameraOffset=false;
+          //game.state.clearCurrentState('p_play');
+          //   game.state.remove('p_play');
+          game.state.start('menu');
+
+
         }
 
 

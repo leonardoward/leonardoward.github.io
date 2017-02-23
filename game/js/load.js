@@ -134,6 +134,6 @@ var loadState= {
         {  game.global.music = game.add.audio('boden', 1, true);}
         game.global.music.play();
 
-        game.state.start('menu');
+        game.state.start('menu',true,false);
     }
 };
