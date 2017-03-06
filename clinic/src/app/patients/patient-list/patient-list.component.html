@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-xs-12">
+		<a class="btn btn-success" [routerLink]="['new']">New Patient</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<ul class="list-group">
+			<cl-patient-item *ngFor="let patient of patients; let i = index" [patient]="patient" [patientId]="i"></cl-patient-item>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]=!patientForm.valid>Save</button>
+          <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="text" id="age" class="form-control" formControlName="age">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="image-url">Image Url</label>
+            <input type="text"
+                   id="image-url"
+                   class="form-control"
+                   formControlName="imagePath"
+                   #imageUrl>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="img">
+            <img [src]="imageUrl.value">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="content">Referred By</label>
+            <textarea type="text" id="content" rows="2" class="form-control" formControlName="referredBy"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <textarea type="text" id="email" rows="2" class="form-control" formControlName="email"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="telephone">Phone</label>
+            <textarea type="text" id="telephone" rows="2" class="form-control" formControlName="telephone"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="physician">Physician</label>
+            <textarea type="text" id="physician" rows="2" class="form-control" formControlName="physician"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="medical-conditions">Medical Conditions</label>
+          <ul class="list-group" formArrayName="medicalConditions">
+            <div class= "row" *ngFor="let condition of patientForm.controls['medicalConditions'].controls; let i = index">
+              <div formGroupName="{{i}}">
+                <div class="col-sm-5"><input type="text" class="form-control" formControlName="name"></div>
+                <div class="col-sm-2"><button class="btn btn-danger" (click)="onRemoveCondition(i)">X</button></div>
+              </div>
+              <br><br>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form row">
+      <div class="col-md-5"><input type="text" class="form-control" #patientName></div>
+      <div class="col-md-2"><button type="button" class="btn btn-primary" (click)="onAddCondition(patientName.value)">+</button></div>
+    </div>
+  </div>
+</div>

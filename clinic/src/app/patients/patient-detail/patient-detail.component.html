@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img src="{{selectedPatient?.imagePath}}" alt="" class="img-responsive">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{selectedPatient?.name}}</h1>
+  </div>
+  <div class="col-xs-12">
+    <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+    <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Age: {{selectedPatient?.age}}</p>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Birthday: {{selectedPatient?.birthday.day}}/{{selectedPatient?.birthday.month}}/{{selectedPatient?.birthday.year}}</p>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Phone Number: {{selectedPatient?.telephone}}</p>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Email: {{selectedPatient?.email}}</p>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Physician: {{selectedPatient?.physician}}</p>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Referred By: {{selectedPatient?.referredBy}}</p>
+  </div>
+</div>
+<div class="row" *ngIf="patientIsSelected">
+  <hr>
+  <div class="col-xs-12">
+    <p>Last Physical: {{selectedPatient?.lastPhysical.day}}/{{selectedPatient?.lastPhysical.month}}/{{selectedPatient?.lastPhysical.year}}</p>
+  </div>
+</div>
