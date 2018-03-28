@@ -196,7 +196,7 @@ var Fireworks = (function() {
     // gradient.addColorStop("1.0","red");
     // Fill with gradient
     mainContext.fillStyle = "rgba(255,255,255,0.8)";
-    mainContext.fillText("¡Feliz cumpleaños Albany!",window.innerWidth/3,90);
+    mainContext.fillText("¡Felíz cumpleaños Albany!",window.innerWidth/3,90);
     for(var i=0; i<final_poem.length; i++){
       mainContext.fillText(final_poem[i],window.innerWidth/4,140+40*i);
     }
