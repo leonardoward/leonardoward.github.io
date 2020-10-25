@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Sumo</title>
+    <meta name="Onboard Gateway | 2020 Hackaday Dream Team Challenge for Conservation X Labs" content="">
+    <meta name="Leonardo Ward" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <!-- <div class="header__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div>  -->
+        <!-- end header__logo -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                <li class="has-children">
+                    <a href="#0" title="">Marine Electronics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="onboard_gateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboard_gateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboard_gateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboard_gateway.html#pcb_layout" title="">PCB Layout</a></li>
+                            <li><a href="onboard_gateway.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="onboard_gateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboard_gateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboard_gateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboard_gateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <!-- <li><a href="buoy_a.html">Buoy A</a></li>
+                        <li><a href="buoy_b.html">Buoy B</a></li> -->
+                    </ul>
+                </li>
+
+                <li class="has-children current">
+                    <a href="#0" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li><a href="sumo.html">Sumo</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#0" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#0" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="images/onboard_gateway/test.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="entry__header col-full">
+                <h1 class="entry__header-title display-1">
+                    Onboard Gateway | 2020 Hackaday Dream Team Challenge for Conservation X Labs
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">August, 2020</li>
+                    <li class="byline">
+                        By
+                        <a href="#0">Leonardo Ward</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="entry__header col-full">
+                <ul class="entry__header-meta">
+                  <li class="byline">
+                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs">Project</a>
+                  </li>
+                  <li class="byline">
+                    <h3><a href="https://github.com/leonardoward/eja-onboard-gateway-electronics"><i class="fab fa-github"></i></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://github.com/leonardoward/eja-onboard-gateway-electronics">Electronics</a>
+                  </li>
+                  <li class="byline">
+                    <h3><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://github.com/leonardoward/eja-onboard-gateway-firmware">Firmware</a>
+                  </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap">The Onboard Gateway is a 134.11 mm x 62.48 mm PCB that integrates the 3 main components (ESP32, LoRa and USB LiIon/LiPoly charger).</p>
+
+                <h2 id="main_components">Main Components</h2>
+
+                <div class="col-full">
+                    <img src="images/onboard_gateway/Components_onboard_gateway_4.jpg" alt="">
+                </div>
+
+                <p>Sources:</p>
+
+                <ul>
+                    <li><a href="https://www.digikey.com/product-detail/es/espressif-systems/ESP32-DEVKITC-32D/1965-1000-ND/9356990">ESP32-DEVKITC-32D</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a></li>
+                    <li><a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a></li>
+                </ul>
+
+                <h2 id="schematic">Schematic</h2>
+
+                <div class="col-full">
+                    <img src="images/onboard_gateway/Schematic_Onboard_Gateway.png" alt="">
+                </div>
+
+                <a href="https://hackaday.io/project/173457/log/181839-onboard-gateway-v10-schematic-and-pcb-design">Read more...</a>
+
+                <h2 id="pcb_layout">PCB Layout</h2>
+
+                <div class="col-full">
+                    <img src="images/onboard_gateway/Layout_Onboard_Gateway.png" alt="">
+                </div>
+
+                <h2 id="3d_model">3D Model</h2>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_02.png" width="400" alt="">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_03.png" width="400" alt="">
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_04.png" width="400" alt="">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_05.png" width="400" alt="">
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_06.png" width="400" alt="">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_07.png" width="400" alt="">
+                    </p>
+                  </div>
+                </div>
+
+                <h2 id="assembly_guide">Assembly</h2>
+
+                <div class="col-full">
+                    <img src="images/onboard_gateway/Assembly_N_01_Onboard_Gateway-All_4.jpg" alt="">
+                </div>
+
+                <p>Components List:</p>
+
+                <ol>
+                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC022162/ED2609-ND/614558">TERM BLK 2P SIDE ENT 5.08MM PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/jst-sales-america-inc/S2B-XH-A-1-LF-SN/455-4226-ND/9961922">CONN HEADER R/A 2POS 2.5MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC061LFBN-RC/S7004-ND/810145">CONN HDR 6POS 0.1 TIN PCB</a></li>
+                    <li>2POS JST cable (included in the <a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a>)</li>
+                    <li><a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a></li>
+                    <li>Onboard Gateway V1.0 PCB</li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RNF14FTD249R/RNF14FTD249RCT-ND/1974990">RES 249 OHM 1/4W 1% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RNF14FTD249R/RNF14FTD249RCT-ND/1974990">RES 249 OHM 1/4W 1% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC022162/ED2609-ND/614558">TERM BLK 2P SIDE ENT 5.08MM PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 6POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPPC021LFBN-RC/S7035-ND/810174">CONN HDR 2POS 0.1 GOLD PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 3POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/QPC02SXGN-RC/S9337-ND/2618262">CONN JUMPER SHORTING .100" GOLD</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC191LFBN-RC/S7017-ND/810157">CONN HDR 19POS 0.1 TIN PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/espressif-systems/ESP32-DEVKITC-32D/1965-1000-ND/9356990">ESP32-DEVKITC-32D</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC191LFBN-RC/S7017-ND/810157">CONN HDR 19POS 0.1 TIN PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC161LFBN-RC/S7014-ND/810154">CONN HDR 16POS 0.1 TIN PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC121LFBN-RC/S6100-ND/807231">CONN HDR 12POS 0.1 TIN PCB</a> (I used 2 <a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC061LFBN-RC/S7004-ND/810145">CONN HDR 6POS 0.1 TIN PCB</a> in the image)</li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPPC091LFBN-RC/S7042-ND/810181">CONN HDR 9POS 0.1 GOLD PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC051LFBN-RC/S6103-ND/807239">CONN HDR 5POS 0.1 GOLD PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a></li>
+                    <li>CONN HEADER VERT 16POS 2.54MM (included in <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a>)</li>
+                </ol>
+
+                <a href="https://hackaday.io/project/173457/log/183759-onboard-gateway-v10-bill-of-materials">For a detailed Bill of Materials visit the following log.</a>
+
+                <a href="https://hackaday.io/project/173457/log/183665-onboard-gateway-v10-assembly">For a detailed explanation about the soldering and assembly procedure visit the following log.</a>
+
+                <h2 id="wiring_diagrams">Wiring Diagrams</h2>
+
+                <p>The following diagram presents the physical connections of the different boards and components of the Onboard Gateway, that includes:</p>
+
+                <ul>
+                    <li>3.7V 1 Cell Battery</li>
+                    <li>Leds (Charge, Done and 4 Miscellaneous)</li>
+                    <li>PCB Board for the Onboard Gateway V1.0</li>
+                    <li>5V Charger (only used to charge the battery)</li>
+                    <li>Micro USB Breakout Board</li>
+                    <li>Switch</li>
+                </ul>
+
+                <div class="col-full">
+                    <img src="images/onboard_gateway/Wiring_Onboard_Gateway_07_wired.png" alt="">
+                </div>
+
+                <h2 id="user_interface">User Interface</h2>
+
+                <p>The ESP32 creates an Asynchronous Web Server, with the following credentials:</p>
+
+                <pre><code>
+                  const char* ssid     = "EJA_Onboard_Gateway";
+                  const char* password = "123456789";
+                </code></pre>
+
+                <p>With those credentials it is possible to access the WiFi network.</p>
+
+                <div class="col-full">
+                  <img src="images/onboard_gateway/ssid.jpg">
+                </div>
+
+                <p>The ESP32 creates a Domain Name System (DNS) to assign a domain name to the web server. That means that it is not necessary to know the server IP, it is possible to access the web server using the defined domain name for the host, in this case, the name is:</p>
+
+                <pre><code>
+                  const char* host = "www.onboard_gateway.eja";
+                </code></pre>
+
+                <p>Once the device (phone/computer) is connected to the server (EJA_Onboard_Gateway), open a browser and visit the following url:</p>
+                <pre><code>
+                  http://www.onboard_gateway.eja/
+                </code></pre>
+
+                <p>The previous link displays the web page used for HOME:</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/home.jpg" width="50%">
+                </div>
+
+
+                <p>There is a header with the name "EJA Onboard Gateway" that opens a sidebar with links to the different test functionalities. It is also possible to access those pages using the buttons in HOME.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/menu.jpg" width="50%">
+                </div>
+
+                <p>The page http://www.onboard_gateway.eja/gps shows the data from the GPS module.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/gps.jpg" width="50%">
+                </div>
+
+                <p>The page http://www.onboard_gateway.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
+
+                <pre><code>
+                  String lora_all_msg = "";
+                </code></pre>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/lora_01.jpg" width="50%">
+                </div>
+
+
+                <p>The page http://www.onboard_gateway.eja/terminal shows internal messages. In the ESP32 that information is stored in the variable:</p>
+
+                <pre><code>
+                  String terminal_messages = "";
+                </code></pre>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/terminal.jpg" width="50%">
+                </div>
+
+                <p>There is an additional page http://www.onboard_gateway.eja/toggle_led_on that can be use to change the state of a LED, the GPIO port used is define in the following variable of the script:</p>
+
+                <pre><code>
+                  #define LED_TOGGLE LED4         // Led use for togle example (toggle from web page)
+                </code></pre>
+
+                <p>The buttons in the page (ON and OFF) can be used to change the state of the LED.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/led_test_on.jpg" width="50%">
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/led_test_off.jpg" width="50%">
+                </div>
+
+                <h2 id="future_improvements">Future Improvements</h2>
+
+                <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">For more information about the recommended future improvements for the electronic design visit the following log.</a>
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="#0">Marine Electronics</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="#0">Robotics</a>
+                            <a href="#0">Embedded Design</a>
+                            <a href="#0">LoRa</a>
+                            <a href="#0">Battery Management system</a>
+                            <a href="#0">Hackaday</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <div class="entry__author">
+                    <img src="images/avatars/foto.png" alt="">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="#0">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            MSc. Student in Electronic Engineering at Simón Bolívar University, Venezuela.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="3dmap.html" rel="prev">
+                        <span>Previous Post</span>
+                        Real-Time Monitoring on a 3D Printed Map
+                    </a>
+                </div>
+                <!-- <div class="col-six s-content__next">
+                    <a href="3dmap.html" rel="next">
+                        <span>Next Post</span>
+                        Real-Time Monitoring on a 3D Printed Map
+                    </a>
+                </div> -->
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="col-six tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>New ideas and technologies can create revolutionary products. I am an Engineer in the field of Electronics with experience in research, product development and project management. I am a student of a Master’s degree in Mechatronics with experience in robotics and self-driving (with CARLA and RTMaps) systems including control, sensor fusion, visual perception (with OpenCV), non-linear optimization and statistical estimation.</p>
+
+              </div>
+              <div class="col-six tab-full s-footer__about">
+
+                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
+
+                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
+                  and Bitbucket).</p>
+
+              </div>
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
