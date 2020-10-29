@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Onboard Gateway | 2020 Hackaday Dream Team Challenge for Conservation X Labs</title>
-    <meta name="Onboard Gateway | 2020 Hackaday Dream Team Challenge for Conservation X Labs" content="">
+    <title>Buoy B | 2020 Hackaday Dream Team Challenge for Conservation X Labs</title>
+    <meta name="Buoy B | 2020 Hackaday Dream Team Challenge for Conservation X Labs" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -77,8 +77,19 @@
                             <li><a href="onboard_gateway.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
-                        <!-- <li><a href="buoy_a.html">Buoy A</a></li>
-                        <li><a href="buoy_b.html">Buoy B</a></li> -->
+                        <!-- <li><a href="buoy_a.html">Buoy A</a></li> -->
+                        <li><a href="buoy_b.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoy_b.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoy_b.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoy_b.html#pcb_layout" title="">PCB Layout</a></li>
+                            <li><a href="buoy_b.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="buoy_b.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoy_b.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoy_b.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoy_b.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
@@ -119,7 +130,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/onboard_gateway/test.jpg" alt="">
+                    <img src="images/buoy_b/main.jpg" alt="">
                 </div>
             </div>
 
@@ -145,28 +156,28 @@
                     <a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs">Project</a>
                   </li>
                   <li class="byline">
-                    <h3><a href="https://github.com/leonardoward/eja-onboard-gateway-electronics"><i class="fab fa-github"></i></a></h3>
+                    <h3><a href="https://github.com/leonardoward/eja-intelligent-buoy-b-electronics"><i class="fab fa-github"></i></a></h3>
                   </li>
                   <li class="byline">
-                    <a href="https://github.com/leonardoward/eja-onboard-gateway-electronics">Electronics</a>
+                    <a href="https://github.com/leonardoward/eja-intelligent-buoy-b-electronics">Electronics</a>
                   </li>
                   <li class="byline">
-                    <h3><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a></h3>
+                    <h3><a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware"><i class="fab fa-github"></i></a></h3>
                   </li>
                   <li class="byline">
-                    <a href="https://github.com/leonardoward/eja-onboard-gateway-firmware">Firmware</a>
+                    <a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware">Firmware</a>
                   </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">The Onboard Gateway is a 134.11 mm x 62.48 mm PCB that integrates the 3 main components (ESP32, LoRa and USB LiIon/LiPoly charger).</p>
+                <p class="lead drop-cap">Buoy B V1.0 is a 102.46 mm x 44.20 mm PCB that integrates 4 of the main components (ESP32, LoRa, GPS and Motor Driver).</p>
 
                 <h2 id="main_components">Main Components</h2>
 
-                <div class="col-full">
-                    <img src="images/onboard_gateway/Components_onboard_gateway_4.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Components_Buoy_B.jpg" alt="">
                 </div>
 
                 <p>Sources:</p>
@@ -174,128 +185,183 @@
                 <ul>
                     <li><a href="https://www.digikey.com/product-detail/es/espressif-systems/ESP32-DEVKITC-32D/1965-1000-ND/9356990">ESP32-DEVKITC-32D</a></li>
                     <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a></li>
-                    <li><a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/746/1528-1153-ND/5353613">Adafruit Ultimate GPS</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sparkfun-electronics/ROB-14450/1568-1755-ND/7915576">TB6612FNG MOTOR DRIVER BOARD</a></li>
                 </ul>
 
                 <h2 id="schematic">Schematic</h2>
 
-                <div class="col-full">
-                    <img src="images/onboard_gateway/Schematic_Onboard_Gateway.png" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Schematic_Buoy_B.png" alt="">
                 </div>
 
-                <a href="https://hackaday.io/project/173457/log/181839-onboard-gateway-v10-schematic-and-pcb-design">Read more...</a>
+                <a href="https://hackaday.io/project/173457/log/181832-buoy-b-v10-schematic-and-pcb-design">Read more...</a>
 
                 <h2 id="pcb_layout">PCB Layout</h2>
 
-                <div class="col-full">
-                    <img src="images/onboard_gateway/Layout_Onboard_Gateway.png" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Layout_Buoy_B.png" alt="">
                 </div>
 
                 <h2 id="3d_model">3D Model</h2>
 
                 <div class="col-full">
-                  <div class="col-six">
+                  <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_02.png" width="400" alt="">
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_01.png" width="400" alt="">
                     </p>
                   </div>
-                  <div class="col-six">
+                  <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_03.png" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-full">
-                  <div class="col-six">
-                    <p>
-                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_04.png" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_05.png" width="400" alt="">
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_02.png" width="400" alt="">
                     </p>
                   </div>
                 </div>
 
                 <div class="col-full">
-                  <div class="col-six">
+                  <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_06.png" width="400" alt="">
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_03.png" width="400" alt="">
                     </p>
                   </div>
-                  <div class="col-six">
+                  <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/onboard_gateway/Onboard_Gateway_V1.0_07.png" width="400" alt="">
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_04.png" width="400" alt="">
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six" style="text-align:center">
+                    <p>
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_05.png" width="400" alt="">
+                    </p>
+                  </div>
+                  <div class="col-six" style="text-align:center">
+                    <p>
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_06.png" width="400" alt="">
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six" style="text-align:center">
+                    <p>
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_07.png" width="400" alt="">
+                    </p>
+                  </div>
+                  <div class="col-six" style="text-align:center">
+                    <p>
+                    <img src="images/buoy_b/Buoy_B_WithoutGSM_08.png" width="400" alt="">
                     </p>
                   </div>
                 </div>
 
                 <h2 id="assembly_guide">Assembly</h2>
 
-                <div class="col-full">
-                    <img src="images/onboard_gateway/Assembly_N_01_Onboard_Gateway-All_4.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Assembly_N_01_Buoy_B-All_Fixed_4.jpg" alt="">
                 </div>
 
                 <p>Components List:</p>
 
                 <ol>
-                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC022162/ED2609-ND/614558">TERM BLK 2P SIDE ENT 5.08MM PCB</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/jst-sales-america-inc/S2B-XH-A-1-LF-SN/455-4226-ND/9961922">CONN HEADER R/A 2POS 2.5MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC061LFBN-RC/S7004-ND/810145">CONN HDR 6POS 0.1 TIN PCB</a></li>
-                    <li>2POS JST cable (included in the <a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a>)</li>
-                    <li><a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a></li>
-                    <li>PCB Onboard Gateway V1.0</li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RNF14FTD249R/RNF14FTD249RCT-ND/1974990">RES 249 OHM 1/4W 1% AXIAL</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/en/stackpole-electronics-inc/RNF14FTD249R/RNF14FTD249RCT-ND/1974990">RES 249 OHM 1/4W 1% AXIAL</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC022162/ED2609-ND/614558">TERM BLK 2P SIDE ENT 5.08MM PCB</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 6POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPPC021LFBN-RC/S7035-ND/810174">CONN HDR 2POS 0.1 GOLD PCB</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 3POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/QPC02SXGN-RC/S9337-ND/2618262">CONN JUMPER SHORTING .100" GOLD</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC191LFBN-RC/S7017-ND/810157">CONN HDR 19POS 0.1 TIN PCB</a></li>
                     <li><a href="https://www.digikey.com/product-detail/es/espressif-systems/ESP32-DEVKITC-32D/1965-1000-ND/9356990">ESP32-DEVKITC-32D</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sparkfun-electronics/ROB-14450/1568-1755-ND/7915576">TB6612FNG MOTOR DRIVER BOARD</a></li>
                     <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC191LFBN-RC/S7017-ND/810157">CONN HDR 19POS 0.1 TIN PCB</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC161LFBN-RC/S7014-ND/810154">CONN HDR 16POS 0.1 TIN PCB</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC121LFBN-RC/S6100-ND/807231">CONN HDR 12POS 0.1 TIN PCB</a> (I used 2 <a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC061LFBN-RC/S7004-ND/810145">CONN HDR 6POS 0.1 TIN PCB</a> in the image)</li>
                     <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPPC091LFBN-RC/S7042-ND/810181">CONN HDR 9POS 0.1 GOLD PCB</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/3m/2340-6111TG/3M11928-ND/1237275">CONN HEADER VERT 2POS 2.54MM</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/en/vishay-beyschlag-draloric-bc-components/AC03000001000JAC00/PPC3W100CT-ND/596604">RES 100 OHM 3W 5% AXIAL</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPPC091LFBN-RC/S7042-ND/810181">CONN HDR 9POS 0.1 GOLD PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC081LFBN-RC/S7006-ND/810147">CONN HDR 8POS 0.1 TIN PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC081LFBN-RC/S7006-ND/810147">CONN HDR 8POS 0.1 TIN PCB</a></li>
+                    <li>PCB Buoy B V1.0</li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC191LFBN-RC/S7017-ND/810157">CONN HDR 19POS 0.1 TIN PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC022162/ED2609-ND/614558">TERM BLK 2P SIDE ENT 5.08MM PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC022162/ED2609-ND/614558">TERM BLK 2P SIDE ENT 5.08MM PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/on-shore-technology-inc/OSTTC032162/ED2610-ND/614559">TERM BLK 3P SIDE ENT 5.08MM PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC061LFBN-RC/S7004-ND/810145">CONN HDR 6POS 0.1 TIN PCB</a></li>
                     <li><a href="https://www.digikey.com/product-detail/es/sullins-connector-solutions/PPTC051LFBN-RC/S6103-ND/807239">CONN HDR 5POS 0.1 GOLD PCB</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/jst-sales-america-inc/S2B-XH-A-1-LF-SN/455-4226-ND/9961922">CONN HEADER VERT 3POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/jst-sales-america-inc/S2B-XH-A-1-LF-SN/455-4226-ND/9961922">CONN HEADER VERT 3POS 2.54MM</a></li>
+                    <li><a href="https://www.digikey.com/product-detail/es/jst-sales-america-inc/S3B-XH-A-1-LF-SN/455-2954-ND/1556255">CONN HEADER R/A 3POS 2.5MM</a></li>
+                    <li>Coin cell holder (included in <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/746/1528-1153-ND/5353613">Adafruit Ultimate GPS</a>)</li>
+                    <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/746/1528-1153-ND/5353613"></a>Adafruit Ultimate GPS</li>
+                    <li>CONN HDR 16POS 0.1 TIN PCB (included in <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/746/1528-1153-ND/5353613">Adafruit Ultimate GPS</a>)</li>
                     <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a></li>
                     <li>CONN HEADER VERT 16POS 2.54MM (included in <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a>)</li>
                 </ol>
 
-                <a href="https://hackaday.io/project/173457/log/183759-onboard-gateway-v10-bill-of-materials">For a detailed Bill of Materials visit the following log.</a>
+                <a href="https://hackaday.io/project/173457/log/183762-buoy-b-v10-bill-of-materials">For a detailed Bill of Materials visit the following log.</a>
 
-                <a href="https://hackaday.io/project/173457/log/183665-onboard-gateway-v10-assembly">For a detailed explanation about the soldering and assembly procedure visit the following log.</a>
+                <a href="https://hackaday.io/project/173457/log/183666-buoy-b-v10-assembly">For a detailed explanation about the soldering and assembly procedure visit the following log.</a>
 
                 <h2 id="wiring_diagrams">Wiring Diagrams</h2>
 
-                <p>The following diagram presents the physical connections of the different boards and components of the Onboard Gateway, that includes:</p>
+                <p>The original design of the board considered the following components:</p>
+
+                <ul>
+                    <li>Battery (5V < Voltage < 15V)</li>
+                    <li>PCB Board Buoy B V1.0</li>
+                    <li>Buck Converter</li>
+                    <li>Switch</li>
+                    <li>Extra capacitor</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_07_wired.png" alt="">
+                </div>
+
+                <p>Also, there is an alternative for the battery management, is possible to provide the required voltages with a boost converter and a 3.7V Battery, like the following example:</p>
 
                 <ul>
                     <li>3.7V 1 Cell Battery</li>
-                    <li>Leds (Charge, Done and 4 Miscellaneous)</li>
-                    <li>PCB Board for the Onboard Gateway V1.0</li>
-                    <li>5V Charger (only used to charge the battery)</li>
+                    <li>PCB Board Buoy B V1.0</li>
+                    <li>Boost Converter</li>
                     <li>Micro USB Breakout Board</li>
                     <li>Switch</li>
+                    <li>Extra capacitor</li>
+                    <li>JST-XH 2 Pos female connector and a JST-XH 2 Pos male connector</li>
+                    <li>5V Charger (only used to charge the battery)</li>
                 </ul>
 
-                <div class="col-full">
-                    <img src="images/onboard_gateway/Wiring_Onboard_Gateway_07_wired.png" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_08_wired.png" alt="">
                 </div>
+
+                <p>This alternative is valid and possible, but is not ideal for longer working time (compared to the first one). It is important to consider the efficiency of the boost converter. The selected boost converter will have a voltage drop at a current higher than 500mA, that should be taken into consideration.</p>
+
+                <h3>Motors</h3>
+
+                <p>The board was designed to handle 3 different types of motors, those are:</p>
+
+                <ul>
+                    <li>Servo Motor</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_06_wired.png" alt="">
+                </div>
+
+                <ul>
+                    <li>Stepper Motor (using the driver TB6612FNG)</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_09_wired.png" alt="">
+                </div>
+
+                <ul>
+                    <li>DC Motor (using the driver TB6612FNG)</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_05_wired.png" alt="">
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_05_wired_2.png" alt="">
+                </div>
+
+                <a href="https://hackaday.io/project/173457/log/182722-buoy-b-v10-wiring-diagrams">For more information about the wiring diagrams and the project visit the following log.</a>
 
                 <h2 id="user_interface"><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a>&nbsp; User Interface</h2>
 
