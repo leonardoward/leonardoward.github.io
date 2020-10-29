@@ -363,7 +363,7 @@
 
                 <a href="https://hackaday.io/project/173457/log/182722-buoy-b-v10-wiring-diagrams">For more information about the wiring diagrams and the project visit the following log.</a>
 
-                <h2 id="user_interface"><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a>&nbsp; User Interface</h2>
+                <h2 id="user_interface"><a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware"><i class="fab fa-github"></i></a>&nbsp; User Interface</h2>
 
                 <p>Requirements:</p>
 
@@ -373,87 +373,73 @@
                     <li><a href="https://github.com/me-no-dev/AsyncTCP">AsyncTCP</a></li>
                     <li><a href="https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/">SPIFFS File System</a></li>
                     <li><a href="https://github.com/ayushsharma82/AsyncElegantOTA">ESP32 Async Over The Air</a></li>
+                    <li><a href="https://github.com/mikalhart/TinyGPSPlus">TinyGPSPlus</a></li>
                     <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa</a></li>
                 </ol>
 
                 <p>The ESP32 creates an Asynchronous Web Server, with the following credentials:</p>
 
                 <pre><code>
-                  const char* ssid     = "EJA_Onboard_Gateway";
+                  const char* ssid     = "EJA_Buoy_B";
                   const char* password = "123456789";
                 </code></pre>
 
                 <p>With those credentials it is possible to access the WiFi network.</p>
 
                 <div class="col-full">
-                  <img src="images/onboard_gateway/ssid.jpg">
+                  <img src="images/buoy_b/ssid.jpg">
                 </div>
 
                 <p>The ESP32 creates a Domain Name System (DNS) to assign a domain name to the web server. That means that it is not necessary to know the server IP, it is possible to access the web server using the defined domain name for the host, in this case, the name is:</p>
 
                 <pre><code>
-                  const char* host = "www.onboard_gateway.eja";
+                  const char* host = "www.buoy_b.eja";
                 </code></pre>
 
-                <p>Once the device (phone/computer) is connected to the server (EJA_Onboard_Gateway), open a browser and visit the following url:</p>
+                <p>Once the device (phone/computer) is connected to the server (EJA_Buoy_B), open a browser and visit the following url:</p>
+
                 <pre><code>
-                  http://www.onboard_gateway.eja/
+                  http://www.buoy_b.eja/
                 </code></pre>
 
                 <p>The previous link displays the web page used for HOME:</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/home.jpg" width="50%">
+                  <img src="images/buoy_b/home.jpg" width="50%">
                 </div>
 
 
-                <p>There is a header with the name "EJA Onboard Gateway" that opens a sidebar with links to the different test functionalities. It is also possible to access those pages using the buttons in HOME.</p>
+                <p>There is a header with the name "EJA Buoy B" that opens a sidebar with links to the different test functionalities. It is also possible to access those pages using the buttons in HOME.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/menu.jpg" width="50%">
+                  <img src="images/buoy_b/menu.jpg" width="50%">
                 </div>
 
-                <p>The page http://www.onboard_gateway.eja/gps shows the data from the GPS module.</p>
+                <p>The page http://www.buoy_b.eja/gps shows the data from the GPS module.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/gps.jpg" width="50%">
+                  <img src="images/buoy_b/gps.jpg" width="50%">
                 </div>
 
-                <p>The page http://www.onboard_gateway.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
+                <p>The page http://www.buoy_b.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
 
                 <pre><code>
                   String lora_all_msg = "";
                 </code></pre>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/lora_01.jpg" width="50%">
+                  <img src="images/buoy_b/lora.jpg" width="50%">
                 </div>
 
 
-                <p>The page http://www.onboard_gateway.eja/terminal shows internal messages. In the ESP32 that information is stored in the variable:</p>
+                <p>The page "http://www.buoy_b.eja/terminal" shows internal messages. In the ESP32 that information is stored in the variable:</p>
 
                 <pre><code>
                   String terminal_messages = "";
                 </code></pre>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/terminal.jpg" width="50%">
-                </div>
-
-                <p>There is an additional page http://www.onboard_gateway.eja/toggle_led_on that can be use to change the state of a LED, the GPIO port used is define in the following variable of the script:</p>
-
-                <pre><code>
-                  #define LED_TOGGLE LED4         // Led use for togle example (toggle from web page)
-                </code></pre>
-
-                <p>The buttons in the page (ON and OFF) can be used to change the state of the LED.</p>
-
-                <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/led_test_on.jpg" width="50%">
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/led_test_off.jpg" width="50%">
+                  <img src="images/buoy_b/terminal.jpg" width="50%">
                 </div>
 
                 <h2 id="future_improvements">Future Improvements</h2>
