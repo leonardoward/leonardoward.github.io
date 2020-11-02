@@ -162,7 +162,33 @@
 
                 <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC, Stepper and Brushless motors.</p>
 
-                <h2 id="stepper_motors">Stepper Motors</h2>
+                <h2 id="uln2003_stepper_stepper">Stepper Motors Drivers with ULN2003</h2>
+
+                The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The following videos present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.
+
+                <h3>ULN2003 and Arduino Uno</h3>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/W2ycA9TYYoc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/66iMKuHtXPM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <h3>ULN2003 and PIC16F877A</h3>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/_uJ95IppRE0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <h2 id="h_bridges_stepper">Stepper Motors Drivers with H Bridges</h2>
 
                 <div class="col-full" style="text-align:center">
                     <img src="images/stepper_drivers/diagram_01.JPG" alt="">
@@ -172,7 +198,9 @@
                     <img src="images/stepper_drivers/diagram_02.JPG" alt="">
                 </div>
 
-                <h3>Circuit Testing on Protoboard</h3>
+                <h3>L297 and H Bridge Circuits on Breadboard</h3>
+
+                <p>The circuit uses an Arduino Uno and a L297 to create the control signals. It also uses two H Bridges with TIP142T transistors.</p>
 
                 <div class="col-full">
                   <div class="col-six" style="text-align:center">
@@ -213,7 +241,17 @@
                   </div>
                 </div>
 
-                <h3>Prototype</h3>
+                <p>The following video presents the initial circuit tests on a Breadboard.</p>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/H_VI4z4Bqo4" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <h3>Perfboard Prototypes with L297 and H Bridge Circuits</h3>
+
+                The circuit previously tested on a breadboard was placed on a perfboard to create a prototype.
 
                 <div class="col-full">
                   <div class="col-six" style="text-align:center">
@@ -227,8 +265,6 @@
                     </p>
                   </div>
                 </div>
-
-                <h3>Testing</h3>
 
                 <div class="col-full">
                   <div class="col-six" style="text-align:center">
@@ -256,7 +292,43 @@
                   </div>
                 </div>
 
-                <h2 id="dc_motors">DC Motors</h2>
+                <p>The Perfboard Prototype was tested with two motors.</p>
+
+                <p>The first motor had the following characteristics:</p>
+
+                <ul>
+                    <li>TYPE 103H7123-0645</li>
+                    <li>Basic Step Angle: 1.8°</li>
+                    <li>Rated Voltage: 12V</li>
+                    <li>Rated Current [A/Phase]: 2.5 A</li>
+                    <li>Unipolar - 6 Wires</li>
+                    <li>Manufacturer: Sanyo Denki</li>
+                </ul>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/fdkSIMx8-L0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <p>The second motor had the following characteristics:</p>
+
+                <ul>
+                    <li>TYPE 103-814-5242</li>
+                    <li>Basic Step Angle: 1.8°</li>
+                    <li>Rated Voltage: 2.5 V</li>
+                    <li>Rated Current [A/Phase]: 4.6 A</li>
+                    <li>Unipolar - 6 Wires</li>
+                    <li>Manufacturer: Sanyo Denki</li>
+                </ul>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/q7Cq6SPmTS8" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <h2 id="h_bridges_dc_motor">DC Motor Drivers with H Bridges</h2>
 
                 <div class="col-full" style="text-align:center">
                     <img src="images/dc_motor_drivers/dc_driver_test.JPG" alt="">
