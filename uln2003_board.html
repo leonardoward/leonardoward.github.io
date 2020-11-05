@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>3D Map</title>
-    <meta name="Real-Time Monitoring on a 3D Printed Map" content="">
+    <title>ULN2003 Perfboard Designs | DC | Stepper | Solenoid</title>
+    <meta name="ULN2003 Perfboard Designs | DC | Stepper | Solenoid" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -103,7 +103,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="#0" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li><a href="sumo.html">Sumo</a></li>
@@ -116,7 +116,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="#0" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
@@ -146,16 +146,16 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/3dmap/IMG-20190707-WA0010.jpg" alt="">
+                    <img src="images/uln2003_designs/front_2.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    Real-Time Monitoring on a 3D Printed Map
+                    ULN2003 Perfboard Designs | DC | Stepper | Solenoid
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">August, 2019</li>
+                    <li class="date">October, 2015</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
@@ -165,63 +165,67 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Geographical maps are commonly used to display information. Depending on the importance and complexity of the data, a visual representation can be very valuable. This project uses 3D Printing to assemble a display screen with the shape of the map.</p>
+                <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC and Stepper motors.</p>
 
-                <p>A modular approach was used to design different parts of the map. Each state in the map is easily identifiable, and has at least one led asigned to it that can change it's color independently.
-                </p>
+                <h2 id="uln2003_stepper_stepper">Stepper Motors Drivers with ULN2003</h2>
 
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/20190426_081254.jpg" width="400" alt="">
-                  </p>
-                </div>
-                <div class="col-six ">
-                  <p>
-                  <img src="images/3dmap/20190426_132819.jpg" width="400" alt="">
-                  </p>
+                The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The following videos present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.
+
+                <h3>ULN2003 and Arduino Uno</h3>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/W2ycA9TYYoc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
                 </div>
 
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/WhatsApp Image 2020-06-14 at 7.52.56 PM (3).jpeg" width="400" alt="">
-                  </p>
-                </div>
-                <div class="col-six">
-                  <p>The map contains 99 individual <a href="https://www.adafruit.com/category/168">RGB NeoPixels</a> from Adafruit distributed in all the map.</p>
-                  <p>
-                    The distribution can change depending on the visual alert that is required.
-                    The light from neighbor leds was separated to avoid interference.
-                    That creates a limit on how much closer they canbe together.</p>
-                </div>
-                <p>The map contains a <a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Raspberry Pi 3B</a> that works as a server to which other applications can connect via Ethernet or LAN to stablish the desired color for each led.
-                  Inside the map there are all the connections between the leds and the support circuits, including the Raspberry Pi, except for the AC-DC charger.</p>
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/IMG-20190823-WA0006.jpg" width="400" alt="">
-                  </p>
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/66iMKuHtXPM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
                 </div>
 
-                <div class="col-six ">
-                  <p>
-                  <img src="images/3dmap/IMG-20190823-WA0008.jpg" width="400" alt="">
-                  </p>
+                <h3>ULN2003 and PIC16F877A</h3>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/_uJ95IppRE0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
                 </div>
 
+                <p>Using 4 ULN2003 and a PIC 16F877A I created a Perfboard prototype for multiple applications. In the following video the circuit controls 2 stepper motors. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/IR5aowlEpMI" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <p>Since the ULN2003 can be used for multiple applications, and the configuration of the board can be changed, in the following test the Perfboard controls a solenoid. This test proves the wide range of possibilities of the design.</p>
+
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/USp3ptmTKvM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">3D Printing</a>
+                            <a href="#0">Robotics</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">3D</a>
-                            <a href="#0">Venezuela</a>
-                            <a href="https://www.adafruit.com/category/168">NeoPixels</a>
+                            <a href="#0">Robotics</a>
+                            <a href="#0">Prototype</a>
+                            <a href="#0">Motor Driver</a>
+                            <a href="#0">DC Motor</a>
+                            <a href="#0">Stepper Motor</a>
+                            <a href="#0">Brusheless DC Motor</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -251,15 +255,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="sumo.html" rel="prev">
+                    <a href="bajasae.html" rel="prev">
                         <span>Previous Post</span>
-                        ATLAS, a Robot for Sumo Competitions
+                        Electronic Devices for Racing Vehicles
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="buoy_a.html" rel="next">
+                    <a href="sumo.html" rel="next">
                         <span>Next Post</span>
-                        Buoy A | 2020 Hackaday Dream Team Challenge for Conservation X Labs.
+                        ATLAS, a Robot for Sumo Competitions
                     </a>
                 </div>
             </div>

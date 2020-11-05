@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Motor Driver Design | DC | Stepper | Brushless</title>
-    <meta name="Motor Driver Design | DC | Stepper | Brushless" content="">
+    <title>H-Bridge Perfboard Designs | DC | Stepper</title>
+    <meta name="H-Bridge Perfboard Designs | DC | Stepper" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -107,7 +107,12 @@
                     <a href="#0" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li><a href="sumo.html">Sumo</a></li>
-                        <li><a href="motor_driver_design.html">Motor Driver Design</a></li>
+                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="h-bridge_boards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003_board.html" title="">ULN2003 Perfboard</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
@@ -147,7 +152,7 @@
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    Motor Driver Design | DC | Stepper | Brushless
+                    H-Bridge Perfboard Designs | DC | Stepper
                 </h1>
                 <ul class="entry__header-meta">
                     <li class="date">April, 2014</li>
@@ -160,49 +165,7 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC, Stepper and Brushless motors.</p>
-
-                <h2 id="uln2003_stepper_stepper">Stepper Motors Drivers with ULN2003</h2>
-
-                The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The following videos present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.
-
-                <h3>ULN2003 and Arduino Uno</h3>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/W2ycA9TYYoc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/66iMKuHtXPM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <h3>ULN2003 and PIC16F877A</h3>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/_uJ95IppRE0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <p>Using 4 ULN2003 and a PIC 16F877A I created a Perfboard prototype for multiple applications. In the following video the circuit controls 2 stepper motors. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/IR5aowlEpMI" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <p>Since the ULN2003 can be used for multiple applications, and the configuration of the board can be changed, in the following test the Perfboard controls a solenoid. This test proves the wide range of possibilities of the design.</p>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/USp3ptmTKvM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
+                <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC and Stepper motors.</p>
 
                 <h2 id="h_bridges_stepper">Stepper Motors Drivers with H Bridges</h2>
 
