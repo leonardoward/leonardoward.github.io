@@ -166,47 +166,83 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC and Stepper motors.</p>
+                <p class="lead drop-cap">This project describes the automation of a Brushless DC Motor Driver with an Arduino Uno.</p>
 
-                <h2 id="uln2003_stepper_stepper">Stepper Motors Drivers with ULN2003</h2>
+                <p>The motor drivers Kelly KEB72601XF provide necessary hardware to drive brusless dc motors, but their interface is not fully digital, the interface that is presented in the user manual contains electrical components that require a manual setting (switches). In this project a circuit is designed to create a fully digital interface for the driver Kelly KEB72601XF and change the velocity and direction of brushless DC motors used in electrical Vehicle prototypes.</p>
 
-                The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The following videos present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.
+                <p><a href="http://kellycontroller.com/mot/downloads/KellyKEBUserManual.pdf">Kelly Controller User Manual.</a></p>
+                <p><a href="http://kellycontroller.com/keb72601x24v-72v280a6kw-bike-brushless-controller-regen-p-279.html">Kelly Controller Specifications.</a></p>
+                <p><a href="http://kellycontroller.com/ConnectHelp.php">Kelly Controller Connections help.</a></p>
 
-                <h3>ULN2003 and Arduino Uno</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/brushless_dc_drivers/motor_2.jpg" alt="">
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/brushless_dc_drivers/driver.JPG" alt="">
+                </div>
+
+                <h2 id="circuit">Circuit</h2>
+
+                <p>Based on the user manual of the controller, I used similar circuit to the one presented in the following figure. In the next figure tow potentiometers and three switches are being used to accelerate (throttle), decelerate (brake) and change the direction of the motor.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/brushless_dc_drivers/controller_setup.jpg" alt="">
+                </div>
+
+                <p>I used three electrical relays as a replacement of the switches presented in the original circuit:</p>
+
+                <ul>
+                    <li>The first one replaces the throttle switch and activates the accelerator.</li>
+                    <li>The second one replaces the brake switch and activates the decelerator.</li>
+                    <li>The third one replaces the Reverse Switch and changes the direction of rotation of the motor.</li>
+                </ul>
+
+                <p>An Arduino activates the relays, and creates 3 PWM to create the analogue signals (0V-5V): Throttle and Brake AN.</p>
+
+                <p>The power supply is connected to the front panel of the controller. The next image presents a description of the front panel.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/brushless_dc_drivers/front_panel.jpg" alt="">
+                </div>
+
+                <p>The J2 connector is used to interact with the controller using a development board (Arduino Uno), the next image describes the J2 connector.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/brushless_dc_drivers/j2.jpg" alt="">
+                </div>
+
+                <h3>Testing</h3>
+
+                <p>The next images show the designed circuit (on a breadboard). Including a computer that controls the Arduino UNO using serial communication.</p>
+
+                <div class="col-full">
+                  <div class="col-six" style="text-align:center">
+                    <p>
+                    <img src="images/brushless_dc_drivers/circuit_1.jpg" width="400" alt="">
+                    </p>
+                  </div>
+                  <div class="col-six" style="text-align:center">
+                    <p>
+                    <img src="images/brushless_dc_drivers/circuit_2.jpg" width="400" alt="">
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/brushless_dc_drivers/circuit_3.jpg" alt="">
+                </div>
 
                 <div class="entry__media col-full" style="text-align:center">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/W2ycA9TYYoc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/zPAxSTNGu9Q" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <div class="entry__media col-full" style="text-align:center">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/66iMKuHtXPM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <h3>ULN2003 and PIC16F877A</h3>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/_uJ95IppRE0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <p>Using 4 ULN2003 and a PIC 16F877A I created a Perfboard prototype for multiple applications. In the following video the circuit controls 2 stepper motors. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/IR5aowlEpMI" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <p>Since the ULN2003 can be used for multiple applications, and the configuration of the board can be changed, in the following test the Perfboard controls a solenoid. This test proves the wide range of possibilities of the design.</p>
-
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/USp3ptmTKvM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/fh4hlpM-R8E" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                 </div>
 
