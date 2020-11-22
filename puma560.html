@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Baja SAE USB</title>
-    <meta name="Electronic Devices for Racing Vehicles" content="">
+    <title>PUMA 560</title>
+    <meta name="PUMA 560 Matlab Simulations | Robotic Manipulator" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -118,14 +118,14 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="#0" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="#0" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
@@ -146,66 +146,112 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full">
+            <div class="entry__media col-full" style="text-align:center">
                 <div class="entry__post-thumb">
-                    <img src="images/bajasae/00011466.jpg" alt="">
+                    <img src="images/puma560/puma560.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    Electronic Devices for Racing Vehicles
+                    PUMA 560 Matlab Simulations
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">April, 2014</li>
+                    <li class="date">May, 2019</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
+                    </li>
+                    <li>
+                      <h3><a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Design and development of electronic devices for data acquisition in racing vehicles, including fuel level meters, tachometers, brake pressure meters, wheel alignment systems(toe, camber and caster), and speedometers. The process included prototyping, PCB design, firmware programming, soldering (through hole and surface-mount) and testing. The complete system included a CAN bus (Controller Area Network) for robust communication between microcontrollers.</p>
+                <p class="lead drop-cap">PUMA560 Simulations using Perter Corke's Robotics Toolbox for MATLAB.</p>
 
-                <div class="col-full">
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00017556_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00018248_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
+                <p>This project contains a graphical user interface for robotic manipulators using the Perter Corke's Robotics Toolbox in MATLAB. I made 2 GUIs: one of them for a RRR robot manipulator (3 revolute joints), and the other one for a PUMA560.</p>
+
+                <h2>Repository</h2>
+
+                <p>To get a copy of this project you can use git, and clone the repository:</p>
+
+                <pre><code>
+                  git clone https://github.com/leonardoward/PUMA560-MATLAB-Simulations.git
+                </code></pre>
+
+                <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
+
+                <h2>Prerequisites</h2>
+
+                <ol>
+                    <li>MATLAB (Developed using MATLAB R2015b)</li>
+                    <li><a href="http://petercorke.com/wordpress/toolboxes/robotics-toolbox">Peter Corke's Robotics Toolbox</a></li>
+                    <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
+                </ol>
+
+                <h2>Installation</h2>
+
+                <h3>Peter Corke's Robotics Toolbox</h3>
+
+                <ul>
+                    <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
+                    <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
+                </ul>
+
+                <h3>ARTE Library</h3>
+
+                <ul>
+                    <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
+                    <li>Copy the folder /path/to/arte/arte/robots/UNIMATE/, this folder contains the STL models. A copy of this folder can be found on the root path of this repository.</li>
+                    <li>Paste the folder with the STL models in the path /path/to/MATLAB/version/toolbox/phased/phased/data/ARTE/, in this case the version is R2015b.</li>
+                </ul>
+
+                <p>To check that is installed correctly run in the MATLAB terminal:</p>
+
+                <pre><code>
+                  > mdl_puma560
+                  > p560.model3d
+                  ans =
+                  UNIMATE/puma560
+                </code></pre>
+
+                <h2>RRR Robot Manipulator</h2>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/puma560/rrr_robot.jpg" alt="">
                 </div>
-                <div class="col-full">
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00017557_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00017171_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/puma560/rrr_robot.gif" alt="">
                 </div>
+
+                <h2>PUMA 560</h2>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/puma560/puma560.jpg" alt="">
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/puma560/puma_560_3d_vel20_2.gif" alt="">
+                </div>
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Vehicles</a>
+                            <a href="#0">Robotics</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="http://wikitronica.labc.usb.ve/index.php/Grupo_de_Investigaci%C3%B3n_y_Desarrollo_Baja_SAE">Baja SAE USB</a>
+                            <a href="#0">Matlab</a>
+                            <a href="#0">PUMA560</a>
                             <a href="#0">Venezuela</a>
                         </span>
                     </div> <!-- end entry__tags -->
@@ -236,15 +282,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="hbridgeboards.html" rel="prev">
+                    <a href="sumo.html" rel="prev">
                         <span>Previous Post</span>
-                        H-Bridge Perfboard Designs | DC | Stepper
+                        ATLAS, a Robot for Sumo Competitions
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="uln2003board.html" rel="next">
+                    <a href="3dmap.html" rel="next">
                         <span>Next Post</span>
-                        ULN2003 Perfboard Designs | DC | Stepper | Solenoid
+                        Real-Time Monitoring on a 3D Printed Map
                     </a>
                 </div>
             </div>
