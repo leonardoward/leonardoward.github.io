@@ -363,6 +363,8 @@
                   http://www.onboard_gateway.eja/
                 </code></pre>
 
+                <h3>Home</h3>
+
                 <p>The previous link displays the web page used for HOME:</p>
 
                 <div class="col-full" style="text-align:center">
@@ -376,11 +378,47 @@
                   <img src="images/onboard_gateway/menu.jpg" width="50%">
                 </div>
 
+                <h3>GPS</h3>
+
                 <p>The page http://www.onboard_gateway.eja/gps shows the data from the GPS module.</p>
 
                 <div class="col-full" style="text-align:center">
                   <img src="images/onboard_gateway/gps.jpg" width="50%">
                 </div>
+
+                <h3>Timer</h3>
+
+                <p>The page http://www.onboard_gateway.eja/timer shows the interface to create a timer in the Buoy. The timer represents a countdown that activates the release mechanism when the time has reached zero. The initial page allows the user to set the timer.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/settimer_filled.jpg" width="50%">
+                </div>
+
+                <p>After selecting the amount of time the user has to click the <strong>Submit</strong> button. That will send the information to the buoy to create a timer.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/settimer_updating_buoy.jpg" width="50%">
+                </div>
+
+                <p>The Onboard Gateway communicates with the Buoy, and once it receives the confirmation that the timer has been properly set, it displays the countdown to the user.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/remaining_time.jpg" width="50%">
+                </div>
+
+                <p>In the Onboard Gateway, the countdown timer is an estimate of the one that is running in the Buoy. When the timer reaches zero, the Buoy activates the release mechanism.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/timer_reached_zero.jpg" width="50%">
+                </div>
+
+                <p>The user can delete the timer at any time clicking the button <strong>Delete Timer</strong>. But it will only work if the Onboard Gateway has communication with the Buoy. When the user deletes the timer, it is possible to create a new one a restart the process.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/delete_timer.jpg" width="50%">
+                </div>
+
+                <h3>LoRa</h3>
 
                 <p>The page http://www.onboard_gateway.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
 
@@ -392,6 +430,7 @@
                   <img src="images/onboard_gateway/lora_01.jpg" width="50%">
                 </div>
 
+                <h3>Terminal</h3>
 
                 <p>The page http://www.onboard_gateway.eja/terminal shows internal messages. In the ESP32 that information is stored in the variable:</p>
 
@@ -402,6 +441,8 @@
                 <div class="col-full" style="text-align:center">
                   <img src="images/onboard_gateway/terminal.jpg" width="50%">
                 </div>
+
+                <h3>LED Test</h3>
 
                 <p>There is an additional page http://www.onboard_gateway.eja/toggle_led_on that can be use to change the state of a LED, the GPIO port used is define in the following variable of the script:</p>
 
