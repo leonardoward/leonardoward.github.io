@@ -245,6 +245,76 @@
                     <p>Figura 2: Diagrama de Bloques de Hardware</p>
                 </div>
 
+                <h4>Alimentación</h4>
+
+                <p>Para incorporar baterías de litio recargables al diseño se seleccionó un módulo basado en el integrado TP4056, que contiene un cargador de corriente y voltaje constante para baterías de ion litio de una celda (Figura 3). Las baterías de 1 celda tienen un voltaje nominal de 3.7V, dicho valor se establece como el voltaje de alimentación de los circuitos lógicos en el diseño.</p>
+
+                <p>Para dimensionar las baterías se tomó como referencia que el dispositivo debe ser capaz de ofrecer un funcionamiento de 26 horas continuas con ambas luces principales encendidas a máxima potencia. Cada LED presenta un consumo máximo de 180 mA, de manera que: 2x180 mA x 26h = 9360 mAh. En este sentido se decidió usar un arreglo de 4 baterías de 2600 mAh en paralelo, lo que ofrece 10400 mAh que permiten cubrir la demanda de los LEDs previamente descrita.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/BatC.png" alt="">
+                    <p>Figura 3: Módulo TP4056, cargador de Batería.</p>
+                </div>
+
+                <h4>Microcontrolador</h4>
+
+                <p>Los requerimientos funcionales del proyecto son:</p>
+
+                <ul>
+                  <li>4 salidas digitales para controlar 4 LEDs.</li>
+                  <li>Programar el dispositivo vía ICSP.</li>
+                  <li>Alimentación con 3.7V.</li>
+                  <li>4 entradas digitales para controlar el comportamiento de las luces LEDs.</li>
+                </ul>
+
+                <p>Como es posible observar, las principales limitantes para escoger un microprocesador para esta aplicación, son los puertos digitales disponibles en el mismo. Es por ello que se buscó uno con dichas características y que fuese conservador con los recursos internos. Las familias de productos PIC12F y PIC16F tienen un CPU de 8 bits que puede funcionar a velocidades de hasta 5 MIPS (Millions of Instructions Per Second). Las variantes de dispositivos de la familia PIC12F tienen 8 pines, mientras que las variantes PIC16F se ofrecen en paquetes de 14 a 64 pines. Para el proyecto, se escogió el procesador PIC16F1454 de Microchip debido a que es la familia de procesadores mas cercana a cumplir con nuestros requerimientos funcionales.</p>
+
+                <p>La gama PIC16F de microcontroladores de Microchip son MCU de 8 bits que incorporan la arquitectura PIC de Microchip de una gran variedad de opciones de encapsulado y con dispositivos desde 14 contactos. La familia PIC16F1454/1455/1459 de microcontroladores se basa en el núcleo de arquitectura media con 49 instrucciones y proporcionan hasta 12 MIPS, 14 Kbytes de memoria de programa, y memoria de datos de 1024 bytes de RAM. En la placa hay un oscilador configurable con una precisión de ±0,25 %.</p>
+
+                <p>Características del microcontrolador PIC16F1455:</p>
+
+                <ul>
+                  <li>Velocidad de CPU máx. de 48 MHz.</li>
+                  <li>Bloque de oscilador interno de 16 MHz – Rango de frecuencia seleccionable de 16 MHz a 32 kHz.</li>
+                  <li>12 contactos de E/S – PIC16F1454/1455.</li>
+                  <li>Programación serie en circuito (ICSP).</li>
+                  <li>Dos temporizadores de 8 bits.</li>
+                </ul>
+
+                <p>Además, este dispositivo cuenta con otros periféricos como un convertidor analógico a digital (ADC) de 10 bits y 5 canales, puerto serie síncrono maestro (MSSP) con SPI e I2C, sin embargo, los mismos no son utilizados. El Pinout del dispositivo puede ser observado en la figura 4.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/Pinout.jpg" alt="">
+                    <p>Figura 4: Pinout PIC16F1455.</p>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/pic.png" alt="">
+                    <p>Figura 5: Símbolo PIC16F1455 en el esquemático.</p>
+                </div>
+
+                <p>Se puede programar el microcontrolador utilizando un programador ICSP (se puede utilizar para cualquier chip PIC). Las conexiones ICSP se muestran en el siguiente diagrama (Figura 6):</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/icsp.png" alt="">
+                    <p>Figura 6: Símbolo para la entrada ICSP en el esquemático.</p>
+                </div>
+
+                <p>Para el presente diseño no se considero necesario el uso de un oscilador externo por dos razones:</p>
+
+                <ul>
+                  <li>El microcontrolador cuenta con uno interno de 16MHz configurable con alta precisión.</li>
+                  <li>A pesar de existir la probabilidad de errores en la medición de los tiempos, esta no es un aplicación sensible a cambios en milisegundos, ya que los modos de operación de las luces son cuantificados en segundos. Cualquier cambio de comportamiento seria prácticamente imperceptible y no justifica aumentar la complejidad del diseño en hardware.</li>
+                  <li>Utilizar un dispositivo externo equivale a utilizar 2 GPIO más para este propósito.</li>
+                </ul>
+
+                <h4>Iluminación</h4>
+
+                <p>Se utilizaron cuatro LEDs de 0.5 Watts, dos de ellos para las luces de parada y dos para luces de cruce. Se seleccionó el LED blanco de OVS5MWBCR4 de la marca TT Electronics de 50 lm, cuyo voltaje de fordward está en el rango de [3.0 ; 4.1] V, una corriente nominal de 180 mA y un pico de corriente 350 mA, de esta manera no hace falta resistencia de protección para dichos LEDs, ya que la alimentación es de 3.7V. Para optimizar la distancia de visualización de los LEDs se utilizan lentes de enfoque a 10° de apertura para cada uno.</p>
+
+                <p>Para controlar a los LEDs se necesitó cuatros transistores. Se seleccionó dos integrados BTS3405GXUMA1 de la marca Infineon, cada integrado tiene dos transistores cuyo voltaje drain-source máximo (VDS) es de 42 V, corriente máxima de drain es 350 mA cada uno, ideal para los LEDs escogidos; y voltaje de activación de 1.7V, por lo tanto es compatible con la lógica de 3.3V  del microcontrolador.</p>
+
+
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
