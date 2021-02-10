@@ -314,6 +314,66 @@
 
                 <p>Para controlar a los LEDs se necesitó cuatros transistores. Se seleccionó dos integrados BTS3405GXUMA1 de la marca Infineon, cada integrado tiene dos transistores cuyo voltaje drain-source máximo (VDS) es de 42 V, corriente máxima de drain es 350 mA cada uno, ideal para los LEDs escogidos; y voltaje de activación de 1.7V, por lo tanto es compatible con la lógica de 3.3V  del microcontrolador.</p>
 
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/leds.png" alt="">
+                    <p>Figura 7: Sistema de control para las luces LED.</p>
+                </div>
+
+                <h4>Interfaz de control</h4>
+
+                <p>El control de las luces cuenta con dos formatos. El primero, cuenta con un solo botón, el mismo es capaz de realizar ciclos de encendido, pasando por los distintos modos de operación, hasta el apagado. Este botón estará en el case del dispositivo.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/Case2.PNG" alt="">
+                    <p>Figura 8: Sistema de control para las luces LED.</p>
+                </div>
+
+                <p>El segundo formato, es usando un mando de control. A través de esta opción se podrá incorporar mas funciones, entre ellas, luces intermitentes y luces de cruce, además de los modos de operación que se mantienen igual. Esta versión del producto tiene costo extra y el mismo puede ser observado a continuación.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/mando.png" alt="">
+                    <p>Figura 9: Sistema de control externo para las luces LED.</p>
+                </div>
+
+                <h3>Software</h3>
+
+                <p>En la Figura 10 se puede observar el diagrama de bloques del software para el microcontrolador. Cada pulsador se encuentra conectado a un puerto de entrada y salida, configurado como entrada. El microcontrolador debe identificar el estado en el puerto de entrada y manejar los posibles rebotes asociados.</p>
+
+                <p>Un deslizador selecciona la luz de cruce que se va utilizar. Un bot\'on coloca ambas luces de cruce en modo intermitente. Un pulsador cambia el estado de las luces traseras, dichas luces siguen los modos presentados en la Figura 1.</p>
+
+                <p>Dado que no se utilizó ningún periférico, la única configuración realizada al microcontrolador fue la de escoger el oscilador. Como se mencionó anteriormente, se optó por utilizar el oscilador interno del dispositivo, con una frecuencia de 31KHz, la menor posible. Esto debido a que no se necesita un nivel de precisión elevado, además de que permite un menor consumo de las baterías.</p>
+
+                <p>Una vez realizada la selección del hardware, se realizó el Diagrama de Bloques de Software que se muestra en la Figura 10. Dicho diagrama muestra los periféricos utilizados, y los elementos del software indispensables: incluyendo la lectura de los puertos, el manejo de rebotes en el caso de ser necesario y el uso de un controlador que establece las señales para las luces y maneja los puertos de salida conectados a los transistores de potencia. También se realizó un Diagrama Jerárquico de Software, se observa en la Figura 11, que muestra como se relacionan los elementos antes mencionados. Finalmente se realizó el Diagrama de Capas de Software, que se muestra en la Figura 12, dicho diagrama se enfoca en establecer cuáles elementos podrían tener mayor complejidad. En el Diagrama de capas, los bloques considerados con mayor complejidad son los controladores porque deben manejar los estados de cada luz, además el diagrama muestra el amplio uso de los puertos de entrada y salida en el proyecto.</p>
+
+                <p>En las Figuras 10, 11 y 12 se les llama luces de \textit{freno} a las luces traseras que no se utilizan para indicar cruces.</p>
+
+                <h4>Implementación</h4>
+
+                <p>A nivel de código, luego de inicializar el sistema y las variables necesarias, el programa fluye de la siguiente manera:</p>
+
+                <ul>
+                  <li>Se realiza la lectura de todas las entradas, es decir, si se han presionado o no alguno de los botones.</li>
+                  <li>Se verifica si se ha presionado el botón para encender las luces intermitentes, el cual tiene prioridad sobre cualquier luz de cruce. En caso de que sí, se realiza dicha acción.</li>
+                  <li>Si no se presionó el botón para las luces intermitentes, se verifica si se presionó el que enciende la luz de cruce derecha. En caso de que sí, se realiza dicha acción.</li>
+                  <li>Si no se presionó el botón para las luces intermitentes, ni el botón para encender la luz de cruce derecha, se verifica si se presionó el que enciende la luz de cruce izquierda. En caso de que sí, se realiza dicha acción.</li>
+                  <li>En caso de no haber presionado ninguno de estos tres botones, las luces de cruce simplemente quedan apagadas.</li>
+                  <li>Se verifica si se ha presionado el botón para cambiar el modo de operación de las luces de parada. El modo de operación inicia por defecto en 0. Este cambia cuando se detecta un flanco de bajada, es decir, al dejar de presionar el botón. Los modos se operación son los siguientes:
+                    <ul>
+                      <li>Modo 0: las luces de parada se mantienen apagadas.</li>
+                      <li>Modo 1: las luces de parada se mantienen encendidas de manera fija.</li>
+                      <li>Modo 2: las luces de parada se encienden de manera intermitente.</li>
+                      <li>Modo 3: las luces de parada se mantienen de manera intermitente con los ciclos de encendido y apagado invertidos, es decir, solo se enciende un LED a la vez.</li>
+                    </ul>
+                  </li>
+                  <li>Se aplica el modo de control seleccionado, el cual es manejado por una máquina de estados, mostrado en la Figura 1.</li>
+                  <li>Se actualizan todas las variables de control.</li>
+                </ul>
+
+                <p>Cabe destacar que los ciclos de encendido y apagado de las luces, al momento de ser necesarios, son temporizados haciendo uso de contadores de ciclo. Para determinar el número de ciclos correcto, de modo que las luces cambiaran de estado en un tiempo prudencial, se realizó un proceso iterativo en el que se hicieron pruebas con distintos valores, hasta determinar el más apropiado.</p>
+
+                <p>Adicionalmente, se cuenta con un control de rebote por software para el caso del botón de selección de modos.</p>
+
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
