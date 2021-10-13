@@ -216,12 +216,12 @@
                 <p>In order to run the simulation in Proteus, the user has to insert the .hex file path in the PIC preferences.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/proteus-setup.png" alt="">
+                    <img width="640" height="360" src="images/space_invaders/proteus-setup.png" alt="">
                 </div>
 
                 <h2 id="design_and_architecture">Design and Architecture</h2>
 
-                <h3>PIC</h3>
+                <h3>Microcontroller</h3>
 
                 <p>This project was developed on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>.</p>
 
@@ -262,7 +262,7 @@
                 <p>In order to draw in the screen with the T6963C symbol generator, custom 8x8 sprite were made for each character in the game. The three types of invaders sprites were implemented with their respective four animations: i) position 'a', ii)position 'b', iii)position 'a' dodging laser shot, iv) position 'b' dodging laser shot; the spaceship and mothership sprites, the barriers sprites with the ability to be destroyed with 3 hits, laser shots and explotion sprites.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/sprites.png" alt="">
+                    <img width="640" height="360" src="images/space_invaders/sprites.png" alt="">
                 </div>
 
                 <p>The tool used to draw and export the images was [Piskel](https://www.piskelapp.com/), and the tool used to generate de arrays file from the bitmap pictures was [LCD Assistant](http://en.radzio.dxp.pl/bitmap_converter/).</p>
@@ -301,7 +301,7 @@
                 <p>The following image presents a Flowchart of the game.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/game_architecture.jpg" alt="">
+                    <img width="640" height="360" src="images/space_invaders/game_architecture.jpg" alt="">
                 </div>
 
                 <p>We implemented different structures to solve different specific problems that arrive during development, we will describe a little bit more about them in the following sections.</p>
@@ -311,7 +311,7 @@
                 <p>We are using <a href="https://en.wikipedia.org/wiki/Linked_list">Singly Linked Circular Lists</a> to manage the animations of the game objects. We only required one or two sprites, but the list is also very convenient during the rendering phase.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/animation_list.jpg" alt="">
+                    <img width="640" height="360" src="images/space_invaders/animation_list.jpg" alt="">
                 </div>
 
                 <h4>Animation of a Group of Invaders</h4>
@@ -319,7 +319,7 @@
                 <p>The invaders have a different rendering order depending of the direction in which the group is moving:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/alien_list.jpg" alt="">
+                    <img width="640" height="360" src="images/space_invaders/alien_list.jpg" alt="">
                 </div>
 
                 <ul>
@@ -333,7 +333,7 @@
                 <p>To detect the collisions between game objects we created a game map, a 2D array with the size of the screen where each element contains a pointer to the game object that is associated to that X Y position. This map is updated with each frame according to the new positions of the objects.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/game_map.jpg" alt="">
+                    <img width="640" height="360" src="images/space_invaders/game_map.jpg" alt="">
                 </div>
 
                 <h2 id="simulation">Simulation</h2>
@@ -344,11 +344,11 @@
 
                 <div class="entry__media col-full" style="text-align:center">
                     <div class="video-container">
-                        <iframe src="https://youtu.be/l3vaxV_vUPE" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/l3vaxV_vUPE" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <h2 id="upcoming-enhancements">Upcoming Enhancements</h2>
+                <h2 id="future_improvements">Future Improvements</h2>
 
                 <p>Integrate audio to gameplay, this was tried without success in another project (mplab_audio) using the "output comparator interruptions" of the PIC to generate a PWM signal that later in Proteus is filtered to get the sound. The main problem encountered was the delay of the Proteus Simulation.</p>
 
