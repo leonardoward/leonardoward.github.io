@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>LoRa Development Board | RFM95W-915S2</title>
-    <meta name="LoRa Development Board | RFM95W-915S2" content="">
+    <title>GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31</title>
+    <meta name="GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -65,6 +65,14 @@
                 <li class="has-children">
                     <a href="#0" title="">Embedded Systems</a>
                     <ul class="sub-menu">
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#3d_model" title="">3D Model</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
                           <ul class="sub-menu">
                             <li><a href="lora-dev-board.html" title="">Description</a></li>
@@ -167,13 +175,13 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/lora_development_board/Lora_PCB.jpg" alt="">
+                    <img src="images/gps_development_board/gps-pcb.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    LoRa Development Board | RFM95W-915S2
+                    GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31
                 </h1>
                 <ul class="entry__header-meta">
                     <li class="date">September, 2021</li>
@@ -193,22 +201,36 @@
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
                   </li>
                   <li class="byline">
-                    <h3><a href="https://github.com/leonardoward/lora-development-boards"><i class="fab fa-github"></i></a></h3>
+                    <h3><a href="https://github.com/leonardoward/gps-development-boards"><i class="fab fa-github"></i></a></h3>
                   </li>
                   <li class="byline">
-                    <a href="https://github.com/leonardoward/lora-development-boards">Github</a>
+                    <a href="https://github.com/leonardoward/gps-development-boards">Github</a>
                   </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains a RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
+                <p class="lead drop-cap">This project contains the design of a development board for the <a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">ANTENOVA M20050-1</a> and the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>. The PCB was designed using KiCad.</p>
 
                 <h2 id="schematic">Schematic</h2>
 
+                <h3>ANTENOVA M20050-1</h3>
+
                 <div class="col-full">
-                    <img src="images/lora_development_board/schematic-v1.0.jpg" alt="">
+                    <img src="images/gps_development_board/schematic_antenova_m20050.jpg" alt="">
+                </div>
+
+                <h3>ATGM332D-5N31</h3>
+
+                <div class="col-full">
+                    <img src="images/gps_development_board/schematic_atgm332d-5n31.jpg" alt="">
+                </div>
+
+                <h3>Additional Coin Battery Holders</h3>
+
+                <div class="col-full">
+                    <img src="images/gps_development_board/schematic_battery_holders.jpg" alt="">
                 </div>
 
                 <h2 id="bill_of_materials">Bill of Materials</h2>
@@ -225,15 +247,47 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2 LoRa™ Transceiver Module 915MHz SMD</a></td>
+                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KQCLNNC/3888062">10 µF ±10% 6.3V Ceramic Capacitor X5R 0805 (2012 Metric)</a></td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080SS75000/4489921">Red 630nm LED Indication - Discrete 1.9V 0805 (2012 Metric)</a></td>
                                         <td>1</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KQCLNNC/3888062">10 µF ±10% 6.3V Ceramic Capacitor 0805</a></td>
+                                        <td><a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL (UMCC) Connector Receptacle, Male Pin 50Ohm Surface Mount Solder</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/linx-technologies-inc/BAT-HLD-001-THM/3044009">Battery Retainer Coin, 20.0mm 1 Cell PC Pin</a></td>
                                         <td>1</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL (UMCC) Connector Receptacle, Male Pin 50 Ohm SMD</a></td>
+                                        <td><a href="https://www.digikey.com/en/products/detail/keystone-electronics/1066/303562">Battery Holder (Open) Coin, 20.0mm 1 Cell PC Pin</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/abracon-llc/AIMC-0805-1N8S-T/2662915">Unshielded Multilayer Inductor 100mOhm Max 0805 (2012 Metric)</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-6ENF1001V/111281">1K ±1% 0.125W, 1/8W Chip Resistor 0805 (2012 Metric) Automotive AEC-Q200 Thick Film</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-07220RL/728283">220 Ohms ±5% 0.125W, 1/8W Chip Resistor 0805 (2012 Metric) Moisture Resistant Thick Film</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-070RL/728216">0 Ohms Jumper 0.125W, 1/8W Chip Resistor 0805 (2012 Metric) Moisture Resistant Thick Film</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31 GNSS Series GPS+BDS 12.2x16x2.4mm Satellite Positioning Modules ROHS</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">Antenova M20050-1 series RF Receiver GPS 1.575GHz -165dBm - On-Board, Trace Module</a></td>
                                         <td>1</td>
                                     </tr>
                                     <tr>
@@ -249,137 +303,12 @@
                 <h2 id="3d_model">3D Model</h2>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/lora-testing-board01.jpg" alt="">
+                    <img src="images/gps_development_board/gps-testing-board01.jpg" alt="">
                 </div>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/lora-testing-board02.jpg" alt="">
+                    <img src="images/gps_development_board/gps-testing-board02.jpg" alt="">
                 </div>
-
-                <h2 id="firmware_andtesting">Firmware and Testing</h2>
-
-                <p>The webpage randomnerdtutorials.com has an amazing tutorial named <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">ESP32 with LoRa using Arduino IDE – Getting Started</a>, that tutorial contains detailed information about how to use the RFM95 with an ESP32 (the same microcontroller that was selected for our designs). I used the same firmware and connections provided by the tutorial.</p>
-
-                <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
-
-                <p>The connections are the following:</p>
-
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ESP32</th>
-                                        <th>RFM95W-915S2 Development Board</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>3V3</td>
-                                        <td>3.3V</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GND</td>
-                                        <td>GND</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 14</td>
-                                        <td>RST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 5</td>
-                                        <td>CS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 18</td>
-                                        <td>SCK</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 23</td>
-                                        <td>MOSI</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 19</td>
-                                        <td>MISO</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-
-                <div class="col-full">
-                    <img src="images/lora_development_board/Lora_Dev_Board.jpg" alt="">
-                </div>
-
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ESP32</th>
-                                        <th>RFM95W Board from Adafruit</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>3V3</td>
-                                        <td>VIN</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GND</td>
-                                        <td>GND</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 14</td>
-                                        <td>RST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 5</td>
-                                        <td>CS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 18</td>
-                                        <td>SCK</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 23</td>
-                                        <td>MOSI</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 19</td>
-                                        <td>MISO</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-
-                <div class="col-full">
-                    <img src="images/lora_development_board/Lora_Adafruit.jpg" alt="">
-                </div>
-
-                <p>This repository contains a folder named /Firmware/ that contains the project for the transceiver as a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_receiver/esp32_RFM95_receiver.ino">receiver</a> and a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_sender/esp32_RFM95_sender.ino">sender</a>.</p>
-
-                <p>Both of the RFM95W Boards were used as a sender and receiver, the result was successful in both cases. During the test, one of the transceivers sends the package "hello counter", where the counter is a number that goes from 0 to 32767. The other transceiver receives the package and prints the message through serial.</p>
-
-                <h3>Requisites</h3>
-
-                <ol>
-                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
-                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa Library</a></li>
-                </ol>
-
-                <p>Results visualized in the serial monitor from the receiver circuit:</p>
-
-                <div class="col-full">
-                    <img src="images/lora_development_board/Test-Result.png" alt="">
-                </div>
-
-                <p>For more information about the firmware visit the <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">original tutorial for the RFM95W</a>.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -394,7 +323,7 @@
                         <span class="entry__tax-list entry__tax-list--pill">
                             <a href="#0">Robotics</a>
                             <a href="#0">Embedded Design</a>
-                            <a href="#0">LoRa</a>
+                            <a href="#0">GPS</a>
                             <a href="#0">Hackaday</a>
                         </span>
                     </div> <!-- end entry__tags -->
@@ -425,17 +354,17 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="pic-proteus-space-invaders.html" rel="prev">
+                    <a href="lora-dev-board.html" rel="prev">
                         <span>Previous Post</span>
-                        Embedded Software | Space Invaders adaptation for a 16-Bit PIC Microcontroller
+                        LoRa Development Board | RFM95W-915S2
                     </a>
                 </div>
-                <div class="col-six s-content__next">
-                    <a href="gps-dev-board.html" rel="next">
+                <!-- <div class="col-six s-content__next">
+                    <a href="3dmap.html" rel="next">
                         <span>Next Post</span>
-                        GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31
+                        Real-Time Monitoring on a 3D Printed Map
                     </a>
-                </div>
+                </div> -->
             </div>
         </div> <!-- end s-content__pagenav -->
 
