@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>LoRa Development Board | RFM95W-915S2</title>
-    <meta name="LoRa Development Board | RFM95W-915S2" content="">
+    <title>FTDI Development Board | FT260S and FT312D</title>
+    <meta name="FTDI Development Board | FT260S and FT312D" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -187,16 +187,16 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/lora_development_board/Lora_PCB.jpg" alt="">
+                    <img src="images/ftdi_development_board/ftdi-pcb-1.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    LoRa Development Board | RFM95W-915S2
+                    FTDI Development Board | FT260S and FT312D
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">September, 2021</li>
+                    <li class="date">October, 2021</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
@@ -213,25 +213,71 @@
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
                   </li>
                   <li class="byline">
-                    <h3><a href="https://github.com/leonardoward/lora-development-boards"><i class="fab fa-github"></i></a></h3>
+                    <h3><a href="https://github.com/leonardoward/ftdi-development-boards"><i class="fab fa-github"></i></a></h3>
                   </li>
                   <li class="byline">
-                    <a href="https://github.com/leonardoward/lora-development-boards">Github</a>
+                    <a href="https://github.com/leonardoward/ftdi-development-boards">Github</a>
                   </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains a RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
+                <p class="lead drop-cap">This project contains the design of a development board for the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S</a> and the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D</a>. The PCB was designed using KiCad.</p>
 
-                <h2 id="schematic">Schematic</h2>
+                <h2 id="hardware-design">Hardware Design</h2>
+
+                <h3>USB C Port with Electromagnetic Compatibility EMC</h3>
+
+                <p>Everything starts with the USB C port, this type of USB was selected because it's size and because of the growing trend of using this port to charge and communicate with portable devices.</p>
+
+                <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/schematic-v1.0.jpg" alt="">
+                    <img src="images/ftdi_development_board/schematic-usb-c.jpg" alt="">
                 </div>
 
-                <h2 id="bill_of_materials">Bill of Materials</h2>
+                <h3>FTDI 1 - FT260S</h3>
+
+                <p>The first USB TO UART/I2C FTDI that we is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>. The design only considers the USB to UART, therefore the I2C is left unconnected.</p>
+
+                <div class="col-full">
+                    <img src="images/ftdi_development_board/schematic-ft260s.jpg" alt="">
+                </div>
+
+                <p><strong>Notes:</strong> The FT260S was originally selected to directly program the ESP32, and also provide serial communication. After careful consideration I found that the FT260 is a HID class device and as such it does not generate a Virtual COM Port (like the FT232R), to interface with the FT260 it can be used the official helper library, LibFT260.</p>
+
+                <p><a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf">https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf</a></p>
+
+                <p><a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf">https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf</a></p>
+
+                <p>For that reason the FT260S will require more work before it can seamlessly program the ESP32. This topic will have to be addressed in the future.</p>
+
+                <h3>FTDI 2 - FT312D</h3>
+
+                <p>The second USB TO UART/I2C FTDI that is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>. This IC does not support DTR/DSR for the UART, a feature that is required for the auto reset circuit of the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a> that was implemented, nevertheless the PCB has it as a second alternative.</p>
+
+                <div class="col-full">
+                    <img src="images/ftdi_development_board/schematic-f312d.jpg" alt="">
+                </div>
+
+                <h3>ESP32 with Auto Reset</h3>
+
+                <p>Finally, the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the ESP32. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
+
+                <div class="col-full">
+                    <img src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" alt="">
+                </div>
+
+                <h3>SPDT Switch</h3>
+
+                <p>The design includes a couple of <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a> that will be tested for future implementations.</p>
+
+                <div class="col-full">
+                    <img src="images/ftdi_development_board/schematic-switch.jpg" alt="">
+                </div>
+
+                <h2 id="bill-of-materials">Bill of Materials</h2>
 
                 <div class="row add-bottom">
                     <div class="col-twelve">
@@ -245,20 +291,84 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2 LoRa™ Transceiver Module 915MHz SMD</a></td>
+                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B105KPFNNNE/3886933">1 µF ±10% 10V Ceramic Capacitor X7R 0805 (2012 Metric)</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/885012007014/5453673">47 pF ±5% 16V Ceramic Capacitor C0G, NP0 0805 (2012 Metric)</a></td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/avx-corporation/08055C104KAT2A/563505">0.1 µF ±10% 50V Ceramic Capacitor X7R 0805 (2012 Metric)</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A475KQFNNNE/3886856">4.7 µF ±10% 6.3V Ceramic Capacitor X5R 0805 (2012 Metric)</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">15V Clamp 5A (8/20µs) Ipp Tvs Diode Surface Mount SOT-23-6</a></td>
                                         <td>1</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KQCLNNC/3888062">10 µF ±10% 6.3V Ceramic Capacitor 0805</a></td>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080SS75000/4489921">Red 630nm LED Indication - Discrete 1.9V 0805 (2012 Metric)</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">1 Signal Line Ferrite Bead 0805 (2012 Metric) 300mA 350mOhm</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/cui-devices/UJ31-CH-G2-SMT-TR/8024057">USB-C (USB TYPE-C) USB 3.2 Gen 2 (USB 3.1 Gen 2, Superspeed + (USB 3.1)) Receptacle Connector 24 Position Board Cutout, Surface Mount, Right Angle; Through Hole</a></td>
                                         <td>1</td>
                                     </tr>
                                     <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL (UMCC) Connector Receptacle, Male Pin 50 Ohm SMD</a></td>
+                                        <td><a href="https://www.digikey.com/en/products/detail/onsemi/MMBT2222LT1G/919595">Bipolar (BJT) Transistor NPN 30 V 600 mA 250MHz 300 mW Surface Mount SOT-23-3 (TO-236)</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/vishay-dale/CRCW080510K0FKEAC/7928398">10 kOhms ±1% 0.125W, 1/8W Chip Resistor 0805 (2012 Metric)</a></td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT5K10/1760394">5.1 kOhms ±1% 0.125W, 1/8W Chip Resistor 0805 (2012 Metric)</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT27R0/1712920">27 Ohms ±1% 0.125W, 1/8W Chip Resistor 0805 (2012 Metric)</a></td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-07620RL/728357">620 Ohms ±5% 0.125W, 1/8W Chip Resistor 0805 (2012 Metric)</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">1 Circuit IC Switch 2:1 900mOhm 8-VSSOP</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32-WROOM-32D (4MB)</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/diodes-incorporated/AP2115M-3-3TRG1/5305574">IC REG LINEAR 3.3V 1A 8SOIC</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U IC USB TO UART/I2C 28-TSSOP</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R IC USB HOST CTRL 32-LQFP</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/jauch-quartz/J49SMH-F-G-G-K-12M0/10416018">12 MHz ±30ppm Crystal 18pF 35 Ohms HC-49/US</a></td>
                                         <td>1</td>
                                     </tr>
                                     <tr>
                                         <td><a href="https://www.digikey.com/en/products/detail/3m/2340-6111TG/1237275">Conn Header 40POS 2.54</a></td>
-                                        <td>1</td>
+                                        <td>3</td>
                                     </tr>
                                     </tbody>
                             </table>
@@ -266,140 +376,62 @@
                     </div>
                 </div> <!-- end row -->
 
-                <h2 id="3d_model">3D Model</h2>
+                <h2 id="pcb">PCB</h2>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/lora-testing-board01.jpg" alt="">
+                    <img src="images/ftdi_development_board/ftdi-testing-board01.jpg" alt="">
                 </div>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/lora-testing-board02.jpg" alt="">
+                    <img src="images/ftdi_development_board/ftdi-testing-board02.jpg" alt="">
                 </div>
 
-                <h2 id="firmware_andtesting">Firmware and Testing</h2>
+                <h2 id="testing">Testing</h2>
 
-                <p>The webpage randomnerdtutorials.com has an amazing tutorial named <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">ESP32 with LoRa using Arduino IDE – Getting Started</a>, that tutorial contains detailed information about how to use the RFM95 with an ESP32 (the same microcontroller that was selected for our designs). I used the same firmware and connections provided by the tutorial.</p>
-
-                <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
-
-                <p>The connections are the following:</p>
-
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ESP32</th>
-                                        <th>RFM95W-915S2 Development Board</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>3V3</td>
-                                        <td>3.3V</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GND</td>
-                                        <td>GND</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 14</td>
-                                        <td>RST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 5</td>
-                                        <td>CS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 18</td>
-                                        <td>SCK</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 23</td>
-                                        <td>MOSI</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 19</td>
-                                        <td>MISO</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
+                <p>The designed auto reset circuit requires the signals 3.3V, GND, TX, RX, RTS and DTR. The commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> (FT232RL) was used to test the circuit, it provides all the required signals.</p>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/Lora_Dev_Board.jpg" alt="">
+                    <img src="images/ftdi_development_board/ftdi-programmer.jpg" alt="">
                 </div>
 
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ESP32</th>
-                                        <th>RFM95W Board from Adafruit</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>3V3</td>
-                                        <td>VIN</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GND</td>
-                                        <td>GND</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 14</td>
-                                        <td>RST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 5</td>
-                                        <td>CS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 18</td>
-                                        <td>SCK</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 23</td>
-                                        <td>MOSI</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 19</td>
-                                        <td>MISO</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
+                <p>The following wiring diagram shows how to connect the commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> and our FTDI Development Board.</p>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/Lora_Adafruit.jpg" alt="">
+                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" alt="">
                 </div>
-
-                <p>This repository contains a folder named /Firmware/ that contains the project for the transceiver as a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_receiver/esp32_RFM95_receiver.ino">receiver</a> and a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_sender/esp32_RFM95_sender.ino">sender</a>.</p>
-
-                <p>Both of the RFM95W Boards were used as a sender and receiver, the result was successful in both cases. During the test, one of the transceivers sends the package "hello counter", where the counter is a number that goes from 0 to 32767. The other transceiver receives the package and prints the message through serial.</p>
-
-                <h3>Requisites</h3>
-
-                <ol>
-                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
-                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa Library</a></li>
-                </ol>
-
-                <p>Results visualized in the serial monitor from the receiver circuit:</p>
 
                 <div class="col-full">
-                    <img src="images/lora_development_board/Test-Result.png" alt="">
+                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" alt="">
                 </div>
 
-                <p>For more information about the firmware visit the <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">original tutorial for the RFM95W</a>.</p>
+                <p>Once the 2 boards were connected and the <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> was plugged, the PC (in Windows) recognized the device and it was ready to use. Check if you need to install drivers associated to the FTDI, that is often the case.</p>
+
+                <p><strong>Note:</strong> Before testing the following code, verify that the ESP-IDF is installed and the Arduino IDE can program ESP devices.</p>
+
+                <p>The code used is very simple, the ESP32 sends a "Hello world" message through the serial communication every second.</p>
+
+                <pre><code>
+                  void setup() {
+                     Serial.begin(115200);
+                  }
+
+                  void loop() {
+                     Serial.println("Hello World");
+                     delay(1000);
+                  }
+                </code></pre>
+
+                <p>The standard Arduino IDE was used to program the ESP32, with the following configurations:</p>
+
+                <div class="col-full">
+                    <img src="images/ftdi_development_board/ide-setup.png" alt="">
+                </div>
+
+                <p>And the test was successful, the following image shows the results in the serial monitor.</p>
+
+                <div class="col-full">
+                    <img src="images/ftdi_development_board/auto-reset-test-result.png" alt="">
+                </div>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -414,7 +446,7 @@
                         <span class="entry__tax-list entry__tax-list--pill">
                             <a href="#0">Robotics</a>
                             <a href="#0">Embedded Design</a>
-                            <a href="#0">LoRa</a>
+                            <a href="#0">GPS</a>
                             <a href="#0">Hackaday</a>
                         </span>
                     </div> <!-- end entry__tags -->
@@ -445,17 +477,17 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="pic-proteus-space-invaders.html" rel="prev">
+                    <a href="lora-dev-board.html" rel="prev">
                         <span>Previous Post</span>
-                        Embedded Software | Space Invaders adaptation for a 16-Bit PIC Microcontroller
+                        LoRa Development Board | RFM95W-915S2
                     </a>
                 </div>
-                <div class="col-six s-content__next">
-                    <a href="gps-dev-board.html" rel="next">
+                <!-- <div class="col-six s-content__next">
+                    <a href="3dmap.html" rel="next">
                         <span>Next Post</span>
-                        GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31
+                        Real-Time Monitoring on a 3D Printed Map
                     </a>
-                </div>
+                </div> -->
             </div>
         </div> <!-- end s-content__pagenav -->
 
