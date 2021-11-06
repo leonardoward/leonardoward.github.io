@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>EJA M | 2021 Hackaday Dream Team Challenge</title>
+    <meta name="EJA M | 2021 Hackaday Dream Team Challenge" content="">
+    <meta name="Leonardo Ward" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <!-- <div class="header__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div>  -->
+        <!-- end header__logo -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                <li class="has-children current">
+                    <a href="#0" title="">Embedded Systems</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="ejam.html">EJA M</a>
+                          <ul class="sub-menu">
+                            <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ejam.html#FTDI FT260S" title="">FTDI FT260S</a></li>
+                            <li><a href="ejam.html#auto-reset-circuit-for-the-esp32" title="">Auto Reset Circuit</a></li>
+                            <li><a href="ejam.html#esp32" title="">ESP32</a></li>
+                            <li><a href="ejam.html#gps" title="">GPS</a></li>
+                            <li><a href="ejam.html#lora" title="">LoRa</a></li>
+                            <li><a href="ejam.html#real-time-clock-rtc" title="">Real time Clock RTC</a></li>
+                            <li><a href="ejam.html#5v-2a-stepup" title="">5V 2A Stepup</a></li>
+                            <li><a href="ejam.html#battery-charging-circuit" title="">Battery Charging</a></li>
+                            <li><a href="ejam.html#3v3-3a-sepic-converter" title="">3V3 3A SEPIC Converter</a></li>
+                            <li><a href="ejam.html#on-off-button-circuit" title="">ON-OFF Button Circuit</a></li>
+                            <li><a href="ejam.html#pcb-dimensions-and-boundaries" title="">PCB Dimensions and Boundaries</a></li>
+                            <li><a href="ejam.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ejam.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ftdi-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#3d_model" title="">3D Model</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="lora-dev-board.html" title="">Description</a></li>
+                            <li><a href="lora-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="lora-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="lora-dev-board.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="lora-dev-board.html#firmware_andtesting" title="">Firmware and Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="helios_ren.html">HELIOS REN Tail Light System</a></li>
+                        <li class="has-children"><a href="onboardgateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboardgateway.html" title="">Description</a></li>
+                            <li><a href="onboardgateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboardgateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboardgateway.html#pcb_layout" title="">PCB Layout</a></li>
+                            <li><a href="onboardgateway.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoya.html">Buoy A</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoya.html" title="">Description</a></li>
+                            <li><a href="buoya.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoya.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoya.html#pcb_layout" title="">PCB Layout</a></li>
+                            <li><a href="buoya.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="buoya.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoya.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoyb.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoyb.html" title="">Description</a></li>
+                            <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">PCB Layout</a></li>
+                            <li><a href="buoyb.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#0" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li><a href="sumo.html">Sumo</a></li>
+                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
+                            <li><a href="brushlessdc.html" title="">Brushless DC Motor Drivers</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="puma560.html">PUMA 560</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#0" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="#0" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="images/ejam/ejam-pcb-top-01.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="entry__header col-full">
+                <h1 class="entry__header-title display-1">
+                    EJA M | 2021 Hackaday Dream Team Challenge
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">October, 2021</li>
+                    <li class="byline">
+                        By
+                        <a href="#0">Leonardo Ward</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="entry__header col-full">
+                <ul class="entry__header-meta">
+                  <li class="byline">
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
+                  </li>
+                  <li class="byline">
+                    <h3><a href="https://github.com/leonardoward/eja-m-pcb-design"><i class="fab fa-github"></i></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://github.com/leonardoward/eja-m-pcb-design">Github</a>
+                  </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap">The new EJA M v1.0 is an upgrade/replacement of my older PCB designs: <a href="buoya.html">Buoy A v1.0</a>, <a href="buoyb.html">Buoy B v1.0</a>, and <a href="onboardgateway.html">Onboard Gateway v1.0</a>. The design includes the following features:</p>
+
+                <ul>
+                    <li>USB C Port with Electromagnetic Compatibility (EMC)</li>
+                    <li>FTDI (FT260S-U) with an Auto Reset Circuit for the ESP32</li>
+                    <li>ESP32</li>
+                    <li>GPS Module</li>
+                    <li>LoRa Transceiver</li>
+                    <li>Real-time Clock (RTC)</li>
+                    <li>Connector for a Servo Motor</li>
+                    <li>5V 2A Stepup (for the Servo Motor)</li>
+                    <li>3.3V Battery Charging Circuit</li>
+                    <li>3.3V Battery Charging Circuit</li>
+                    <li>Connector for a 3 axis accelerometer</li>
+                    <li>Circuit to measure the battery level</li>
+                    <li>3.3V 3A SEPIC Converter</li>
+                    <li>On-OFF circuit for a Button</li>
+                    <li>Access to unused pins in the ESP32</li>
+                </ul>
+
+                <p>This <a href="https://github.com/leonardoward/eja-m-pcb-design">repository</a> contains the Kicad project (including Gerber files).</p>
+
+                <h2 id="hardware-design">Hardware Design</h2>
+
+                <h3 id="usb-c-port-with-electromagnetic-compatibility-emc">USB C Port with Electromagnetic Compatibility EMC</h3>
+
+                <p>Everything starts with the USB C port, we have chosen this type of USB because it's size and because of the growing trend of using this port to charge and communicate with portable devices.</p>
+
+                <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-usb-c.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="ftdi-ft260s">FTDI FT260S</h3>
+
+                <p>The design includes the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>, a USB TO UART/I2C FTDI that will be used to program the ESP32.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-ftdi.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="auto-reset-circuit-for-the-esp32">Auto Reset Circuit for the ESP32</h3>
+
+                <p>The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-auto-reset.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="esp32">ESP32</h3>
+
+                <p>The main microcontroller in the PCB is the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>, the following image shows the signals dedicated to the different pins. The ESP32 is connected to the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FTDI</a>, a <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">GPS</a>, a <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">LoRa transceiver</a>, a connector for a servo motor, a <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421">real-time clock</a>, a circuit to measure the battery level, a connector for an <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931">accelerometer</a>, and a few headers to provide access for the unused peripherals.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-esp32.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="gps">GPS</h3>
+
+                <p>The selected GPS is the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>, one the modules tested previously in our <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/196269-gps-antenova-m20050-1-and-atgm332d-5n31-dev-board">Development Board for GPS Modules</a>. The schematic is very simple, it has a decoupling capacitors (C2), a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for an external antenna (J4) and a <a href="https://www.digikey.com/en/products/detail/linx-technologies-inc/BAT-HLD-001-THM/3044009">Coin Cell Battery Holder</a> (J2).</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-gps.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="lora">LoRa</h3>
+
+                <p>The selected LoRa transceiver is the <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2</a>, the same module tested in our <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/196116-lora-rfm95w-915s2-development-board">Development Board for LoRa</a>. The schematic contains a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for an external antenna (J9).</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-lora.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="real-time-clock-rtc">Real time Clock RTC</h3>
+
+                <p>The design includes a dedicated RTC, the <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421?s=N4IgTCBcDaICIGUDMYkEYCyBqAKgJQBkBhHAWgDk4QBdAXyA">DS3231M</a>.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-rtc.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3>Servo Motor Connector</h3>
+
+                <p>There is a 1x3 header connector for a Servo Motor, the 5V for the servo is provided by a 5V 2A Stepup.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-servo.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="5v-2a-stepup">5V 2A Stepup</h3>
+
+                <p>The design includes the <a href="http://digikey.com/en/products/detail/texas-instruments/TPS61030PWPR/550685?s=N4IgTCBcDa4JwDYC0BGALGlyVIHIBEQBdAXyA">TPS61030PWR</a>, a boost converter with a 4A switch current, to provide the 5V for the Servo motor. The schematic contains the components for a 5V 2A output, following the design procedure that starts on the page 13 in the datasheet.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-stepup.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3>Accelerometer Connector</h3>
+
+                <p>There is a connector for the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931?s=N4IgTCBcDaIIwFYwA4C0KDsAWVA5AIiALoC%2BQA">ADXL343 3 axis accelerometer</a>, a 1x9 header was used even though it only manages the signals VDD, GND, SCL and SDA, in case we want to use more connections for the accelerometer in future versions.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-accelerometer.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="battery-charging-circuit">Battery Charging Circuit</h3>
+
+                <p>To charge the 3.3V battery the design includes the <a href="https://www.lcsc.com/product-detail/Battery-Management-ICs_TPOWER-TP4056_C382139.html">TP4056</a>, a 1A Standalone Linear Li-lon Battery Charger. The schematic includes a green led to show the user that the battery is charged and a red led to show the user that the battery is charging. There is a <a href="https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BH-18650-PC/3029216?s=N4IgTCBcDaIEIAkC0BGAHANgKwAYkAUBhJAOQBEQBdAXyA">Battery Holder for a 18650 battery</a> (J5) and an additional 1x2 header (J7) in case we want to use a different 3.3V battery.  There is also a 1x2 header (J3) to use a different type of connection for the charger (instead of the USB C), for example we can connect and test a QI Wireless Charger.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-battery-charger.jpg" alt="">
+                </div>
+
+                <h3>Battery Level</h3>
+
+                <p>The design contains a circuit to measure a battery level, it is a simple resistor divider calculated for a range of 2.7V to 4.2V, the normal range for the 18650 Li-Ion Battery that will be used in the design.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-battery-level.jpg" alt="">
+                </div>
+
+                <p>Those values for the resistor divider give the following range for the ADC:</p>
+
+                <ul>
+                    <li>Maximum voltage: 4.2V * (2M / (0.806M + 2M)) = 2.99V</li>
+                    <li>Minimum voltage: 2.7V * (2M / (0.806M + 2M)) = 1.92V</li>
+                </ul>
+
+                <p>That means that the ADC from the ESP32 will be reading analog values from 1.92V to 2.99V from the battery measurement circuit.</p>
+
+                <p>For more information about measuring lithium battery voltage visit the following <a href="https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/measuring-lithium-battery-voltage-with-nrf52">link</a>.</p>
+
+                <h3 id="3v3-3a-sepic-converter">3V3 3A SEPIC Converter</h3>
+
+                <p>Since the voltage of the battery can change from 2.7V (discharged) to 4.2V (charged), a SEPIC converter is included to provide a constant 3.3V to the digital circuits regardless of the changes in the input voltage from the battery. The selected SEPIC converter is the <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC3113EFE-TRPBF/2521714?s=N4IgTCBcDaIDIBUDCBmAjGlBRAYlgxAgEoAKAQjkggLQByAIiALoC%2BQA">LTC3113EFE#TRPBF</a>.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-sepic.jpg" alt="">
+                </div>
+
+                <p><strong>Note:</strong> The resistor R32 is a jumper that connects VDD to 3V3. R33 is a jumper that connects VDD to the battery. Do not solder both at the same time, it will create a short circuit between 3.3V from the SEPIC and the voltage from the battery. R32 and R33 are included just in case the SEPIC converter doesn't work and we have to connect the circuit directly to the battery.</p>
+
+                <p><strong>Summary: Do not solder R33.</strong></p>
+
+                <h3>ON-OFF Led</h3>
+
+                <p>There is  Green Led that turns on with the 3.3V from the SEPIC converter, it will notify the user/developer that the device is ON or OFF.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-on-off-led.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h3 id="on-off-button-circuit">ON-OFF Button Circuit</h3>
+
+                <p>The design contains a <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC2954ITS8-1-TRPBF/1621452?s=N4IgTCBcDaIDIBUDCYCcBWALASQQZQA4BaARgGIEAlABQCEAxJBIgOQBEQBdAXyA">LTC2954ITS8-1#TRPBF</a>, a pushbutton ON/OFF controller that manages the power supply (enables the 3.3V SEPIC) via a pushbutton interface.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-on-off-button.jpg" alt="">
+                </div>
+
+                <h3>Extra Header</h3>
+
+                <p>The design includes an 1x06 header to provide access for some of the unused pins in the ESP32.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/schematic-extra-header.jpg" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h2 id="pcb-dimensions-and-boundaries">PCB Dimensions and Boundaries</h2>
+
+                <p>The dimensions of the PCB are dictated by the maximum available space inside the buoy, from the enclosure design we where able to define the size of the PCB: 97.5 mm x 51.2 mm.</p>
+
+                <p>In the back layer there is a restricted region, that can't contain any components because the PCB is directly in contact with the enclosure in that region, those are the boundaries of the back layer. Through hole footprints where not be placed in that section, even if the footprint is placed in the front layer.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/pcb_dimensions_boundaries.png" alt="">
+                </div>
+
+                <p>-</p>
+
+                <h2 id="bill-of-materials">Bill of Materials</h2>
+
+                <h3>PCB Components</h3>
+
+                <div class="row add-bottom">
+                    <div class="col-twelve">
+                        <div class="table-responsive">
+                            <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><a href="https://www.pcbway.com/">PCB</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/taiyo-yuden/JMK212BBJ476MG-T/4970731">47 µF ±20% 6.3V Ceramic Capacitor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KQCLNNC/3888062">10 µF ±10% 6.3V Ceramic Capacitor 0805</a></td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/CML0805C0G120JT50V/10660016">12 pF ±5% 50V Ceramic Capacitor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/885012207059/5455614">680 pF ±10% 25V Ceramic Capacitor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/885012007014/5453673">47 pF ±5% 16V Ceramic Capacitor 0805</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/murata-electronics/GRM32EE70J107ME15L/5027618">100 µF ±20% 6.3V Ceramic Capacitor 1210</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/avx-corporation/08055C104KAT2A/563505">0.1 µF ±10% 50V Ceramic Capacitor 0805</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A475KQFNNNE/3886856">4.7 µF ±10% 6.3V Ceramic Capacitor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/CC0805KKX7R7BB105/2103103">1 µF ±10% 16V Ceramic Capacitor 0805</a></td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B225KPFNNNE/3886846">2.2 µF ±10% 10V Ceramic Capacitor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/nemco/PCT220-10HK/13236441">220 µF Tantalum Capacitors 10V 2917</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/885012207095/5453932">0.033 µF ±10% 50V Ceramic Capacitor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/sunled/XZMOK54W-1/4745796">Orange 601nm LED - Discrete 2.1V 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080GS75000/4489915">Green 520nm LED - Discrete 3.2V 0805</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">TVS Diode 15V Clamp 5A (8/20µs) SOT-23-6</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080SS75000/4489921">Red 630nm LED - Discrete 1.9V 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/everlight-electronics-co-ltd/QTLP630C3TR/2675901">Yellow 590nm LED - Discrete 2V 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">1 Signal Line Ferrite Bead 0805 300mA 350mOhm</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/cui-devices/UJ31-CH-G2-SMT-TR/8024057">USB-C USB 3.2 Gen 2 Receptacle Connector</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/linx-technologies-inc/BAT-HLD-001-THM/3044009">Battery Retainer Coin, 20.0mm 1 Cell PC Pin</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL (UMCC) Connector Receptacle</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BH-18650-PC/3029216">Battery Holder (Open) 18650 1 Cell PC Pin</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/on-shore-technology-inc/OSTTC022162/614558">2 Position Terminal Block Horizontal</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/sumida-america-components-inc/104CDMCCDS-2R2MC/5812436">2.2 µH Inductor 15 A 7mOhm Max</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/744325550/1638576">5.5 µH Inductor 10 A 10.3mOhm</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/onsemi/MMBT2222LT1G/919595">Bipolar (BJT) Transistor NPN 30V 600mA SOT-23-3</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT1M00/1760080">1 MOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT90K9/1760265">90.9 kOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-07620RL/728357">620 Ohms ±5% 0.125W Chip Resistor 0805</a></td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT5K10/1760394">5.1 KOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT49K9/1760272">49.9 KOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERA-6AED8253V/3481309">825 kOhms ±0.5% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RK73H2ATTD1823F/10234151">182 kOhms ±1% 0.25W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-071K2L/728224">1.2 kOhms ±5% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-6ENF6491V/111437">6.49 kOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT27R0/1712920">27 Ohms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/vishay-dale/CRCW080510K0FKEAC/7928398">10 kOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RMCF0805FT1K00/1760090">1 kOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-6ENF1804V/282715">1.8 MOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805FR-07390KL/727903">390 kOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-6ENF8063V/112197">806 kOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/vishay-dale/CRCW08052M00FKECC/7928551">2 MOhms ±1% 0.125W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/susumu/RR1220P-184-D/432345">180 kOhms ±0.5% 0.1W Chip Resistor 0805</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/yageo/RC0805JR-070RL/728216">0 Ohms Jumper 0.125W Chip Resistor 0805</a></td>
+                                        <td>2s</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31 GNSS Series GPS+BDS 12.2x16x2.4mm</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC3113EFE-TRPBF/2521714">Buck-Boost Switching Regulator 1.8V 1 Output 3A</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.lcsc.com/product-detail/Battery-Management-ICs_TPOWER-TP4056_C382139.html">TP4056 ESOP-8 Battery Management</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32-WROOM-32D (4MB)</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FTDI USB Bridge, USB to I²C/UART USB 2.0 I²C, UART Interface 28-TSSOP</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/texas-instruments/TPS61030PWPR/550685">TPS61030PWPR Boost Switching Regulator IC Positive Adjustable 1.8V 1 Output 3.6A (Switch)</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2-ND LoRa Transceiver Module 915MHz</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421">DS3231M+TRL Real Time Clock I²C, 2-Wire Serial</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC2954ITS8-1-TRPBF/1621452">Power Supply On/Off Controller Push Button</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/sullins-connector-solutions/PREC040SFAN-RC/2774934">Connector Header Through Hole 40 position (2.54mm)</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+
+                <h3>Externals Components</h3>
+
+                <div class="row add-bottom">
+                    <div class="col-twelve">
+                        <div class="table-responsive">
+                            <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/products/es?keywords=1528-1084-ND">SERVOMOTOR RC 5V HIGH TORQUE</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.adafruit.com/product/654">CR2032 Lithium Coin Cell Battery</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/ultralast/LION-1865-34/13692714">18650 Lithium-Ion 3.7V Battery Rechargeable 3.4Ah</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931">ADXL343 - Triple-Axis Accelerometer</a></td>
+                                        <td>1</td>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+
+                <p>For more information about the BOM including prices and different comparisons with my previous designs visit the following <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/198071-eja-m-v10-bill-of-materials">link</a>.</p>
+
+                <h2 id="pcb">PCB</h2>
+
+                <p>The following images show the front and back layers of the PCB.</p>
+
+                <div class="col-full">
+                    <img src="images/ejam/PCB_02.jpg" alt="">
+                </div>
+
+                <div class="col-full">
+                    <img src="images/ejam/PCB_03.jpg" alt="">
+                </div>
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="#0">Embedded Systems</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="#0">Robotics</a>
+                            <a href="#0">Embedded Design</a>
+                            <a href="#0">FTDI</a>
+                            <a href="#0">ESP32</a>
+                            <a href="#0">LoRa</a>
+                            <a href="#0">GPS</a>
+                            <a href="#0">Battery Charger</a>
+                            <a href="#0">Stepup</a>
+                            <a href="#0">Sepic</a>
+                            <a href="#0">Hackaday</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <div class="entry__author">
+                    <img src="images/avatars/foto.png" alt="">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="#0">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            MSc. Student in Electronic Engineering at Simón Bolívar University, Venezuela.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="ftdi-dev-board.html" rel="prev">
+                        <span>Previous Post</span>
+                        FTDI Development Board | FT260S and FT312D
+                    </a>
+                </div>
+                <!-- <div class="col-six s-content__next">
+                    <a href="3dmap.html" rel="next">
+                        <span>Next Post</span>
+                        Real-Time Monitoring on a 3D Printed Map
+                    </a>
+                </div> -->
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="col-six tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>New ideas and technologies can create revolutionary products. I am an Engineer in the field of Electronics with experience in research, product development and project management. I am a student of a Master’s degree in Mechatronics with experience in robotics and self-driving (with CARLA and RTMaps) systems including control, sensor fusion, visual perception (with OpenCV), non-linear optimization and statistical estimation.</p>
+
+              </div>
+              <div class="col-six tab-full s-footer__about">
+
+                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
+
+                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
+                  and Bitbucket).</p>
+
+              </div>
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
