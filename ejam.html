@@ -68,6 +68,7 @@
                         <li class="has-children"><a href="ejam.html">EJA M</a>
                           <ul class="sub-menu">
                             <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#planning" title="">Planning</a></li>
                             <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
                             <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
                             <li><a href="ejam.html#FTDI FT260S" title="">FTDI FT260S</a></li>
@@ -265,6 +266,35 @@
 
                 <p>This <a href="https://github.com/leonardoward/eja-m-pcb-design">repository</a> contains the Kicad project (including Gerber files).</p>
 
+                <h2 id="planning">Planning</h2>
+
+                <p><strong>Main Objective:</strong> EJA M is designed to create a Minimum Viable Product for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA Project</a>, it will replace the PCB designs <a href="buoya.html">Buoy A</a>, <a href="buoyb.html">Buoy B</a> and <a href="onboardgateway">Onboard Gateway</a>. The goal is to maintain the features of the previous designs (some of them are redundant) while achieving the following <strong>secondary objectives:</strong></p>
+
+                <ul>
+                    <li>Reduce the cost. The Bill of Materials of previous designs will be the reference.</li>
+                    <li>Include battery charging. A feature only present in the previous design <a href="onboardgateway">Onboard Gateway</a>.</li>
+                    <li>Reduce the size.</li>
+                    <li>Measure the battery level.</li>
+                </ul>
+
+                <p>To achieve these goals, the new design EJA M will replace the development boards that were used in the previous designs with a circuit that contains the main components (ESP32, LoRa, GPS, RTC and power Supply).</p>
+
+                <p>The following images present the hardware diagrams for the previous PCB designs <a href="buoya.html">Buoy A</a>, <a href="buoyb.html">Buoy B</a> and <a href="onboardgateway">Onboard Gateway</a>.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/hardware_block_diagram_buoy_a_b.jpg" width="640" alt="">
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/hardware_block_diagram_onboard_gateway.jpg" width="640" alt="">
+                </div>
+
+                <p>Based on the previous images, the hardware diagram of the new design EJA M is proposed. The DC Motor driver (TB6612FNG) and the 4G(LTE) Module, were not included in this design because they are not being used anymore in the project. In the following diagram, the term "Module" refers to a circuit designed by me to adapt the sensor or transceiver to the PCB.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/hardware_block_diagram_ejam.jpg" width="640" alt="">
+                </div>
+
                 <h2 id="hardware-design">Hardware Design</h2>
 
                 <h3 id="usb-c-port-with-electromagnetic-compatibility-emc">USB C Port with Electromagnetic Compatibility EMC</h3>
@@ -273,8 +303,8 @@
 
                 <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-usb-c.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-usb-c.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -283,8 +313,8 @@
 
                 <p>The design includes the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>, a USB TO UART/I2C FTDI that will be used to program the ESP32.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-ftdi.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-ftdi.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -293,8 +323,8 @@
 
                 <p>The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-auto-reset.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-auto-reset.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -303,8 +333,8 @@
 
                 <p>The main microcontroller in the PCB is the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>, the following image shows the signals dedicated to the different pins. The ESP32 is connected to the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FTDI</a>, a <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">GPS</a>, a <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">LoRa transceiver</a>, a connector for a servo motor, a <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421">real-time clock</a>, a circuit to measure the battery level, a connector for an <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931">accelerometer</a>, and a few headers to provide access for the unused peripherals.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-esp32.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-esp32.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -313,8 +343,8 @@
 
                 <p>The selected GPS is the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>, one the modules tested previously in our <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/196269-gps-antenova-m20050-1-and-atgm332d-5n31-dev-board">Development Board for GPS Modules</a>. The schematic is very simple, it has a decoupling capacitors (C2), a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for an external antenna (J4) and a <a href="https://www.digikey.com/en/products/detail/linx-technologies-inc/BAT-HLD-001-THM/3044009">Coin Cell Battery Holder</a> (J2).</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-gps.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-gps.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -323,8 +353,8 @@
 
                 <p>The selected LoRa transceiver is the <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2</a>, the same module tested in our <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/196116-lora-rfm95w-915s2-development-board">Development Board for LoRa</a>. The schematic contains a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for an external antenna (J9).</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-lora.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-lora.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -333,8 +363,8 @@
 
                 <p>The design includes a dedicated RTC, the <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421?s=N4IgTCBcDaICIGUDMYkEYCyBqAKgJQBkBhHAWgDk4QBdAXyA">DS3231M</a>.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-rtc.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-rtc.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -343,8 +373,8 @@
 
                 <p>There is a 1x3 header connector for a Servo Motor, the 5V for the servo is provided by a 5V 2A Stepup.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-servo.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-servo.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -353,8 +383,8 @@
 
                 <p>The design includes the <a href="http://digikey.com/en/products/detail/texas-instruments/TPS61030PWPR/550685?s=N4IgTCBcDa4JwDYC0BGALGlyVIHIBEQBdAXyA">TPS61030PWR</a>, a boost converter with a 4A switch current, to provide the 5V for the Servo motor. The schematic contains the components for a 5V 2A output, following the design procedure that starts on the page 13 in the datasheet.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-stepup.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-stepup.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -363,8 +393,8 @@
 
                 <p>There is a connector for the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931?s=N4IgTCBcDaIIwFYwA4C0KDsAWVA5AIiALoC%2BQA">ADXL343 3 axis accelerometer</a>, a 1x9 header was used even though it only manages the signals VDD, GND, SCL and SDA, in case we want to use more connections for the accelerometer in future versions.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-accelerometer.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-accelerometer.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -373,16 +403,16 @@
 
                 <p>To charge the 3.3V battery the design includes the <a href="https://www.lcsc.com/product-detail/Battery-Management-ICs_TPOWER-TP4056_C382139.html">TP4056</a>, a 1A Standalone Linear Li-lon Battery Charger. The schematic includes a green led to show the user that the battery is charged and a red led to show the user that the battery is charging. There is a <a href="https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BH-18650-PC/3029216?s=N4IgTCBcDaIEIAkC0BGAHANgKwAYkAUBhJAOQBEQBdAXyA">Battery Holder for a 18650 battery</a> (J5) and an additional 1x2 header (J7) in case we want to use a different 3.3V battery.  There is also a 1x2 header (J3) to use a different type of connection for the charger (instead of the USB C), for example we can connect and test a QI Wireless Charger.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-battery-charger.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-battery-charger.jpg" width="640" alt="">
                 </div>
 
                 <h3>Battery Level</h3>
 
                 <p>The design contains a circuit to measure a battery level, it is a simple resistor divider calculated for a range of 2.7V to 4.2V, the normal range for the 18650 Li-Ion Battery that will be used in the design.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-battery-level.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-battery-level.jpg" width="640" alt="">
                 </div>
 
                 <p>Those values for the resistor divider give the following range for the ADC:</p>
@@ -400,8 +430,8 @@
 
                 <p>Since the voltage of the battery can change from 2.7V (discharged) to 4.2V (charged), a SEPIC converter is included to provide a constant 3.3V to the digital circuits regardless of the changes in the input voltage from the battery. The selected SEPIC converter is the <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC3113EFE-TRPBF/2521714?s=N4IgTCBcDaIDIBUDCBmAjGlBRAYlgxAgEoAKAQjkggLQByAIiALoC%2BQA">LTC3113EFE#TRPBF</a>.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-sepic.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-sepic.jpg" width="640" alt="">
                 </div>
 
                 <p><strong>Note:</strong> The resistor R32 is a jumper that connects VDD to 3V3. R33 is a jumper that connects VDD to the battery. Do not solder both at the same time, it will create a short circuit between 3.3V from the SEPIC and the voltage from the battery. R32 and R33 are included just in case the SEPIC converter doesn't work and we have to connect the circuit directly to the battery.</p>
@@ -412,8 +442,8 @@
 
                 <p>There is  Green Led that turns on with the 3.3V from the SEPIC converter, it will notify the user/developer that the device is ON or OFF.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-on-off-led.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-on-off-led.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -422,16 +452,16 @@
 
                 <p>The design contains a <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC2954ITS8-1-TRPBF/1621452?s=N4IgTCBcDaIDIBUDCYCcBWALASQQZQA4BaARgGIEAlABQCEAxJBIgOQBEQBdAXyA">LTC2954ITS8-1#TRPBF</a>, a pushbutton ON/OFF controller that manages the power supply (enables the 3.3V SEPIC) via a pushbutton interface.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-on-off-button.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-on-off-button.jpg" width="640" alt="">
                 </div>
 
                 <h3>Extra Header</h3>
 
                 <p>The design includes an 1x06 header to provide access for some of the unused pins in the ESP32.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/schematic-extra-header.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/schematic-extra-header.jpg" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -442,8 +472,8 @@
 
                 <p>In the back layer there is a restricted region, that can't contain any components because the PCB is directly in contact with the enclosure in that region, those are the boundaries of the back layer. Through hole footprints where not be placed in that section, even if the footprint is placed in the front layer.</p>
 
-                <div class="col-full">
-                    <img src="images/ejam/pcb_dimensions_boundaries.png" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/pcb_dimensions_boundaries.png" width="640" alt="">
                 </div>
 
                 <p>-</p>
@@ -730,11 +760,11 @@
 
                 <p>The following images show the front and back layers of the PCB.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                     <img src="images/ejam/PCB_02.jpg" alt="">
                 </div>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                     <img src="images/ejam/PCB_03.jpg" alt="">
                 </div>
 
