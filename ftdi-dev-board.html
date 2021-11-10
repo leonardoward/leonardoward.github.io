@@ -90,7 +90,7 @@
                           <ul class="sub-menu">
                             <li><a href="ftdi-dev-board.html" title="">Description</a></li>
                             <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
-                            <li><a href="ftdi-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#bill-of-materials" title="">Bill of Materials</a></li>
                             <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
                             <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
                           </ul>
@@ -254,17 +254,21 @@
 
                 <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/schematic-usb-c.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/schematic-usb-c.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Schematic of the FTDI Dev Board: USB C and EMC protections.</p>
 
                 <h3>FTDI 1 - FT260S</h3>
 
                 <p>The first USB TO UART/I2C FTDI that we is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>. The design only considers the USB to UART, therefore the I2C is left unconnected.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/schematic-ft260s.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/schematic-ft260s.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>.</p>
 
                 <p><strong>Notes:</strong> The FT260S was originally selected to directly program the ESP32, and also provide serial communication. After careful consideration I found that the FT260 is a HID class device and as such it does not generate a Virtual COM Port (like the FT232R), to interface with the FT260 it can be used the official helper library, LibFT260.</p>
 
@@ -278,25 +282,31 @@
 
                 <p>The second USB TO UART/I2C FTDI that is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>. This IC does not support DTR/DSR for the UART, a feature that is required for the auto reset circuit of the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a> that was implemented, nevertheless the PCB has it as a second alternative.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/schematic-f312d.jpg" alt="">
+                <div class="col-full style="text-align:center"">
+                    <img src="images/ftdi_development_board/schematic-f312d.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>.</p>
 
                 <h3>ESP32 with Auto Reset</h3>
 
                 <p>Finally, the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the ESP32. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32.</p>
 
                 <h3>SPDT Switch</h3>
 
                 <p>The design includes a couple of <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a> that will be tested for future implementations.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/schematic-switch.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/schematic-switch.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the SPDT switch <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a>.</p>
 
                 <h2 id="bill-of-materials">Bill of Materials</h2>
 
@@ -399,31 +409,41 @@
 
                 <h2 id="pcb">PCB</h2>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/ftdi-testing-board01.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/ftdi-testing-board01.jpg" width="640" alt="">
                 </div>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/ftdi-testing-board02.jpg" alt="">
+                <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/ftdi-testing-board02.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
 
                 <h2 id="testing">Testing</h2>
 
                 <p>The designed auto reset circuit requires the signals 3.3V, GND, TX, RX, RTS and DTR. The commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> (FT232RL) was used to test the circuit, it provides all the required signals.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/ftdi-programmer.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/ftdi-programmer.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> used for testing.</p>
 
                 <p>The following wiring diagram shows how to connect the commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> and our FTDI Development Board.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" width="640" alt="">
                 </div>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" alt="">
+                <p style="text-align:center">Wiring diagram for the FTDI Dev Board and the Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a>.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Wiring diagram for the FTDI Dev Board and the Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a>.</p>
 
                 <p>Once the 2 boards were connected and the <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> was plugged, the PC (in Windows) recognized the device and it was ready to use. Check if you need to install drivers associated to the FTDI, that is often the case.</p>
 
@@ -444,15 +464,19 @@
 
                 <p>The standard Arduino IDE was used to program the ESP32, with the following configurations:</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/ide-setup.png" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/ide-setup.png" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Setup of the Arduino IDE for the test.</p>
 
                 <p>And the test was successful, the following image shows the results in the serial monitor.</p>
 
-                <div class="col-full">
-                    <img src="images/ftdi_development_board/auto-reset-test-result.png" alt="">
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ftdi_development_board/auto-reset-test-result.png" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Results of the test.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
