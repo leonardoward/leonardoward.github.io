@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>PUMA 560</title>
-    <meta name="PUMA 560 Matlab Simulations | Robotic Manipulator" content="">
+    <title>Interactive Maps | OpenLayers</title>
+    <meta name="Interactive Maps | OpenLayers" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -27,6 +27,15 @@
     ================================================== -->
     <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
     <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 480px;
+        width: 640px;
+        text-align:center;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
 
 </head>
 
@@ -163,7 +172,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="#0" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li><a href="sumo.html">Sumo</a></li>
@@ -178,7 +187,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="#0" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
@@ -213,113 +222,49 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full" style="text-align:center">
+            <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/puma560/puma560.jpg" alt="">
+                    <img src="images/interactive_map/worldmap.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    PUMA 560 Matlab Simulations
+                    Interactive Map | OpenLayers
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">May, 2019</li>
+                    <li class="date">February, 2020</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
-                    </li>
-                    <li>
-                      <h3><a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">PUMA560 Simulations using Perter Corke's Robotics Toolbox for MATLAB.</p>
+                <p class="lead drop-cap">This web application contains a world map that runs on the web page. The center of the map is the Arc de Triomphe, its latitude and longitude is marked in the map.</p>
 
-                <p>This project contains a graphical user interface for robotic manipulators using the Perter Corke's Robotics Toolbox in MATLAB. I made 2 GUIs: one of them for a RRR robot manipulator (3 revolute joints), and the other one for a PUMA560.</p>
+                <p>The map requires the Javascript library from <a href="https://openlayers.org/">OpenLayers</a>, an open source project that facilitates the use of dynamic maps in the web page. It can display map tiles, vector data and markers.</p>
 
-                <h2>Repository</h2>
+                <p>The map is interactive, it's possible to zoom in or out using the + and - buttons or the scrolling wheel on the mouse. It's also possible to change the center position of the map by moving the mouse while being on top of the map and holding left click.</p>
 
-                <p>To get a copy of this project you can use git, and clone the repository:</p>
-
-                <pre><code>
-                  git clone https://github.com/leonardoward/PUMA560-MATLAB-Simulations.git
-                </code></pre>
-
-                <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
-
-                <h2>Prerequisites</h2>
-
-                <ol>
-                    <li>MATLAB (Developed using MATLAB R2015b)</li>
-                    <li><a href="http://petercorke.com/wordpress/toolboxes/robotics-toolbox">Peter Corke's Robotics Toolbox</a></li>
-                    <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
-                </ol>
-
-                <h2>Installation</h2>
-
-                <h3>Peter Corke's Robotics Toolbox</h3>
-
-                <ul>
-                    <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
-                    <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
-                </ul>
-
-                <h3>ARTE Library</h3>
-
-                <ul>
-                    <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
-                    <li>Copy the folder /path/to/arte/arte/robots/UNIMATE/, this folder contains the STL models. A copy of this folder can be found on the root path of this repository.</li>
-                    <li>Paste the folder with the STL models in the path /path/to/MATLAB/version/toolbox/phased/phased/data/ARTE/, in this case the version is R2015b.</li>
-                </ul>
-
-                <p>To check that is installed correctly run in the MATLAB terminal:</p>
-
-                <pre><code>
-                  > mdl_puma560
-                  > p560.model3d
-                  ans =
-                  UNIMATE/puma560
-                </code></pre>
-
-                <h2>RRR Robot Manipulator</h2>
-
-                <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/rrr_robot.jpg" alt="">
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/rrr_robot.gif" alt="">
-                </div>
-
-                <h2>PUMA 560</h2>
-
-                <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/puma560.jpg" alt="">
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/puma_560_3d_vel20_2.gif" alt="">
-                </div>
+                <div id="map" class="map col-full"></div>
 
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Robotics</a>
+                            <a href="#0">Embedded Systems</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">Matlab</a>
-                            <a href="#0">PUMA560</a>
-                            <a href="#0">Venezuela</a>
+                            <a href="#0">Web Development</a>
+                            <a href="#0">OpenLayers</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -349,15 +294,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="sumo.html" rel="prev">
+                    <a href="3dmap.html" rel="prev">
                         <span>Previous Post</span>
-                        ATLAS, a Robot for Sumo Competitions
+                        Real-Time Monitoring on a 3D Printed Map
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="3dmap.html" rel="next">
+                    <a href="buoya.html" rel="next">
                         <span>Next Post</span>
-                        Real-Time Monitoring on a 3D Printed Map
+                        Buoy A | 2020 Hackaday Dream Team Challenge for Conservation X Labs.
                     </a>
                 </div>
             </div>
@@ -427,6 +372,86 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+      const tileLayer = new ol.layer.Tile({
+        source: new ol.source.OSM({
+          wrapX: false,
+        }),
+      });
+
+      const source = new ol.source.Vector({
+        wrapX: false,
+      });
+
+      const vector = new ol.layer.Vector({
+        source: source,
+      });
+
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          tileLayer, vector
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([2.294946, 48.873756]),
+          zoom: 16,
+          multiWorld: true,
+        })
+      });
+
+      function addRandomFeature() {
+        const x = 2.294946;
+        const y = 48.873756;
+        //const x = Math.random() * 360 - 180;
+        //const y = Math.random() * 170 - 85;
+        const geom = new ol.geom.Point(ol.proj.fromLonLat([x, y]));
+        const feature = new ol.Feature(geom);
+        source.addFeature(feature);
+      }
+
+      const duration = 3000;
+
+      function flash(feature) {
+        const start = Date.now();
+        const flashGeom = feature.getGeometry().clone();
+        const listenerKey = tileLayer.on('postrender', animate);
+
+        function animate(event) {
+          const frameState = event.frameState;
+          const elapsed = frameState.time - start;
+          if (elapsed >= duration) {
+            ol.Observable.unByKey(listenerKey);
+            return;
+          }
+          const vectorContext = ol.render.getVectorContext(event);
+          const elapsedRatio = elapsed / duration;
+          // radius will be 5 at start and 30 at end.
+          const radius = ol.easing.easeOut(elapsedRatio) * 25 + 5;
+          const opacity = ol.easing.easeOut(1 - elapsedRatio);
+
+          const style = new ol.style.Style({
+            image: new ol.style.Circle({
+              radius: radius,
+              stroke: new ol.style.Stroke({
+                color: 'rgba(255, 0, 0, ' + opacity + ')',
+                width: 0.25 + opacity,
+              }),
+            }),
+          });
+
+          vectorContext.setStyle(style);
+          vectorContext.drawGeometry(flashGeom);
+          // tell OpenLayers to continue postrender animation
+          map.render();
+        }
+      }
+
+      source.on('addfeature', function (e) {
+        flash(e.feature);
+      });
+
+      window.setInterval(addRandomFeature, 1000);
+    </script>
 
 </body>
 
