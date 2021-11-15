@@ -125,6 +125,12 @@
                             <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
                             <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
                             <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#pic" title="">PIC</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#lcd" title="">LCD</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#buttons" title="">Buttons</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#render" title="">Render</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#sprites" title="">Sprites</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#animations" title="">Animations</a></li>
                             <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -253,9 +259,9 @@
                     <img width="460" height="300" src="images/space_invaders/space-invaders-gif1.gif" alt="">
                 </div>
 
-                <p align="center">
-                  <small> (video with increased speed) </small>
-                </p>
+                <p style="text-align:center">Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>, simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
+
+                <p style="text-align:center"><small> (video with increased speed) </small></p>
 
                 <h2 id="getting_started">Getting Started</h2>
 
@@ -265,7 +271,7 @@
 
                 <pre><code>git clone https://github.com/leonardoward/space-invaders-pic-proteus.git</code></pre>
 
-                <h3>Dependencies</h3>
+                <h3 id="dependencies">Dependencies</h3>
 
                 <p>The project only requires the following development environments:</p>
 
@@ -276,29 +282,35 @@
 
                 <p>The Proteus project uses components the are contained in the environment by default, doesn't require additional component imports.</p>
 
-                <h3>Building</h3>
+                <h3 id="building">Building</h3>
 
-                <p>The building process is performed in the MPLAB development environment to generate the .hex file necessary for the Proteus Simulation. This is done by clicking the clean and build button in MPLAB.</p>
+                <p>The building process is performed in the <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a> development environment to generate the .hex file necessary for the Proteus Simulation. This is done by clicking the clean and build button in MPLAB.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img src="images/space_invaders/mplabx-building.png" alt="">
                 </div>
 
-                <h3>Setup</h3>
+                <p style="text-align:center">Menu on <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a>.</p>
+
+
+                <h3 id="setup">Setup</h3>
 
                 <p>In order to run the simulation in Proteus, the user has to insert the .hex file path in the PIC preferences.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/proteus-setup.png" alt="">
+                    <img width="640" src="images/space_invaders/proteus-setup.png" alt="">
                 </div>
+
+                <p style="text-align:center">Component settings on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
+
 
                 <h2 id="design_and_architecture">Design and Architecture</h2>
 
-                <h3>Microcontroller</h3>
+                <h3 id="pic">PIC</h3>
 
-                <p>This project was developed on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>.</p>
+                <p>This project was developed on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> microcontroller.</p>
 
-                <h3>Screen</h3>
+                <h3 id="lcd">LCD Screen</h3>
 
                 <p>The LCD controller used was a T6963C to drive a screen of 240 x 128 pixels. In this project enhancements were made to the library <a href="https://github.com/camilstaps/T6963C_PIC.git">T6963C_PIC</a> of camilstaps in order to drive the screen.</p>
 
@@ -306,11 +318,13 @@
                     <img width="460" height="300" src="images/space_invaders/space-invaders-gif2.gif" alt="">
                 </div>
 
+                <p style="text-align:center">Start animation of the game running on the 240x128 LCD.</p>
+
                 <p align="center">
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3>Buttons</h3>
+                <h3 id="buttons">Buttons</h3>
 
                 <p>The buttons used were three push buttons native of proteus in pull-up configuration, two of them for lateral movement and the other one to shoot.</p>
 
@@ -318,7 +332,9 @@
                     <img src="images/space_invaders/buttons_circuit.png" alt="">
                 </div>
 
-                <h3>Two Way Render</h3>
+                <p style="text-align:center">Pull up circuits on the Schematic.</p>
+
+                <h3 id="render">Two Way Render</h3>
 
                 <p>The way the invaders render is variable: When the invaders move from right to left the rendering direction is from left to right, and vice versa. This mechanism allows collision detection to be performed on the outermost invader only once at the beginning of the update cycle, regardless of the number of live invaders.</p>
 
@@ -326,23 +342,38 @@
                     <img width="460" height="300" src="images/space_invaders/space-invaders-gif3.gif" alt="">
                 </div>
 
+                <p style="text-align:center">Game render.</p>
+
                 <p align="center">
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3>Custom Made Sprites</h3>
+                <h3 id="sprites">Custom Made Sprites</h3>
 
-                <p>In order to draw in the screen with the T6963C symbol generator, custom 8x8 sprite were made for each character in the game. The three types of invaders sprites were implemented with their respective four animations: i) position 'a', ii)position 'b', iii)position 'a' dodging laser shot, iv) position 'b' dodging laser shot; the spaceship and mothership sprites, the barriers sprites with the ability to be destroyed with 3 hits, laser shots and explotion sprites.</p>
+                <p>In order to draw in the screen with the T6963C symbol generator, custom 8x8 sprite were made for each character in the game. The three types of invaders sprites were implemented with their respective four animations:</p>
+
+                <ol>
+                    <li>Position 'a'.</li>
+                    <li>Position 'b'.</li>
+                    <li>Position 'a' dodging laser shot.</li>
+                    <li>Position 'b' dodging laser shot.</li>
+                </ol>
+
+                <p>The spaceship and mothership sprites, the barriers sprites with the ability to be destroyed with 3 hits, laser shots and explotion sprites.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img src="images/space_invaders/sprites.png" alt="">
                 </div>
 
-                <p>The tool used to draw and export the images was [Piskel](https://www.piskelapp.com/), and the tool used to generate de arrays file from the bitmap pictures was [LCD Assistant](http://en.radzio.dxp.pl/bitmap_converter/).</p>
+                <p style="text-align:center">Custom sprites.</p>
+
+                <p>The tool used to draw and export the images was <a href="https://www.piskelapp.com/">Piskel</a>, and the tool used to generate de arrays file from the bitmap pictures was <a href="http://en.radzio.dxp.pl/bitmap_converter/">LCD Assistant</a>.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img width="460" height="300" src="images/space_invaders/space-invaders-gif4.gif" alt="">
                 </div>
+
+                <p style="text-align:center">Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>, simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
                 <p align="center">
                   <small> (video with increased speed) </small>
@@ -356,36 +387,43 @@
                     <img width="460" height="300" src="images/space_invaders/space-invaders-gif5.gif" alt="">
                 </div>
 
+                <p style="text-align:center">Gameplay video.</p>
+
+
                 <p align="center">
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3>Game Architecture</h3>
+                <h3 id="game-architecture">Game Architecture</h3>
 
                 <p>We implemented the game using 4 basic design patterns:</p>
 
                 <ul>
-                    <li><a href="https://gafferongames.com/post/fix_your_timestep/">Game loop</a>: the main loop contains an inner loop that manages the inputs, the update of each component and the rendering of each component. The objective of this pattern (process input -> update -> render) is to decouple the progression of the game from user input and processor speed. We managed to decouple it from the user input but not the processor speed, right now it will run at maximum speed.</li>
-                    <li>Update Method: each game component has an update method that is used to process on frame at a time.</li>
-                    <li>Component: each game object (spaceship, invader, mothership, bullet and barrier) is a single entity that can be spanned over multiple domains(locations) without coupling the domains to each other. We also use the Prototype pattern, we can create different versions of the game object by creating different instances of the same structure.</li>
-                    <li>State: each component has a state, and it is often used to define if the type of animation has to change or if it should be removed from the game.</li>
+                    <li><strong><a href="https://gafferongames.com/post/fix_your_timestep/">Game loop</a></strong>: the main loop contains an inner loop that manages the inputs, the update of each component and the rendering of each component. The objective of this pattern (process input -> update -> render) is to decouple the progression of the game from user input and processor speed. We managed to decouple it from the user input but not the processor speed, right now it will run at maximum speed.</li>
+                    <li><strong>Update Method</strong>: each game component has an update method that is used to process on frame at a time.</li>
+                    <li><strong>Component</strong>: each game object (spaceship, invader, mothership, bullet and barrier) is a single entity that can be spanned over multiple domains(locations) without coupling the domains to each other. We also use the Prototype pattern, we can create different versions of the game object by creating different instances of the same structure.</li>
+                    <li><strong>State</strong>: each component has a state, and it is often used to define if the type of animation has to change or if it should be removed from the game.</li>
                 </ul>
 
                 <p>The following image presents a Flowchart of the game.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/game_architecture.jpg" alt="">
+                    <img width="480" src="images/space_invaders/game_architecture.jpg" alt="">
                 </div>
+
+                <p style="text-align:center">Software Block Diagram.</p>
 
                 <p>We implemented different structures to solve different specific problems that arrive during development, we will describe a little bit more about them in the following sections.</p>
 
-                <h4>Animation of a Single Game Object</h4>
+                <h4 id="animations">Animation of a Single Game Object</h4>
 
                 <p>We are using <a href="https://en.wikipedia.org/wiki/Linked_list">Singly Linked Circular Lists</a> to manage the animations of the game objects. We only required one or two sprites, but the list is also very convenient during the rendering phase.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/animation_list.jpg" alt="">
+                    <img width="480" src="images/space_invaders/animation_list.jpg" alt="">
                 </div>
+
+                <p style="text-align:center">Animation List.</p>
 
                 <h4>Animation of a Group of Invaders</h4>
 
@@ -395,10 +433,12 @@
                     <img width="640" height="360" src="images/space_invaders/alien_list.jpg" alt="">
                 </div>
 
+                <p style="text-align:center">Alien List.</p>
+
                 <ul>
-                    <li>If the group is moving from left to right, it will render the invader from right to left depending on its position in the group. From "Tail Vertical" to "Head Vertical" in the image.</li>
-                    <li>If the group is moving from right to left, it will render the invader from left to right depending on its position in the group. From "Head Vertical" to "Tail Vertical" in the image.</li>
-                    <li>If the group is moving from top to bottom, it will render the invader from bottom to top depending on its position in the group. From "Head Horizontal" to "Tail Horizontal" in the image.</li>
+                    <li>If the group is moving from <strong>left to right</strong>, it will render the invader from right to left depending on its position in the group. From "Tail Vertical" to "Head Vertical" in the image.</li>
+                    <li>If the group is moving from <strong>right to left</strong>, it will render the invader from left to right depending on its position in the group. From "Head Vertical" to "Tail Vertical" in the image.</li>
+                    <li>If the group is moving from <strong>top to bottom</strong>, it will render the invader from bottom to top depending on its position in the group. From "Head Horizontal" to "Tail Horizontal" in the image.</li>
                 </ul>
 
                 <h4>Game Map</h4>
@@ -408,6 +448,8 @@
                 <div class="col-full" style="text-align:center">
                     <img width="640" height="360" src="images/space_invaders/game_map.jpg" alt="">
                 </div>
+
+                <p style="text-align:center">Game Map.</p>
 
                 <h2 id="simulation">Simulation</h2>
 
@@ -420,6 +462,9 @@
                         <iframe src="https://www.youtube.com/embed/l3vaxV_vUPE" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                 </div>
+
+                <p style="text-align:center">Video of the game Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> microcontroller.</p>
+
 
                 <h2 id="future_improvements">Future Improvements</h2>
 
@@ -438,11 +483,13 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">Embedded Design</a>
-                            <a href="#0">MPLABX</a>
-                            <a href="#0">PIC/a>
-                            <a href="#0">Game Design</a>
-                            <a href="#0">Software Architecture</a>
+                            <a href="pic-proteus-space-invaders.html#pic">PIC</a>
+                            <a href="pic-proteus-space-invaders.html#dependencies">MPLABX</a>
+                            <a href="pic-proteus-space-invaders.html#simulation">PROTEUS</a>
+                            <a href="pic-proteus-space-invaders.html#lcd">LCD</a>
+                            <a href="pic-proteus-space-invaders.html#buttons">Buttons</a>
+                            <a href="pic-proteus-space-invaders.html#game-architecture">Software Architecture</a>
+                            <a href="pic-proteus-space-invaders.html#animations">Animations</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
