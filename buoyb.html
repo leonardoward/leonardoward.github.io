@@ -166,10 +166,13 @@
                             <li><a href="buoyb.html" title="">Description</a></li>
                             <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
                             <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
-                            <li><a href="buoyb.html#pcb_layout" title="">PCB Layout</a></li>
-                            <li><a href="buoyb.html#3d_model" title="">3D Model</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoyb.html#pcb" title="">PCB</a></li>
                             <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
                             <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
+                            <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
                             <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
                             <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -276,33 +279,39 @@
                 <h2 id="main_components">Main Components</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Components_Buoy_B_light40.jpg" alt="">
+                    <img src="images/buoy_b/Components_Buoy_B_light40.jpg" width="480" alt="">
                 </div>
+
+                <p style="text-align:center">Main components of Buoy B v1.0.</p>
 
                 <p>Sources:</p>
 
                 <ul>
-                    <li><a href="https://www.digikey.com/product-detail/es/espressif-systems/ESP32-DEVKITC-32D/1965-1000-ND/9356990">ESP32-DEVKITC-32D</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/746/1528-1153-ND/5353613">Adafruit Ultimate GPS</a></li>
-                    <li><a href="https://www.digikey.com/product-detail/es/sparkfun-electronics/ROB-14450/1568-1755-ND/7915576">TB6612FNG MOTOR DRIVER BOARD</a></li>
+                    <li><strong>ESP32:</strong> <a href="https://www.digikey.com/product-detail/es/espressif-systems/ESP32-DEVKITC-32D/1965-1000-ND/9356990">ESP32-DEVKITC-32D</a></li>
+                    <li><strong>LoRa:</strong> <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a></li>
+                    <li><strong>GPS:</strong> <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/746/1528-1153-ND/5353613">Adafruit Ultimate GPS</a></li>
+                    <li><strong>Motor Driver:</strong> <a href="https://www.digikey.com/product-detail/es/sparkfun-electronics/ROB-14450/1568-1755-ND/7915576">TB6612FNG MOTOR DRIVER BOARD</a></li>
                 </ul>
 
                 <h2 id="schematic">Schematic</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Schematic_Buoy_B.png" alt="">
+                    <img src="images/buoy_b/Schematic_Buoy_B.png" width="640" alt="">
                 </div>
 
-                <a href="https://hackaday.io/project/173457/log/181832-buoy-b-v10-schematic-and-pcb-design">Read more...</a>
+                <p style="text-align:center">Schematic of Buoy B v1.0.</p>
+
+                <p>For more information about the design check the original <a href="https://hackaday.io/project/173457/log/181832-buoy-b-v10-schematic-and-pcb-design">post</a> in the project's page.</p>
 
                 <h2 id="pcb_layout">PCB Layout</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Layout_Buoy_B.png" alt="">
+                    <img src="images/buoy_b/Layout_Buoy_B.png" width="640" alt="">
                 </div>
 
-                <h2 id="3d_model">3D Model</h2>
+                <p style="text-align:center">PCB Layout of Buoy B v1.0.</p>
+
+                <h2 id="pcb">PCB</h2>
 
                 <div class="col-full">
                   <div class="col-six" style="text-align:center">
@@ -314,6 +323,15 @@
                     <p>
                     <img src="images/buoy_b/Buoy_B_WithoutGSM_02.png" width="400" alt="">
                     </p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p style="text-align:center">PCB: Front Layer with components.</p>
+                  </div>
+                  <div class="col-six">
+                    <p style="text-align:center">PCB: Front Layer without components.</p>
                   </div>
                 </div>
 
@@ -331,6 +349,15 @@
                 </div>
 
                 <div class="col-full">
+                  <div class="col-six">
+                    <p style="text-align:center">PCB: Back Layer with components.</p>
+                  </div>
+                  <div class="col-six">
+                    <p style="text-align:center">PCB: Back Layer without components.</p>
+                  </div>
+                </div>
+
+                <div class="col-full">
                   <div class="col-six" style="text-align:center">
                     <p>
                     <img src="images/buoy_b/Buoy_B_WithoutGSM_05.png" width="400" alt="">
@@ -340,6 +367,15 @@
                     <p>
                     <img src="images/buoy_b/Buoy_B_WithoutGSM_06.png" width="400" alt="">
                     </p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p style="text-align:center">PCB: GPS and LoRa Module.</p>
+                  </div>
+                  <div class="col-six">
+                    <p style="text-align:center">PCB: Motor Driver.</p>
                   </div>
                 </div>
 
@@ -356,11 +392,15 @@
                   </div>
                 </div>
 
+                <p style="text-align:center">PCB Design: ESP32 and Connectors.</p>
+
                 <h2 id="assembly_guide">Assembly</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Assembly_N_01_Buoy_B-All_Fixed_4_light40.jpg" alt="">
+                    <img src="images/buoy_b/Assembly_N_01_Buoy_B-All_Fixed_4_light40.jpg" width="640" alt="">
                 </div>
+
+                <p style="text-align:center">Components of Buoy B v1.0.</p>
 
                 <p>Components List:</p>
 
@@ -389,15 +429,15 @@
                     <li>CONN HEADER VERT 16POS 2.54MM (included in <a href="https://www.digikey.com/product-detail/es/adafruit-industries-llc/3072/1528-1667-ND/6005357">RFM95W LoRa Radio</a>)</li>
                 </ol>
 
-                <a href="https://hackaday.io/project/173457/log/183762-buoy-b-v10-bill-of-materials">For a detailed Bill of Materials visit the following log.</a>
+                <p>For a detailed Bill of Materials visit the following <a href="https://hackaday.io/project/173457/log/183762-buoy-b-v10-bill-of-materials">post</a>.</p>
 
-                <a href="https://hackaday.io/project/173457/log/183666-buoy-b-v10-assembly">For a detailed explanation about the soldering and assembly procedure visit the following log.</a>
+                <p>For a detailed explanation about the soldering and assembly procedure visit the following <a href="https://hackaday.io/project/173457/log/183666-buoy-b-v10-assembly">post</a>.</p>
 
                 <h2 id="wiring_diagrams">Wiring Diagrams</h2>
 
                 <p>The original design of the board considered the following components:</p>
 
-                <h3>Battery Management</h3>
+                <h3 id="power-management">Power Management</h3>
 
                 <ul>
                     <li>Battery (5V < Voltage < 15V)</li>
@@ -408,8 +448,10 @@
                 </ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_07_wired.png" alt="">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_07_wired.png" width="480" alt="">
                 </div>
+
+                <p style="text-align:center">Wiring diagram: Power Management with Buck Converter.</p>
 
                 <p>Also, there is an alternative for the battery management, is possible to provide the required voltages with a boost converter and a 3.7V Battery, like the following example:</p>
 
@@ -425,8 +467,10 @@
                 </ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_08_wired.png" alt="">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_08_wired.png" width="480" alt="">
                 </div>
+
+                <p style="text-align:center">Wiring diagram: Power Management with Boost Converter.</p>
 
                 <p>This alternative is valid and possible, but is not ideal for longer working time (compared to the first one). It is important to consider the efficiency of the boost converter. The selected boost converter will have a voltage drop at a current higher than 500mA, that should be taken into consideration.</p>
 
@@ -434,35 +478,37 @@
 
                 <p>The board was designed to handle 3 different types of motors, those are:</p>
 
-                <ul>
-                    <li>Servo Motor</li>
-                </ul>
+                <ul id="servo-motor"><li>Servo Motor</li></ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_06_wired.png" alt="">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_06_wired.png" width="480" alt="">
                 </div>
 
-                <ul>
-                    <li>Stepper Motor (using the driver TB6612FNG)</li>
-                </ul>
+                <p style="text-align:center">Wiring diagram: Buoy B v1.0 with Servo Motor.</p>
+
+                <ul id="stepper-motor"><li>Stepper Motor (using the driver TB6612FNG)</li></ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_09_wired.png" alt="">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_09_wired.png" width="480" alt="">
                 </div>
 
-                <ul>
-                    <li>DC Motor (using the driver TB6612FNG)</li>
-                </ul>
+                <p style="text-align:center">Wiring diagram: Buoy B v1.0 with Stepper Motor.</p>
+
+                <ul id="dc-motor"><li>DC Motor (using the driver TB6612FNG)</li></ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_05_wired.png" alt="">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_05_wired.png" width="480" alt="">
                 </div>
+
+                <p style="text-align:center">Wiring diagram: Buoy B v1.0 with DC Motor, first connector.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_05_wired_2.png" alt="">
+                    <img src="images/buoy_b/Wiring_Buoy_WithoutGSM_05_wired_2.png" width="480" alt="">
                 </div>
 
-                <a href="https://hackaday.io/project/173457/log/182722-buoy-b-v10-wiring-diagrams">For more information about the wiring diagrams and the project visit the following log.</a>
+                <p style="text-align:center">Wiring diagram: Buoy B v1.0 with DC Motor, second connector.</p>
+
+                <p>For more information about the wiring diagrams and the project visit the following <a href="https://hackaday.io/project/173457/log/182722-buoy-b-v10-wiring-diagrams">post</a>.</p>
 
                 <h2 id="user_interface"><a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware"><i class="fab fa-github"></i></a>&nbsp; User Interface</h2>
 
@@ -578,7 +624,9 @@
 
                 <h2 id="future_improvements">Future Improvements</h2>
 
-                <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">For more information about the recommended future improvements for the electronic design visit the following log.</a>
+                <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
+
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -591,11 +639,13 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">Robotics</a>
-                            <a href="#0">Embedded Design</a>
-                            <a href="#0">LoRa</a>
-                            <a href="#0">Battery Management system</a>
-                            <a href="#0">Hackaday</a>
+                            <a href="buoyb.html#main_components">ESP32</a>
+                            <a href="buoyb.html#main_components">LoRa</a>
+                            <a href="buoyb.html#main_components">GPS</a>
+                            <a href="buoyb.html#servo-motor">Servo Motor</a>
+                            <a href="buoyb.html#stepper-motor">Stepper Motor</a>
+                            <a href="buoyb.html#dc-motor">DC Motor</a>
+                            <a href="buoyb.html#pcb">PCB</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
