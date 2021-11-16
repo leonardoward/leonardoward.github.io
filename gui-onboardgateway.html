@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>H-Bridge Perfboard Designs | DC | Stepper</title>
-    <meta name="H-Bridge Perfboard Designs | DC | Stepper" content="">
+    <title>GUI for the Onboard Gateway | Hackaday Dream Team 2020</title>
+    <meta name="GUI for the Onboard Gateway | Hackaday Dream Team 2020" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -204,7 +204,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="#0" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li><a href="sumo.html">Sumo</a></li>
@@ -266,16 +266,16 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/all_motor_drivers_light40.JPG" alt="">
+                    <img src="images/onboard_gateway/gui-onboard-gateway.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    H-Bridge Perfboard Designs | DC | Stepper
+                    GUI for the Onboard Gateway | Hackaday Dream Team 2020
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">April, 2014</li>
+                    <li class="date">August, 2020</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
@@ -283,199 +283,208 @@
                 </ul>
             </div>
 
+            <div class="entry__header col-full">
+                <ul class="entry__header-meta">
+                  <li class="byline">
+                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs">Project</a>
+                  </li>
+                  <li class="byline">
+                    <h3><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://github.com/leonardoward/eja-onboard-gateway-firmware">Firmware</a>
+                  </li>
+                </ul>
+            </div>
+
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC and Stepper motors.</p>
+                <p class="lead drop-cap" id="description">This project contains a GUI for the <a href="onboardgateway.html">Onboard Gateway</a> PCB design. The microcontroller used in the PCB is the ESP32.</p>
 
-                <h2 id="h-bridges-stepper">Stepper Motors Drivers with H Bridges</h2>
+                <h2 id="requirements">Requirements</h2>
 
-                <div class="col-full" style="text-align:center">
-                    <img src="images/stepper_drivers/diagram_01.JPG" alt="">
-                </div>
+                <ol>
+                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
+                    <li><a href="https://github.com/me-no-dev/ESPAsyncWebServer">ESPAsyncWebServer</a></li>
+                    <li><a href="https://github.com/me-no-dev/AsyncTCP">AsyncTCP</a></li>
+                    <li id="file-system"><a href="https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/">SPIFFS File System</a></li>
+                    <li id="ota"><a href="https://github.com/ayushsharma82/AsyncElegantOTA">ESP32 Async Over The Air</a></li>
+                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa</a></li>
+                </ol>
 
-                <p style="text-align:center">Schematic for a bipolar motor driver using the L297 and L287.</p>
+                <p id="async-web-server">The ESP32 creates an Asynchronous Web Server, with the following credentials:</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img src="images/stepper_drivers/diagram_02.JPG" alt="">
-                </div>
+                <pre><code>
+                  const char* ssid     = "EJA_Onboard_Gateway";
+                  const char* password = "123456789";
+                </code></pre>
 
-                <p style="text-align:center">Schematic for a bipolar motor driver using the L297 and L287.</p>
-
-                <h3>L297 and H Bridge Circuits on Breadboard</h3>
-
-                <p>The circuit uses an Arduino Uno and a L297 to create the control signals. It also uses two H Bridges with TIP142T transistors.</p>
-
-                <div class="col-full">
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/materials_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/l298_circuit_01_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-full">
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/protoboard_01_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/protoboard_03_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-full">
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/protoboard_04_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/protoboard_10_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <p>The following video presents the initial circuit tests on a Breadboard.</p>
-
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/H_VI4z4Bqo4" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-
-                <p style="text-align:center">Testing of the bipolar motor driver on the breadboard.</p>
-
-                <h3 id="stepper-motor">Stepper Motor Drivers with L297 and H Bridge Circuits</h3>
-
-                The circuit previously tested on a breadboard was placed on a perfboard to create a prototype.
-
-                <div class="col-full">
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/circuit_08_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/circuit_10_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-full">
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/test_03_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/test_07_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-full">
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/test_08_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six" style="text-align:center">
-                    <p>
-                    <img src="images/stepper_drivers/test_09_light40.JPG" width="400" alt="">
-                    </p>
-                  </div>
-                </div>
-
-                <p>The Perfboard Prototype was tested with two motors.</p>
-
-                <p>The first motor had the following characteristics:</p>
-
-                <ul>
-                    <li>TYPE 103H7123-0645</li>
-                    <li>Basic Step Angle: 1.8°</li>
-                    <li>Rated Voltage: 12V</li>
-                    <li>Rated Current [A/Phase]: 2.5 A</li>
-                    <li>Unipolar - 6 Wires</li>
-                    <li>Manufacturer: Sanyo Denki</li>
-                </ul>
-
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/fdkSIMx8-L0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-
-                <p style="text-align:center">Testing of an unipolar motor driver using the final design.</p>
-
-                <p>The second motor had the following characteristics:</p>
-
-                <ul>
-                    <li>TYPE 103-814-5242</li>
-                    <li>Basic Step Angle: 1.8°</li>
-                    <li>Rated Voltage: 2.5 V</li>
-                    <li>Rated Current [A/Phase]: 4.6 A</li>
-                    <li>Unipolar - 6 Wires</li>
-                    <li>Manufacturer: Sanyo Denki</li>
-                </ul>
-
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/q7Cq6SPmTS8" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-
-                <p style="text-align:center">Testing of a 10W unipolar motor driver using the final design.</p>
-
-                <h2 id="dc-motors">DC Motor Drivers with H Bridges</h2>
-
-                <p>The circuit uses an H Bridges implemented with TIP120 transistors and HD74LS08P AND Gates.</p>
-
-                <p>The motor used to test the circuit had the following characteristics:</p>
-
-                <ul>
-                    <li>TYPE DSM-1240-2AU</li>
-                    <li>Rated Voltage: 19 V</li>
-                    <li>Rated speed: 2600 RPM</li>
-                    <li>Weight: 1 LB-8 OZ</li>
-                    <li>Manufacturer: TOSHIBA</li>
-                </ul>
-
-                <p>The following video presents the initial tests of the perfboard prototype.</p>
-
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/5DLYhlJ4APQ" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-
-                <p style="text-align:center">Testing of a DC motor driver using the final design.</p>
+                <p>With those credentials it is possible to access the WiFi network.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/dc_motor_drivers/dc_driver_test_light40.JPG" width="640" alt="">
+                  <img src="images/onboard_gateway/ssid.jpg" width="640" >
                 </div>
 
-                <p style="text-align:center">Perfboard design connected to the DC motor.</p>
+                <p style="text-align:center">Wifi network.</p>
+
+                <p id="dns">The ESP32 creates a Domain Name System (DNS) to assign a domain name to the web server. That means that it is not necessary to know the server IP, it is possible to access the web server using the defined domain name for the host, in this case, the name is:</p>
+
+                <pre><code>
+                  const char* host = "www.onboard_gateway.eja";
+                </code></pre>
+
+                <p>Once the device (phone/computer) is connected to the server (EJA_Onboard_Gateway), open a browser and visit the following url:</p>
+                <pre><code>
+                  http://www.onboard_gateway.eja/
+                </code></pre>
+
+                <h2 id="home">Home</h2>
+
+                <p>The previous link displays the web page used for HOME:</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/home.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Home Screen.</p>
+
+                <p>There is a header with the name "EJA Onboard Gateway" that opens a sidebar with links to the different test functionalities. It is also possible to access those pages using the buttons in HOME.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/menu.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Side Menu.</p>
+
+                <h2 id="gps">GPS</h2>
+
+                <p>The page http://www.onboard_gateway.eja/gps shows the data from the GPS module.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/gps.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">GPS Screen.</p>
+
+                <h2 id="timer">Timer</h2>
+
+                <p>The page http://www.onboard_gateway.eja/timer shows the interface to create a timer in the Buoy. The timer represents a countdown that activates the release mechanism when the time has reached zero. The initial page allows the user to set the timer.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/settimer_filled.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Timer Screen.</p>
+
+                <p>After selecting the amount of time the user has to click the <strong>Submit</strong> button. That will send the information to the buoy to create a timer.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/settimer_updating_buoy.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Updating the timer.</p>
+
+                <p>The Onboard Gateway communicates with the Buoy, and once it receives the confirmation that the timer has been properly set, it displays the countdown to the user.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/remaining_time.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Remaining time.</p>
+
+                <p>In the Onboard Gateway, the countdown timer is an estimate of the one that is running in the Buoy. When the timer reaches zero, the Buoy activates the release mechanism.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/timer_reached_zero.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Screen when the timer reaches zero.</p>
+
+                <p>The user can delete the timer at any time clicking the button <strong>Delete Timer</strong>. But it will only work if the Onboard Gateway has communication with the Buoy. When the user deletes the timer, it is possible to create a new one a restart the process.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/delete_timer.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Screen after the timer is deleted.</p>
+
+                <h2 id="lora">LoRa</h2>
+
+                <p>The page http://www.onboard_gateway.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
+
+                <pre><code>
+                  String lora_all_msg = "";
+                </code></pre>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/lora_01.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">LoRa Screen.</p>
+
+                <h2 id="terminal">Terminal</h2>
+
+                <p>The page http://www.onboard_gateway.eja/terminal shows internal messages. In the ESP32 that information is stored in the variable:</p>
+
+                <pre><code>
+                  String terminal_messages = "";
+                </code></pre>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/terminal.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Terminal Screen.</p>
+
+                <h2 id="led-test">LED Test</h2>
+
+                <p>There is an additional page http://www.onboard_gateway.eja/toggle_led_on that can be use to change the state of a LED, the GPIO port used is define in the following variable of the script:</p>
+
+                <pre><code>
+                  #define LED_TOGGLE LED4         // Led use for togle example (toggle from web page)
+                </code></pre>
+
+                <p>The buttons in the page (ON and OFF) can be used to change the state of the LED.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/led_test_on.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Screen used to turn ON/OFF the Led, state ON.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/onboard_gateway/led_test_off.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Screen used to turn ON/OFF the Led, state OFF.</p>
+
+                <h2 id="future_improvements">Future Improvements</h2>
+
+                <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Robotics</a>
+                            <a href="#0">Embedded Hardware</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">Robotics</a>
-                            <a href="#0">Prototype</a>
-                            <a href="#0">Motor Driver</a>
-                            <a href="#0">DC Motor</a>
-                            <a href="#0">Stepper Motor</a>
-                            <a href="#0">Brusheless DC Motor</a>
+                            <a href="gui-onboardgateway.html#main_components">ESP32</a>
+                            <a href="gui-onboardgateway.html#async-web-server">Async Web Server</a>
+                            <a href="gui-onboardgateway.html#file-system">File System</a>
+                            <a href="gui-onboardgateway.html#ota">Over The Air Updates</a>
+                            <a href="gui-onboardgateway.html#dns">DNS</a>
+                            <a href="gui-onboardgateway.html#gps">GPS</a>
+                            <a href="gui-onboardgateway.html#timer">Timer</a>
+                            <a href="gui-onboardgateway.html#lora">LoRa</a>
+                            <a href="gui-onboardgateway.html#terminal">Terminal</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -504,16 +513,16 @@
 
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
-                <!-- <div class="col-six s-content__prev">
-                    <a href="3dmap.html" rel="prev">
+                <div class="col-six s-content__prev">
+                    <a href="onboardgateway.html" rel="prev">
                         <span>Previous Post</span>
-                        Real-Time Monitoring on a 3D Printed Map
+                        Onboard Gateway | Hackaday Dream Team 2020
                     </a>
-                </div> -->
+                </div>
                 <div class="col-six s-content__next">
-                    <a href="bajasae.html" rel="next">
+                    <a href="helios_ren.html" rel="next">
                         <span>Next Post</span>
-                        Electronic Devices for Racing Vehicles
+                        HELIOS REN Tail Light System
                     </a>
                 </div>
             </div>
