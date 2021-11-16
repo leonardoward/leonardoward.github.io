@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Baja SAE USB</title>
-    <meta name="Electronic Devices for Racing Vehicles" content="">
+    <title>GUI for Buoy B | Hackaday Dream Team 2020</title>
+    <meta name="GUI for Buoy B | Hackaday Dream Team 2020" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -256,7 +256,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="#0" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
@@ -279,16 +279,16 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/bajasae/00011466.jpg" alt="">
+                    <img src="images/buoy_b/gui-buoy-b.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    Electronic Devices for Racing Vehicles
+                    GUI for Buoy B | Hackaday Dream Team 2020
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">April, 2014</li>
+                    <li class="date">August, 2020</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
@@ -296,48 +296,182 @@
                 </ul>
             </div>
 
+            <div class="entry__header col-full">
+                <ul class="entry__header-meta">
+                  <li class="byline">
+                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs">Project</a>
+                  </li>
+                  <li class="byline">
+                    <h3><a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware"><i class="fab fa-github"></i></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware">Firmware</a>
+                  </li>
+                </ul>
+            </div>
+
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Design and development of electronic devices for data acquisition in racing vehicles, including fuel level meters, tachometers, brake pressure meters, wheel alignment systems(toe, camber and caster), and speedometers. The process included prototyping, PCB design, firmware programming, soldering (through hole and surface-mount) and testing. The complete system included a CAN bus (Controller Area Network) for robust communication between microcontrollers.</p>
+                <p class="lead drop-cap" id="description">This project contains a GUI for the <a href="buoyb.html">Buoy B</a> PCB design. The microcontroller used in the PCB is the ESP32.</p>
 
-                <div class="col-full">
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00017556_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00018248_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
+                <h2 id="requirements">Requirements:</h2>
+
+                <ol>
+                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
+                    <li><a href="https://github.com/me-no-dev/ESPAsyncWebServer">ESPAsyncWebServer</a></li>
+                    <li><a href="https://github.com/me-no-dev/AsyncTCP">AsyncTCP</a></li>
+                    <li id="file-system"><a href="https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/">SPIFFS File System</a></li>
+                    <li id="ota"><a href="https://github.com/ayushsharma82/AsyncElegantOTA">ESP32 Async Over The Air</a></li>
+                    <li><a href="https://github.com/mikalhart/TinyGPSPlus">TinyGPSPlus</a></li>
+                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa</a></li>
+                </ol>
+
+                <p id="async-web-server">The ESP32 creates an Asynchronous Web Server, with the following credentials:</p>
+
+                <pre><code>
+                  const char* ssid     = "EJA_Buoy_B";
+                  const char* password = "123456789";
+                </code></pre>
+
+                <p>With those credentials it is possible to access the WiFi network.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/ssid.jpg" width="640">
                 </div>
-                <div class="col-full">
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00017557_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img src="images/bajasae/00017171_light40.jpg" width="400" alt="">
-                    </p>
-                  </div>
+
+                <p style="text-align:center">Wifi network.</p>
+
+                <p id="dns">The ESP32 creates a Domain Name System (DNS) to assign a domain name to the web server. That means that it is not necessary to know the server IP, it is possible to access the web server using the defined domain name for the host, in this case, the name is:</p>
+
+                <pre><code>
+                  const char* host = "www.buoy_b.eja";
+                </code></pre>
+
+                <p>Once the device (phone/computer) is connected to the server (EJA_Buoy_B), open a browser and visit the following url:</p>
+
+                <pre><code>
+                  http://www.buoy_b.eja/
+                </code></pre>
+
+                <h2 id="home">Home</h2>
+
+                <p>The previous link displays the web page used for HOME:</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/home.jpg" width="200">
                 </div>
+
+                <p style="text-align:center">Home Screen.</p>
+
+                <p>There is a header with the name "EJA Buoy B" that opens a sidebar with links to the different test functionalities. It is also possible to access those pages using the buttons in HOME.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/menu.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Side Menu.</p>
+
+                <h2 id="gps">GPS</h2>
+
+                <p>The page http://www.buoy_b.eja/gps shows the data from the GPS module.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/gps.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">GPS Screen.</p>
+
+                <h2 id="timer">Timer</h2>
+
+                <p>The page http://www.buoy_b.eja/timer shows the interface to create a timer in the Buoy. The timer represents a countdown that activates the release mechanism when the time has reached zero. The initial page allows the user to set the timer.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/settimer_filled.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Timer Screen.</p>
+
+                <p>After selecting the amount of time the user has to click the <strong>Submit</strong> button. That will create the timer, the interface displays the countdown to the user.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/remaining_time.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Remaining time.</p>
+
+                <p>When the timer reaches zero, the Buoy activates the release mechanism.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/timer_reached_zero.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Screen when the timer reaches zero.</p>
+
+                <p>The user can delete the timer at any time clicking the button <strong>Delete Timer</strong>. When the user deletes the timer, it is possible to create a new one a restart the process.</p>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/delete_timer.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Screen after the timer is deleted.</p>
+
+                <h2 id="lora">LoRa</h2>
+
+                <p>The page http://www.buoy_b.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
+
+                <pre><code>
+                  String lora_all_msg = "";
+                </code></pre>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/lora.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">LoRa Screen.</p>
+
+                <h2 id="terminal">Terminal</h2>
+
+                <p>The page "http://www.buoy_b.eja/terminal" shows internal messages. In the ESP32 that information is stored in the variable:</p>
+
+                <pre><code>
+                  String terminal_messages = "";
+                </code></pre>
+
+                <div class="col-full" style="text-align:center">
+                  <img src="images/buoy_b/terminal.jpg" width="200">
+                </div>
+
+                <p style="text-align:center">Terminal Screen.</p>
+
+                <h2 id="future_improvements">Future Improvements</h2>
+
+                <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
+
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Vehicles</a>
+                            <a href="#0">Embedded Software</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="http://wikitronica.labc.usb.ve/index.php/Grupo_de_Investigaci%C3%B3n_y_Desarrollo_Baja_SAE">Baja SAE USB</a>
-                            <a href="#0">Venezuela</a>
+                            <a href="gui-buoyb.html#async-web-server">ESP32</a>
+                            <a href="gui-buoyb.html#async-web-server">Async Web Server</a>
+                            <a href="gui-buoyb.html#file-system">File System</a>
+                            <a href="gui-buoyb.html#ota">Over The Air Updates</a>
+                            <a href="gui-buoyb.html#dns">DNS</a>
+                            <a href="gui-buoyb.html#gps">GPS</a>
+                            <a href="gui-buoyb.html#timer">Timer</a>
+                            <a href="gui-buoyb.html#lora">LoRa</a>
+                            <a href="gui-buoyb.html#terminal">Terminal</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -367,15 +501,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="hbridgeboards.html" rel="prev">
+                    <a href="buoyb.html" rel="prev">
                         <span>Previous Post</span>
-                        H-Bridge Perfboard Designs | DC | Stepper
+                        Buoy B | Hackaday Dream Team 2020
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="uln2003board.html" rel="next">
+                    <a href="onboardgateway.html" rel="next">
                         <span>Next Post</span>
-                        ULN2003 Perfboard Designs | Stepper | Solenoid
+                        Onboard Gateway | 2020 Hackaday Dream Team Challenge for Conservation X Labs
                     </a>
                 </div>
             </div>
