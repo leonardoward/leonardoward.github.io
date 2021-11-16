@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>ULN2003 Perfboard Designs | DC | Stepper | Solenoid</title>
-    <meta name="ULN2003 Perfboard Designs | DC | Stepper | Solenoid" content="">
+    <title>ULN2003 Perfboard Designs | Stepper | Solenoid</title>
+    <meta name="ULN2003 Perfboard Designs | Stepper | Solenoid" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -252,7 +252,7 @@
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    ULN2003 Perfboard Designs | DC | Stepper | Solenoid
+                    ULN2003 Perfboard Designs | Stepper | Solenoid
                 </h1>
                 <ul class="entry__header-meta">
                     <li class="date">October, 2015</li>
@@ -271,43 +271,43 @@
 
                 <p>The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The following videos present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.</p>
 
-                <h3>ULN2003 and Arduino Uno</h3>
+                <h3 id="arduino">ULN2003 and Arduino Uno</h3>
 
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/W2ycA9TYYoc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/W2ycA9TYYoc" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
 
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/66iMKuHtXPM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
+                <p style="text-align:center">Controlling 1 unipolar motor with ULN2003 and an Arduino.</p>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/66iMKuHtXPM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
 
-                <h3>ULN2003 and PIC16F877A</h3>
+                <p style="text-align:center">Controlling 2 unipolar motors with ULN2003 and an Arduino.</p>
 
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/_uJ95IppRE0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
+                <h3 id="pic">ULN2003 and PIC16F877A</h3>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/_uJ95IppRE0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
 
-                <p>Using 4 ULN2003 and a PIC 16F877A I created a Perfboard prototype for multiple applications. In the following video the circuit controls 2 stepper motors. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
+                <p style="text-align:center">Controlling 2 unipolar motors with ULN2003 and a PIC16F877A.</p>
 
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/IR5aowlEpMI" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
+                <p id="stepper-motors">Using 4 ULN2003 and a PIC16F877A I created a Perfboard prototype for multiple applications. In the following video the circuit controls <strong>2 stepper motors</strong>. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/IR5aowlEpMI" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
 
-                <p>Since the ULN2003 can be used for multiple applications, and the configuration of the board can be changed, in the following test the Perfboard controls a solenoid. This test proves the wide range of possibilities of the design.</p>
+                <p style="text-align:center">Controlling 2 stepper motors with ULN2003, a PIC16F877A and an Arduino UNO.</p>
 
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/USp3ptmTKvM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
+                <p id="solenoid">Since the ULN2003 can be used for multiple applications, and the configuration of the board can be changed, in the following test the Perfboard controls a <strong>solenoid</strong>. This test proves the wide range of possibilities of the design.</p>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/USp3ptmTKvM" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
+
+                <p style="text-align:center">Controlling 2 stepper motors and a solenoid with ULN2003, a PIC16F877A and an Arduino UNO.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -320,12 +320,10 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">Robotics</a>
-                            <a href="#0">Prototype</a>
-                            <a href="#0">Motor Driver</a>
-                            <a href="#0">DC Motor</a>
-                            <a href="#0">Stepper Motor</a>
-                            <a href="#0">Brusheless DC Motor</a>
+                            <a href="uln2003board.html#arduino">Arduino</a>
+                            <a href="uln2003board.html#pic">PIC</a>
+                            <a href="uln2003board.html#stepper-motors">Stepper Motor</a>
+                            <a href="uln2003board.html#solenoid">Solenoid</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
