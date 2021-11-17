@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>3D Map</title>
-    <meta name="Real-Time Monitoring on a 3D Printed Map" content="">
+    <title>EJA | Intelligent Popup Buoy</title>
+    <meta name="EJA | Intelligent Popup Buoy" content="">
     <meta name="Leonardo Ward" content="">
 
     <!-- mobile specific metas
@@ -249,7 +249,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="#0" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
@@ -279,16 +279,16 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/3dmap/IMG-20190707-WA0010.jpg" alt="">
+                    <img src="images/eja/ejav2-underwater01.jpg" alt="">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 class="entry__header-title display-1">
-                    Real-Time Monitoring on a 3D Printed Map
+                    EJA | Intelligent Popup Buoy
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">August, 2019</li>
+                    <li class="date">October, 2021</li>
                     <li class="byline">
                         By
                         <a href="#0">Leonardo Ward</a>
@@ -296,65 +296,219 @@
                 </ul>
             </div>
 
+            <div class="entry__header col-full">
+                <ul class="entry__header-meta">
+                  <li class="byline">
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                  </li>
+                  <li class="byline">
+                    <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
+                  </li>
+                </ul>
+            </div>
+
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Geographical maps are commonly used to display information. Depending on the importance and complexity of the data, a visual representation can be very valuable. This project uses 3D Printing to assemble a display screen with the shape of the map.</p>
+                <p class="lead drop-cap">Eja is an Open Source project that is developing an intelligent popup buoy.</p>
 
-                <p>A modular approach was used to design different parts of the map. Each state in the map is easily identifiable, and has at least one led asigned to it that can change it's color independently.
-                </p>
-
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/20190426_081254_light60.jpg" width="400" alt="">
-                  </p>
-                </div>
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/20190426_132819_light60.jpg" width="400" alt="">
-                  </p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/aVAkWYeyZuw" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
 
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/WhatsApp Image 2020-06-14 at 7.52.56 PM (3).jpeg" width="400" alt="">
-                  </p>
-                </div>
-                <div class="col-six">
-                  <p id="neopixels">The map contains 99 individual <a href="https://www.adafruit.com/category/168">RGB NeoPixels</a> from Adafruit distributed in all the map.</p>
-                  <p>
-                    The distribution can change depending on the visual alert that is required.
-                    The light from neighbor leds was separated to avoid interference.
-                    That creates a limit on how much closer they canbe together.</p>
-                </div>
-                <p>The map contains a <a id="raspberrypi" href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Raspberry Pi 3B</a> that works as a server to which other applications can connect via Ethernet or LAN to stablish the desired color for each led.
-                  Inside the map there are all the connections between the leds and the support circuits, including the Raspberry Pi, except for the AC-DC charger.</p>
-                <div class="col-six">
-                  <p>
-                  <img src="images/3dmap/IMG-20190823-WA0006.jpg" width="400" alt="">
-                  </p>
+                <p>This type of ropeless fishing gear aims to decrease the occurrence of marine species entanglements with fishing gear, prevent ghost gear creation, and provide novel technologies for the fishing process.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/eja/ejav2-problem.png" width="640" alt="">
                 </div>
 
-                <div class="col-six ">
-                  <p>
-                  <img src="images/3dmap/IMG-20190823-WA0008.jpg" width="400" alt="">
-                  </p>
+                <p style="text-align:center">Visual representation of the problem of marine entanglements.</p>
+
+                <p>Since 2007 studies of removed gear from whales showed that 91% of cases involved vertical lines. Abandoned gear continues to catch fish and not only creates harmful environmental and ecological effects, it also causes socioeconomic consequences. In 2016 the removal of 34,408 abandoned pots led to gear efficiency gains and an additional 13,504 MT in harvest valued at US $21.3 million. Up to 10% of the world’s ocean plastic (and 70% of large pieces) comes from lost or abandoned fishing gear. The principal causes of lost fishing gear are unexpected position changes and entanglements.</p>
+
+                <p>The proposed solution includes an intelligent buoy that allows fishers to track the position of the traps, and a ropeless mechanism that prevents entanglements.</p>
+
+                <h2 id="operation-process">Operation Process</h2>
+
+                <ul>
+                    <li>
+                      <p>Fishers install the device in the gear, and define the maximum time that it will be underwater. Later, the fishers deploy the gear onto the water. The device stores its location and sends it to the server/app.</p>
+                      <div class="col-full" style="text-align:center">
+                          <img src="images/eja/concept-02.png" width="480" alt="">
+                      </div>
+                      <p style="text-align:center">Deployment of the popup buoy.</p>
+                    </li>
+                    <li>
+                      <p>The traps wait on the seafloor during the predefined time.</p>
+                      <div class="col-full" style="text-align:center">
+                          <img src="images/eja/concept-03.png" width="480" alt="">
+                      </div>
+                      <p style="text-align:center">Fishing time.</p>
+                    </li>
+                    <li>
+                      <p>The buoy is released if the time lapse ends or if the device detects that the trap has reached its full capacity. When the buoy gets to the surface it transmits its location.</p>
+                      <div class="col-full" style="text-align:center">
+                          <img src="images/eja/concept-04.png" width="480" alt="">
+                      </div>
+                      <p style="text-align:center">Release process.</p>
+                    </li>
+                    <li>
+                      <p>The fishers find the buoy and retrieve the gear.</p>
+                      <div class="col-full" style="text-align:center">
+                          <img src="images/eja/concept-05.png" width="480" alt="">
+                      </div>
+                      <p style="text-align:center">Communication with the Buoy.</p>
+                    </li>
+                </ul>
+
+                <h2 id="prototypes">Prototypes</h2>
+
+                <p>There are 2 versions of the prototype, the first one was developed on 2020 and the second one is currently being developed. For more information about the prototypes (including videos) <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">visit the original project page</a>.</p>
+
+                <h3 id="prototype1">First Prototype</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/eja/ejav2-prototype1.jpg" width="400" alt="">
                 </div>
 
+                <p style="text-align:center">First Prototype</p>
+
+                <p>For the first prototype, I fully developed the following embedded systems projects (PCB design, firmware and GUI):</p>
+
+                <div class="col-full" style="text-align:center">
+                  <div class="col-six" style="text-align:center">
+                      <img src="images/onboard_gateway/gui-onboard-gateway.jpg" width="400" alt="">
+                      <p><strong>GUI for the Onboard Gateway</strong></p>
+                      <div class="entry__tags">
+                          <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="gui-onboardgateway.html#async-web-server">ESP32</a>
+                            <a href="gui-onboardgateway.html#async-web-server">Async Web Server</a>
+                            <a href="gui-onboardgateway.html#file-system">File System</a>
+                            <a href="gui-onboardgateway.html#ota">Over The Air Updates</a>
+                            <a href="gui-onboardgateway.html#dns">DNS</a>
+                            <a href="gui-onboardgateway.html#gps">GPS</a>
+                            <a href="gui-onboardgateway.html#timer">Timer</a>
+                            <a href="gui-onboardgateway.html#lora">LoRa</a>
+                            <a href="gui-onboardgateway.html#terminal">Terminal</a>
+                          </span>
+                      </div> <!-- end entry__tags -->
+                      <p><a href="gui-onboardgateway.html">[Detailed Post]</a></p>
+                  </div>
+                  <div class="col-six" style="text-align:center">
+                      <img src="images/onboard_gateway/onboard_gateway_main_light60.jpg" width="400" alt="">
+                      <p><strong>Onboard Gateway v1.0</strong></p>
+                      <div class="entry__tags">
+                          <span class="entry__tax-list entry__tax-list--pill">
+                              <a href="onboardgateway.html#main_components">ESP32</a>
+                              <a href="onboardgateway.html#main_components">LoRa</a>
+                              <a href="onboardgateway.html#main_components">Battery Charger</a>
+                              <a href="onboardgateway.html#pcb">PCB</a>
+                          </span>
+                      </div> <!-- end entry__tags -->
+                      <p><a href="onboardgateway.html">[Detailed Post]</a></p>
+                  </div>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                  <div class="col-six" style="text-align:center">
+                      <img src="images/buoy_b/gui-buoy-b.jpg" width="400" alt="">
+                      <p><strong>GUI for Buoy B</strong></p>
+                      <div class="entry__tags">
+                          <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="gui-buoyb.html#async-web-server">ESP32</a>
+                            <a href="gui-buoyb.html#async-web-server">Async Web Server</a>
+                            <a href="gui-buoyb.html#file-system">File System</a>
+                            <a href="gui-buoyb.html#ota">Over The Air Updates</a>
+                            <a href="gui-buoyb.html#dns">DNS</a>
+                            <a href="gui-buoyb.html#gps">GPS</a>
+                            <a href="gui-buoyb.html#timer">Timer</a>
+                            <a href="gui-buoyb.html#lora">LoRa</a>
+                            <a href="gui-buoyb.html#terminal">Terminal</a>
+                          </span>
+                      </div> <!-- end entry__tags -->
+                      <p><a href="gui-buoyb.html">[Detailed Post]</a></p>
+                  </div>
+                  <div class="col-six" style="text-align:center">
+                      <img src="images/buoy_b/Buoy-B-01.jpg" width="400" alt="">
+                      <p><strong>Buoy B v1.0</strong></p>
+                      <div class="entry__tags">
+                          <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="buoyb.html#main_components">ESP32</a>
+                            <a href="buoyb.html#main_components">LoRa</a>
+                            <a href="buoyb.html#main_components">GPS</a>
+                            <a href="buoyb.html#power-management">Power Management</a>
+                            <a href="buoyb.html#servo-motor">Servo Motor</a>
+                            <a href="buoyb.html#stepper-motor">Stepper Motor</a>
+                            <a href="buoyb.html#dc-motor">DC Motor</a>
+                            <a href="buoyb.html#pcb">PCB</a>
+                          </span>
+                      </div> <!-- end entry__tags -->
+                      <p><a href="buoyb.html">[Detailed Post]</a></p>
+                  </div>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/buoy_a/Buoy-A-02.jpg" width="480" alt="">
+                    <p><strong>Buoy A v1.0</strong></p>
+                    <div class="entry__tags">
+                        <span class="entry__tax-list entry__tax-list--pill">
+                          <a href="buoya.html#main_components">ESP32</a>
+                          <a href="buoya.html#main_components">LoRa</a>
+                          <a href="buoya.html#main_components">GPS</a>
+                          <a href="buoya.html#main_components">4G(LTE)</a>
+                          <a href="buoya.html#power-management">Power Management</a>
+                          <a href="buoya.html#servo-motor">Servo Motor</a>
+                          <a href="buoya.html#dc-motor">DC Motor</a>
+                          <a href="buoya.html#pcb">PCB</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                    <p><a href="buoya.html">[Detailed Post]</a></p>
+                </div>
+
+                <h3 id="prototype2">Second Prototype</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/eja/ejav2-prototype2.jpg" width="400" alt="">
+                </div>
+
+                <p style="text-align:center">Second Prototype</p>
+
+                <p>For the second prototype, I designed the PCB <a href="ejam.html">Eja M v1.0</a> to replace the previous pcb designs <a href="onboardgateway.html">Onboard Gateway v1.0</a>, <a href="buoyb.html">Buoy B v1.0</a> and <a href="buoya.html">Buoy A v1.0</a>.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ejam/ejam-pcb-top-01.jpg" width="480" alt="">
+                    <p><strong>EJA M v1.0</strong></p>
+                    <div class="entry__tags">
+                        <span class="entry__tax-list entry__tax-list--pill">
+                          <a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc">USB C</a>
+                          <a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc">EMC</a>
+                          <a href="ejam.html#esp32">ESP32</a>
+                          <a href="ejam.html#ftdi-ft260s">FTDI</a>
+                          <a href="ejam.html#lora">LoRa</a>
+                          <a href="ejam.html#gps">GPS</a>
+                          <a href="ejam.html#real-time-clock-rtc">RTC</a>
+                          <a href="ejam.html#battery-charging-circuit">Battery Charger</a>
+                          <a href="ejam.html#5v-2a-stepup">Stepup</a>
+                          <a href="ejam.html#3v3-3a-sepic-converter">Sepic</a>
+                          <a href="ejam.html#servo-motor-connector">Servo Motor</a>
+                          <a href="ejam.html#pcb">PCB</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                    <p><a href="ejam.html">[Detailed Post]</a></p>
+                </div>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">3D Printing</a>
+                            <a href="#0">Project</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">3D</a>
-                            <a href="#0">Venezuela</a>
-                            <a href="https://www.adafruit.com/category/168">NeoPixels</a>
+                            <a href="eja.html#prototype1">First Prototype | 2020</a>
+                            <a href="eja.html#prototype2">Second Prototype | 2021</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -384,17 +538,17 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="puma560.html" rel="prev">
+                    <a href="ftdi-dev-board.html" rel="prev">
                         <span>Previous Post</span>
-                        PUMA 560 Matlab Simulations | Robotic Manipulator
+                        FTDI Development Board | FT260S and FT312D
                     </a>
                 </div>
-                <div class="col-six s-content__next">
-                    <a href="interactive-map.html" rel="next">
+                <!-- <div class="col-six s-content__next">
+                    <a href="3dmap.html" rel="next">
                         <span>Next Post</span>
-                        Interactive Map | OpenLayers
+                        Real-Time Monitoring on a 3D Printed Map
                     </a>
-                </div>
+                </div> -->
             </div>
         </div> <!-- end s-content__pagenav -->
 
