@@ -112,6 +112,7 @@
                         <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
                           <ul class="sub-menu">
                             <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#findings" title="">Findings</a></li>
                             <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
                             <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
                             <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
@@ -132,6 +133,7 @@
                             <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
                             <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
                             <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="gps-dev-board.html#firmware" title="">Firmware &amp; Testing</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
@@ -153,6 +155,7 @@
                             <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
                             <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
                             <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#firmware" title="">Firmware</a></li>
                             <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
                             <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -169,6 +172,7 @@
                             <li><a href="buoya.html#power-management" title="">Power Management</a></li>
                             <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
@@ -185,6 +189,7 @@
                             <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
                             <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
                             <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -231,6 +236,16 @@
                             <li><a href="irdar.html#firmware" title="">Firmware</a></li>
                             <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
                             <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ambient-lights.html">Sensor-Based Ambient Lights</a>
+                          <ul class="sub-menu">
+                            <li><a href="ambient-lights.html" title="">Description</a></li>
+                            <li><a href="ambient-lights.html#hardware" title="">Hardware</a></li>
+                            <li><a href="ambient-lights.html#modes" title="">Operation Modes</a></li>
+                            <li><a href="ambient-lights.html#firmware" title="">Firmware</a></li>
+                            <li><a href="ambient-lights.html#simulation" title="">Simulation</a></li>
+                            <li><a href="ambient-lights.html#notes" title="">Notes</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
@@ -299,6 +314,7 @@
                         <li class="has-children"><a href="puma560.html">PUMA 560</a>
                           <ul class="sub-menu">
                             <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#how-it-works" title="">What the GUIs Do</a></li>
                             <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
                             <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
                             <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
@@ -348,6 +364,23 @@
                 </li>
 
                 <li class="has-children">
+                    <a href="multimppt.html" title="">Power Electronics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="multimppt.html">MultiMPPT &mdash; DPP Architecture</a>
+                          <ul class="sub-menu">
+                            <li><a href="multimppt.html" title="">Description</a></li>
+                            <li><a href="multimppt.html#why-dpp" title="">Why DPP</a></li>
+                            <li><a href="multimppt.html#simulation" title="">Simulation</a></li>
+                            <li><a href="multimppt.html#results" title="">Simulation Results</a></li>
+                            <li><a href="multimppt.html#board" title="">Test Board</a></li>
+                            <li><a href="multimppt.html#circuit" title="">Circuit</a></li>
+                            <li><a href="multimppt.html#repository" title="">Repositories</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
@@ -386,6 +419,26 @@
 
                   <div class="featured-slider featured" data-aos="zoom-in">
 
+                    <!-- MultiMPPT -->
+                    <div class="featured__slide">
+                        <div class="entry">
+
+                            <div class="entry__background" style="background-image:url('images/multimppt/carousel.jpg');"></div>
+
+                            <div class="entry__content">
+                                <span class="entry__category"><a href="multimppt.html">Power Electronics</a></span>
+
+                                <h2><a href="multimppt.html" title="">MultiMPPT &mdash; a DPP-Architecture MPPT</a></h2>
+
+                                <div class="entry__info">
+                                    <ul class="entry__meta">
+                                        <li>April&ndash;May, 2022</li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end entry__content -->
+
+                        </div> <!-- end entry -->
+                    </div> <!-- end featured__slide -->
                     <!-- EJA Project -->
                     <div class="featured__slide">
                         <div class="entry">
@@ -393,7 +446,7 @@
                             <div class="entry__background" style="background-image:url('images/eja/ejav2-underwater01.jpg');"></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">Project</a></span>
+                                <span class="entry__category"><a href="eja.html">Project</a></span>
 
                                 <h2><a href="eja.html" title="">EJA<br>Intelligent Popup Buoy</a></h2>
 
@@ -454,6 +507,26 @@
 
                         </div> <!-- end entry -->
                     </div> <!-- end featured__slide -->
+                    <!-- Ambient Lights -->
+                    <div class="featured__slide">
+                        <div class="entry">
+
+                            <div class="entry__background" style="background-image:url('images/ambient_lights/carousel.jpg');"></div>
+
+                            <div class="entry__content">
+                                <span class="entry__category"><a href="embedded-software.html">Embedded Software</a></span>
+
+                                <h2><a href="ambient-lights.html" title="">Sensor-Based Ambient Lights &mdash; the HELA Module</a></h2>
+
+                                <div class="entry__info">
+                                    <ul class="entry__meta">
+                                        <li>March, 2021</li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end entry__content -->
+
+                        </div> <!-- end entry -->
+                    </div> <!-- end featured__slide -->
                     <!-- Web Applications -->
                     <div class="featured__slide">
                         <div class="entry">
@@ -461,7 +534,7 @@
                             <div class="entry__background" style="background-image:url('images/interactive_map/worldmap.jpg');"></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">Web Applications</a></span>
+                                <span class="entry__category"><a href="interactive-map.html">Web Applications</a></span>
 
                                 <h2><a href="interactive-map.html" title="">Interactive Map</a></h2>
 
@@ -485,7 +558,7 @@
                             <div class="entry__background" style="background-image:url('images/3dmap/IMG-20190707-WA0010.jpg');"></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">3D Printing</a></span>
+                                <span class="entry__category"><a href="3dmap.html">3D Printing</a></span>
 
                                 <h2><a href="3dmap.html" title="">Real-Time Monitoring on a 3D Printed Map</a></h2>
 
@@ -553,7 +626,7 @@
                             <div class="entry__background" style="background-image:url('images/cv_pointillize/carousel.jpg');"></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">Computer Vision</a></span>
+                                <span class="entry__category"><a href="opencv-pointillize.html">Computer Vision</a></span>
 
                                 <h2><a href="opencv-pointillize.html" title="">Pointillize &mdash; a Photo-to-Dots Filter</a></h2>
 
@@ -593,7 +666,7 @@
                             <div class="entry__background" style="background-image:url('images/cv_testapp/carousel.jpg');"></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">Computer Vision</a></span>
+                                <span class="entry__category"><a href="opencv-pointillize.html">Computer Vision</a></span>
 
                                 <h2><a href="opencv-test-app.html" title="">OpenCV Test App</a></h2>
 
@@ -715,7 +788,7 @@
                             <div class="entry__background" style="background-image:url('images/bajasae/00009795.jpg');"></div>
 
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">Vehicles</a></span>
+                                <span class="entry__category"><a href="bajasae.html">Vehicles</a></span>
 
                                 <h2><a href="bajasae.html" title="">Electronic Devices for Racing Vehicles</a></h2>
 
@@ -776,6 +849,42 @@
         <div class="row entries-wrap wide">
             <div class="entries">
 
+                <!-- MultiMPPT -->
+                <article class="col-block">
+
+                    <div class="item-entry" data-aos="zoom-in">
+                        <div class="item-entry__thumb">
+                            <a href="multimppt.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
+                                <img src="images/multimppt/pcb-render.jpg"
+                                     srcset="images/multimppt/pcb-render.jpg 1x, images/multimppt/pcb-render.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-entry__text">
+                            <div class="item-entry__cat">
+                                <a href="multimppt.html">Power Electronics</a>
+                            </div>
+
+                            <h2 class="item-entry__title"><a href="multimppt.html">MultiMPPT &mdash; a DPP-Architecture MPPT</a></h2>
+
+                            <div class="entry__tags">
+                                <span class="entry__tax-list entry__tax-list--pill">
+                                    <a href="multimppt.html#why-dpp">DPP</a>
+                                    <a href="multimppt.html#why-dpp">MPPT</a>
+                                    <a href="multimppt.html#circuit">Flyback</a>
+                                    <a href="multimppt.html#simulation">Simulink</a>
+                                    <a href="multimppt.html#results">Partial Shading</a>
+                                    <a href="multimppt.html#board">KiCad</a>
+                                </span>
+                            </div> <!-- end entry__tags -->
+
+                            <div class="item-entry__date">
+                                <a href="multimppt.html">April&ndash;May, 2022</a>
+                            </div>
+                        </div>
+                    </div> <!-- item-entry -->
+
+                </article> <!-- end article -->
                 <!-- EJA Project -->
                 <article class="col-block">
 
@@ -789,7 +898,7 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">Project</a>
+                                <a href="eja.html">Project</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="eja.html">EJA<br>Intelligent Popup Buoy</a></h2>
@@ -821,21 +930,21 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">Project</a>
+                                <a href="embedded-hardware.html">Project</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="embedded-hardware.html">PCB Designs</a></h2>
 
                             <div class="entry__tags">
                                 <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="ejam.html">Eja M</a>
-                                    <a href="ftdi-dev-board.html">FTDI</a>
-                                    <a href="gps-dev-board.html">GPS</a>
-                                    <a href="lora-dev-board.html">LoRa</a>
-                                    <a href="buoyb.html">Buoy B</a>
-                                    <a href="buoya.html">Buoy A</a>
-                                    <a href="onboardgateway.html">Onboard Gateway</a>
-                                    <a href="helios_ren.html">HELIOS REN</a>
+                                    <a href="ejam.html#pcb">Eja M</a>
+                                    <a href="ftdi-dev-board.html#pcb">FTDI</a>
+                                    <a href="gps-dev-board.html#pcb">GPS</a>
+                                    <a href="lora-dev-board.html#pcb">LoRa</a>
+                                    <a href="buoyb.html#pcb">Buoy B</a>
+                                    <a href="buoya.html#pcb">Buoy A</a>
+                                    <a href="onboardgateway.html#pcb">Onboard Gateway</a>
+                                    <a href="helios_ren.html#design">HELIOS REN</a>
                                 </span>
                             </div> <!-- end entry__tags -->
 
@@ -919,6 +1028,41 @@
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
+                <!-- Ambient Lights -->
+                <article class="col-block">
+
+                    <div class="item-entry" data-aos="zoom-in">
+                        <div class="item-entry__thumb">
+                            <a href="ambient-lights.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
+                                <img src="images/ambient_lights/proteus-schematic.png"
+                                     srcset="images/ambient_lights/proteus-schematic.png 1x, images/ambient_lights/proteus-schematic.png 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-entry__text">
+                            <div class="item-entry__cat">
+                                <a href="embedded-software.html">Embedded Software</a>
+                            </div>
+
+                            <h2 class="item-entry__title"><a href="ambient-lights.html">Sensor-Based Ambient Lights &mdash; the HELA Module</a></h2>
+
+                            <div class="entry__tags">
+                                <span class="entry__tax-list entry__tax-list--pill">
+                                    <a href="ambient-lights.html#hardware">PIC16F1768</a>
+                                    <a href="ambient-lights.html#hardware">DS1307</a>
+                                    <a href="ambient-lights.html#hardware">APDS-9002</a>
+                                    <a href="ambient-lights.html#modes">State Machine</a>
+                                    <a href="ambient-lights.html#simulation">Proteus</a>
+                                </span>
+                            </div> <!-- end entry__tags -->
+
+                            <div class="item-entry__date">
+                                <a href="ambient-lights.html">March, 2021</a>
+                            </div>
+                        </div>
+                    </div> <!-- item-entry -->
+
+                </article> <!-- end article -->
                 <!-- Interactive Map -->
                 <article class="col-block">
 
@@ -932,7 +1076,7 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">Web Applications</a>
+                                <a href="interactive-map.html">Web Applications</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="interactive-map.html">Interactive Map<br>OpenLayers</a></h2>
@@ -965,14 +1109,14 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">3D Printing</a>
+                                <a href="3dmap.html">3D Printing</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="3dmap.html">Real-Time Monitoring on a 3D Printed Map</a></h2>
 
                             <div class="entry__tags">
                                 <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="3dmap.html">3D Printing</a>
+                                    <a href="3dmap.html#printing">3D Printing</a>
                                     <a href="3dmap.html#raspberrypi">Raspberry Pi</a>
                                     <a href="3dmap.html#neopixels">Neopixels</a>
                                 </span>
@@ -1068,7 +1212,7 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">Computer Vision</a>
+                                <a href="opencv-pointillize.html">Computer Vision</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="opencv-pointillize.html">Pointillize &mdash; a Photo-to-Dots Filter</a></h2>
@@ -1137,7 +1281,7 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">Computer Vision</a>
+                                <a href="opencv-pointillize.html">Computer Vision</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="opencv-test-app.html">OpenCV Test App</a></h2>
@@ -1308,7 +1452,7 @@
 
                         <div class="item-entry__text">
                             <div class="item-entry__cat">
-                                <a href="#0">Vehicles</a>
+                                <a href="bajasae.html">Vehicles</a>
                             </div>
 
                             <h2 class="item-entry__title"><a href="bajasae.html">Electronic Devices for Racing Vehicles</a></h2>

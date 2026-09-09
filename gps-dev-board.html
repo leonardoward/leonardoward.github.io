@@ -96,6 +96,7 @@
                         <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
                           <ul class="sub-menu">
                             <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#findings" title="">Findings</a></li>
                             <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
                             <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
                             <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
@@ -116,6 +117,7 @@
                             <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
                             <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
                             <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="gps-dev-board.html#firmware" title="">Firmware &amp; Testing</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
@@ -137,6 +139,7 @@
                             <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
                             <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
                             <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#firmware" title="">Firmware</a></li>
                             <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
                             <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -153,6 +156,7 @@
                             <li><a href="buoya.html#power-management" title="">Power Management</a></li>
                             <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
@@ -169,6 +173,7 @@
                             <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
                             <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
                             <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -215,6 +220,16 @@
                             <li><a href="irdar.html#firmware" title="">Firmware</a></li>
                             <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
                             <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ambient-lights.html">Sensor-Based Ambient Lights</a>
+                          <ul class="sub-menu">
+                            <li><a href="ambient-lights.html" title="">Description</a></li>
+                            <li><a href="ambient-lights.html#hardware" title="">Hardware</a></li>
+                            <li><a href="ambient-lights.html#modes" title="">Operation Modes</a></li>
+                            <li><a href="ambient-lights.html#firmware" title="">Firmware</a></li>
+                            <li><a href="ambient-lights.html#simulation" title="">Simulation</a></li>
+                            <li><a href="ambient-lights.html#notes" title="">Notes</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
@@ -283,6 +298,7 @@
                         <li class="has-children"><a href="puma560.html">PUMA 560</a>
                           <ul class="sub-menu">
                             <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#how-it-works" title="">What the GUIs Do</a></li>
                             <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
                             <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
                             <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
@@ -332,6 +348,23 @@
                 </li>
 
                 <li class="has-children">
+                    <a href="multimppt.html" title="">Power Electronics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="multimppt.html">MultiMPPT &mdash; DPP Architecture</a>
+                          <ul class="sub-menu">
+                            <li><a href="multimppt.html" title="">Description</a></li>
+                            <li><a href="multimppt.html#why-dpp" title="">Why DPP</a></li>
+                            <li><a href="multimppt.html#simulation" title="">Simulation</a></li>
+                            <li><a href="multimppt.html#results" title="">Simulation Results</a></li>
+                            <li><a href="multimppt.html#board" title="">Test Board</a></li>
+                            <li><a href="multimppt.html#circuit" title="">Circuit</a></li>
+                            <li><a href="multimppt.html#repository" title="">Repositories</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
@@ -373,14 +406,14 @@
             </div>
 
             <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">
+                <h1 id="description" class="entry__header-title display-1">
                     GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31
                 </h1>
                 <ul class="entry__header-meta">
                     <li class="date">September, 2021</li>
                     <li class="byline">
                         By
-                        <a href="#0">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                 </ul>
             </div>
@@ -404,7 +437,9 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This project contains the design of a development board for the <a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">ANTENOVA M20050-1</a> and the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>. The PCB was designed using KiCad.</p>
+                <p class="lead drop-cap">A KiCad breakout board for evaluating two GPS modules side by side &mdash; the <a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">ANTENOVA M20050-1</a> and the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a> &mdash; plus two footprints for 20&nbsp;mm coin&#8209;cell holders that keep the module's almanac powered for a warm start.</p>
+
+                <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team): every candidate part for the <a href="ejam.html">EJA&nbsp;M</a> board was tried first on a small dedicated PCB. Both modules speak plain NMEA over UART and share an identical header pinout here, so the same firmware runs against either. The <strong>ATGM332D-5N31</strong> was the one carried into EJA&nbsp;M.</p>
 
                 <h2 id="schematic">Schematic</h2>
 
@@ -514,6 +549,24 @@
 
                 <p style="text-align:center">3D Model of the PCB design of the GPS Dev Board.</p>
 
+                <h2 id="firmware">Firmware &amp; Testing</h2>
+
+                <p>The <code>Firmware/</code> folder in the repository has an Arduino sketch for each module (<code>esp32_atgm332d</code> and <code>esp32_antenova_m20050</code>) &mdash; the same code with a different banner, since only one module is exercised at a time.</p>
+
+                <ul>
+                    <li>The ESP32's <code>Serial2</code> runs at <strong>9600&nbsp;baud</strong> on <strong>GPIO16 (RX) / GPIO17 (TX)</strong>, wired to the module's UART header.</li>
+                    <li>The <a href="https://github.com/fu-hsi/FuGPS">FuGPS</a> library parses the NMEA stream; the sketch requests <code>RMC&nbsp;+&nbsp;GGA</code> sentences.</li>
+                    <li>On a fix it prints fix quality, satellite count, HDOP, altitude and a ready&#8209;to&#8209;click <code>google.com/maps</code> link with the current coordinates; if the module goes quiet for ~10&nbsp;s it prints a "not responding" warning.</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/gps_development_board/gps-test-setup.jpg" width="640" alt="The assembled green GPS testing board with both modules and a coin-cell holder populated, wired to an ESP32 devkit for the serial test">
+                </div>
+
+                <p style="text-align:center">Test rig &mdash; the board's UART header wired to an ESP32; an active antenna goes on the U.FL connector.</p>
+
+                <p>Wire <code>VIN&rarr;3V3</code>, <code>GND&rarr;GND</code>, <code>TX&rarr;GPIO16</code>, <code>RX&rarr;GPIO17</code>, open the matching sketch (ESP32 board support + the FuGPS library installed) and watch the serial monitor at 115200&nbsp;baud. A first outdoor fix takes a few minutes cold, seconds warm with the backup cell fitted.</p>
+
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
@@ -525,9 +578,12 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="gps-dev-board.html#gps-antenova-m20050">GPS</a>
-                            <a href="gps-dev-board.html#battery-holders">Coin Cell Battery Holders</a>
-                            <a href="gps-dev-board.html#pcb">PCB</a>
+                            <a href="gps-dev-board.html#gps-antenova-m20050">ANTENOVA M20050-1</a>
+                            <a href="gps-dev-board.html#gps-antenova-atgm332d">ATGM332D-5N31</a>
+                            <a href="gps-dev-board.html#battery-holders">Coin Cell Holders</a>
+                            <a href="gps-dev-board.html#firmware">NMEA / FuGPS</a>
+                            <a href="gps-dev-board.html#firmware">ESP32</a>
+                            <a href="gps-dev-board.html#pcb">KiCad</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->

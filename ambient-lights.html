@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>ATLAS | Sumo Robot | Leonardo Ward</title>
-    <meta name="description" content="ATLAS, an autonomous differential-drive sumo robot (2nd place, VI Venezuelan National Robotics Competition, 2016). Arduino Nano, closed-loop PID wheel-speed control, reverse-engineered brushless DC motor drivers, infrared and ultrasonic distance sensors and a sensor-driven strategy state machine.">
+    <title>Sensor-Based Ambient Lights &mdash; HELA Module | Embedded Software | Leonardo Ward</title>
+    <meta name="description" content="HELA Module: a modular ambient-light controller that switches a mains 110/220 V AC LED strip manually, on a schedule, or automatically from the ambient light level. PIC16F1768 firmware and a Proteus simulation, built for a university embedded-systems course.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/sumo.html">
+    <link rel="canonical" href="https://leonardoward.github.io/ambient-lights.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ATLAS | Sumo Robot | Leonardo Ward">
-    <meta property="og:description" content="ATLAS, an autonomous differential-drive sumo robot (2nd place, VI Venezuelan National Robotics Competition, 2016). Arduino Nano, closed-loop PID wheel-speed control, reverse-engineered brushless DC motor drivers, infrared and ultrasonic distance sensors and a sensor-driven strategy state machine.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/sumo/20161101_085539_light60.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/sumo.html">
+    <meta property="og:title" content="Sensor-Based Ambient Lights &mdash; HELA Module | Embedded Software | Leonardo Ward">
+    <meta property="og:description" content="A modular ambient-light controller for a mains LED strip: manual, scheduled or light-sensor control on a PIC16F1768, simulated in Proteus.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/ambient_lights/proteus-schematic.png">
+    <meta property="og:url" content="https://leonardoward.github.io/ambient-lights.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -271,7 +271,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="sumo.html">Sumo</a>
@@ -401,173 +401,152 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/sumo/20161101_085539_light60.jpg" alt="The assembled Atlas sumo robot with its aluminium scoop blade and exposed control electronics">
+                    <img src="images/ambient_lights/proteus-schematic.png" alt="Proteus schematic of the HELA ambient-light module: a mains transformer and bridge rectifier feeding a 7805, a PIC16F1768 with a 16x2 LCD, three buttons, a DS1307 RTC, an APDS-9002 light sensor and a BC547-driven relay switching a mains LED strip">
                 </div>
             </div>
 
-            <div class="entry__header col-full" id="description">
-                <h1 class="entry__header-title display-1">
-                    ATLAS, a Robot for Sumo Competitions
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Sensor-Based Ambient Lights &mdash; the &ldquo;HELA&rdquo; Module
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">October, 2016</li>
+                    <li class="date">March, 2021</li>
                     <li class="byline">
                         By
-                        <a href="#0">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a> &amp; team
                     </li>
                     <li>
-                      <h3><a href="https://github.com/leonardoward/Atlas-Sumo-Robot"><i class="fab fa-github"></i></a></h3>
+                      <h3><a href="https://github.com/leonardoward/Sensor-Based-Ambient-Lights"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Atlas is an autonomous sumo robot built for the VI Venezuelan National Robotics Competition (USB BOTS 2016), where it took <strong>2nd place</strong> in the Sumo category. It was developed by the FutBot&nbsp;&ndash;&nbsp;Future Robotics team at the Universidad Sim&oacute;n Bol&iacute;var (USB).</p>
+                <p class="lead drop-cap">The <strong>HELA Module</strong> is a modular ambient&#8209;light controller: one piece of hardware that can switch an ordinary mains <strong>110&nbsp;V / 220&nbsp;V AC LED strip</strong> on and off <strong>manually</strong>, on a <strong>schedule</strong>, or <strong>automatically from the ambient light level</strong>. It was built for <em>PG&#8209;7232 Embedded Systems</em> at the <a href="https://www.usb.ve/">Universidad Sim&oacute;n Bol&iacute;var</a> as a six&#8209;person team project, with the firmware on a <a href="https://www.microchip.com/en-us/product/pic16f1768">PIC16F1768</a> and the whole circuit validated in <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
-                <p>Atlas is a two&#8209;wheeled, differential&#8209;drive robot. Its job is to find the opposing robot inside the ring, drive into it and push it out &mdash; without driving itself out in the process. It runs on an Arduino Nano, with a closed&#8209;loop speed controller on each wheel and a sensor&#8209;driven state machine that decides how to move.</p>
+                <p>The brief was written as a product exercise: build to a target cost (electronics under US$7), run straight off mains, keep the operating mode through a power cut, and provide a simple user interface. The design that came out of it is deliberately conservative &mdash; a small non&#8209;isolated 5&nbsp;V supply for the logic and a relay to switch the mains strip.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/atlas_render_light.jpg" width="620" alt="CAD render of the Atlas sumo robot: a compact box chassis on two drive wheels with a curved aluminium scoop blade at the front">
-                </div>
-
-                <p style="text-align:center">CAD model of Atlas, showing the drive wheels and the front scoop blade.</p>
-
-                <h2 id="competition">The Arena</h2>
-
-                <p>A sumo match is fought inside a circular ring (the <em>dohy&#333;</em>): 150&nbsp;cm in diameter, with a 5&nbsp;cm border marking the edge and two short starting lines at the centre. The two robots start back&#8209;to&#8209;back and, after a mandatory delay following the start signal, must push the opponent out of the ring or immobilise it. Leaving the ring on your own means losing the round, so edge awareness matters as much as attacking.</p>
+                <h2 id="hardware">Hardware</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/sumo_arena.png" width="440" alt="Competition arena diagram: a 150 cm circle with a 5 cm edge border and two 20 cm central starting lines set 20 cm apart">
+                    <img src="images/ambient_lights/block-hardware.png" width="720" alt="Hardware block diagram: a power cord into an HLK-10M05 AC/DC module giving 5 VDC to a PIC16, which connects to an ICSP header, three buttons, an APDS-9002 light sensor on an ADC, an LM016L LCD, a DS1307 RTC over I2C, a debug console over UART, and an HF46F-5-HS1 relay switching a 110 VAC LED strip">
                 </div>
 
-                <p style="text-align:center">Competition arena &mdash; 150&nbsp;cm ring, 5&nbsp;cm edge border, central start lines.</p>
-
-                <h2 id="system-overview">System Overview</h2>
+                <p style="text-align:center">Hardware block diagram &mdash; the logic runs from a small 5&nbsp;V supply; only the relay touches the mains.</p>
 
                 <div class="table-responsive">
                     <table>
+                        <thead>
+                            <tr><th>Block</th><th>Part</th><th>Notes</th></tr>
+                        </thead>
                         <tbody>
-                        <tr><td>Controller</td><td>Arduino Nano (ATmega328P, 16&nbsp;MHz, 5&nbsp;V)</td></tr>
-                        <tr><td>Drivetrain</td><td>Two brushless DC gearmotors, differential drive &mdash; wheel radius 0.08&nbsp;m, track 0.25&nbsp;m</td></tr>
-                        <tr><td>Motor control</td><td>Per&#8209;wheel PWM / direction / brake / enable, single&#8209;channel tacho feedback, analog current sense</td></tr>
-                        <tr><td>Speed control</td><td>Two independent PID loops on wheel RPM; unicycle&nbsp;&rarr;&nbsp;differential&#8209;drive kinematics</td></tr>
-                        <tr><td>Main sensors</td><td>Sharp GP2Y0A21YK infrared and HC&#8209;SR04 ultrasonic distance sensors (front / sides / rear)</td></tr>
-                        <tr><td>Extra channels</td><td>TLC2543 11&#8209;channel, 12&#8209;bit SPI ADC: forward proximity, ring&#8209;edge reflectance, 3&#8209;axis accelerometer</td></tr>
-                        <tr><td>Firmware</td><td>~1,000 lines of C/C++ across 11 Arduino modules</td></tr>
+                            <tr><td>MCU</td><td>PIC16F1768 (20&#8209;pin, 8&#8209;bit)</td><td>I&sup2;C, 2&times; 10&#8209;bit ADC, Flash for persistent state</td></tr>
+                            <tr><td>Power</td><td>HLK&#8209;10M05 AC/DC</td><td>Non&#8209;isolated, 5&nbsp;VDC @ 700&nbsp;mA, 3&times;2&nbsp;cm &mdash; powers the logic only</td></tr>
+                            <tr><td>Light sensor</td><td>APDS&#8209;9002</td><td>Current output across a load resistor, read by the ADC</td></tr>
+                            <tr><td>Real&#8209;time clock</td><td>DS1307 module, battery&#8209;backed</td><td>Keeps time through a mains outage</td></tr>
+                            <tr><td>Relay</td><td>HF46F&#8209;5&#8209;HS1 (5&nbsp;VDC coil, 5&nbsp;A)</td><td>BC547 + base resistor drive; 1N4007 flyback diode</td></tr>
+                            <tr><td>Display</td><td>LM016L 16&times;2 LCD</td><td>4&#8209;bit interface</td></tr>
+                            <tr><td>Buttons</td><td>3&times; momentary, pull&#8209;up</td><td><em>Select / mode</em>, <em>Accept / enter</em>, <em>Cancel</em></td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <h2 id="mechanical">Mechanical Design</h2>
-
-                <p>The chassis is 3D&#8209;printed and was designed in SolidWorks; it went through three iterations before the competition version. A curved aluminium <strong>scoop blade</strong> across the front is the offensive tool &mdash; angled to slip under the opposing robot and lift its wheels off the ground so it loses traction. A roller&#8209;ball caster at the rear keeps the robot level while the two driven wheels do the work, each turned through a small gear train from its motor.</p>
-
-                <p>The full part files and 2D manufacturing drawings for every version are in the repository.</p>
-
-                <h2 id="drivetrain">Drivetrain &amp; Motors</h2>
-
-                <div class="col-six">
-                  <p>
-                  <img src="images/sumo/IMG_8945_light40.JPG" width="400" alt="One of the two brushless DC motors salvaged for Atlas, with its driver board attached">
-                  </p>
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ambient_lights/proteus-schematic.png" width="720" alt="Full Proteus schematic of the module: mains source, transformer, bridge rectifier and 7805 regulator, PIC16F1768, 16x2 LCD, three pull-up buttons, DS1307 with crystal and backup battery, APDS-9002 light sensor, and a BC547-driven relay">
                 </div>
 
-                <p>Atlas is driven by two brushless DC motors salvaged from office equipment. There was no datasheet or wiring diagram for them, so the team <strong>reverse&#8209;engineered the driver board</strong> to work out how to command it from the Arduino. The board is built around two ICs:</p>
+                <p style="text-align:center">The complete circuit as simulated in Proteus.</p>
 
-                <ul>
-                    <li><a href="https://www.digikey.com.mx/product-detail/es/sanken/SLA6023/SLA6023-ND/4289323">SLA6023</a> &mdash; 3&#8209;phase brushless motor driver (60&nbsp;V, 6&nbsp;A, 25&nbsp;W).</li>
-                    <li><a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/40539/SANYO/LB1823.html">LB1823</a> &mdash; 3&#8209;phase brushless pre&#8209;driver, originally made for office&#8209;automation motors.</li>
-                </ul>
+                <h2 id="modes">Operation Modes</h2>
 
-                <p>Once mapped out, the board takes a simple logic interface from the Nano &mdash; a PWM speed input, a direction bit, a brake line and an enable line &mdash; and returns a single&#8209;channel tachometer pulse that the firmware counts to measure wheel speed.</p>
+                <p>The LCD shows the current screen; the three buttons walk a small menu.</p>
 
-                <div class="col-full">
-                  <div class="col-six">
-                    <p>
-                    <img src="images/sumo/20161106_213935_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, top view">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img src="images/sumo/20161106_193725_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, wiring detail">
-                    </p>
-                  </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Mode</th><th>What it does</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Home</strong></td><td>Shows the time and whether the light is forced on. <em>Accept</em> toggles a manual on/off override; <em>Select</em> cycles the menu.</td></tr>
+                            <tr><td><strong>Configure time</strong></td><td>Set the clock hours / minutes / seconds.</td></tr>
+                            <tr><td><strong>Auto on/off (schedule)</strong></td><td>Enter a start and end time; the light is on while the clock is inside that window.</td></tr>
+                            <tr><td><strong>Night light (sensor)</strong></td><td>Enable the light sensor; the screen shows the live reading, and pressing <em>Select</em> captures it as the darkness threshold. Below that level, the light turns on.</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <h2 id="sensing">Sensing</h2>
-
-                <p>Atlas locates its opponent with distance sensors covering the front, sides and rear of the chassis:</p>
-
-                <ul>
-                    <li id="infrared-sensor"><strong>Infrared</strong> &mdash; a Sharp <a href="https://www.sparkfun.com/products/242">GP2Y0A21YK</a> analog IR distance sensor.</li>
-                    <li id="ultrasonic-sensor"><strong>Ultrasonic</strong> &mdash; an <a href="https://www.sparkfun.com/products/15569">HC&#8209;SR04</a> ultrasonic ranging module.</li>
-                </ul>
-
-                <p>The firmware turns each into a distance reading and the strategy code compares it against a per&#8209;sensor threshold, backed by measured ADC&#8209;vs&#8209;distance calibration tables. A <strong>TLC2543</strong> &mdash; an 11&#8209;channel, 12&#8209;bit SPI ADC &mdash; adds the extra analog inputs the Nano runs out of: two forward&#8209;facing proximity sensors, four downward reflectance sensors for the ring edge, and a 3&#8209;axis accelerometer. The competition firmware acts on the proximity channels; the edge and accelerometer channels are read but were not yet wired into the behaviour.</p>
-
-                <p>The KiCad electronics design in the repository documents a fuller sensor ring &mdash; four Sharp analog IR sensors, one per side &mdash; from a later revision of the same layout.</p>
-
-                <h2 id="control">Control System</h2>
-
-                <p>Motion commands are given in <em>unicycle</em> form &mdash; a forward speed <em>V</em> and a turn rate <em>&omega;</em>. A differential&#8209;drive kinematics step converts <em>(V,&nbsp;&omega;)</em> into a target speed for each wheel, which becomes a target RPM. Two independent <strong>PID loops</strong> then track those targets: each loop compares the commanded RPM against the RPM measured from the tacho pulses (counted over 100&nbsp;ms windows) and adjusts the motor PWM.</p>
-
-                <p>Before writing the Arduino code, the kinematics were modelled and plotted in <strong>MATLAB</strong> (<code>matlab/Sumo&nbsp;Atlas/</code>) &mdash; sweeping <em>V</em> and <em>&omega;</em> to check the resulting wheel velocities and RPM &mdash; and then ported to C.</p>
-
-                <p>Each motor also has an <strong>ACS711 current sensor</strong>. If a motor draws more than its current limit &mdash; typically during a sustained push against the opponent &mdash; a fold&#8209;back limiter lowers that wheel's PID output ceiling until the current comes back down, protecting the driver board from a stalled push.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/control_board_light.jpg" width="620" alt="Hand-wired perfboard control board for Atlas, with the Arduino Nano, an accelerometer breakout and point-to-point wiring between the driver and sensor connectors">
+                    <img src="images/ambient_lights/menu-flow.png" width="720" alt="Menu state diagram: from the Inicio start state to Screen 1 (time display), then Screen 2 (set time) with hour/minute/second sub-states, Screen 3 (schedule on/off) with its own hour/minute/second sub-states, and Screen 4 (automatic on/off by sensor), navigated with the mode and enter buttons">
                 </div>
 
-                <p style="text-align:center">The hand&#8209;wired control board: Arduino Nano, sensor conditioning and the connectors to the motor drivers.</p>
+                <p style="text-align:center">The menu state flow (from the project report) &mdash; the mode and enter buttons move between screens.</p>
 
-                <h2 id="strategy">Match Strategy</h2>
+                <p>The relay logic is a simple priority chain: manual override &rarr; inside the scheduled window &rarr; ambient light below the captured threshold &rarr; otherwise off.</p>
 
-                <p>Tactics are a small state machine. Every loop, <code>estrategia()</code> looks at the sensors and picks a target state; a dispatcher then runs the matching behaviour:</p>
-
-                <ul>
-                    <li><strong>Start delay</strong> &mdash; hold still for the mandatory count after the start signal.</li>
-                    <li><strong>Opening move</strong> &mdash; one open&#8209;loop ~90&deg; turn to get off the start line.</li>
-                    <li><strong>Search</strong> &mdash; spin in place, sweeping the Sharp sensors across the ring.</li>
-                    <li><strong>Attack</strong> &mdash; when a sensor sees the opponent, drive at it: straight ahead if it is dead centre, or on a curve if it is off to one side.</li>
-                    <li><strong>Re&#8209;acquire</strong> &mdash; if the target is lost, drop back to Search.</li>
-                </ul>
-
-                <p>The sensors are checked in priority order &mdash; front&#8209;centre first, then the front&#8209;left and front&#8209;right proximity channels, then the side Sharps &mdash; so the robot always commits to the most head&#8209;on contact available. For example, a front&#8209;centre reading past its ~80&nbsp;cm threshold triggers a straight charge at full commanded speed.</p>
-
-                <h2 id="result">Competition Result</h2>
-
-                <p><strong>2nd place, Sumo category</strong> &mdash; VI Competencia Nacional de Rob&oacute;tica (USB BOTS 2016), Centro &Iacute;talo Venezolano, Caracas, 7&ndash;9 November 2016. Built with Javier Inojosa for FutBot&nbsp;&ndash;&nbsp;Future Robotics.</p>
+                <h2 id="firmware">Firmware</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/award_light.jpg" width="620" alt="The bare-metal Atlas chassis with its scoop blade next to the USB BOTS 2016 certificate for 2nd place in the Sumo category">
+                    <img src="images/ambient_lights/block-software.png" width="720" alt="Software block diagram: a button-logic block in the middle connected to display logic, set/get time, on/off logic and a get-luminosity block, with persistent memory, and I/O to the LCD, DS1307, relay and debug console">
                 </div>
 
-                <p style="text-align:center">Atlas next to the USB&nbsp;BOTS&nbsp;2016 second&#8209;place certificate.</p>
+                <p style="text-align:center">Software block diagram &mdash; six subsystems: display, clock, sensor, buttons, persistent memory and the on/off logic that ties them together.</p>
 
-                <h2 id="repository">Repository</h2>
+                <p><code>Hela.X/main.c</code> is a single cooperative loop &mdash; read the light sensor (ADC), edge&#8209;detect the three buttons, render the current menu screen, decide the relay state, and print the time and sensor value on a 9600&nbsp;baud debug UART. The LCD is driven by a 4&#8209;bit HD44780 library; the ADC, UART and pin setup come from <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLAB Code Configurator</a>. The device runs from the 8&nbsp;MHz internal oscillator.</p>
 
-                <p>The <a href="https://github.com/leonardoward/Atlas-Sumo-Robot">GitHub repository</a> holds the complete project: the Arduino firmware (11 modules &mdash; motor driver, kinematics, PID, state machine, sensor drivers), the KiCad electronics design, the SolidWorks CAD and drawings for all three chassis versions, and the MATLAB kinematics scripts. The README documents the full hardware and firmware architecture, plus a look back at the bugs and the changes I would make revisiting it today.</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>PIC pin</th><th>Signal</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>RA4 / RA5 / RC6</td><td>Buttons &mdash; Select / Accept / Cancel</td></tr>
+                            <tr><td>RA2</td><td>Light sensor (ADC AN2)</td></tr>
+                            <tr><td>RC0&ndash;RC3</td><td>LCD data D4&ndash;D7</td></tr>
+                            <tr><td>RC4 / RC5</td><td>LCD RS / E</td></tr>
+                            <tr><td>RC7</td><td>Relay drive</td></tr>
+                            <tr><td>RB5 / RB7</td><td>Debug UART RX / TX</td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
+                <h2 id="simulation">Simulation</h2>
+
+                <p>The whole module &mdash; mains supply, regulator, PIC, LCD, RTC, sensor and relay &mdash; is simulated in Proteus using only stock library parts. A virtual terminal on the debug UART shows the time and the live light&#8209;sensor reading.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/ambient_lights/demo.jpg" width="720" alt="Proteus running the simulation: a virtual terminal printing repeated 'Current sensor value is: 120' and 'Current time is: 00:00:00' lines next to the powered circuit with the LCD showing 00:00:00">
+                </div>
+
+                <p style="text-align:center">Running in Proteus &mdash; the debug terminal streams the time and sensor value. There is also a <a href="https://youtu.be/3KqcJgEQBLA">demo video</a> of the last firmware version.</p>
+
+                <h2 id="notes">Notes</h2>
+
+                <ul>
+                    <li>The committed firmware implements the menu, the light sensor, the schedule comparison and the relay control. The DS1307 is on the board and in the schematic, but this build does not yet read it over I&sup2;C (no I&sup2;C module is generated and there is no timekeeping interrupt) &mdash; the clock is set and held through the <em>Configure time</em> screen. Wiring the RTC and writing the selected mode to Flash are the open items.</li>
+                    <li>From the report's BOM analysis the electronics come to about <strong>$7</strong> in one&#8209;off quantities and the full production cost (with assembly and lamp materials) to about <strong>$31</strong> against a $70 retail target &mdash; inside the 50% goal.</li>
+                    <li>The repository has no <code>LICENSE</code> file yet.</li>
+                    <li>Team: Carlos Sanoja, Jes&uacute;s Guillen, Leonardo Ward, Mauricio Marcano, Oscar Moreno and Vincenzo D&rsquo;Argento.</li>
+                </ul>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Robotics</a>
+                            <a href="embedded-software.html">Embedded Software</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="sumo.html#system-overview">Arduino</a>
-                            <a href="sumo.html#control">PID Control</a>
-                            <a href="sumo.html#drivetrain">Brushless DC</a>
-                            <a href="sumo.html#infrared-sensor">Infrared Sensor</a>
-                            <a href="sumo.html#ultrasonic-sensor">Ultrasonic Sensor</a>
-                            <a href="sumo.html#strategy">State Machine</a>
+                            <a href="ambient-lights.html#hardware">PIC16F1768</a>
+                            <a href="ambient-lights.html#hardware">DS1307</a>
+                            <a href="ambient-lights.html#hardware">APDS-9002</a>
+                            <a href="ambient-lights.html#hardware">Relay</a>
+                            <a href="ambient-lights.html#firmware">MPLAB X</a>
+                            <a href="ambient-lights.html#modes">State Machine</a>
+                            <a href="ambient-lights.html#simulation">Proteus</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -597,15 +576,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="brushlessdc.html" rel="prev">
+                    <a href="irdar.html" rel="prev">
                         <span>Previous Post</span>
-                        Brushless DC Motor Drivers
+                        IRDAR &mdash; a Scanning Infrared Rangefinder
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="puma560.html" rel="next">
+                    <a href="pyhl7-aecg.html" rel="next">
                         <span>Next Post</span>
-                        PUMA 560 Matlab Simulations | Robotic Manipulator
+                        pyHL7 aECG
                     </a>
                 </div>
             </div>

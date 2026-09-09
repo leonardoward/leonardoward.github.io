@@ -96,6 +96,7 @@
                         <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
                           <ul class="sub-menu">
                             <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#findings" title="">Findings</a></li>
                             <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
                             <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
                             <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
@@ -116,6 +117,7 @@
                             <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
                             <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
                             <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="gps-dev-board.html#firmware" title="">Firmware &amp; Testing</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
@@ -137,6 +139,7 @@
                             <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
                             <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
                             <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#firmware" title="">Firmware</a></li>
                             <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
                             <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -153,6 +156,7 @@
                             <li><a href="buoya.html#power-management" title="">Power Management</a></li>
                             <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
@@ -169,6 +173,7 @@
                             <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
                             <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
                             <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -215,6 +220,16 @@
                             <li><a href="irdar.html#firmware" title="">Firmware</a></li>
                             <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
                             <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ambient-lights.html">Sensor-Based Ambient Lights</a>
+                          <ul class="sub-menu">
+                            <li><a href="ambient-lights.html" title="">Description</a></li>
+                            <li><a href="ambient-lights.html#hardware" title="">Hardware</a></li>
+                            <li><a href="ambient-lights.html#modes" title="">Operation Modes</a></li>
+                            <li><a href="ambient-lights.html#firmware" title="">Firmware</a></li>
+                            <li><a href="ambient-lights.html#simulation" title="">Simulation</a></li>
+                            <li><a href="ambient-lights.html#notes" title="">Notes</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
@@ -283,6 +298,7 @@
                         <li class="has-children"><a href="puma560.html">PUMA 560</a>
                           <ul class="sub-menu">
                             <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#how-it-works" title="">What the GUIs Do</a></li>
                             <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
                             <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
                             <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
@@ -332,6 +348,23 @@
                 </li>
 
                 <li class="has-children">
+                    <a href="multimppt.html" title="">Power Electronics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="multimppt.html">MultiMPPT &mdash; DPP Architecture</a>
+                          <ul class="sub-menu">
+                            <li><a href="multimppt.html" title="">Description</a></li>
+                            <li><a href="multimppt.html#why-dpp" title="">Why DPP</a></li>
+                            <li><a href="multimppt.html#simulation" title="">Simulation</a></li>
+                            <li><a href="multimppt.html#results" title="">Simulation Results</a></li>
+                            <li><a href="multimppt.html#board" title="">Test Board</a></li>
+                            <li><a href="multimppt.html#circuit" title="">Circuit</a></li>
+                            <li><a href="multimppt.html#repository" title="">Repositories</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
@@ -373,14 +406,14 @@
             </div>
 
             <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">
+                <h1 id="description" class="entry__header-title display-1">
                     LoRa Development Board | RFM95W-915S2
                 </h1>
                 <ul class="entry__header-meta">
                     <li class="date">September, 2021</li>
                     <li class="byline">
                         By
-                        <a href="#0">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                 </ul>
             </div>
@@ -405,6 +438,8 @@
             <div class="col-full entry__main">
 
                 <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains an RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
+
+                <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team). LoRa is how the buoy reports its position to a surface gateway, so the RFM95W was proved out here before going onto the <a href="ejam.html">EJA&nbsp;M</a> board and the <a href="onboardgateway.html">Onboard Gateway</a>.</p>
 
                 <h2 id="schematic">Schematic</h2>
 
@@ -469,6 +504,8 @@
 
                 <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
 
+                <p><strong>Before flashing:</strong> set the frequency in <code>LoRa.begin(...)</code> to your regional band &mdash; the sketches ship with <code>866E6</code> (Europe), but the RFM95W&#8209;<strong>915</strong>S2 module on this board is the 915&nbsp;MHz (North America) variant, so use <code>915E6</code> with it. The sender and receiver must also share the same sync word (<code>LoRa.setSyncWord(0xF3)</code>) or they ignore each other.</p>
+
                 <p>The connections are the following:</p>
 
                 <div class="row add-bottom">
@@ -496,7 +533,11 @@
                                     </tr>
                                     <tr>
                                         <td>GPIO 5</td>
-                                        <td>CS</td>
+                                        <td>CS / NSS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GPIO 2</td>
+                                        <td>DIO0</td>
                                     </tr>
                                     <tr>
                                         <td>GPIO 18</td>
@@ -547,7 +588,11 @@
                                     </tr>
                                     <tr>
                                         <td>GPIO 5</td>
-                                        <td>CS</td>
+                                        <td>CS / NSS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GPIO 2</td>
+                                        <td>DIO0</td>
                                     </tr>
                                     <tr>
                                         <td>GPIO 18</td>
@@ -605,9 +650,11 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="lora-dev-board.html#schematic">RFM95W</a>
                             <a href="lora-dev-board.html#schematic">LoRa</a>
-                            <a href="lora-dev-board.html#pcb">PCB</a>
                             <a href="lora-dev-board.html#firmware-and-testing">ESP32</a>
+                            <a href="lora-dev-board.html#firmware-and-testing">915 MHz</a>
+                            <a href="lora-dev-board.html#pcb">KiCad</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->

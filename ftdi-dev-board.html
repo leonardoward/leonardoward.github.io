@@ -96,6 +96,7 @@
                         <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
                           <ul class="sub-menu">
                             <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#findings" title="">Findings</a></li>
                             <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
                             <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
                             <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
@@ -116,6 +117,7 @@
                             <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
                             <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
                             <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="gps-dev-board.html#firmware" title="">Firmware &amp; Testing</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
@@ -137,6 +139,7 @@
                             <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
                             <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
                             <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#firmware" title="">Firmware</a></li>
                             <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
                             <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -153,6 +156,7 @@
                             <li><a href="buoya.html#power-management" title="">Power Management</a></li>
                             <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
@@ -169,6 +173,7 @@
                             <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
                             <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
                             <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#firmware" title="">Firmware</a></li>
                             <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
                             <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
@@ -215,6 +220,16 @@
                             <li><a href="irdar.html#firmware" title="">Firmware</a></li>
                             <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
                             <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ambient-lights.html">Sensor-Based Ambient Lights</a>
+                          <ul class="sub-menu">
+                            <li><a href="ambient-lights.html" title="">Description</a></li>
+                            <li><a href="ambient-lights.html#hardware" title="">Hardware</a></li>
+                            <li><a href="ambient-lights.html#modes" title="">Operation Modes</a></li>
+                            <li><a href="ambient-lights.html#firmware" title="">Firmware</a></li>
+                            <li><a href="ambient-lights.html#simulation" title="">Simulation</a></li>
+                            <li><a href="ambient-lights.html#notes" title="">Notes</a></li>
                           </ul>
                         </li>
                         <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
@@ -283,6 +298,7 @@
                         <li class="has-children"><a href="puma560.html">PUMA 560</a>
                           <ul class="sub-menu">
                             <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#how-it-works" title="">What the GUIs Do</a></li>
                             <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
                             <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
                             <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
@@ -332,6 +348,23 @@
                 </li>
 
                 <li class="has-children">
+                    <a href="multimppt.html" title="">Power Electronics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="multimppt.html">MultiMPPT &mdash; DPP Architecture</a>
+                          <ul class="sub-menu">
+                            <li><a href="multimppt.html" title="">Description</a></li>
+                            <li><a href="multimppt.html#why-dpp" title="">Why DPP</a></li>
+                            <li><a href="multimppt.html#simulation" title="">Simulation</a></li>
+                            <li><a href="multimppt.html#results" title="">Simulation Results</a></li>
+                            <li><a href="multimppt.html#board" title="">Test Board</a></li>
+                            <li><a href="multimppt.html#circuit" title="">Circuit</a></li>
+                            <li><a href="multimppt.html#repository" title="">Repositories</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
@@ -373,14 +406,14 @@
             </div>
 
             <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">
+                <h1 id="description" class="entry__header-title display-1">
                     FTDI Development Board | FT260S and FT312D
                 </h1>
                 <ul class="entry__header-meta">
                     <li class="date">October, 2021</li>
                     <li class="byline">
                         By
-                        <a href="#0">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                 </ul>
             </div>
@@ -404,7 +437,27 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This project contains the design of a development board for the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S</a> and the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D</a>. The PCB was designed using KiCad.</p>
+                <p class="lead drop-cap">A KiCad breakout board for two FTDI USB interface chips &mdash; the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S</a> and the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D</a> &mdash; alongside a USB&#8209;C EMC front end, an ESP32 with an auto&#8209;reset circuit and a TS5A3153 analog switch.</p>
+
+                <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team). The question it was built to answer: is there a single USB&#8209;C interface chip that can both <em>program the ESP32</em> (via the RTS/DTR auto&#8209;reset handshake) and act as a <em>serial console</em>, so the buoy needs only one USB connector?</p>
+
+                <h2 id="findings">Findings</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Under test</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>FT260S</strong></td><td>A <strong>USB&#8209;HID</strong> device, not USB&#8209;CDC &mdash; it exposes <strong>no virtual COM port</strong>. Talking to it needs FTDI's <code>LibFT260</code> helper library, so it can't transparently program the ESP32 from the Arduino IDE without extra software work.</td></tr>
+                            <tr><td><strong>FT312D</strong></td><td>A USB&#8209;Host UART bridge that <strong>does not expose DTR/DSR</strong> &mdash; the lines the ESP32 auto&#8209;reset circuit needs. On the board only as a fallback.</td></tr>
+                            <tr><td><strong>ESP32 auto&#8209;reset circuit</strong></td><td>Verified working when driven by a standard FT232RL cable (3V3, GND, TX, RX, RTS, DTR): the two&#8209;transistor circuit correctly sequences <code>EN</code> and <code>IO0</code> for reset and bootloader entry.</td></tr>
+                            <tr><td><strong>USB&#8209;C EMC front end / TS5A3153 switch</strong></td><td>Populated and validated for reuse.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Neither FTDI part turned out to be a drop&#8209;in replacement for an FT232&#8209;style programmer, but the board proved out the USB&#8209;C EMC front end and the ESP32 auto&#8209;reset circuit that were carried into <a href="ejam.html">EJA&nbsp;M</a>.</p>
 
                 <h2 id="hardware-design">Hardware Design</h2>
 
@@ -430,13 +483,7 @@
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>.</p>
 
-                <p><strong>Notes:</strong> The FT260S was originally selected to directly program the ESP32, and also provide serial communication. After careful consideration I found that the FT260 is a HID class device and as such it does not generate a Virtual COM Port (like the FT232R), to interface with the FT260 it can be used the official helper library, LibFT260.</p>
-
-                <p><a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf">https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf</a></p>
-
-                <p><a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf">https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf</a></p>
-
-                <p>For that reason the FT260S will require more work before it can seamlessly program the ESP32. This topic will have to be addressed in the future.</p>
+                <p><strong>Note:</strong> the FT260S was originally picked to both program the ESP32 and provide the serial console. It turned out to be a <strong>USB&#8209;HID</strong> class device, so &mdash; unlike the FT232R &mdash; it does <strong>not</strong> enumerate as a virtual COM port; interfacing with it requires FTDI's <code>LibFT260</code> helper library (<a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf">AN&nbsp;394</a>, <a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf">AN&nbsp;395</a>). That extra software layer is why it can't seamlessly program the ESP32 from a stock toolchain &mdash; see <a href="#findings">Findings</a> above.</p>
 
                 <h3 id="ft312d">FTDI 2 - FT312D</h3>
 
@@ -649,12 +696,13 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc">USB C</a>
-                            <a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc">EMC</a>
-                            <a href="ftdi-dev-board.html#esp32-with-auto-reset">ESP32</a>
-                            <a href="ftdi-dev-board.html#ft260s">FTDI</a>
-                            <a href="ftdi-dev-board.html#ic-switch">IC Switch</a>
-                            <a href="ftdi-dev-board.html#pcb">PCB</a>
+                            <a href="ftdi-dev-board.html#ft260s">FT260S</a>
+                            <a href="ftdi-dev-board.html#ft312d">FT312D</a>
+                            <a href="ftdi-dev-board.html#findings">Findings</a>
+                            <a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc">USB-C / EMC</a>
+                            <a href="ftdi-dev-board.html#esp32-with-auto-reset">ESP32 Auto-Reset</a>
+                            <a href="ftdi-dev-board.html#ic-switch">TS5A3153 Switch</a>
+                            <a href="ftdi-dev-board.html#pcb">KiCad</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
