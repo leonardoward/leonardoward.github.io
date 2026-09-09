@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>FTDI Development Board | FT260S and FT312D</title>
-    <meta name="FTDI Development Board | FT260S and FT312D" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>FTDI Development Board | FT260S and FT312D | Leonardo Ward</title>
+    <meta name="description" content="A KiCad development board for evaluating the FTDI FT260S-U and FT312D USB-to-UART bridges, with an ESP32 auto-reset circuit and bench-test notes.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/ftdi-dev-board.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FTDI Development Board | FT260S and FT312D | Leonardo Ward">
+    <meta property="og:description" content="A KiCad development board for evaluating the FTDI FT260S-U and FT312D USB-to-UART bridges, with an ESP32 auto-reset circuit and bench-test notes.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/ftdi_development_board/ftdi-pcb-1.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/ftdi-dev-board.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/ftdi_development_board/ftdi-pcb-1.jpg" alt="">
+                    <img src="images/ftdi_development_board/ftdi-pcb-1.jpg" alt="FTDI development board PCB">
                 </div>
             </div>
 
@@ -299,7 +388,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
@@ -321,22 +410,22 @@
 
                 <h3 id="usb-c-port-with-electromagnetic-compatibility-emc">USB C Port with Electromagnetic Compatibility EMC</h3>
 
-                <p>Everything starts with the USB C port, this type of USB was selected because it's size and because of the growing trend of using this port to charge and communicate with portable devices.</p>
+                <p>Everything starts with the USB C port, this type of USB was selected because of its size and the growing trend of using this port to charge and communicate with portable devices.</p>
 
                 <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-usb-c.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/schematic-usb-c.jpg" width="640" alt="Schematic of the FTDI Dev Board: USB C and EMC protections">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: USB C and EMC protections.</p>
 
                 <h3 id="ft260s">FTDI 1 - FT260S</h3>
 
-                <p>The first USB TO UART/I2C FTDI that we is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>. The design only considers the USB to UART, therefore the I2C is left unconnected.</p>
+                <p>The first USB-to-UART/I2C FTDI device being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>. The design only considers the USB to UART, therefore the I2C is left unconnected.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-ft260s.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/schematic-ft260s.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the FTDI FT260S-U">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>.</p>
@@ -354,7 +443,7 @@
                 <p>The second USB TO UART/I2C FTDI that is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>. This IC does not support DTR/DSR for the UART, a feature that is required for the auto reset circuit of the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a> that was implemented, nevertheless the PCB has it as a second alternative.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-f312d.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/schematic-f312d.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the FTDI FT312D-32L1C-R">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>.</p>
@@ -364,7 +453,7 @@
                 <p>Finally, the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the ESP32. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" width="640" alt="Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32.</p>
@@ -374,7 +463,7 @@
                 <p>The design includes a couple of <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a> that will be tested for future implementations.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-switch.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/schematic-switch.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the SPDT switch TS5A3153DCUR">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the SPDT switch <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a>.</p>
@@ -481,13 +570,13 @@
                 <h2 id="pcb">PCB</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-testing-board01.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/ftdi-testing-board01.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-testing-board02.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/ftdi-testing-board02.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
@@ -497,7 +586,7 @@
                 <p>The designed auto reset circuit requires the signals 3.3V, GND, TX, RX, RTS and DTR. The commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> (FT232RL) was used to test the circuit, it provides all the required signals.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-programmer.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/ftdi-programmer.jpg" width="640" alt="Commercial USB to Serial Converter used for testing">
                 </div>
 
                 <p style="text-align:center">Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> used for testing.</p>
@@ -505,13 +594,13 @@
                 <p>The following wiring diagram shows how to connect the commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> and our FTDI Development Board.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" width="640" alt="Wiring diagram for the FTDI Dev Board and the Commercial USB to Serial Converter">
                 </div>
 
                 <p style="text-align:center">Wiring diagram for the FTDI Dev Board and the Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" width="640" alt="">
+                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" width="640" alt="Wiring diagram for the FTDI Dev Board and the Commercial USB to Serial Converter">
                 </div>
 
                 <p style="text-align:center">Wiring diagram for the FTDI Dev Board and the Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a>.</p>
@@ -536,7 +625,7 @@
                 <p>The standard Arduino IDE was used to program the ESP32, with the following configurations:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ide-setup.png" width="640" alt="">
+                    <img src="images/ftdi_development_board/ide-setup.png" width="640" alt="Setup of the Arduino IDE for the test">
                 </div>
 
                 <p style="text-align:center">Setup of the Arduino IDE for the test.</p>
@@ -544,7 +633,7 @@
                 <p>And the test was successful, the following image shows the results in the serial monitor.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/auto-reset-test-result.png" width="640" alt="">
+                    <img src="images/ftdi_development_board/auto-reset-test-result.png" width="640" alt="Results of the test">
                 </div>
 
                 <p style="text-align:center">Results of the test.</p>
@@ -571,7 +660,7 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -621,7 +710,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
 
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
@@ -670,7 +759,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

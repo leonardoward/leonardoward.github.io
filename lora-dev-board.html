@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>LoRa Development Board | RFM95W-915S2</title>
-    <meta name="LoRa Development Board | RFM95W-915S2" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>LoRa Development Board | RFM95W-915S2 | Leonardo Ward</title>
+    <meta name="description" content="A development board for the RFM95W-915S2 LoRa transceiver with a U.FL antenna connector and broken-out pins, plus ESP32 send and receive test firmware.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/lora-dev-board.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LoRa Development Board | RFM95W-915S2 | Leonardo Ward">
+    <meta property="og:description" content="A development board for the RFM95W-915S2 LoRa transceiver with a U.FL antenna connector and broken-out pins, plus ESP32 send and receive test firmware.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/lora_development_board/Lora_PCB.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/lora-dev-board.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/lora_development_board/Lora_PCB.jpg" alt="">
+                    <img src="images/lora_development_board/Lora_PCB.jpg" alt="LoRa RFM95W-915S2 development board PCB">
                 </div>
             </div>
 
@@ -299,7 +388,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
@@ -315,12 +404,12 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains a RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
+                <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains an RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
 
                 <h2 id="schematic">Schematic</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/schematic-v1.0.jpg" width="640" alt="">
+                    <img src="images/lora_development_board/schematic-v1.0.jpg" width="640" alt="Schematic of the LoRa Development Board">
                 </div>
 
                 <p style="text-align:center">Schematic of the LoRa Development Board.</p>
@@ -363,13 +452,13 @@
                 <h2 id="pcb">PCB</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/lora-testing-board01.jpg" width="640" alt="">
+                    <img src="images/lora_development_board/lora-testing-board01.jpg" width="640" alt="3D Model of the LoRa Development Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the LoRa Development Board.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/lora-testing-board02.jpg" width="640" alt="">
+                    <img src="images/lora_development_board/lora-testing-board02.jpg" width="640" alt="3D Model of the LoRa Development Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the LoRa Development Board.</p>
@@ -428,7 +517,7 @@
                 </div> <!-- end row -->
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/Lora_Dev_Board.jpg" width="640" alt="">
+                    <img src="images/lora_development_board/Lora_Dev_Board.jpg" width="640" alt="Custom LoRa Dev Board and ESP32 used in the test">
                 </div>
 
                 <p style="text-align:center">Custom LoRa Dev Board and ESP32 used in the test.</p>
@@ -479,7 +568,7 @@
                 </div> <!-- end row -->
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/Lora_Adafruit.jpg" width="640" alt="">
+                    <img src="images/lora_development_board/Lora_Adafruit.jpg" width="640" alt="RFM95W transceiver from Adafruit and ESP32 used in the test">
                 </div>
 
                 <p style="text-align:center"><a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a> and ESP32 used in the test.</p>
@@ -488,7 +577,7 @@
 
                 <p>Both of the RFM95W Boards were used as a sender and receiver, the result was successful in both cases. During the test, one of the transceivers sends the package "hello counter", where the counter is a number that goes from 0 to 32767. The other transceiver receives the package and prints the message through serial.</p>
 
-                <h3>Requisites</h3>
+                <h3>Requirements</h3>
 
                 <ol>
                     <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
@@ -498,7 +587,7 @@
                 <p>Results visualized in the serial monitor from the receiver circuit:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/Test-Result.png" width="640" alt="">
+                    <img src="images/lora_development_board/Test-Result.png" width="640" alt="Results from the test">
                 </div>
 
                 <p style="text-align:center">Results from the test.</p>
@@ -524,7 +613,7 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -574,7 +663,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
 
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
@@ -623,7 +712,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

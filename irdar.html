@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>IRDAR | Scanning Infrared Rangefinder | Leonardo Ward</title>
+    <meta name="description" content="IRDAR: a scanning infrared rangefinder built on a Freescale MC9S08QE128 (HCS08). A servo pans two Sharp IR distance sensors through 360 degrees while the microcontroller streams angle and range to a Processing radar-style display.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/irdar.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IRDAR | Scanning Infrared Rangefinder | Leonardo Ward">
+    <meta property="og:description" content="IRDAR: a scanning infrared rangefinder built on a Freescale MC9S08QE128 (HCS08). A servo pans two Sharp IR distance sensors through 360 degrees while the microcontroller streams angle and range to a Processing radar-style display.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/irdar/gui_radar.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/irdar.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <!-- <div class="header__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div>  -->
+        <!-- end header__logo -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                <li class="has-children">
+                    <a href="embedded-hardware.html" title="">Embedded Hardware</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="ejam.html">EJA M</a>
+                          <ul class="sub-menu">
+                            <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#planning" title="">Planning</a></li>
+                            <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ejam.html#ftdi-ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ejam.html#auto-reset-circuit-for-the-esp32" title="">Auto Reset Circuit</a></li>
+                            <li><a href="ejam.html#esp32" title="">ESP32</a></li>
+                            <li><a href="ejam.html#gps" title="">GPS</a></li>
+                            <li><a href="ejam.html#lora" title="">LoRa</a></li>
+                            <li><a href="ejam.html#real-time-clock-rtc" title="">Real time Clock RTC</a></li>
+                            <li><a href="ejam.html#5v-2a-stepup" title="">5V 2A Stepup</a></li>
+                            <li><a href="ejam.html#battery-charging-circuit" title="">Battery Charging</a></li>
+                            <li><a href="ejam.html#3v3-3a-sepic-converter" title="">3V3 3A SEPIC Converter</a></li>
+                            <li><a href="ejam.html#on-off-button-circuit" title="">ON-OFF Button Circuit</a></li>
+                            <li><a href="ejam.html#pcb-dimensions-and-boundaries" title="">PCB Dimensions and Boundaries</a></li>
+                            <li><a href="ejam.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ejam.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ftdi-dev-board.html#ft312d" title="">FTDI FT312D</a></li>
+                            <li><a href="ftdi-dev-board.html#esp32-with-auto-reset" title="">ESP32 with Auto Reset</a></li>
+                            <li><a href="ftdi-dev-board.html#ic-switch" title="">IC Switch</a></li>
+                            <li><a href="ftdi-dev-board.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-m20050" title="">GPS ANTENOVA M20050-1</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-atgm332d" title="">GPS ATGM332D-5N31</a></li>
+                            <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="lora-dev-board.html" title="">Description</a></li>
+                            <li><a href="lora-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="lora-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="lora-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="lora-dev-board.html#firmware-and-testing" title="">Firmware and Testing</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="helios_ren.html">HELIOS REN Tail Light System</a></li>
+                        <li class="has-children"><a href="onboardgateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboardgateway.html" title="">Description</a></li>
+                            <li><a href="onboardgateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboardgateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboardgateway.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
+                            <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoya.html">Buoy A</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoya.html" title="">Description</a></li>
+                            <li><a href="buoya.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoya.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoya.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoya.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoya.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoya.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoya.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoyb.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoyb.html" title="">Description</a></li>
+                            <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoyb.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
+                            <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="embedded-software.html" title="">Embedded Software</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#pic" title="">PIC</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#lcd" title="">LCD</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#buttons" title="">Buttons</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#render" title="">Render</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#sprites" title="">Sprites</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#animations" title="">Animations</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-onboardgateway.html" title="">Description</a></li>
+                            <li><a href="gui-onboardgateway.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-onboardgateway.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-onboardgateway.html#home" title="">Home</a></li>
+                            <li><a href="gui-onboardgateway.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-onboardgateway.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-onboardgateway.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-onboardgateway.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-onboardgateway.html#led-test" title="">Led Test</a></li>
+                            <li><a href="gui-onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-buoyb.html">GUI for Buoy B v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-buoyb.html" title="">Description</a></li>
+                            <li><a href="gui-buoyb.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-buoyb.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-buoyb.html#home" title="">Home</a></li>
+                            <li><a href="gui-buoyb.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-buoyb.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-buoyb.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-buoyb.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="robotics.html" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
+                            <li><a href="brushlessdc.html" title="">Brushless DC Motor Drivers</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="puma560.html">PUMA 560</a>
+                          <ul class="sub-menu">
+                            <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
+                            <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
+                            <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
+                            <li><a href="puma560.html#robot-manipulator" title="">RRR Robot Manipulator</a></li>
+                            <li><a href="puma560.html#puma-560" title="">PUMA 560 Manipulator</a></li>
+                            <li><a href="puma560.html#gui" title="">GUI</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
+                    <ul class="sub-menu">
+                        <li><a href="interactive-map.html">Interactive Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="3dmap.html" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="bajasae.html" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="images/irdar/gui_radar.jpg" alt="The IRDAR Processing display: a green radar screen with concentric range rings, a rotating sweep bar and white dots marking detected obstacles all around">
+                </div>
+            </div>
+
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    IRDAR &mdash; a Scanning Infrared Rangefinder
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">March, 2016</li>
+                    <li class="byline">
+                        By
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                    </li>
+                    <li>
+                      <h3><a href="https://github.com/leonardoward/irdar"><i class="fab fa-github"></i></a></h3>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap"><strong>IRDAR</strong> ("IR radar") is a scanning infrared rangefinder built on a Freescale <a href="https://www.nxp.com/products/no-longer-manufactured/8-bit-mcu-mc9s08qe128:MC9S08QE128">MC9S08QE128</a> (HCS08 8-bit). A servo pans a pair of Sharp infrared distance sensors through a full circle while the microcontroller streams angle and range to a <a href="https://processing.org/">Processing</a> sketch that draws a radar-style sweep.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/irdar/turret.jpg" width="440" alt="The assembled IRDAR turret: a servo at the base, a hand-wired signal board on its front, and an aluminium bracket on top holding an infrared sensor, mounted on a slip-ring bearing">
+                </div>
+
+                <p style="text-align:center">The assembled scanning head &mdash; servo, slip-ring joint, sensor bracket and signal board.</p>
+
+                <h2 id="how-it-works">How It Works</h2>
+
+                <ol>
+                    <li>A servo continuously pans a bracket carrying <strong>two Sharp IR distance sensors mounted back-to-back</strong>, so between them they see all the way around.</li>
+                    <li>An <strong>encoder on the servo shaft</strong> tracks the angle; a slip ring carries the sensor wires through the rotating joint.</li>
+                    <li>The microcontroller samples both sensors, pairs each reading with the current angle and direction, and sends a short frame over serial.</li>
+                    <li>The Processing sketch converts each reading to centimetres, places it at the right angle, and paints it on a green radar display with range rings.</li>
+                </ol>
+
+                <h2 id="hardware">Hardware</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+                        <tr><td>Microcontroller</td><td>Freescale MC9S08QE128 (HCS08, 8-bit) on a DEMOQE128 board; ~4.2&nbsp;MHz internal bus clock</td></tr>
+                        <tr><td>Scan drive</td><td>Continuous-rotation servo on a 50&nbsp;Hz PWM (TPM1), swept by ramping the pulse width 500&ndash;2500&nbsp;&micro;s</td></tr>
+                        <tr><td>Angle feedback</td><td>Shaft encoder into a keyboard-interrupt (KBI) pin, counted in firmware</td></tr>
+                        <tr><td>Sensors</td><td>2 &times; Sharp analog IR distance sensors, back-to-back, read on ADC channels 0 and 1</td></tr>
+                        <tr><td>Link</td><td>Asynchronous serial (SCI) to the PC at 9600&nbsp;baud</td></tr>
+                        <tr><td>Extras</td><td>Slip ring for continuous rotation; a hand-wired board for sensor and encoder signal conditioning</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/irdar/sensor_head.jpg" width="400" alt="Close-up of the sensor bracket: two black Sharp infrared distance sensors bolted to an aluminium bar on top of the servo">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/irdar/signal_board.jpg" width="400" alt="The hand-wired perfboard with two DIP ICs and many resistors that conditions the sensor and encoder signals">
+                    </p>
+                  </div>
+                </div>
+
+                <h2 id="firmware">Firmware</h2>
+
+                <p>Written in CodeWarrior for HCS08 with <strong>Processor Expert</strong> generating the peripheral drivers. The work splits between three interrupts and a small state machine:</p>
+
+                <ul>
+                    <li><strong>Servo sweep</strong> &mdash; a timer interrupt ramps the servo pulse width by a fixed step each tick and flips direction at the 500 / 2500&nbsp;&micro;s limits, so the head oscillates across the scan arc.</li>
+                    <li><strong>Encoder count</strong> &mdash; the KBI interrupt increments an angle counter on every encoder edge. It is kept as two bytes (rolling the low byte at 124) so it survives the byte-oriented serial link.</li>
+                    <li><strong>Measurement tick</strong> &mdash; a timer interrupt nudges the main loop from <code>WAIT</code> into <code>MEASURE</code>.</li>
+                </ul>
+
+                <p>The main loop then runs <code>MEASURE &rarr; SEND &rarr; WAIT</code>: read both ADC channels, then transmit one framed packet &mdash;</p>
+
+                <pre><code>'C'  count_hi  count_lo     encoder counts
+'D'  direction               sweep direction
+'A'  sharp1  sharp2          the two ADC readings
+'E'                          end of frame</code></pre>
+
+                <h2 id="gui">The Radar Display</h2>
+
+                <p>The Processing sketch (in <code>GUI/</code>) opens the serial port, parses each frame and:</p>
+
+                <ul>
+                    <li>rebuilds the sweep <strong>angle</strong> from the encoder count and direction (about 230 counts across the ~180&deg; arc);</li>
+                    <li>converts each raw ADC value to <strong>centimetres</strong> with a per-sensor exponential fit of the Sharp response &mdash; e.g. <code>distance = 89.41 &middot; e^(-0.04 &middot; adc) + 6.41</code> &mdash; the curves fitted in <code>Ecuaciones sharps.xlsx</code>;</li>
+                    <li>plots the two sensors 180&deg; apart, so one sweep of the servo fills the whole circle;</li>
+                    <li>draws it all on a green scope-style display with range rings at 10, 30, 60 and 120&nbsp;cm and a rotating sweep bar.</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/irdar/gui_photo.jpg" width="600" alt="The IRDAR radar display running on a monitor, showing the sweep bar and two short arcs of detected points from the two sensors">
+                </div>
+
+                <p style="text-align:center">The display running live, with obstacle points picked up on both sides of the sweep.</p>
+
+                <h2 id="notes">Notes</h2>
+
+                <ul>
+                    <li>Built on the HCS08 / CodeWarrior / Processor Expert toolchain, all now legacy &mdash; the design ideas carry over to any small MCU with a timer, an ADC and a UART.</li>
+                    <li>The serial frame is parsed by fixed byte position, so a sensor or count byte that happens to equal a delimiter letter can misalign it; a length-prefixed or escaped framing would be more robust.</li>
+                    <li>The two-Sharp / 180&deg;-offset trick trades a full second sensor for full-circle coverage from a half-circle sweep &mdash; neat, but the two sensors need matched calibration.</li>
+                </ul>
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="embedded-software.html">Embedded Software</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="irdar.html#hardware">HCS08</a>
+                            <a href="irdar.html#hardware">MC9S08QE128</a>
+                            <a href="irdar.html#hardware">Sharp IR Sensor</a>
+                            <a href="irdar.html#firmware">Processor Expert</a>
+                            <a href="irdar.html#gui">Processing</a>
+                            <a href="irdar.html#how-it-works">Rangefinder</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <div class="entry__author">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="#0">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            Electronics Engineer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="pic-ws2812.html" rel="prev">
+                        <span>Previous Post</span>
+                        Driving WS2812 LEDs with a PIC16F1717
+                    </a>
+                </div>
+                <div class="col-six s-content__next">
+                    <a href="gui-onboardgateway.html" rel="next">
+                        <span>Next Post</span>
+                        GUI for the Onboard Gateway v1.0
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
+
+              </div>
+              <!-- <div class="col-six tab-full s-footer__about">
+
+                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
+
+                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
+                  and Bitbucket).</p>
+
+              </div> -->
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

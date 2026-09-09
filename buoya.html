@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Buoy A | Hackaday Dream Team 2020</title>
-    <meta name="Buoy A | Hackaday Dream Team 2020" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>Buoy A v1.0 | EJA Popup Buoy PCB | Leonardo Ward</title>
+    <meta name="description" content="Buoy A v1.0, a 141.73 x 54.86 mm PCB for the EJA popup buoy integrating ESP32, LoRa, GPS, a motor driver and 4G/LTE, with schematic, layout, assembly and wiring guides.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/buoya.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Buoy A v1.0 | EJA Popup Buoy PCB | Leonardo Ward">
+    <meta property="og:description" content="Buoy A v1.0, a 141.73 x 54.86 mm PCB for the EJA popup buoy integrating ESP32, LoRa, GPS, a motor driver and 4G/LTE, with schematic, layout, assembly and wiring guides.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/buoy_a/Buoy-A-02.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/buoya.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/buoy_a/Buoy-A-02.jpg" alt="">
+                    <img src="images/buoy_a/Buoy-A-02.jpg" alt="Buoy A v1.0 PCB">
                 </div>
             </div>
 
@@ -299,7 +388,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs">Project</a>
@@ -326,7 +415,7 @@
                 <h2 id="main_components">Main Components</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Components_Buoy_4_light40.jpg" width="640" alt="">
+                    <img src="images/buoy_a/Components_Buoy_4_light40.jpg" width="640" alt="Main components of Buoy A v1.0">
                 </div>
 
                 <p style="text-align:center">Main components of Buoy A v1.0.</p>
@@ -344,7 +433,7 @@
                 <h2 id="schematic">Schematic</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Schematic_Buoy_A.png" width="640" alt="">
+                    <img src="images/buoy_a/Schematic_Buoy_A.png" width="640" alt="Schematic of Buoy A v1.0">
                 </div>
 
                 <p style="text-align:center">Schematic of Buoy A v1.0.</p>
@@ -354,7 +443,7 @@
                 <h2 id="pcb_layout">Layout</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Layout_Buoy_A.png" width="640" alt="">
+                    <img src="images/buoy_a/Layout_Buoy_A.png" width="640" alt="PCB Layout of Buoy A v1.0">
                 </div>
 
                 <p style="text-align:center">PCB Layout of Buoy A v1.0.</p>
@@ -369,7 +458,7 @@
                   </div>
                   <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/buoy_a/Buoy_A_WithGSM_03.png" width="400" alt="">
+                    <img src="images/buoy_a/Buoy_A_WithGSM_03.png" width="400" alt="PCB: Front Layer">
                     </p>
                   </div>
                 </div>
@@ -391,7 +480,7 @@
                   </div>
                   <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/buoy_a/Buoy_A_WithGSM_06.png" width="400" alt="">
+                    <img src="images/buoy_a/Buoy_A_WithGSM_06.png" width="400" alt="PCB: GPS and LoRa Module">
                     </p>
                   </div>
                 </div>
@@ -413,7 +502,7 @@
                   </div>
                   <div class="col-six" style="text-align:center">
                     <p>
-                    <img src="images/buoy_a/Buoy_A_WithGSM_08.png" width="400" alt="">
+                    <img src="images/buoy_a/Buoy_A_WithGSM_08.png" width="400" alt="PCB: ESP32">
                     </p>
                   </div>
                 </div>
@@ -428,7 +517,7 @@
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Buoy_A_WithGSM_09.png" width="400" alt="">
+                    <img src="images/buoy_a/Buoy_A_WithGSM_09.png" width="400" alt="PCB: Front Layer">
                 </div>
 
                 <p style="text-align:center">PCB: Front Layer.</p>
@@ -436,7 +525,7 @@
                 <h2 id="assembly_guide">Assembly</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Assembly_N_01_Buoy_A-All_2_light40.jpg" width="640" alt="">
+                    <img src="images/buoy_a/Assembly_N_01_Buoy_A-All_2_light40.jpg" width="640" alt="Components of Buoy A v1.0">
                 </div>
 
                 <p style="text-align:center">Components of Buoy A v1.0.</p>
@@ -488,7 +577,7 @@
                 </ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_02_wired.png" width="640" alt="">
+                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_02_wired.png" width="640" alt="Wiring diagram: Power Management with Buck Converter">
                 </div>
 
                 <p style="text-align:center">Wiring diagram: Power Management with Buck Converter.</p>
@@ -507,7 +596,7 @@
                 </ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_01_wired.png" width="640" alt="">
+                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_01_wired.png" width="640" alt="Wiring diagram: Power Management with Boost Converter">
                 </div>
 
                 <p style="text-align:center">Wiring diagram: Power Management with Boost Converter.</p>
@@ -521,7 +610,7 @@
                 <ul id="servo-motor"><li>Servo Motor</li></ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_03_wired.png" width="640" alt="">
+                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_03_wired.png" width="640" alt="Wiring diagram: Buoy A v1.0 with Servo Motor">
                 </div>
 
                 <p style="text-align:center">Wiring diagram: Buoy A v1.0 with Servo Motor.</p>
@@ -529,7 +618,7 @@
                 <ul id="dc-motor"><li>DC Motor (using the driver TB6612FNG)</li></ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_04_wired.png" width="640" alt="">
+                    <img src="images/buoy_a/Wiring_Buoy_WithGSM_04_wired.png" width="640" alt="Wiring diagram: Buoy A v1.0 with DC Motor">
                 </div>
 
                 <p style="text-align:center">Wiring diagram: Buoy A v1.0 with DC Motor.</p>
@@ -564,7 +653,7 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -614,7 +703,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
 
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
@@ -663,7 +752,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Embedded Software | Space Invaders adaptation for a 16-Bit PIC Microcontroller</title>
-    <meta name="Embedded Software | Space Invaders adaptation for a 16-Bit PIC microcontroller" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>Space Invaders on a 16-bit PIC | Embedded Software | Leonardo Ward</title>
+    <meta name="description" content="A Space Invaders port for the PIC24FJ128GA010 microcontroller written in MPLAB X and simulated in Proteus, driving a T6963C 240x128 LCD with custom sprites and a component-based game engine.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/pic-proteus-space-invaders.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Space Invaders on a 16-bit PIC | Embedded Software | Leonardo Ward">
+    <meta property="og:description" content="A Space Invaders port for the PIC24FJ128GA010 microcontroller written in MPLAB X and simulated in Proteus, driving a T6963C 240x128 LCD with custom sprites and a component-based game engine.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/space_invaders/space-invaders2.png">
+    <meta property="og:url" content="https://leonardoward.github.io/pic-proteus-space-invaders.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/space_invaders/space-invaders2.png" alt="">
+                    <img src="images/space_invaders/space-invaders2.png" alt="Space Invaders running on a PIC microcontroller in Proteus">
                 </div>
             </div>
 
@@ -306,7 +395,7 @@
                 <p class="lead drop-cap">This project is a cover of the classic videogame Space Invaders, developed for a PIC microcontroller using <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a> and simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif1.gif" alt="">
+                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif1.gif" alt="Space Invaders running on the PIC24FJ128GA010, simulated on Proteus">
                 </div>
 
                 <p style="text-align:center">Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>, simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
@@ -330,14 +419,14 @@
                     <li><a href="https://www.labcenter.com/simulation/">Proteus</a></li>
                 </ul>
 
-                <p>The Proteus project uses components the are contained in the environment by default, doesn't require additional component imports.</p>
+                <p>The Proteus project uses components included in the environment by default and does not require additional component imports.</p>
 
                 <h3 id="building">Building</h3>
 
                 <p>The building process is performed in the <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a> development environment to generate the .hex file necessary for the Proteus Simulation. This is done by clicking the clean and build button in MPLAB.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/mplabx-building.png" alt="">
+                    <img src="images/space_invaders/mplabx-building.png" alt="Menu on MPLABX">
                 </div>
 
                 <p style="text-align:center">Menu on <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a>.</p>
@@ -348,7 +437,7 @@
                 <p>In order to run the simulation in Proteus, the user has to insert the .hex file path in the PIC preferences.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" src="images/space_invaders/proteus-setup.png" alt="">
+                    <img width="640" src="images/space_invaders/proteus-setup.png" alt="Component settings on Proteus">
                 </div>
 
                 <p style="text-align:center">Component settings on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
@@ -365,7 +454,7 @@
                 <p>The LCD controller used was a T6963C to drive a screen of 240 x 128 pixels. In this project enhancements were made to the library <a href="https://github.com/camilstaps/T6963C_PIC.git">T6963C_PIC</a> of camilstaps in order to drive the screen.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif2.gif" alt="">
+                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif2.gif" alt="Start animation of the game running on the 240x128 LCD">
                 </div>
 
                 <p style="text-align:center">Start animation of the game running on the 240x128 LCD.</p>
@@ -379,7 +468,7 @@
                 <p>The buttons used were three push buttons native of proteus in pull-up configuration, two of them for lateral movement and the other one to shoot.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/buttons_circuit.png" alt="">
+                    <img src="images/space_invaders/buttons_circuit.png" alt="Pull up circuits on the Schematic">
                 </div>
 
                 <p style="text-align:center">Pull up circuits on the Schematic.</p>
@@ -389,7 +478,7 @@
                 <p>The way the invaders render is variable: When the invaders move from right to left the rendering direction is from left to right, and vice versa. This mechanism allows collision detection to be performed on the outermost invader only once at the beginning of the update cycle, regardless of the number of live invaders.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif3.gif" alt="">
+                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif3.gif" alt="Game render">
                 </div>
 
                 <p style="text-align:center">Game render.</p>
@@ -400,7 +489,7 @@
 
                 <h3 id="sprites">Custom Made Sprites</h3>
 
-                <p>In order to draw in the screen with the T6963C symbol generator, custom 8x8 sprite were made for each character in the game. The three types of invaders sprites were implemented with their respective four animations:</p>
+                <p>In order to draw in the screen with the T6963C symbol generator, custom 8x8 sprites were made for each character in the game. The three types of invaders sprites were implemented with their respective four animations:</p>
 
                 <ol>
                     <li>Position 'a'.</li>
@@ -409,18 +498,18 @@
                     <li>Position 'b' dodging laser shot.</li>
                 </ol>
 
-                <p>The spaceship and mothership sprites, the barriers sprites with the ability to be destroyed with 3 hits, laser shots and explotion sprites.</p>
+                <p>The spaceship and mothership sprites, the barriers sprites with the ability to be destroyed with 3 hits, laser shots and explosion sprites.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/sprites.png" alt="">
+                    <img src="images/space_invaders/sprites.png" alt="Custom sprites">
                 </div>
 
                 <p style="text-align:center">Custom sprites.</p>
 
-                <p>The tool used to draw and export the images was <a href="https://www.piskelapp.com/">Piskel</a>, and the tool used to generate de arrays file from the bitmap pictures was <a href="http://en.radzio.dxp.pl/bitmap_converter/">LCD Assistant</a>.</p>
+                <p>The tool used to draw and export the images was <a href="https://www.piskelapp.com/">Piskel</a>, and the tool used to generate the array files from the bitmap pictures was <a href="http://en.radzio.dxp.pl/bitmap_converter/">LCD Assistant</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif4.gif" alt="">
+                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif4.gif" alt="Space Invaders running on the PIC24FJ128GA010, simulated on Proteus">
                 </div>
 
                 <p style="text-align:center">Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>, simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
@@ -434,7 +523,7 @@
                 <p>Attack intelligence for invaders has been implemented to spice up the gameplay. Also collision detector alien/barrier and collision detector alien/spaceship, live and score systems, and game over/restart screen were implemented.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif5.gif" alt="">
+                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif5.gif" alt="Gameplay video">
                 </div>
 
                 <p style="text-align:center">Gameplay video.</p>
@@ -450,27 +539,27 @@
 
                 <ul>
                     <li><strong><a href="https://gafferongames.com/post/fix_your_timestep/">Game loop</a></strong>: the main loop contains an inner loop that manages the inputs, the update of each component and the rendering of each component. The objective of this pattern (process input -> update -> render) is to decouple the progression of the game from user input and processor speed. We managed to decouple it from the user input but not the processor speed, right now it will run at maximum speed.</li>
-                    <li><strong>Update Method</strong>: each game component has an update method that is used to process on frame at a time.</li>
-                    <li><strong>Component</strong>: each game object (spaceship, invader, mothership, bullet and barrier) is a single entity that can be spanned over multiple domains(locations) without coupling the domains to each other. We also use the Prototype pattern, we can create different versions of the game object by creating different instances of the same structure.</li>
+                    <li><strong>Update Method</strong>: each game component has an update method that processes one frame at a time.</li>
+                    <li><strong>Component</strong>: each game object (spaceship, invader, mothership, bullet and barrier) is a single entity that can be spawned across multiple domains (locations) without coupling the domains to each other. We also use the Prototype pattern, we can create different versions of the game object by creating different instances of the same structure.</li>
                     <li><strong>State</strong>: each component has a state, and it is often used to define if the type of animation has to change or if it should be removed from the game.</li>
                 </ul>
 
                 <p>The following image presents a Flowchart of the game.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="480" src="images/space_invaders/game_architecture.jpg" alt="">
+                    <img width="480" src="images/space_invaders/game_architecture.jpg" alt="Software Block Diagram">
                 </div>
 
                 <p style="text-align:center">Software Block Diagram.</p>
 
-                <p>We implemented different structures to solve different specific problems that arrive during development, we will describe a little bit more about them in the following sections.</p>
+                <p>We implemented different structures to solve specific problems that arise during development, we will describe a little bit more about them in the following sections.</p>
 
                 <h4 id="animations">Animation of a Single Game Object</h4>
 
                 <p>We are using <a href="https://en.wikipedia.org/wiki/Linked_list">Singly Linked Circular Lists</a> to manage the animations of the game objects. We only required one or two sprites, but the list is also very convenient during the rendering phase.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="480" src="images/space_invaders/animation_list.jpg" alt="">
+                    <img width="480" src="images/space_invaders/animation_list.jpg" alt="Animation List">
                 </div>
 
                 <p style="text-align:center">Animation List.</p>
@@ -480,7 +569,7 @@
                 <p>The invaders have a different rendering order depending of the direction in which the group is moving:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/alien_list.jpg" alt="">
+                    <img width="640" height="360" src="images/space_invaders/alien_list.jpg" alt="Alien List">
                 </div>
 
                 <p style="text-align:center">Alien List.</p>
@@ -496,7 +585,7 @@
                 <p>To detect the collisions between game objects we created a game map, a 2D array with the size of the screen where each element contains a pointer to the game object that is associated to that X Y position. This map is updated with each frame according to the new positions of the objects.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/game_map.jpg" alt="">
+                    <img width="640" height="360" src="images/space_invaders/game_map.jpg" alt="Game Map">
                 </div>
 
                 <p style="text-align:center">Game Map.</p>
@@ -545,7 +634,7 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -595,7 +684,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
 
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
@@ -644,7 +733,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

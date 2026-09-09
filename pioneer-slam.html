@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Pioneer P3-DX SLAM in V-REP | ROS | Leonardo Ward</title>
+    <meta name="description" content="A ROS project that teleoperates a simulated Pioneer P3-DX in V-REP (CoppeliaSim) from an Android phone and builds a 2D occupancy-grid map with gmapping SLAM from a simulated Hokuyo laser scanner. Includes a Python bridge node that publishes odometry, TF and the laser scan.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/pioneer-slam.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pioneer P3-DX SLAM in V-REP | ROS | Leonardo Ward">
+    <meta property="og:description" content="A ROS project that teleoperates a simulated Pioneer P3-DX in V-REP (CoppeliaSim) from an Android phone and builds a 2D occupancy-grid map with gmapping SLAM from a simulated Hokuyo laser scanner. Includes a Python bridge node that publishes odometry, TF and the laser scan.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/teleop_slam/scene.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/pioneer-slam.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <!-- <div class="header__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div>  -->
+        <!-- end header__logo -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                <li class="has-children">
+                    <a href="embedded-hardware.html" title="">Embedded Hardware</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="ejam.html">EJA M</a>
+                          <ul class="sub-menu">
+                            <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#planning" title="">Planning</a></li>
+                            <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ejam.html#ftdi-ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ejam.html#auto-reset-circuit-for-the-esp32" title="">Auto Reset Circuit</a></li>
+                            <li><a href="ejam.html#esp32" title="">ESP32</a></li>
+                            <li><a href="ejam.html#gps" title="">GPS</a></li>
+                            <li><a href="ejam.html#lora" title="">LoRa</a></li>
+                            <li><a href="ejam.html#real-time-clock-rtc" title="">Real time Clock RTC</a></li>
+                            <li><a href="ejam.html#5v-2a-stepup" title="">5V 2A Stepup</a></li>
+                            <li><a href="ejam.html#battery-charging-circuit" title="">Battery Charging</a></li>
+                            <li><a href="ejam.html#3v3-3a-sepic-converter" title="">3V3 3A SEPIC Converter</a></li>
+                            <li><a href="ejam.html#on-off-button-circuit" title="">ON-OFF Button Circuit</a></li>
+                            <li><a href="ejam.html#pcb-dimensions-and-boundaries" title="">PCB Dimensions and Boundaries</a></li>
+                            <li><a href="ejam.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ejam.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ftdi-dev-board.html#ft312d" title="">FTDI FT312D</a></li>
+                            <li><a href="ftdi-dev-board.html#esp32-with-auto-reset" title="">ESP32 with Auto Reset</a></li>
+                            <li><a href="ftdi-dev-board.html#ic-switch" title="">IC Switch</a></li>
+                            <li><a href="ftdi-dev-board.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-m20050" title="">GPS ANTENOVA M20050-1</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-atgm332d" title="">GPS ATGM332D-5N31</a></li>
+                            <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="lora-dev-board.html" title="">Description</a></li>
+                            <li><a href="lora-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="lora-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="lora-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="lora-dev-board.html#firmware-and-testing" title="">Firmware and Testing</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="helios_ren.html">HELIOS REN Tail Light System</a></li>
+                        <li class="has-children"><a href="onboardgateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboardgateway.html" title="">Description</a></li>
+                            <li><a href="onboardgateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboardgateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboardgateway.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
+                            <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoya.html">Buoy A</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoya.html" title="">Description</a></li>
+                            <li><a href="buoya.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoya.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoya.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoya.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoya.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoya.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoya.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoyb.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoyb.html" title="">Description</a></li>
+                            <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoyb.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
+                            <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="embedded-software.html" title="">Embedded Software</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#pic" title="">PIC</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#lcd" title="">LCD</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#buttons" title="">Buttons</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#render" title="">Render</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#sprites" title="">Sprites</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#animations" title="">Animations</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-onboardgateway.html" title="">Description</a></li>
+                            <li><a href="gui-onboardgateway.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-onboardgateway.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-onboardgateway.html#home" title="">Home</a></li>
+                            <li><a href="gui-onboardgateway.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-onboardgateway.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-onboardgateway.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-onboardgateway.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-onboardgateway.html#led-test" title="">Led Test</a></li>
+                            <li><a href="gui-onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-buoyb.html">GUI for Buoy B v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-buoyb.html" title="">Description</a></li>
+                            <li><a href="gui-buoyb.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-buoyb.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-buoyb.html#home" title="">Home</a></li>
+                            <li><a href="gui-buoyb.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-buoyb.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-buoyb.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-buoyb.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="robotics.html" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
+                            <li><a href="brushlessdc.html" title="">Brushless DC Motor Drivers</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="puma560.html">PUMA 560</a>
+                          <ul class="sub-menu">
+                            <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
+                            <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
+                            <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
+                            <li><a href="puma560.html#robot-manipulator" title="">RRR Robot Manipulator</a></li>
+                            <li><a href="puma560.html#puma-560" title="">PUMA 560 Manipulator</a></li>
+                            <li><a href="puma560.html#gui" title="">GUI</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
+                    <ul class="sub-menu">
+                        <li><a href="interactive-map.html">Interactive Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="3dmap.html" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="bajasae.html" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="images/teleop_slam/scene.jpg" alt="V-REP simulation scene: a Pioneer P3-DX mobile robot with a laser scanner in a room with a table and chairs">
+                </div>
+            </div>
+
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Teleoperated SLAM with a Pioneer P3-DX
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">June, 2019</li>
+                    <li class="byline">
+                        By
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                    </li>
+                    <li>
+                      <h3><a href="https://github.com/leonardoward/teleop_pioneer_slam"><i class="fab fa-github"></i></a></h3>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap">A <a href="https://www.ros.org/">ROS</a> project that drives a simulated <a href="https://www.generationrobots.com/en/402397-robot-mobile-pioneer-3-dx.html">Pioneer&nbsp;P3&#8209;DX</a> around a <a href="https://www.coppeliarobotics.com/">V&#8209;REP</a> scene from an Android phone, and feeds a simulated Hokuyo laser scanner into <a href="http://wiki.ros.org/gmapping">gmapping</a> to build a 2D occupancy&#8209;grid map. The custom part is a Python bridge node that reshapes V&#8209;REP's topics into the odometry, TF and laser scan that ROS SLAM expects.</p>
+
+                <h2 id="overview">Overview</h2>
+
+                <p>The robot lives in a V&#8209;REP scene &mdash; a Pioneer&nbsp;P3&#8209;DX differential&#8209;drive base with a laser scanner and a small vision sensor, in a room with furniture. You drive it by keyboard or from the <a href="https://play.google.com/store/apps/details?id=com.robotca.ControlApp">ROS Control</a> Android app; the laser scan and the robot pose come back out of the simulator over ROS, and gmapping turns them into a map you watch build in RViz.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/teleop_slam/laser_scan.jpg" width="640" alt="V-REP simulation with the laser scanner active, its rays sweeping the room floor and furniture as a dense red point pattern">
+                </div>
+
+                <p style="text-align:center">The Pioneer's laser scanner sweeping the V&#8209;REP scene.</p>
+
+                <h2 id="architecture">ROS Architecture</h2>
+
+                <p>Three sources feed a single bridge node:</p>
+
+                <ul>
+                    <li><strong>V&#8209;REP</strong>, through its <code>RosInterface</code> plugin, publishes <code>/hokuyo_scan</code> (the laser), <code>/pioneer_pose</code> (ground&#8209;truth pose) and <code>/image</code> (the vision sensor).</li>
+                    <li>The <strong>ROS Control app</strong> publishes <code>/joy_teleop/cmd_vel</code> from its on&#8209;screen joystick, and can also stream the phone's camera as <code>/image_raw/compressed</code>.</li>
+                    <li>The <strong>bridge node</strong> (<code>external_teleop</code>) subscribes to all of the above and republishes them in the form the rest of the stack needs.</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/teleop_slam/rosgraph.jpg" width="640" alt="rqt_graph of the running system: V-REP's ros interface and the Android controller feeding the external listener node, which outputs tf, odom and the external scan">
+                </div>
+
+                <p style="text-align:center">The running node graph (<code>rqt_graph</code>).</p>
+
+                <h2 id="bridge-node">The Bridge Node</h2>
+
+                <p>V&#8209;REP's topics aren't in the shape gmapping and the Android app expect &mdash; the scan has the wrong frame, there is no odometry, and there is no TF tree. <code>subscriber_teleop.py</code> fills those gaps:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>In</th><th>Out</th><th>What the node does</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>/joy_teleop/cmd_vel</code></td><td><code>/pioneer_cmd_vel</code></td><td>passes the joystick Twist through to the V&#8209;REP robot</td></tr>
+                            <tr><td><code>/hokuyo_scan</code></td><td><code>/extern_scan</code></td><td>re&#8209;stamps the LaserScan into the <code>base</code> frame for gmapping</td></tr>
+                            <tr><td><code>/pioneer_pose</code></td><td><code>/odom</code>, <code>/tf</code>, <code>/tf_static</code></td><td>differentiates the pose into odometry and broadcasts the <code>base&nbsp;&rarr;&nbsp;hokuyo</code> transform</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/teleop_slam/bridge_node.jpg" width="600" alt="Focused node graph: the external listener node taking hokuyo_scan, joy_teleop cmd_vel and pioneer_pose and producing tf_static, tf, odom and extern_scan">
+                </div>
+
+                <p style="text-align:center">The bridge node's inputs and outputs.</p>
+
+                <h2 id="slam">SLAM</h2>
+
+                <p>With a laser scan, an odometry source and a valid TF tree in place, <a href="http://wiki.ros.org/gmapping">gmapping</a> (a particle&#8209;filter SLAM package) estimates the robot's trajectory and accumulates an occupancy&#8209;grid map, published on <code>/map</code> and viewed in RViz. gmapping and its dependencies are built as part of the workspace.</p>
+
+                <h2 id="android-app">Android Control</h2>
+
+                <p>The <a href="https://play.google.com/store/apps/details?id=com.robotca.ControlApp">ROS Control</a> app connects straight to the ROS master. Add a robot, set its <em>Master URI</em> to the PC running <code>roscore</code> (its LAN IP, not <code>localhost</code>), and pick Joystick mode.</p>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/teleop_slam/app_master_uri.jpg" width="360" alt="ROS Control app: the Add/Edit Robot dialog with a robot name and a Master URI pointing at a PC IP address">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/teleop_slam/ros_control_app.jpg" width="300" alt="ROS Control app in Joystick mode, showing speed and heading readouts and a virtual joystick">
+                    </p>
+                  </div>
+                </div>
+
+                <p>The phone's camera can also be published into ROS as a compressed image stream, which is why the workspace includes the <code>image_transport</code> and <code>compressed_image_transport</code> packages.</p>
+
+                <h2 id="vision-sensor">Vision Sensor</h2>
+
+                <p>The scene also carries a low&#8209;resolution vision sensor on the robot, published on <code>/image</code> &mdash; a forward camera view of the room, separate from the laser used for mapping.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/teleop_slam/vision_sensor.jpg" width="380" alt="The robot's on-board vision sensor feed shown in rqt image view: a pixelated view of a table and floor">
+                </div>
+
+                <p style="text-align:center">The on&#8209;board vision sensor feed.</p>
+
+                <h2 id="running">Running It</h2>
+
+                <p>Built for <strong>ROS Kinetic</strong> on Ubuntu, with <strong>V&#8209;REP&nbsp;3.x PRO&nbsp;EDU</strong>. Outline:</p>
+
+                <ol>
+                    <li>Build the catkin workspace (<code>catkin build</code>) and source it.</li>
+                    <li>Copy the prebuilt <code>libv_repExtRosInterface.so</code> into the V&#8209;REP folder so the simulator exposes ROS topics.</li>
+                    <li>Start <code>roscore</code>, then launch V&#8209;REP and open <code>scenes/slam_peoneer_p3dx_2.ttt</code>; press play.</li>
+                    <li>Run the bridge node: <code>rosrun external_teleop subscriber_teleop.py</code>.</li>
+                    <li>Connect the Android app (or use keyboard teleop) and drive; run gmapping + RViz to watch the map build.</li>
+                </ol>
+
+                <p>The repository README has the full step&#8209;by&#8209;step, and the repo ships the V&#8209;REP scene, the RosInterface plugin binaries and the prebuilt packages.</p>
+
+                <h2 id="notes">Notes</h2>
+
+                <ul>
+                    <li>Built on ROS&nbsp;1 Kinetic and V&#8209;REP, both now superseded by newer ROS distributions and CoppeliaSim &mdash; the ideas carry over but the exact commands do not.</li>
+                    <li>The odometry in the bridge node is a rough differentiation of the simulator pose; a cleaner version would integrate wheel velocities and add covariance.</li>
+                    <li>The committed workspace includes catkin <code>build/</code> and <code>devel/</code> artifacts and two large image files misnamed <code>.msg</code> &mdash; worth pruning from version control.</li>
+                </ul>
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="robotics.html">Robotics</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="pioneer-slam.html#architecture">ROS</a>
+                            <a href="pioneer-slam.html#overview">V-REP</a>
+                            <a href="pioneer-slam.html#overview">Pioneer P3-DX</a>
+                            <a href="pioneer-slam.html#slam">SLAM</a>
+                            <a href="pioneer-slam.html#slam">gmapping</a>
+                            <a href="pioneer-slam.html#android-app">Android</a>
+                            <a href="pioneer-slam.html#bridge-node">Python</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <div class="entry__author">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="#0">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            Electronics Engineer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="puma560.html" rel="prev">
+                        <span>Previous Post</span>
+                        PUMA 560 Matlab Simulations | Robotic Manipulator
+                    </a>
+                </div>
+                <div class="col-six s-content__next">
+                    <a href="sumo.html" rel="next">
+                        <span>Next Post</span>
+                        ATLAS, a Robot for Sumo Competitions
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
+
+              </div>
+              <!-- <div class="col-six tab-full s-footer__about">
+
+                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
+
+                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
+                  and Bitbucket).</p>
+
+              </div> -->
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

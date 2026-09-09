@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Sumo</title>
-    <meta name="ATLAS, a Robot for Sumo Competitions" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>ATLAS | Sumo Robot | Leonardo Ward</title>
+    <meta name="description" content="ATLAS, an autonomous differential-drive sumo robot (2nd place, VI Venezuelan National Robotics Competition, 2016). Arduino Nano, closed-loop PID wheel-speed control, reverse-engineered brushless DC motor drivers, infrared and ultrasonic distance sensors and a sensor-driven strategy state machine.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/sumo.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ATLAS | Sumo Robot | Leonardo Ward">
+    <meta property="og:description" content="ATLAS, an autonomous differential-drive sumo robot (2nd place, VI Venezuelan National Robotics Competition, 2016). Arduino Nano, closed-loop PID wheel-speed control, reverse-engineered brushless DC motor drivers, infrared and ultrasonic distance sensors and a sensor-driven strategy state machine.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/sumo/20161101_085539_light60.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/sumo.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children current">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/sumo/20161101_085539_light60.jpg" alt="">
+                    <img src="images/sumo/20161101_085539_light60.jpg" alt="The assembled Atlas sumo robot with its aluminium scoop blade and exposed control electronics">
                 </div>
             </div>
 
@@ -301,45 +390,132 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Design and Construction of a Mobile Robot for the Venezuelan National Competition USBBOTS 2016.</p>
+                <p class="lead drop-cap">Atlas is an autonomous sumo robot built for the VI Venezuelan National Robotics Competition (USB BOTS 2016), where it took <strong>2nd place</strong> in the Sumo category. It was developed by the FutBot&nbsp;&ndash;&nbsp;Future Robotics team at the Universidad Sim&oacute;n Bol&iacute;var (USB).</p>
 
-                <p>The main components used in the prototype are:</p>
+                <p>Atlas is a two&#8209;wheeled, differential&#8209;drive robot. Its job is to find the opposing robot inside the ring, drive into it and push it out &mdash; without driving itself out in the process. It runs on an Arduino Nano, with a closed&#8209;loop speed controller on each wheel and a sensor&#8209;driven state machine that decides how to move.</p>
 
-                <ul>
-                    <li>Brushless DC Motors.</li>
-                    <li id="infrared-sensor">Infrared Proximity Sensor:<a href="https://www.sparkfun.com/products/242">Sharp GP2Y0A21YK</a>.</li>
-                    <li id="ultrasonic-sensor">Ultrasonic Distance Sensor:<a href="https://www.sparkfun.com/products/15569">HC-SR04</a>.</li>
-                    <li id="arduino-nano">Arduino Nano</li>
-                </ul>
+                <div class="col-full" style="text-align:center">
+                    <img src="images/sumo/atlas_render_light.jpg" width="620" alt="CAD render of the Atlas sumo robot: a compact box chassis on two drive wheels with a curved aluminium scoop blade at the front">
+                </div>
 
-                <h2 id="brushless-motors">The Motors</h2>
+                <p style="text-align:center">CAD model of Atlas, showing the drive wheels and the front scoop blade.</p>
+
+                <h2 id="competition">The Arena</h2>
+
+                <p>A sumo match is fought inside a circular ring (the <em>dohy&#333;</em>): 150&nbsp;cm in diameter, with a 5&nbsp;cm border marking the edge and two short starting lines at the centre. The two robots start back&#8209;to&#8209;back and, after a mandatory delay following the start signal, must push the opponent out of the ring or immobilise it. Leaving the ring on your own means losing the round, so edge awareness matters as much as attacking.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/sumo/sumo_arena.png" width="440" alt="Competition arena diagram: a 150 cm circle with a 5 cm edge border and two 20 cm central starting lines set 20 cm apart">
+                </div>
+
+                <p style="text-align:center">Competition arena &mdash; 150&nbsp;cm ring, 5&nbsp;cm edge border, central start lines.</p>
+
+                <h2 id="system-overview">System Overview</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+                        <tr><td>Controller</td><td>Arduino Nano (ATmega328P, 16&nbsp;MHz, 5&nbsp;V)</td></tr>
+                        <tr><td>Drivetrain</td><td>Two brushless DC gearmotors, differential drive &mdash; wheel radius 0.08&nbsp;m, track 0.25&nbsp;m</td></tr>
+                        <tr><td>Motor control</td><td>Per&#8209;wheel PWM / direction / brake / enable, single&#8209;channel tacho feedback, analog current sense</td></tr>
+                        <tr><td>Speed control</td><td>Two independent PID loops on wheel RPM; unicycle&nbsp;&rarr;&nbsp;differential&#8209;drive kinematics</td></tr>
+                        <tr><td>Main sensors</td><td>Sharp GP2Y0A21YK infrared and HC&#8209;SR04 ultrasonic distance sensors (front / sides / rear)</td></tr>
+                        <tr><td>Extra channels</td><td>TLC2543 11&#8209;channel, 12&#8209;bit SPI ADC: forward proximity, ring&#8209;edge reflectance, 3&#8209;axis accelerometer</td></tr>
+                        <tr><td>Firmware</td><td>~1,000 lines of C/C++ across 11 Arduino modules</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="mechanical">Mechanical Design</h2>
+
+                <p>The chassis is 3D&#8209;printed and was designed in SolidWorks; it went through three iterations before the competition version. A curved aluminium <strong>scoop blade</strong> across the front is the offensive tool &mdash; angled to slip under the opposing robot and lift its wheels off the ground so it loses traction. A roller&#8209;ball caster at the rear keeps the robot level while the two driven wheels do the work, each turned through a small gear train from its motor.</p>
+
+                <p>The full part files and 2D manufacturing drawings for every version are in the repository.</p>
+
+                <h2 id="drivetrain">Drivetrain &amp; Motors</h2>
 
                 <div class="col-six">
                   <p>
-                  <img src="images/sumo/IMG_8945_light40.JPG" width="400" alt="">
+                  <img src="images/sumo/IMG_8945_light40.JPG" width="400" alt="One of the two brushless DC motors salvaged for Atlas, with its driver board attached">
                   </p>
                 </div>
 
-                <p>There were used two recicled brushless DC motors. There wasn't found a complete diagram or datasheet for the board, therefore the team reverse engineered the board. </p>
-
-                <p>Components:</p>
+                <p>Atlas is driven by two brushless DC motors salvaged from office equipment. There was no datasheet or wiring diagram for them, so the team <strong>reverse&#8209;engineered the driver board</strong> to work out how to command it from the Arduino. The board is built around two ICs:</p>
 
                 <ul>
-                    <li><a href="https://www.digikey.com.mx/product-detail/es/sanken/SLA6023/SLA6023-ND/4289323">SLA6023</a> : 3-phase motor driver (60V 6A 25W).</li>
-                    <li><a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/40539/SANYO/LB1823.html">LB1823</a> : predriver IC developed for driving power brushless motors in office automation applications.</li>
+                    <li><a href="https://www.digikey.com.mx/product-detail/es/sanken/SLA6023/SLA6023-ND/4289323">SLA6023</a> &mdash; 3&#8209;phase brushless motor driver (60&nbsp;V, 6&nbsp;A, 25&nbsp;W).</li>
+                    <li><a href="https://pdf1.alldatasheet.com/datasheet-pdf/view/40539/SANYO/LB1823.html">LB1823</a> &mdash; 3&#8209;phase brushless pre&#8209;driver, originally made for office&#8209;automation motors.</li>
                 </ul>
+
+                <p>Once mapped out, the board takes a simple logic interface from the Nano &mdash; a PWM speed input, a direction bit, a brake line and an enable line &mdash; and returns a single&#8209;channel tachometer pulse that the firmware counts to measure wheel speed.</p>
+
                 <div class="col-full">
                   <div class="col-six">
                     <p>
-                    <img src="images/sumo/20161106_213935_light60.jpg" width="400" alt="">
+                    <img src="images/sumo/20161106_213935_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, top view">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img src="images/sumo/20161106_193725_light60.jpg" width="400" alt="">
+                    <img src="images/sumo/20161106_193725_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, wiring detail">
                     </p>
                   </div>
                 </div>
+
+                <h2 id="sensing">Sensing</h2>
+
+                <p>Atlas locates its opponent with distance sensors covering the front, sides and rear of the chassis:</p>
+
+                <ul>
+                    <li id="infrared-sensor"><strong>Infrared</strong> &mdash; a Sharp <a href="https://www.sparkfun.com/products/242">GP2Y0A21YK</a> analog IR distance sensor.</li>
+                    <li id="ultrasonic-sensor"><strong>Ultrasonic</strong> &mdash; an <a href="https://www.sparkfun.com/products/15569">HC&#8209;SR04</a> ultrasonic ranging module.</li>
+                </ul>
+
+                <p>The firmware turns each into a distance reading and the strategy code compares it against a per&#8209;sensor threshold, backed by measured ADC&#8209;vs&#8209;distance calibration tables. A <strong>TLC2543</strong> &mdash; an 11&#8209;channel, 12&#8209;bit SPI ADC &mdash; adds the extra analog inputs the Nano runs out of: two forward&#8209;facing proximity sensors, four downward reflectance sensors for the ring edge, and a 3&#8209;axis accelerometer. The competition firmware acts on the proximity channels; the edge and accelerometer channels are read but were not yet wired into the behaviour.</p>
+
+                <p>The KiCad electronics design in the repository documents a fuller sensor ring &mdash; four Sharp analog IR sensors, one per side &mdash; from a later revision of the same layout.</p>
+
+                <h2 id="control">Control System</h2>
+
+                <p>Motion commands are given in <em>unicycle</em> form &mdash; a forward speed <em>V</em> and a turn rate <em>&omega;</em>. A differential&#8209;drive kinematics step converts <em>(V,&nbsp;&omega;)</em> into a target speed for each wheel, which becomes a target RPM. Two independent <strong>PID loops</strong> then track those targets: each loop compares the commanded RPM against the RPM measured from the tacho pulses (counted over 100&nbsp;ms windows) and adjusts the motor PWM.</p>
+
+                <p>Before writing the Arduino code, the kinematics were modelled and plotted in <strong>MATLAB</strong> (<code>matlab/Sumo&nbsp;Atlas/</code>) &mdash; sweeping <em>V</em> and <em>&omega;</em> to check the resulting wheel velocities and RPM &mdash; and then ported to C.</p>
+
+                <p>Each motor also has an <strong>ACS711 current sensor</strong>. If a motor draws more than its current limit &mdash; typically during a sustained push against the opponent &mdash; a fold&#8209;back limiter lowers that wheel's PID output ceiling until the current comes back down, protecting the driver board from a stalled push.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/sumo/control_board_light.jpg" width="620" alt="Hand-wired perfboard control board for Atlas, with the Arduino Nano, an accelerometer breakout and point-to-point wiring between the driver and sensor connectors">
+                </div>
+
+                <p style="text-align:center">The hand&#8209;wired control board: Arduino Nano, sensor conditioning and the connectors to the motor drivers.</p>
+
+                <h2 id="strategy">Match Strategy</h2>
+
+                <p>Tactics are a small state machine. Every loop, <code>estrategia()</code> looks at the sensors and picks a target state; a dispatcher then runs the matching behaviour:</p>
+
+                <ul>
+                    <li><strong>Start delay</strong> &mdash; hold still for the mandatory count after the start signal.</li>
+                    <li><strong>Opening move</strong> &mdash; one open&#8209;loop ~90&deg; turn to get off the start line.</li>
+                    <li><strong>Search</strong> &mdash; spin in place, sweeping the Sharp sensors across the ring.</li>
+                    <li><strong>Attack</strong> &mdash; when a sensor sees the opponent, drive at it: straight ahead if it is dead centre, or on a curve if it is off to one side.</li>
+                    <li><strong>Re&#8209;acquire</strong> &mdash; if the target is lost, drop back to Search.</li>
+                </ul>
+
+                <p>The sensors are checked in priority order &mdash; front&#8209;centre first, then the front&#8209;left and front&#8209;right proximity channels, then the side Sharps &mdash; so the robot always commits to the most head&#8209;on contact available. For example, a front&#8209;centre reading past its ~80&nbsp;cm threshold triggers a straight charge at full commanded speed.</p>
+
+                <h2 id="result">Competition Result</h2>
+
+                <p><strong>2nd place, Sumo category</strong> &mdash; VI Competencia Nacional de Rob&oacute;tica (USB BOTS 2016), Centro &Iacute;talo Venezolano, Caracas, 7&ndash;9 November 2016. Built with Javier Inojosa for FutBot&nbsp;&ndash;&nbsp;Future Robotics.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/sumo/award_light.jpg" width="620" alt="The bare-metal Atlas chassis with its scoop blade next to the USB BOTS 2016 certificate for 2nd place in the Sumo category">
+                </div>
+
+                <p style="text-align:center">Atlas next to the USB&nbsp;BOTS&nbsp;2016 second&#8209;place certificate.</p>
+
+                <h2 id="repository">Repository</h2>
+
+                <p>The <a href="https://github.com/leonardoward/Atlas-Sumo-Robot">GitHub repository</a> holds the complete project: the Arduino firmware (11 modules &mdash; motor driver, kinematics, PID, state machine, sensor drivers), the KiCad electronics design, the SolidWorks CAD and drawings for all three chassis versions, and the MATLAB kinematics scripts. The README documents the full hardware and firmware architecture, plus a look back at the bugs and the changes I would make revisiting it today.</p>
 
 
                 <div class="entry__taxonomies">
@@ -353,16 +529,18 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="sumo.html#arduino-nano">Arduino</a>
-                            <a href="sumo.html#brushless-motors">Brushless DC</a>
+                            <a href="sumo.html#system-overview">Arduino</a>
+                            <a href="sumo.html#control">PID Control</a>
+                            <a href="sumo.html#drivetrain">Brushless DC</a>
+                            <a href="sumo.html#infrared-sensor">Infrared Sensor</a>
                             <a href="sumo.html#ultrasonic-sensor">Ultrasonic Sensor</a>
-                            <a href="sumo.html#infrared-sensor">Infrarred Proximity Sensor</a>
+                            <a href="sumo.html#strategy">State Machine</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -412,7 +590,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
 
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
@@ -461,7 +639,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

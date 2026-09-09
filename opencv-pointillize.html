@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>OpenCV Pointillize | Computer Vision | Leonardo Ward</title>
+    <meta name="description" content="A short Python 3 + OpenCV script that turns a photo into a pointillism-style image by scattering non-overlapping coloured dots sampled from the source.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/opencv-pointillize.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OpenCV Pointillize | Computer Vision | Leonardo Ward">
+    <meta property="og:description" content="A short Python 3 + OpenCV script that turns a photo into a pointillism-style image by scattering non-overlapping coloured dots sampled from the source.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/cv_pointillize/result.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/opencv-pointillize.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <!-- <div class="header__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div>  -->
+        <!-- end header__logo -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                <li class="has-children">
+                    <a href="embedded-hardware.html" title="">Embedded Hardware</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="ejam.html">EJA M</a>
+                          <ul class="sub-menu">
+                            <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#planning" title="">Planning</a></li>
+                            <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ejam.html#ftdi-ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ejam.html#auto-reset-circuit-for-the-esp32" title="">Auto Reset Circuit</a></li>
+                            <li><a href="ejam.html#esp32" title="">ESP32</a></li>
+                            <li><a href="ejam.html#gps" title="">GPS</a></li>
+                            <li><a href="ejam.html#lora" title="">LoRa</a></li>
+                            <li><a href="ejam.html#real-time-clock-rtc" title="">Real time Clock RTC</a></li>
+                            <li><a href="ejam.html#5v-2a-stepup" title="">5V 2A Stepup</a></li>
+                            <li><a href="ejam.html#battery-charging-circuit" title="">Battery Charging</a></li>
+                            <li><a href="ejam.html#3v3-3a-sepic-converter" title="">3V3 3A SEPIC Converter</a></li>
+                            <li><a href="ejam.html#on-off-button-circuit" title="">ON-OFF Button Circuit</a></li>
+                            <li><a href="ejam.html#pcb-dimensions-and-boundaries" title="">PCB Dimensions and Boundaries</a></li>
+                            <li><a href="ejam.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ejam.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ftdi-dev-board.html#ft312d" title="">FTDI FT312D</a></li>
+                            <li><a href="ftdi-dev-board.html#esp32-with-auto-reset" title="">ESP32 with Auto Reset</a></li>
+                            <li><a href="ftdi-dev-board.html#ic-switch" title="">IC Switch</a></li>
+                            <li><a href="ftdi-dev-board.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-m20050" title="">GPS ANTENOVA M20050-1</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-atgm332d" title="">GPS ATGM332D-5N31</a></li>
+                            <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="lora-dev-board.html" title="">Description</a></li>
+                            <li><a href="lora-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="lora-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="lora-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="lora-dev-board.html#firmware-and-testing" title="">Firmware and Testing</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="helios_ren.html">HELIOS REN Tail Light System</a></li>
+                        <li class="has-children"><a href="onboardgateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboardgateway.html" title="">Description</a></li>
+                            <li><a href="onboardgateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboardgateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboardgateway.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
+                            <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoya.html">Buoy A</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoya.html" title="">Description</a></li>
+                            <li><a href="buoya.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoya.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoya.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoya.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoya.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoya.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoya.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoyb.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoyb.html" title="">Description</a></li>
+                            <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoyb.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
+                            <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="embedded-software.html" title="">Embedded Software</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#pic" title="">PIC</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#lcd" title="">LCD</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#buttons" title="">Buttons</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#render" title="">Render</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#sprites" title="">Sprites</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#animations" title="">Animations</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-onboardgateway.html" title="">Description</a></li>
+                            <li><a href="gui-onboardgateway.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-onboardgateway.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-onboardgateway.html#home" title="">Home</a></li>
+                            <li><a href="gui-onboardgateway.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-onboardgateway.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-onboardgateway.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-onboardgateway.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-onboardgateway.html#led-test" title="">Led Test</a></li>
+                            <li><a href="gui-onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-buoyb.html">GUI for Buoy B v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-buoyb.html" title="">Description</a></li>
+                            <li><a href="gui-buoyb.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-buoyb.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-buoyb.html#home" title="">Home</a></li>
+                            <li><a href="gui-buoyb.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-buoyb.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-buoyb.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-buoyb.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="robotics.html" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
+                            <li><a href="brushlessdc.html" title="">Brushless DC Motor Drivers</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="puma560.html">PUMA 560</a>
+                          <ul class="sub-menu">
+                            <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
+                            <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
+                            <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
+                            <li><a href="puma560.html#robot-manipulator" title="">RRR Robot Manipulator</a></li>
+                            <li><a href="puma560.html#puma-560" title="">PUMA 560 Manipulator</a></li>
+                            <li><a href="puma560.html#gui" title="">GUI</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
+                    <ul class="sub-menu">
+                        <li><a href="interactive-map.html">Interactive Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="3dmap.html" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="bajasae.html" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img src="images/cv_pointillize/result.jpg" alt="A landscape photo rendered as pointillism: a field of small non-overlapping coloured dots that resolve into a scene">
+                </div>
+            </div>
+
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Pointillize &mdash; a Photo-to-Dots Filter
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">October, 2017</li>
+                    <li class="byline">
+                        By
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                    </li>
+                    <li>
+                      <h3><a href="https://github.com/leonardoward/OpenCV-Pointillize"><i class="fab fa-github"></i></a></h3>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap">A short Python&nbsp;3 + <a href="https://opencv.org/">OpenCV</a> script that turns a photo into a <a href="https://en.wikipedia.org/wiki/Pointillism">pointillism</a>-style image &mdash; a scatter of non-overlapping coloured dots, each sampled from the source.</p>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/cv_pointillize/source.jpg" width="400" alt="The source photo: a landscape scene">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/cv_pointillize/result.jpg" width="400" alt="The same scene rebuilt from hundreds of small non-overlapping coloured dots">
+                    </p>
+                  </div>
+                </div>
+
+                <p style="text-align:center">Source photo and the pointillized output (radius&nbsp;6).</p>
+
+                <h2 id="how-it-works">How It Works</h2>
+
+                <p>The output starts as a white canvas and gains one dot at a time:</p>
+
+                <ol>
+                    <li>Pick a random pixel <code>(row,&nbsp;col)</code> in the source.</li>
+                    <li>Sample its colour.</li>
+                    <li>Try to stamp a filled circle of the chosen radius there.</li>
+                    <li><strong>Keep it only if it does not touch any dot already placed.</strong></li>
+                    <li>Repeat for a set number of attempts.</li>
+                </ol>
+
+                <p>The collision test is the neat part: instead of comparing pixel lists, the candidate circle's mask is XOR&#8209;ed against a running mask of every dot placed so far, using the candidate itself as the operation mask. If the result still equals the candidate mask, nothing overlapped and the dot is accepted.</p>
+
+                <p>Because circles can never overlap, the canvas saturates and later attempts are mostly rejected &mdash; the dot density plateaus on its own, which is what gives the hand&#8209;stippled look rather than a solid mosaic.</p>
+
+                <h2 id="usage">Usage</h2>
+
+                <pre><code>python3 pointillize.py --image ./images/01.jpg --radius 10 --cycles 20 --debug True</code></pre>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Flag</th><th>Meaning</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>--image</code></td><td>path to the source image</td></tr>
+                            <tr><td><code>--radius</code></td><td>dot radius, pixels</td></tr>
+                            <tr><td><code>--cycles</code></td><td>number of placement <em>attempts</em> (not dots placed)</td></tr>
+                            <tr><td><code>--debug</code></td><td><code>True</code> / <code>False</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Needs Python&nbsp;3, <code>opencv-python</code> and <code>numpy</code>; the result is written to <code>resultado.png</code>.</p>
+
+                <h2 id="portrait">Another Example</h2>
+
+                <div class="col-full">
+                  <div class="col-six">
+                    <p>
+                    <img src="images/cv_pointillize/portrait_source.jpg" width="240" alt="A portrait photo">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img src="images/cv_pointillize/portrait.jpg" width="240" alt="The portrait rendered as fine coloured stippling">
+                    </p>
+                  </div>
+                </div>
+
+                <p style="text-align:center">A portrait at a small radius &mdash; the effect becomes a fine grain.</p>
+
+                <h2 id="notes">Notes</h2>
+
+                <ul>
+                    <li>With a small radius you need tens of thousands of attempts to cover a photo, since <code>--cycles</code> counts tries, not hits.</li>
+                    <li>An earlier per&#8209;pixel collision function is still in the file but unused &mdash; the mask&#8209;XOR approach replaced it.</li>
+                </ul>
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="#0">Computer Vision</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="opencv-pointillize.html#how-it-works">OpenCV</a>
+                            <a href="opencv-pointillize.html#how-it-works">Python</a>
+                            <a href="opencv-pointillize.html#how-it-works">Image Processing</a>
+                            <a href="opencv-pointillize.html#usage">CLI</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <div class="entry__author">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="#0">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            Electronics Engineer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="pic-ws2812.html" rel="prev">
+                        <span>Previous Post</span>
+                        Driving WS2812 LEDs with a PIC16F1717
+                    </a>
+                </div>
+                <div class="col-six s-content__next">
+                    <a href="opencv-test-app.html" rel="next">
+                        <span>Next Post</span>
+                        OpenCV Test App
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
+
+              </div>
+              <!-- <div class="col-six tab-full s-footer__about">
+
+                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
+
+                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
+                  and Bitbucket).</p>
+
+              </div> -->
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

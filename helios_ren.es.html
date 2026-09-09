@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>HELIOS REN | Sistema de Luces Traseras para Bicicleta | Leonardo Ward</title>
+    <meta name="description" content="HELIOS REN, prototipo de un sistema de luces traseras recargable para bicicletas: seleccion de componentes, firmware en PIC16F1455, simulacion en Proteus y diseno de PCB y carcasa en Altium.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/helios_ren.es.html">
+    <link rel="alternate" hreflang="en" href="https://leonardoward.github.io/helios_ren.html">
+    <link rel="alternate" hreflang="es" href="https://leonardoward.github.io/helios_ren.es.html">
+    <link rel="alternate" hreflang="x-default" href="https://leonardoward.github.io/helios_ren.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HELIOS REN | Sistema de Luces Traseras para Bicicleta | Leonardo Ward">
+    <meta property="og:description" content="HELIOS REN, prototipo de un sistema de luces traseras recargable para bicicletas: seleccion de componentes, firmware en PIC16F1455, simulacion en Proteus y diseno de PCB y carcasa en Altium.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/helios_ren/PCB1.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/helios_ren.es.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <!-- <div class="header__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div>  -->
+        <!-- end header__logo -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                <li class="has-children">
+                    <a href="embedded-hardware.html" title="">Embedded Hardware</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="ejam.html">EJA M</a>
+                          <ul class="sub-menu">
+                            <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#planning" title="">Planning</a></li>
+                            <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ejam.html#ftdi-ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ejam.html#auto-reset-circuit-for-the-esp32" title="">Auto Reset Circuit</a></li>
+                            <li><a href="ejam.html#esp32" title="">ESP32</a></li>
+                            <li><a href="ejam.html#gps" title="">GPS</a></li>
+                            <li><a href="ejam.html#lora" title="">LoRa</a></li>
+                            <li><a href="ejam.html#real-time-clock-rtc" title="">Real time Clock RTC</a></li>
+                            <li><a href="ejam.html#5v-2a-stepup" title="">5V 2A Stepup</a></li>
+                            <li><a href="ejam.html#battery-charging-circuit" title="">Battery Charging</a></li>
+                            <li><a href="ejam.html#3v3-3a-sepic-converter" title="">3V3 3A SEPIC Converter</a></li>
+                            <li><a href="ejam.html#on-off-button-circuit" title="">ON-OFF Button Circuit</a></li>
+                            <li><a href="ejam.html#pcb-dimensions-and-boundaries" title="">PCB Dimensions and Boundaries</a></li>
+                            <li><a href="ejam.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ejam.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ftdi-dev-board.html#ft312d" title="">FTDI FT312D</a></li>
+                            <li><a href="ftdi-dev-board.html#esp32-with-auto-reset" title="">ESP32 with Auto Reset</a></li>
+                            <li><a href="ftdi-dev-board.html#ic-switch" title="">IC Switch</a></li>
+                            <li><a href="ftdi-dev-board.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-m20050" title="">GPS ANTENOVA M20050-1</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-atgm332d" title="">GPS ATGM332D-5N31</a></li>
+                            <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="lora-dev-board.html" title="">Description</a></li>
+                            <li><a href="lora-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="lora-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="lora-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="lora-dev-board.html#firmware-and-testing" title="">Firmware and Testing</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="helios_ren.html">HELIOS REN Tail Light System</a></li>
+                        <li class="has-children"><a href="onboardgateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboardgateway.html" title="">Description</a></li>
+                            <li><a href="onboardgateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboardgateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboardgateway.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
+                            <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoya.html">Buoy A</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoya.html" title="">Description</a></li>
+                            <li><a href="buoya.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoya.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoya.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoya.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoya.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoya.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoya.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoyb.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoyb.html" title="">Description</a></li>
+                            <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoyb.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
+                            <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="embedded-software.html" title="">Embedded Software</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#pic" title="">PIC</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#lcd" title="">LCD</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#buttons" title="">Buttons</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#render" title="">Render</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#sprites" title="">Sprites</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#animations" title="">Animations</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-onboardgateway.html" title="">Description</a></li>
+                            <li><a href="gui-onboardgateway.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-onboardgateway.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-onboardgateway.html#home" title="">Home</a></li>
+                            <li><a href="gui-onboardgateway.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-onboardgateway.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-onboardgateway.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-onboardgateway.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-onboardgateway.html#led-test" title="">Led Test</a></li>
+                            <li><a href="gui-onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-buoyb.html">GUI for Buoy B v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-buoyb.html" title="">Description</a></li>
+                            <li><a href="gui-buoyb.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-buoyb.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-buoyb.html#home" title="">Home</a></li>
+                            <li><a href="gui-buoyb.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-buoyb.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-buoyb.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-buoyb.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="robotics.html" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
+                            <li><a href="brushlessdc.html" title="">Brushless DC Motor Drivers</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="puma560.html">PUMA 560</a>
+                          <ul class="sub-menu">
+                            <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
+                            <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
+                            <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
+                            <li><a href="puma560.html#robot-manipulator" title="">RRR Robot Manipulator</a></li>
+                            <li><a href="puma560.html#puma-560" title="">PUMA 560 Manipulator</a></li>
+                            <li><a href="puma560.html#gui" title="">GUI</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
+                    <ul class="sub-menu">
+                        <li><a href="interactive-map.html">Interactive Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="3dmap.html" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="bajasae.html" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb" style="text-align:center">
+                    <img src="images/helios_ren/PCB1.jpg" alt="PCB del sistema de luces traseras HELIOS REN ensamblado">
+                </div>
+            </div>
+
+            <div class="col-full entry__tags" style="text-align:center; margin:2.4rem 0 0;">
+                    <span class="entry__tax-list entry__tax-list--pill">
+                        <a href="helios_ren.html">English</a>
+                        <a href="helios_ren.es.html" aria-current="page"><strong>Español</strong></a>
+                    </span>
+                </div>
+
+            <div class="entry__header col-full">
+                <h1 class="entry__header-title display-1">
+                    Sistema de Luces Traseras HELIOS REN
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">Febrero de 2021</li>
+                    <li class="byline">
+                        Por
+                        <br>
+                        <a href="#0">Carlos Sanoja</a> - <a href="#0">Jesús Guillen</a> - <a href="#0">Leonardo Ward</a> - <a href="#0">Mauricio Marcano</a> - <a href="#0">Oscar Moreno</a> - <a href="#0">Vincenzo D'Argento</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap">El siguiente trabajo presenta las etapas del diseño de un prototipo de sistema de luces traseras para una bicicleta. Se realiza la selección de los componentes adecuados a los requerimientos del proyecto y a los criterios del equipo de trabajo. Se realizó la simulación del funcionamiento del sistema en el software Proteus y la codificación con la ayuda de MPLAB X. Adicionalmente, se presenta el diseño PCB del circuito y las modificaciones a la propuesta de la competencia.</p>
+
+                <h2 id="requerimientos">Requerimientos</h2>
+
+                <h3>Requerimientos generales</h3>
+
+                <p>Diseñar un prototipo de un sistema de luces traseras para bicicletas.</p>
+
+                <h3>Requerimientos específicos</h3>
+
+                <ul>
+                  <li>Autonomía de 25 horas en funcionamiento continuo.</li>
+                  <li>Uso de baterías recargables; la recarga se realiza mediante un puerto USB.</li>
+                  <li>Tres modos de operación.</li>
+                  <li>Precio final viable para el mercado (25 &euro; &lt; precio &lt; 40 &euro;).</li>
+                  <li>Utilizar componentes disponibles, asequibles y con soporte en el mercado.</li>
+                </ul>
+
+                <p>Además, se propone una versión PRO del producto con los siguientes requerimientos adicionales:</p>
+
+                <ul>
+                  <li>Luces de cruce para cada lado e intermitentes.</li>
+                  <li>Mando de control ajustable al manillar del ciclista para controlar el comportamiento del producto.</li>
+                </ul>
+
+                <p>La Figura 1 describe los distintos modos de operación propuestos para el sistema de luces traseras. Además, plantea el uso de un único botón para realizar la transición entre modos. Las luces de cruce no se ven reflejadas en los modos de operación; dichas luces solo tienen dos estados: encendido y apagado.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/D_Estado.jpg" alt="Diagrama de estados de los modos de operación de las luces traseras">
+                    <p>Figura 1: diagrama que muestra los modos de uso de las luces traseras.</p>
+                </div>
+
+                <h2 id="diseno">Diseño</h2>
+
+                <h3>Hardware</h3>
+
+                <p>En la Figura 2 se puede observar el diagrama de bloques de hardware del prototipo. Incluye los componentes esenciales del diseño: pulsadores, baterías, cargador de baterías, luces y los transistores que representan la etapa de control de potencia de cada luz LED. En la Figura 2 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/D_Hardware.jpg" alt="Diagrama de bloques de hardware del prototipo">
+                    <p>Figura 2: diagrama de bloques de hardware.</p>
+                </div>
+
+                <h4>Alimentación</h4>
+
+                <p>Para incorporar baterías de litio recargables al diseño se seleccionó un módulo basado en el integrado TP4056, que contiene un cargador de corriente y voltaje constante para baterías de ion litio de una celda (Figura 3). Las baterías de 1 celda tienen un voltaje nominal de 3,7&nbsp;V, valor que se establece como el voltaje de alimentación de los circuitos lógicos en el diseño.</p>
+
+                <p>Para dimensionar las baterías se tomó como referencia que el dispositivo debe ser capaz de ofrecer un funcionamiento de 26 horas continuas con ambas luces principales encendidas a máxima potencia, dejando margen sobre el requerimiento de 25 horas. Cada LED presenta un consumo máximo de 180&nbsp;mA, de manera que: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Se decidió usar un arreglo de 4 baterías de 2600&nbsp;mAh en paralelo, lo que ofrece 10&nbsp;400&nbsp;mAh y permite cubrir la demanda de los LED descrita.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/BatC.png" alt="Módulo cargador de baterías TP4056 de corriente y voltaje constante">
+                    <p>Figura 3: módulo TP4056, cargador de batería.</p>
+                </div>
+
+                <h4>Microcontrolador</h4>
+
+                <p>Los requerimientos funcionales del proyecto son:</p>
+
+                <ul>
+                  <li>4 salidas digitales para controlar 4 LED.</li>
+                  <li>Programar el dispositivo vía ICSP.</li>
+                  <li>Alimentación con 3,7&nbsp;V.</li>
+                  <li>4 entradas digitales para controlar el comportamiento de los LED.</li>
+                </ul>
+
+                <p>La principal limitante para escoger un microcontrolador para esta aplicación son los puertos digitales disponibles, por lo que se buscó uno con dichas características y que fuese conservador con los recursos internos. Las familias PIC12F y PIC16F tienen una CPU de 8 bits que puede funcionar a velocidades de hasta 5&nbsp;MIPS (millones de instrucciones por segundo). Las variantes de la familia PIC12F tienen 8 pines, mientras que las variantes PIC16F se ofrecen en encapsulados de 14 a 64 pines. Para el proyecto se escogió el PIC16F1454 de Microchip por ser la familia más cercana a cumplir con nuestros requerimientos funcionales.</p>
+
+                <p>La familia PIC16F1454/1455/1459 se basa en el núcleo de arquitectura media con 49 instrucciones y proporciona hasta 12&nbsp;MIPS, 14&nbsp;KB de memoria de programa y 1024&nbsp;bytes de RAM. En la placa se utiliza el oscilador interno configurable, con una precisión de &plusmn;0,25&nbsp;%.</p>
+
+                <p>Características del microcontrolador PIC16F1455:</p>
+
+                <ul>
+                  <li>Velocidad de CPU máx. de 48&nbsp;MHz.</li>
+                  <li>Bloque de oscilador interno de 16&nbsp;MHz, con rango de frecuencia seleccionable de 16&nbsp;MHz a 32&nbsp;kHz.</li>
+                  <li>12 contactos de E/S (PIC16F1454/1455).</li>
+                  <li>Programación serie en circuito (ICSP).</li>
+                  <li>Dos temporizadores de 8 bits.</li>
+                </ul>
+
+                <p>Además, este dispositivo cuenta con otros periféricos como un convertidor analógico-digital (ADC) de 10 bits y 5 canales y un puerto serie síncrono maestro (MSSP) con SPI e I2C; sin embargo, no se utilizan. El pinout del dispositivo puede observarse en la Figura 4.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/Pinout.jpg" alt="Pinout del PIC16F1455">
+                    <p>Figura 4: pinout del PIC16F1455.</p>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/pic.png" alt="Símbolo esquemático del PIC16F1455">
+                    <p>Figura 5: símbolo del PIC16F1455 en el esquemático.</p>
+                </div>
+
+                <p>Se puede programar el microcontrolador con un programador ICSP (utilizable con cualquier chip PIC). Las conexiones ICSP se muestran en el siguiente diagrama (Figura 6).</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/icsp.png" alt="Conector de programación ICSP en el esquemático">
+                    <p>Figura 6: símbolo para la entrada ICSP en el esquemático.</p>
+                </div>
+
+                <p>Para el presente diseño no se consideró necesario el uso de un oscilador externo por dos razones:</p>
+
+                <ul>
+                  <li>El microcontrolador cuenta con un oscilador interno de 16&nbsp;MHz configurable y de alta precisión.</li>
+                  <li>Aunque existe la probabilidad de errores en la medición de los tiempos, esta no es una aplicación sensible a cambios en milisegundos, ya que los modos de operación de las luces se cuantifican en segundos. Cualquier cambio de comportamiento sería prácticamente imperceptible y no justifica aumentar la complejidad del diseño de hardware.</li>
+                  <li>Utilizar un dispositivo externo equivale a usar 2 GPIO más para este propósito.</li>
+                </ul>
+
+                <h4>Iluminación</h4>
+
+                <p>Se utilizaron cuatro LED de 0,5&nbsp;W: dos para las luces de parada y dos para las luces de cruce. Se seleccionó el LED blanco OVS5MWBCR4 de la marca TT Electronics, de 50&nbsp;lm, cuyo voltaje directo (forward) está en el rango [3,0 ; 4,1]&nbsp;V, con una corriente nominal de 180&nbsp;mA y un pico de corriente de 350&nbsp;mA; de esta manera no hace falta resistencia de protección para dichos LED, ya que la alimentación es de 3,7&nbsp;V. Para optimizar la distancia de visualización se utiliza una lente de enfoque de 10&deg; de apertura para cada LED.</p>
+
+                <p>Para controlar los LED se necesitaron cuatro transistores. Se seleccionaron dos integrados BTS3405GXUMA1 de la marca Infineon; cada integrado tiene dos transistores cuyo voltaje drain-source máximo (V<sub>DS</sub>) es de 42&nbsp;V, con una corriente máxima de drain de 350&nbsp;mA cada uno (ideal para los LED escogidos) y un voltaje de activación de 1,7&nbsp;V, por lo que es compatible con la lógica de 3,3&nbsp;V del microcontrolador.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/leds.png" alt="Etapa de control de potencia de los LED">
+                    <p>Figura 7: sistema de control para las luces LED.</p>
+                </div>
+
+                <h4>Interfaz de control</h4>
+
+                <p>El control de las luces cuenta con dos formatos. El primero usa un solo botón, capaz de realizar ciclos de encendido pasando por los distintos modos de operación hasta el apagado. Este botón está en la carcasa del dispositivo.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/Case2.PNG" alt="Control de un solo botón en la carcasa del dispositivo">
+                    <p>Figura 8: sistema de control para las luces LED.</p>
+                </div>
+
+                <p>El segundo formato usa un mando de control. A través de esta opción se pueden incorporar más funciones &mdash; entre ellas luces intermitentes y luces de cruce &mdash;, además de los modos de operación, que se mantienen igual. Esta versión del producto tiene un costo extra y puede observarse a continuación.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/mando.png" alt="Mando de control externo para el manillar">
+                    <p>Figura 9: sistema de control externo para las luces LED.</p>
+                </div>
+
+                <h3>Software</h3>
+
+                <p>En la Figura 10 se puede observar el diagrama de bloques del software para el microcontrolador. Cada pulsador se encuentra conectado a un puerto de entrada/salida configurado como entrada. El microcontrolador debe identificar el estado en el puerto de entrada y manejar los posibles rebotes asociados.</p>
+
+                <p>Un deslizador selecciona la luz de cruce que se va a utilizar. Un botón coloca ambas luces de cruce en modo intermitente. Un pulsador cambia el estado de las luces traseras, que siguen los modos presentados en la Figura 1.</p>
+
+                <p>Dado que no se utiliza ningún periférico, la única configuración realizada al microcontrolador fue la de escoger el oscilador. Como se mencionó, se optó por el oscilador interno del dispositivo con una frecuencia de 31&nbsp;kHz, la menor posible, porque no se necesita un nivel de precisión elevado y además permite un menor consumo de las baterías.</p>
+
+                <p>Una vez realizada la selección del hardware, se realizó el diagrama de bloques de software que se muestra en la Figura 10. Dicho diagrama muestra los periféricos utilizados y los elementos indispensables del software: la lectura de los puertos, el manejo de rebotes cuando es necesario y un controlador que establece las señales para las luces y maneja los puertos de salida conectados a los transistores de potencia. También se realizó un diagrama jerárquico de software (Figura 11), que muestra cómo se relacionan los elementos antes mencionados. Finalmente se realizó el diagrama de capas de software (Figura 12), que se enfoca en establecer qué elementos podrían tener mayor complejidad; los bloques considerados de mayor complejidad son los controladores, porque deben manejar los estados de cada luz, y el diagrama también muestra el amplio uso de los puertos de entrada y salida en el proyecto.</p>
+
+                <p>En las Figuras 10, 11 y 12 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
+
+                <h4>Implementación</h4>
+
+                <p>A nivel de código, luego de inicializar el sistema y las variables necesarias, el programa fluye de la siguiente manera:</p>
+
+                <ul>
+                  <li>Se realiza la lectura de todas las entradas, es decir, si se ha presionado o no alguno de los botones.</li>
+                  <li>Se verifica si se ha presionado el botón para encender las luces intermitentes, que tiene prioridad sobre cualquier luz de cruce. En caso afirmativo, se realiza dicha acción.</li>
+                  <li>Si no se presionó el botón de las intermitentes, se verifica si se presionó el que enciende la luz de cruce derecha. En caso afirmativo, se realiza dicha acción.</li>
+                  <li>Si no se presionó el botón de las intermitentes ni el de la luz de cruce derecha, se verifica si se presionó el que enciende la luz de cruce izquierda. En caso afirmativo, se realiza dicha acción.</li>
+                  <li>Si no se presionó ninguno de estos tres botones, las luces de cruce quedan apagadas.</li>
+                  <li>Se verifica si se ha presionado el botón para cambiar el modo de operación de las luces de parada. El modo inicia por defecto en 0 y cambia cuando se detecta un flanco de bajada, es decir, al dejar de presionar el botón. Los modos de operación son:
+                    <ul>
+                      <li>Modo 0: las luces de parada se mantienen apagadas.</li>
+                      <li>Modo 1: las luces de parada se mantienen encendidas de manera fija.</li>
+                      <li>Modo 2: las luces de parada se encienden de manera intermitente.</li>
+                      <li>Modo 3: las luces de parada se mantienen intermitentes con los ciclos de encendido y apagado invertidos, es decir, solo se enciende un LED a la vez.</li>
+                    </ul>
+                  </li>
+                  <li>Se aplica el modo de control seleccionado, que es manejado por una máquina de estados (Figura 1).</li>
+                  <li>Se actualizan todas las variables de control.</li>
+                </ul>
+
+                <p>Cabe destacar que los ciclos de encendido y apagado de las luces, cuando son necesarios, se temporizan mediante contadores de ciclo. Para determinar el número de ciclos correcto, de modo que las luces cambiaran de estado en un tiempo prudencial, se realizó un proceso iterativo probando distintos valores.</p>
+
+                <p>Adicionalmente, se cuenta con un control de rebote por software para el botón de selección de modos.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/D_BloquesSoft.jpg" alt="Diagrama de bloques del software">
+                    <p>Figura 10: diagrama de bloques de software.</p>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/D_jerarquico.jpg" alt="Diagrama jerárquico del software">
+                    <p>Figura 11: diagrama jerárquico de software.</p>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/D_decapas.jpg" alt="Diagrama de capas del software">
+                    <p>Figura 12: diagrama de capas de software.</p>
+                </div>
+
+                <h2 id="resultados">Resultados</h2>
+
+                <p>Se realizó la simulación del circuito propuesto en Proteus; en la Figura 13 se aprecia el diseño realizado. Los interruptores del mando se modelaron como switches, mientras que para el control de los distintos modos se incorporó un botón. El sistema de alimentación no se ilustra en la simulación; únicamente se incorporan fuentes del voltaje correspondiente. Los integrados seleccionados como transistores (BTS3405GXUMA1) no se pueden simular en Proteus, por lo que se representaron mediante sus equivalentes MOSFET. Se lograron simular exitosamente los distintos modos de operación; en el vídeo entregado se muestra su funcionamiento.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/Simulacion_Proteus.jpg" alt="Simulación en Proteus del circuito propuesto">
+                    <p>Figura 13: modelo del circuito en Proteus.</p>
+                </div>
+
+                <p>Se puede concluir que los precios finales de venta se encuentran dentro de los márgenes de los requerimientos y, dependiendo de la configuración y el tamaño de la compra, se obtienen más beneficios con nuestra solución a un precio competitivo.</p>
+
+                <p>Como paso extra para desarrollar el proyecto, se hizo el diseño del PCB del sistema completo. Se realizó con el software Altium Designer y los resultados pueden observarse a continuación.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/PCB1.jpg" alt="PCB del sistema, vista 1">
+                    <p>Figura 14: PCB del sistema, vista 1.</p>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/PCB2.jpg" alt="PCB del sistema, vista 2">
+                    <p>Figura 15: PCB del sistema, vista 2.</p>
+                </div>
+
+                <p>Finalmente, para culminar un prototipo de diseño mecánico, se diseñó una carcasa con el software de modelado 3D AutoCAD. Los resultados finales pueden observarse a continuación.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img src="images/helios_ren/Case.PNG" alt="Carcasa del PCB modelada en 3D">
+                    <p>Figura 16: carcasa del PCB.</p>
+                </div>
+
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="embedded-hardware.html">Embedded Hardware</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="#0">PCB Design</a>
+                            <a href="#0">Altium</a>
+                            <a href="#0">LED Applications</a>
+                            <a href="#0">Proteus</a>
+                            <a href="#0">MPLABX</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <!-- <div class="entry__author">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="#0">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            Electronics Engineer
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="gui-onboardgateway.html" rel="prev">
+                        <span>Previous Post</span>
+                        GUI for the Onboard Gateway | Hackaday Dream Team 2020
+                    </a>
+                </div>
+                <div class="col-six s-content__next">
+                    <a href="pic-proteus-space-invaders.html" rel="next">
+                        <span>Next Post</span>
+                        Embedded Software | Space Invaders adaptation for a 16-Bit PIC Microcontroller
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
+
+              </div>
+              <!-- <div class="col-six tab-full s-footer__about">
+
+                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
+
+                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
+                  and Bitbucket).</p>
+
+              </div> -->
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

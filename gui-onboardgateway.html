@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>GUI for the Onboard Gateway | Hackaday Dream Team 2020</title>
-    <meta name="GUI for the Onboard Gateway | Hackaday Dream Team 2020" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>GUI for the Onboard Gateway | ESP32 Web Server | Leonardo Ward</title>
+    <meta name="description" content="An ESP32 asynchronous web-server GUI for the Onboard Gateway PCB: GPS readout, a release timer synced with the buoy, LoRa and terminal views, and an LED test page.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/gui-onboardgateway.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GUI for the Onboard Gateway | ESP32 Web Server | Leonardo Ward">
+    <meta property="og:description" content="An ESP32 asynchronous web-server GUI for the Onboard Gateway PCB: GPS readout, a release timer synced with the buoy, LoRa and terminal views, and an LED test page.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/onboard_gateway/gui-onboard-gateway.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/gui-onboardgateway.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/onboard_gateway/gui-onboard-gateway.jpg" alt="">
+                    <img src="images/onboard_gateway/gui-onboard-gateway.jpg" alt="Onboard Gateway web-server GUI">
                 </div>
             </div>
 
@@ -299,7 +388,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt=""></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2020-hdp-dream-team-conservation-x-labs">Project</a>
@@ -338,7 +427,7 @@
                 <p>With those credentials it is possible to access the WiFi network.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/ssid.jpg" width="640" >
+                  <img src="images/onboard_gateway/ssid.jpg" width="640" alt="Phone Wi-Fi network list showing the EJA_Onboard_Gateway access point created by the ESP32">
                 </div>
 
                 <p style="text-align:center">Wifi network.</p>
@@ -359,7 +448,7 @@
                 <p>The previous link displays the web page used for HOME:</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/home.jpg" width="200">
+                  <img src="images/onboard_gateway/home.jpg" width="200" alt="Onboard Gateway web interface: Home page">
                 </div>
 
                 <p style="text-align:center">Home Screen.</p>
@@ -367,7 +456,7 @@
                 <p>There is a header with the name "EJA Onboard Gateway" that opens a sidebar with links to the different test functionalities. It is also possible to access those pages using the buttons in HOME.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/menu.jpg" width="200">
+                  <img src="images/onboard_gateway/menu.jpg" width="200" alt="Onboard Gateway web interface: sidebar menu listing the test pages">
                 </div>
 
                 <p style="text-align:center">Side Menu.</p>
@@ -377,7 +466,7 @@
                 <p>The page http://www.onboard_gateway.eja/gps shows the data from the GPS module.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/gps.jpg" width="200">
+                  <img src="images/onboard_gateway/gps.jpg" width="200" alt="Onboard Gateway web interface: GPS page showing data from the GPS module">
                 </div>
 
                 <p style="text-align:center">GPS Screen.</p>
@@ -387,7 +476,7 @@
                 <p>The page http://www.onboard_gateway.eja/timer shows the interface to create a timer in the Buoy. The timer represents a countdown that activates the release mechanism when the time has reached zero. The initial page allows the user to set the timer.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/settimer_filled.jpg" width="200">
+                  <img src="images/onboard_gateway/settimer_filled.jpg" width="200" alt="Onboard Gateway web interface: Timer page with a countdown duration entered">
                 </div>
 
                 <p style="text-align:center">Timer Screen.</p>
@@ -395,7 +484,7 @@
                 <p>After selecting the amount of time the user has to click the <strong>Submit</strong> button. That will send the information to the buoy to create a timer.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/settimer_updating_buoy.jpg" width="200">
+                  <img src="images/onboard_gateway/settimer_updating_buoy.jpg" width="200" alt="Onboard Gateway web interface: Timer page waiting while the setting is sent to the Buoy">
                 </div>
 
                 <p style="text-align:center">Updating the timer.</p>
@@ -403,7 +492,7 @@
                 <p>The Onboard Gateway communicates with the Buoy, and once it receives the confirmation that the timer has been properly set, it displays the countdown to the user.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/remaining_time.jpg" width="200">
+                  <img src="images/onboard_gateway/remaining_time.jpg" width="200" alt="Onboard Gateway web interface: Timer page showing the estimated countdown">
                 </div>
 
                 <p style="text-align:center">Remaining time.</p>
@@ -411,15 +500,15 @@
                 <p>In the Onboard Gateway, the countdown timer is an estimate of the one that is running in the Buoy. When the timer reaches zero, the Buoy activates the release mechanism.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/timer_reached_zero.jpg" width="200">
+                  <img src="images/onboard_gateway/timer_reached_zero.jpg" width="200" alt="Onboard Gateway web interface: Timer page showing the countdown at zero">
                 </div>
 
                 <p style="text-align:center">Screen when the timer reaches zero.</p>
 
-                <p>The user can delete the timer at any time clicking the button <strong>Delete Timer</strong>. But it will only work if the Onboard Gateway has communication with the Buoy. When the user deletes the timer, it is possible to create a new one a restart the process.</p>
+                <p>The user can delete the timer at any time clicking the button <strong>Delete Timer</strong>. But it will only work if the Onboard Gateway has communication with the Buoy. When the user deletes the timer, it is possible to create a new one and restart the process.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/delete_timer.jpg" width="200">
+                  <img src="images/onboard_gateway/delete_timer.jpg" width="200" alt="Onboard Gateway web interface: Timer page with the Delete Timer button">
                 </div>
 
                 <p style="text-align:center">Screen after the timer is deleted.</p>
@@ -433,7 +522,7 @@
                 </code></pre>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/lora_01.jpg" width="200">
+                  <img src="images/onboard_gateway/lora_01.jpg" width="200" alt="Onboard Gateway web interface: LoRa page showing internal LoRa messages">
                 </div>
 
                 <p style="text-align:center">LoRa Screen.</p>
@@ -447,7 +536,7 @@
                 </code></pre>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/terminal.jpg" width="200">
+                  <img src="images/onboard_gateway/terminal.jpg" width="200" alt="Onboard Gateway web interface: Terminal page showing internal messages">
                 </div>
 
                 <p style="text-align:center">Terminal Screen.</p>
@@ -463,13 +552,13 @@
                 <p>The buttons in the page (ON and OFF) can be used to change the state of the LED.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/led_test_on.jpg" width="200">
+                  <img src="images/onboard_gateway/led_test_on.jpg" width="200" alt="Onboard Gateway web interface: LED Test page with the LED switched on">
                 </div>
 
                 <p style="text-align:center">Screen used to turn ON/OFF the Led, state ON.</p>
 
                 <div class="col-full" style="text-align:center">
-                  <img src="images/onboard_gateway/led_test_off.jpg" width="200">
+                  <img src="images/onboard_gateway/led_test_off.jpg" width="200" alt="Onboard Gateway web interface: LED Test page with the LED switched off">
                 </div>
 
                 <p style="text-align:center">Screen used to turn ON/OFF the Led, state OFF.</p>
@@ -489,7 +578,7 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="gui-onboardgateway.html#main_components">ESP32</a>
+                            <a href="gui-onboardgateway.html#requirements">ESP32</a>
                             <a href="gui-onboardgateway.html#async-web-server">Async Web Server</a>
                             <a href="gui-onboardgateway.html#file-system">File System</a>
                             <a href="gui-onboardgateway.html#ota">Over The Air Updates</a>
@@ -503,7 +592,7 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -553,7 +642,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
 
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
@@ -602,7 +691,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 

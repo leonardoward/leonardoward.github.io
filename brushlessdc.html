@@ -5,13 +5,20 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Brushless DC Motor Drivers</title>
-    <meta name="Brushless DC Motor Drivers" content="">
-    <meta name="Leonardo Ward" content="">
+    <title>Brushless DC Motor Drivers | Leonardo Ward</title>
+    <meta name="description" content="A fully digital Arduino interface for the Kelly KEB72601XF brushless DC motor controller, replacing its manual switches with relays and PWM for electric-vehicle prototypes.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/brushlessdc.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Brushless DC Motor Drivers | Leonardo Ward">
+    <meta property="og:description" content="A fully digital Arduino interface for the Kelly KEB72601XF brushless DC motor controller, replacing its manual switches with relays and PWM for electric-vehicle prototypes.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/brushless_dc_drivers/motor_light60.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/brushlessdc.html">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS
     ================================================== -->
@@ -187,6 +194,38 @@
                             <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
                           </ul>
                         </li>
+                                                <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                                                <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                         <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
                           <ul class="sub-menu">
                             <li><a href="gui-onboardgateway.html" title="">Description</a></li>
@@ -220,8 +259,21 @@
                 <li class="has-children current">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
-                        <li><a href="sumo.html">Sumo</a></li>
-                        <li class="has-children"><a href="#0">Motor Driver Design</a>
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
                           <ul class="sub-menu">
                             <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
                             <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
@@ -239,25 +291,62 @@
                             <li><a href="puma560.html#gui" title="">GUI</a></li>
                           </ul>
                         </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Web Applications</a>
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">3D Printing</a>
+                    <a href="3dmap.html" title="">3D Printing</a>
                     <ul class="sub-menu">
                         <li><a href="3dmap.html">Map</a></li>
                     </ul>
                 </li>
 
                 <li class="has-children">
-                    <a href="#0" title="">Vehicles</a>
+                    <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
                     </ul>
@@ -279,7 +368,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/brushless_dc_drivers/motor_light60.jpg" alt="">
+                    <img src="images/brushless_dc_drivers/motor_light60.jpg" alt="Brushless DC motor and Kelly KEB72601XF driver">
                 </div>
             </div>
 
@@ -300,7 +389,7 @@
 
                 <p class="lead drop-cap">This project describes the automation of a Brushless DC Motor Driver with an Arduino Uno.</p>
 
-                <p id="motor-driver">The motor drivers Kelly KEB72601XF provide necessary hardware to drive brusless dc motors, but their interface is not fully digital, the interface that is presented in the user manual contains electrical components that require a manual setting (switches). In this project a circuit is designed to create a fully digital interface for the driver Kelly KEB72601XF and change the velocity and direction of brushless DC motors used in electrical Vehicle prototypes.</p>
+                <p id="motor-driver">The motor drivers Kelly KEB72601XF provide the necessary hardware to drive brushless DC motors, but their interface is not fully digital, the interface that is presented in the user manual contains electrical components that require a manual setting (switches). In this project a circuit is designed to create a fully digital interface for the driver Kelly KEB72601XF and change the speed and direction of brushless DC motors used in electric vehicle prototypes.</p>
 
                 <p><a href="http://kellycontroller.com/mot/downloads/KellyKEBUserManual.pdf">Kelly Controller User Manual.</a></p>
                 <p><a href="http://kellycontroller.com/keb72601x24v-72v280a6kw-bike-brushless-controller-regen-p-279.html">Kelly Controller Specifications.</a></p>
@@ -308,23 +397,23 @@
 
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/brushless_dc_drivers/motor_2_light60.jpg" width="640" alt="">
+                    <img src="images/brushless_dc_drivers/motor_2_light60.jpg" width="640" alt="Brushless DC Motor">
                 </div>
 
                 <p style="text-align:center">Brushless DC Motor.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/brushless_dc_drivers/driver_light60.JPG" width="640" alt="">
+                    <img src="images/brushless_dc_drivers/driver_light60.JPG" width="640" alt="Motor driver Kelly KEB72601XF">
                 </div>
 
                 <p style="text-align:center">Motor driver Kelly KEB72601XF.</p>
 
                 <h2 id="circuit">Circuit</h2>
 
-                <p>The manual of the controller recommends the circuit presented in the following figure to create an interface with it. In the next figure tow potentiometers and three switches are being used to accelerate (throttle), decelerate (brake) and change the direction of the motor.</p>
+                <p>The manual of the controller recommends the circuit presented in the following figure to create an interface with it. In the next figure two potentiometers and three switches are used to accelerate (throttle), decelerate (brake) and change the direction of the motor.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/brushless_dc_drivers/controller_setup.jpg" width="640" alt="">
+                    <img src="images/brushless_dc_drivers/controller_setup.jpg" width="640" alt="Recommended interface for the Kelly KEB72601XF">
                 </div>
 
                 <p style="text-align:center">Recommended interface for the Kelly KEB72601XF.</p>
@@ -337,12 +426,12 @@
                     <li>The third one replaces the Reverse Switch and changes the direction of rotation of the motor.</li>
                 </ul>
 
-                <p id="pwm">An Arduino activates the relays, and creates 3 <strong>PWM</strong> to create the analogue signals (0V-5V): Throttle and Brake AN.</p>
+                <p id="pwm">An Arduino activates the relays, and generates 3 <strong>PWM</strong> signals to produce the analog levels (0V-5V): Throttle and Brake AN.</p>
 
                 <p>The power supply is connected to the front panel of the controller. The next image presents a description of the front panel.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/brushless_dc_drivers/front_panel.jpg" width="640" alt="">
+                    <img src="images/brushless_dc_drivers/front_panel.jpg" width="640" alt="Front Panel of the Kelly KEB72601XF">
                 </div>
 
                 <p style="text-align:center">Front Panel of the Kelly KEB72601XF.</p>
@@ -350,7 +439,7 @@
                 <p>The J2 connector is used to interact with the controller using a development board (Arduino Uno), the next image describes the J2 connector.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/brushless_dc_drivers/j2.jpg" width="640" alt="">
+                    <img src="images/brushless_dc_drivers/j2.jpg" width="640" alt="J2 Pin Description">
                 </div>
 
                 <p style="text-align:center">J2 Pin Description.</p>
@@ -373,7 +462,7 @@
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/brushless_dc_drivers/circuit_3_light60.jpg" width="640" alt="">
+                    <img src="images/brushless_dc_drivers/circuit_3_light60.jpg" width="640" alt="Circuit Implementation">
                 </div>
 
                 <p style="text-align:center">Circuit Implementation.</p>
@@ -410,7 +499,7 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="">
+                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
@@ -460,7 +549,7 @@
 
                   <h4>Leonardo Ward</h4>
 
-                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCAD). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or python.</p>
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python.</p>
               </div>
               <!-- <div class="col-six tab-full s-footer__about">
 
@@ -508,7 +597,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
