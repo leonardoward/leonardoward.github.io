@@ -134,12 +134,15 @@
             }
         });
 
-        // open (or close) submenu items in mobile view menu. 
+        // open (or close) submenu items in mobile view menu.
         // close all the other open submenu items.
+        // on desktop the submenu opens on hover (CSS), so let the parent link
+        // navigate normally; only intercept the click in the mobile menu.
         $('.header__nav .has-children').children('a').on('click', function (e) {
-            e.preventDefault();
 
             if ($(".close-mobile-menu").is(":visible") == true) {
+
+                e.preventDefault();
 
                 $(this).toggleClass('sub-menu-is-open')
                     .next('ul')
