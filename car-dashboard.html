@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward</title>
-    <meta name="description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
+    <title>Dashboard Module | Baja SAE USB | Leonardo Ward</title>
+    <meta name="description" content="The instrument cluster for the Baja SAE USB off-road car: a Freescale MCF51JM128 ColdFire board that reads RPM, speed and temperature, listens to the vehicle CAN bus, and drives the needle gauges and dashboard lamps.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/puma560.html">
+    <link rel="canonical" href="https://leonardoward.github.io/car-dashboard.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward">
-    <meta property="og:description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/puma560/puma560.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/puma560.html">
+    <meta property="og:title" content="Dashboard Module | Baja SAE USB | Leonardo Ward">
+    <meta property="og:description" content="The Baja SAE USB instrument cluster: an MCF51JM128 ColdFire board reading RPM/speed/temperature and CAN, driving the needle gauges and dashboard lamps.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/car_dashboard/board.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/car-dashboard.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -271,7 +271,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="sumo.html">Sumo</a>
@@ -379,7 +379,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
@@ -404,139 +404,159 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full" style="text-align:center">
+            <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/puma560/puma560.jpg" alt="PUMA 560 robotic manipulator simulation">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/car_dashboard/board.jpg" alt="The assembled dashboard-module board, silkscreened &quot;BAJA SAE USB 2012 &mdash; Dashboard Module&quot;: a 64-pin microcontroller in the centre, a DB9 and reset button at left, and large keyed connector housings plugged into the two harness headers">
                 </div>
             </div>
 
-            <div class="entry__header col-full" id="description">
-                <h1 class="entry__header-title display-1">
-                    PUMA 560 Matlab Simulations
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Dashboard Module
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">May, 2019</li>
+                    <li class="date">2012&ndash;2013</li>
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                     <li>
-                      <h3><a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations"><i class="fab fa-github"></i></a></h3>
+                      <h3><a href="https://github.com/leonardoward/car-dashboard-module-2012"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Two MATLAB GUIs for exploring serial&#8209;robot kinematics with <a href="https://petercorke.com/toolboxes/robotics-toolbox/">Peter Corke's Robotics Toolbox</a> &mdash; one for a teaching <strong>RRR</strong> arm (3 revolute joints) and one for the classic <strong>Unimation PUMA&nbsp;560</strong> (6 joints), animated with the real STL link meshes from the <a href="https://arvc.umh.es/arte/index_en.html">ARTE</a> library.</p>
-
-                <h2 id="how-it-works">What the GUIs Do</h2>
-
-                <h3>puma560_gui</h3>
-
-                <p>The PUMA&nbsp;560 GUI (built with GUIDE) runs a full forward / inverse kinematics round trip and shows the robotics maths along the way:</p>
-
-                <ul>
-                    <li><strong>Forward kinematics</strong> &mdash; type the six joint angles (degrees). The GUI builds a smooth joint&#8209;space trajectory from the previous pose with <code>jtraj</code> (10&nbsp;steps), and at every step computes the manipulator <strong>Jacobian</strong> (<code>jacobe</code>), its <strong>determinant</strong> and its <strong>rank</strong> &mdash; so a configuration near a <strong>singularity</strong> shows up as a rank drop. It then animates the path and reads the end&#8209;effector pose back out of <code>fkine</code>, reporting X/Y/Z and roll/pitch/yaw (<code>tr2rpy</code>).</li>
-                    <li><strong>Statics</strong> &mdash; an optional force / torque vector <code>[fx fy fz tx ty tz]</code> at the end effector is mapped to the joint torques that would hold it, via the Jacobian transpose (<code>q_add = J' * force</code>), and folded into the trajectory.</li>
-                    <li><strong>Inverse kinematics</strong> &mdash; type a target Cartesian pose; the GUI solves the joint angles with <code>ikine</code> and animates the <code>jtraj</code> path to it.</li>
-                    <li><strong>2D or 3D</strong> &mdash; a toggle switches between the fast wire&#8209;frame plot and the textured STL model; the frames are written out to build the GIFs below.</li>
-                </ul>
-
-                <h3>RRR_Robot_GUI</h3>
-
-                <p>A stripped&#8209;down version for a 3&#8209;revolute (RRR) arm &mdash; the same forward / inverse kinematics on a robot simple enough to check by hand, with the link geometry defined directly through <code>Link</code> / <code>SerialLink</code>.</p>
-
-                <h2>Repository</h2>
-
-                <p>To get a copy of this project you can use git, and clone the repository:</p>
-
-                <pre><code>
-                  git clone https://github.com/leonardoward/PUMA560-MATLAB-Simulations.git
-                </code></pre>
-
-                <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
-
-                <h2 id="prerequisites">Prerequisites</h2>
-
-                <ol>
-                    <li>MATLAB (Developed using MATLAB R2015b)</li>
-                    <li><a href="http://petercorke.com/wordpress/toolboxes/robotics-toolbox">Peter Corke's Robotics Toolbox</a></li>
-                    <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
-                </ol>
-
-                <h2>Installation</h2>
-
-                <h3 id="robotics-toolbox">Peter Corke's Robotics Toolbox</h3>
-
-                <ul>
-                    <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
-                    <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
-                </ul>
-
-                <h3 id="stl-model">ARTE Library (STL Models)</h3>
-
-                <ul>
-                    <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
-                    <li>Copy the folder /path/to/arte/arte/robots/UNIMATE/, this folder contains the STL models. A copy of this folder can be found on the root path of this repository.</li>
-                    <li>Paste the folder with the STL models in the path /path/to/MATLAB/version/toolbox/phased/phased/data/ARTE/, in this case the version is R2015b.</li>
-                </ul>
-
-                <p>To check that is installed correctly run in the MATLAB terminal:</p>
-
-                <pre><code>
-                  > mdl_puma560
-                  > p560.model3d
-                  ans =
-                  UNIMATE/puma560
-                </code></pre>
-
-                <h2 id="robot-manipulator">RRR Robot Manipulator</h2>
+                <p class="lead drop-cap">The <strong>instrument cluster</strong> for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). One board behind the dash reads engine RPM, road speed and temperature, listens to the car's CAN bus, drives the two needle gauges and every dashboard lamp, and streams a telemetry frame out over RS&#8209;232. It is the hub of the wider <a href="bajasae.html">Baja SAE USB vehicle electronics</a> &mdash; it receives the <a href="gasoline-module.html">fuel&#8209;level module</a>'s CAN frame and rebroadcasts the gauge values for the on&#8209;board logger. <em>Continues the team's earlier &ldquo;Tablero 2011&#8209;2012&rdquo; firmware; 2012&#8209;2013.</em></p>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/car_dashboard/board.jpg" width="620" alt="The assembled board with keyed connector housings on both harness headers, the DB9 and reset button at left, and the ColdFire microcontroller in the centre">
                 </div>
 
-                <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The assembled board &mdash; <em>BAJA SAE USB 2012 &middot; Dashboard Module</em> &mdash; with the keyed harness connectors fitted.</p>
+
+                <h2 id="why">Why</h2>
+
+                <p>The Baja car needs a real dashboard: a tachometer and speedometer the driver can read at a glance, warning lights for fuel, temperature and brake, plus headlight and turn&#8209;signal control. The team already had sensors scattered around the car and a <strong>CAN bus</strong> tying the electronics together &mdash; so one microcontroller board can gather everything and run the whole panel, instead of a bundle of separate gauges and relays.</p>
+
+                <h2 id="inputs">What It Reads</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Signal</th><th>How it is read</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Engine RPM</strong></td><td>Hall&#8209;effect sensor on the engine &mdash; one pulse per revolution into a keyboard&#8209;interrupt pin. A free&#8209;running timer measures the period <code>T_rpm</code>; <code>rpm_duty = 3060 / T_rpm</code>.</td></tr>
+                            <tr><td><strong>Road speed</strong></td><td>proximity sensor on a wheel &mdash; one pulse per pass into a second pin; <code>vel_duty = 16320 / T_vel</code>. No pulse for ~70 timer ticks &rarr; forced to 0 (car stopped).</td></tr>
+                            <tr><td><strong>Engine temperature</strong></td><td>two bytes on a dedicated UART (<code>SCI_Temp</code>).</td></tr>
+                            <tr><td>CAN <code>0x222</code></td><td>fuel level 0&ndash;11, from the <a href="gasoline-module.html">fuel&#8209;level module</a>.</td></tr>
+                            <tr><td>CAN <code>0x333</code></td><td>1&#8209;byte bitfield from the steering&#8209;wheel unit: <code>bit0</code> night lights, <code>bit1</code> right turn, <code>bit2</code> left turn, <code>bit3</code> brake.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="outputs">What It Drives</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Output</th><th>How</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Tachometer</strong> / <strong>speedometer</strong> needles</td><td>a PWM channel each &rarr; RC filter &rarr; a moving&#8209;coil meter (a voltmeter re&#8209;scaled for RPM / km&#8239;h)</td></tr>
+                            <tr><td><strong>Headlights</strong> (low beam)</td><td>PWM dimming, gated left / right by the tri&#8209;state buffers</td></tr>
+                            <tr><td><strong>Panel / night lights</strong></td><td>PWM dimming, working with a separate photo&#8209;sensor box</td></tr>
+                            <tr><td><strong>Turn signals</strong></td><td>a timer ISR ramps the PWM duty 0&nbsp;&rarr;&nbsp;130&nbsp;&rarr;&nbsp;0 so the lamps <em>fade</em> in and out instead of hard&#8209;blinking</td></tr>
+                            <tr><td><strong>4 indicator LEDs</strong></td><td>via the buffers: night&#8209;lights on &middot; low fuel (<code>level &le; 2</code>) &middot; over&#8209;temp (<code>&ge; 100</code>) &middot; brake</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Low&#8209;side <strong>transistor drivers</strong> (2N3904 for logic&#8209;level loads, BCX54 for the lamps) switch everything; the two <strong>DM74LS126 quad tri&#8209;state buffers</strong> give eight individually&#8209;enabled lamp / LED lines, and five SMD trimmers calibrate the gauges.</p>
+
+                <h2 id="firmware">Firmware</h2>
+
+                <p>The MCU is a Freescale <strong>MCF51JM128</strong> (ColdFire&nbsp;V1, 32&#8209;bit, 48&nbsp;MHz), programmed in <strong>CodeWarrior for ColdFire V1</strong> with <strong>Processor Expert</strong> and flashed through the BDM header with a P&amp;E Multilink. The main loop is a flat round&#8209;robin &mdash; read the sensors, update each gauge and lamp, and every few ticks send the CAN and serial frames:</p>
+
+                <pre><code>Init_rutine();        // needle sweep + lamp test + LED chase
+WaitCAN_rutine();     // blink all 4 LEDs until the first CAN frame
+for(;;){
+    Gasolina(GasData);            Luces_nocturnas(PantallaData);
+    Luces_cruce(PantallaData);    Tacometro(rpm_duty);
+    Velocimetro(vel_duty);        Temperatura(temp_val);
+    Brake(PantallaData);
+    if(CAN_count == 3) SendCAN_Data(rpm_duty, vel_duty, temp_val);
+    SendSCI_Data(rpm_duty, vel_duty, temp_val, GasData, PantallaData);
+}</code></pre>
+
+                <p>The <strong>start&#8209;up self&#8209;test</strong> sweeps both needles up and back, cycles every lamp and runs an LED chase; then all four LEDs blink until the first CAN frame arrives, so a dead bus is obvious before the car moves.</p>
+
+                <p>The repository also carries the working predecessor firmware (<code>Informaci&oacute;n 2012&#8209;2013/Tablero 2011&#8209;2012/</code>, same MCU family) and both builds &mdash; S08 and ColdFire &mdash; of the companion <strong>steering&#8209;wheel display unit</strong>.</p>
+
+                <h2 id="bus">Bus Traffic Out</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Link</th><th>Frame</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>CAN</strong> (TJA1040)</td><td>ID <code>0x111</code>, 3 bytes <code>[rpm, speed, temp]</code>, every 3 timer ticks &mdash; for the on&#8209;board logger</td></tr>
+                            <tr><td><strong>RS&#8209;232</strong> (MAX232 + DB9)</td><td>6&#8209;byte frame <code>[rpm, speed, temp, fuel, controls, 0xFF]</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="hardware">Hardware</h2>
+
+                <p>Compact 2&#8209;layer board (Altium Designer, ECOs dated December&nbsp;2012) sized for the dashboard box, with two 16&#8209;pin harness headers top and bottom and the DB9 on one edge.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Ref</th><th>Part</th><th>Function</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>U1</td><td>Freescale MCF51JM128 (64&#8209;pin)</td><td>ColdFire&nbsp;V1 MCU</td></tr>
+                            <tr><td>U2</td><td>National LM2940CS&#8209;5.0 + fuse</td><td>automotive LDO, 12&nbsp;V car rail &rarr; 5&nbsp;V</td></tr>
+                            <tr><td>U6</td><td>NXP TJA1040</td><td>CAN transceiver</td></tr>
+                            <tr><td>U7</td><td>MAX232CSE + DB9</td><td>RS&#8209;232 telemetry out</td></tr>
+                            <tr><td>U4,&nbsp;U5</td><td>DM74LS126A</td><td>quad tri&#8209;state buffers &mdash; 8 gated lamp / LED lines</td></tr>
+                            <tr><td>Q1&ndash;Q6, Q8&ndash;Q12</td><td>2N3904 / BCX54</td><td>low&#8209;side lamp &amp; LED drivers</td></tr>
+                            <tr><td>R14&ndash;R19</td><td>SMD trimmers</td><td>gauge / signal calibration</td></tr>
+                            <tr><td>J1,&nbsp;J2</td><td>8&times;2 headers</td><td>sensor + lamp harness</td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="col-full" style="text-align:center">
-                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
+                    <img loading="lazy" decoding="async" src="images/car_dashboard/pcb-layout.jpg" width="360" alt="The PCB layout: a compact roughly-square two-layer board, MCU centred, the two harness headers along the top and bottom edges, the DB9 at right, four corner mounting holes">
+                    <img loading="lazy" decoding="async" src="images/car_dashboard/schematic-overview.jpg" width="360" alt="Schematic overview: the 64-pin MCU top-left, about a dozen identical transistor driver stages filling the right-hand side, the two tri-state buffers at mid-left, and the regulator, CAN transceiver and MAX232 blocks along the bottom with the connectors">
                 </div>
 
-                <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The board layout, and the schematic overview &mdash; MCU at one corner, the transistor driver stages filling one side, power&nbsp;/&nbsp;CAN&nbsp;/&nbsp;RS&#8209;232 along the bottom.</p>
 
-                <h2 id="puma-560">PUMA 560</h2>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
-                </div>
-
-                <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
-
-                <div class="col-full" style="text-align:center" id="gui">
-                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
-                </div>
-
-                <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
-
+                <p>A companion <strong>photo&#8209;sensor board</strong> (<em>circuito fotosensible</em>, in its own printed box) feeds the automatic night&#8209;lights, and a SolidWorks two&#8209;part enclosure (<em>Caja Tablero</em>) houses the board behind the dash.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="robotics.html">Robotics</a>
+                            <a href="bajasae.html">Vehicles</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="puma560.html#description">MATLAB</a>
-                            <a href="puma560.html#robotics-toolbox">Robotics Toolbox</a>
-                            <a href="puma560.html#how-it-works">Forward / Inverse Kinematics</a>
-                            <a href="puma560.html#how-it-works">Jacobian / Singularities</a>
-                            <a href="puma560.html#robot-manipulator">RRR Manipulator</a>
-                            <a href="puma560.html#puma-560">PUMA 560</a>
+                            <a href="car-dashboard.html#description">Baja SAE USB</a>
+                            <a href="car-dashboard.html#bus">CAN Bus</a>
+                            <a href="car-dashboard.html#firmware">MCF51JM128</a>
+                            <a href="car-dashboard.html#firmware">ColdFire</a>
+                            <a href="car-dashboard.html#outputs">PWM Gauges</a>
+                            <a href="car-dashboard.html#hardware">Altium</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -566,15 +586,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="brushlessdc.html" rel="prev">
+                    <a href="wheel-alignment.html" rel="prev">
                         <span>Previous Post</span>
-                        Brushless DC Motor Drivers
+                        Electronic Wheel Alignment
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="pioneer-slam.html" rel="next">
+                    <a href="steering-wheel.html" rel="next">
                         <span>Next Post</span>
-                        Teleoperated SLAM with a Pioneer P3-DX
+                        Steering-Wheel Display
                     </a>
                 </div>
             </div>

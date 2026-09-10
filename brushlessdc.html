@@ -383,6 +383,10 @@
                     <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
+                        <li><a href="wheel-alignment.html">Electronic Wheel Alignment</a></li>
+                        <li><a href="car-dashboard.html">Dashboard Module</a></li>
+                        <li><a href="steering-wheel.html">Steering-Wheel Display</a></li>
+                        <li><a href="gasoline-module.html">Fuel-Level Module</a></li>
                     </ul>
                 </li>
             </ul> <!-- end header__nav -->
@@ -407,23 +411,28 @@
             </div>
 
             <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">
+                <h1 id="description" class="entry__header-title display-1">
                     Brushless DC Motor Drivers
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">January, 2016</li>
+                    <li class="date">December, 2016</li>
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                    </li>
+                    <li>
+                      <h3><a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This project describes the automation of a Brushless DC Motor Driver with an Arduino Uno.</p>
+                <p class="lead drop-cap">A digital control interface for the <strong>Kelly KEB72601XF</strong> brushless&#8209;DC motor controllers used by the <strong>USB&nbsp;Solar</strong> team (the Universidad Sim&oacute;n Bol&iacute;var solar car). The Kelly controllers give you the power hardware but expect mechanical switches and potentiometers on their input connector; this project replaces those with an <strong>Arduino Uno</strong> driven over serial, so a control board can set the motor's speed and direction.</p>
 
-                <p id="motor-driver">The motor drivers Kelly KEB72601XF provide the necessary hardware to drive brushless DC motors, but their interface is not fully digital, the interface that is presented in the user manual contains electrical components that require a manual setting (switches). In this project a circuit is designed to create a fully digital interface for the driver Kelly KEB72601XF and change the speed and direction of brushless DC motors used in electric vehicle prototypes.</p>
+                <p>Built for the course <em>EC&#8209;4162 &mdash; Dise&ntilde;o y construcci&oacute;n de un carro solar II</em> (Universidad Sim&oacute;n Bol&iacute;var, Sep&ndash;Dec&nbsp;2016).</p>
+
+                <p id="motor-driver">The motor drivers Kelly KEB72601XF (24&ndash;72&nbsp;V, 6&nbsp;kW) provide the necessary hardware to drive brushless DC motors, but their interface is not fully digital: the wiring in the user manual uses two potentiometers for the 0&ndash;5&nbsp;V throttle and brake inputs and three switches for the micro, reverse and brake signals. In this project a circuit is designed to drive that interface <strong>digitally</strong> from a development board and change the speed and direction of the motors.</p>
 
                 <p><a href="http://kellycontroller.com/mot/downloads/KellyKEBUserManual.pdf">Kelly Controller User Manual.</a></p>
                 <p><a href="http://kellycontroller.com/keb72601x24v-72v280a6kw-bike-brushless-controller-regen-p-279.html">Kelly Controller Specifications.</a></p>
@@ -452,15 +461,17 @@
 
                 <p style="text-align:center">Recommended interface for the Kelly KEB72601XF.</p>
 
-                <p id="relays">I used three electrical <strong>relays</strong> as a replacement of the switches presented in the original circuit:</p>
+                <p id="relays">Three electrical <strong>relays</strong> replace the switches from the original circuit &mdash; each pulls a <code>J2</code> input to ground:</p>
 
                 <ul>
-                    <li>The first one replaces the throttle switch and activates the accelerator.</li>
-                    <li>The second one replaces the brake switch and activates the decelerator.</li>
-                    <li>The third one replaces the Reverse Switch and changes the direction of rotation of the motor.</li>
+                    <li>the <strong>micro / main</strong> switch that enables the accelerator;</li>
+                    <li>the <strong>brake</strong> switch that engages the decelerator;</li>
+                    <li>the <strong>reverse</strong> switch that changes the direction of rotation.</li>
                 </ul>
 
-                <p id="pwm">An Arduino activates the relays, and generates 3 <strong>PWM</strong> signals to produce the analog levels (0V-5V): Throttle and Brake AN.</p>
+                <p>Each relay coil is switched by a <strong>transistor</strong> (with a base resistor), because the coil draws more current than an Arduino pin can source.</p>
+
+                <p id="pwm">For the throttle and brake analog inputs (0&ndash;5&nbsp;V on <code>J2</code> pins&nbsp;5 and&nbsp;6), the Arduino emits a <strong>PWM</strong> signal that is smoothed to an analog level. A spare potentiometer is kept on the breadboard as a fallback in case a PWM channel misbehaves.</p>
 
                 <p>The power supply is connected to the front panel of the controller. The next image presents a description of the front panel.</p>
 
@@ -477,6 +488,42 @@
                 </div>
 
                 <p style="text-align:center">J2 Pin Description.</p>
+
+                <h2 id="firmware"><a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino"><i class="fab fa-github"></i></a>&nbsp; Firmware</h2>
+
+                <p>The <a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino/blob/main/firmware/BrushlessSolar/BrushlessSolar.ino">Arduino sketch</a> is a small serial&#8209;to&#8209;I/O bridge. It drives <strong>two</strong> motors &mdash; <code>M1</code> (right) and <code>M2</code> (left) &mdash; so the same board can run a dual&#8209;motor rear axle:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Function</th><th>Motor 1 (right)</th><th>Motor 2 (left)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Forward relay</td><td>D4</td><td>D8</td></tr>
+                            <tr><td>Reverse relay</td><td>D5</td><td>D9</td></tr>
+                            <tr><td>Brake relay</td><td>D7</td><td>D10</td></tr>
+                            <tr><td>Throttle (PWM &rarr; analog)</td><td>D6</td><td>D11</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The relays are <strong>active&#8209;low</strong> &mdash; every pin is driven <code>HIGH</code> at start&#8209;up so all relays are released. The host talks to the Arduino at <strong>9600&nbsp;baud</strong>; each line begins with a one&#8209;character tag:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Line</th><th>Effect</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>$F</code></td><td>both throttles to 0, then motor&nbsp;1 forward relay on / reverse off</td></tr>
+                            <tr><td><code>$R</code></td><td>both throttles to 0, then motor&nbsp;1 reverse relay on / forward off</td></tr>
+                            <tr><td><code>R&lt;0&ndash;255&gt;</code></td><td>set motor&nbsp;1 throttle (<code>analogWrite</code> on D6)</td></tr>
+                            <tr><td><code>L&lt;0&ndash;255&gt;</code></td><td>set motor&nbsp;2 throttle (<code>analogWrite</code> on D11)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Everything received is echoed back for debugging. Per&#8209;motor direction and brake commands (<code>1FON</code>, <code>2ROFF</code>, &hellip;) are in the source but left commented out.</p>
 
                 <h3 id="testing">Testing</h3>
 
@@ -513,6 +560,21 @@
                     </div>
                 </div>
 
+                <h3 id="results">Results</h3>
+
+                <p>Two Kelly KEB72601XF controllers were bench&#8209;tested against one motor before being fitted to the car &mdash; one <strong>new</strong> and one <strong>previously used</strong>:</p>
+
+                <ul>
+                    <li>The <strong>new</strong> controller worked correctly &mdash; accelerate, decelerate and reverse, all driven through the Arduino and the relay switches.</li>
+                    <li>The <strong>used</strong> controller could accelerate and decelerate in one direction but <strong>failed on direction change</strong>. It was opened up; the fault was not a quick fix, so testing stopped and it was recommended for replacement.</li>
+                </ul>
+
+                <p>The report's other recommendation: replace the relay&#8209;based switches with <strong>transistor&#8209;based</strong> ones. The board already carries the three transistors that energise the relay coils, so the relays could be dropped entirely &mdash; simpler, and lower current draw.</p>
+
+                <h2 id="compactrio">On the Car &mdash; the CompactRIO</h2>
+
+                <p>On the bench the host on the serial port is a <strong>PC</strong>. On the car it is a <strong>NI CompactRIO</strong> (a real&#8209;time controller with an FPGA) running <strong>LabVIEW</strong>: it reads the driver's pedals and commands and sends the same tagged serial lines to the Arduino, which drives the two Kelly controllers.</p>
+
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
@@ -524,10 +586,13 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="brushlessdc.html#testing">Arduino</a>
-                            <a href="brushlessdc.html#motor-driver">Motor Driver</a>
+                            <a href="brushlessdc.html#firmware">Arduino</a>
+                            <a href="brushlessdc.html#motor-driver">Kelly KEB72601XF</a>
+                            <a href="brushlessdc.html#description">USB Solar</a>
                             <a href="brushlessdc.html#relays">Relays</a>
                             <a href="brushlessdc.html#pwm">PWM</a>
+                            <a href="brushlessdc.html#firmware">Serial Protocol</a>
+                            <a href="brushlessdc.html#compactrio">CompactRIO</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->

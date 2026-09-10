@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward</title>
-    <meta name="description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
+    <title>Electronic Wheel Alignment | Baja SAE USB | Leonardo Ward</title>
+    <meta name="description" content="An electronic wheel-alignment system for the Baja SAE USB off-road vehicle: an ADXL335 accelerometer measures camber, 40 kHz ultrasonic sensors measure toe, and an XBee/I2C network of wheel modules reports to a handheld LCD unit.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/puma560.html">
+    <link rel="canonical" href="https://leonardoward.github.io/wheel-alignment.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward">
-    <meta property="og:description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/puma560/puma560.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/puma560.html">
+    <meta property="og:title" content="Electronic Wheel Alignment | Baja SAE USB | Leonardo Ward">
+    <meta property="og:description" content="An electronic wheel-alignment system for the Baja SAE USB off-road vehicle: accelerometer camber, ultrasonic toe, and an XBee/I2C network of wheel modules reporting to a handheld LCD unit.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/wheel_alignment/car-on-jig.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/wheel-alignment.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -271,7 +271,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="sumo.html">Sumo</a>
@@ -379,7 +379,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
@@ -404,139 +404,117 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full" style="text-align:center">
+            <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/puma560/puma560.jpg" alt="PUMA 560 robotic manipulator simulation">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/wheel_alignment/car-on-jig.jpg" alt="A Baja SAE USB buggy on a wooden alignment jig, one knobby tyre held in a wooden cradle and a stand under the front A-arm">
                 </div>
             </div>
 
-            <div class="entry__header col-full" id="description">
-                <h1 class="entry__header-title display-1">
-                    PUMA 560 Matlab Simulations
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Electronic Wheel Alignment
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">May, 2019</li>
+                    <li class="date">August, 2013</li>
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                     <li>
-                      <h3><a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations"><i class="fab fa-github"></i></a></h3>
+                      <h3><a href="https://github.com/leonardoward/vehicle-wheel-alignment"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Two MATLAB GUIs for exploring serial&#8209;robot kinematics with <a href="https://petercorke.com/toolboxes/robotics-toolbox/">Peter Corke's Robotics Toolbox</a> &mdash; one for a teaching <strong>RRR</strong> arm (3 revolute joints) and one for the classic <strong>Unimation PUMA&nbsp;560</strong> (6 joints), animated with the real STL link meshes from the <a href="https://arvc.umh.es/arte/index_en.html">ARTE</a> library.</p>
+                <p class="lead drop-cap">An electronic wheel&#8209;alignment system for the <strong>Baja SAE USB</strong> off&#8209;road vehicle prototypes (Universidad Sim&oacute;n Bol&iacute;var). It reads each wheel's <strong>camber</strong> with an accelerometer and the <strong>toe</strong> with ultrasonic sensors, then shows the mechanic what to adjust on a small handheld display. It is one of the sub&#8209;systems of the wider <a href="bajasae.html">Baja SAE USB electronics</a> work &mdash; <em>Divisiones de Electr&oacute;nica y de Suspensi&oacute;n, August&nbsp;2013</em>.</p>
 
-                <h2 id="how-it-works">What the GUIs Do</h2>
+                <h2 id="why">Why</h2>
 
-                <h3>puma560_gui</h3>
+                <p>The team aligned its cars <strong>by hand</strong>: parallel lines chalked on the floor (or cones joined with string), then a tape measure to set each wheel parallel to them. There was no way to read the actual <strong>camber</strong> angle, or to check that the four wheels were symmetric. Commercial electronic aligners &mdash; infrared heads bolted to a bench, a PC doing the maths &mdash; are far too big and expensive for a student team.</p>
 
-                <p>The PUMA&nbsp;560 GUI (built with GUIDE) runs a full forward / inverse kinematics round trip and shows the robotics maths along the way:</p>
-
-                <ul>
-                    <li><strong>Forward kinematics</strong> &mdash; type the six joint angles (degrees). The GUI builds a smooth joint&#8209;space trajectory from the previous pose with <code>jtraj</code> (10&nbsp;steps), and at every step computes the manipulator <strong>Jacobian</strong> (<code>jacobe</code>), its <strong>determinant</strong> and its <strong>rank</strong> &mdash; so a configuration near a <strong>singularity</strong> shows up as a rank drop. It then animates the path and reads the end&#8209;effector pose back out of <code>fkine</code>, reporting X/Y/Z and roll/pitch/yaw (<code>tr2rpy</code>).</li>
-                    <li><strong>Statics</strong> &mdash; an optional force / torque vector <code>[fx fy fz tx ty tz]</code> at the end effector is mapped to the joint torques that would hold it, via the Jacobian transpose (<code>q_add = J' * force</code>), and folded into the trajectory.</li>
-                    <li><strong>Inverse kinematics</strong> &mdash; type a target Cartesian pose; the GUI solves the joint angles with <code>ikine</code> and animates the <code>jtraj</code> path to it.</li>
-                    <li><strong>2D or 3D</strong> &mdash; a toggle switches between the fast wire&#8209;frame plot and the textured STL model; the frames are written out to build the GIFs below.</li>
-                </ul>
-
-                <h3>RRR_Robot_GUI</h3>
-
-                <p>A stripped&#8209;down version for a 3&#8209;revolute (RRR) arm &mdash; the same forward / inverse kinematics on a robot simple enough to check by hand, with the link geometry defined directly through <code>Link</code> / <code>SerialLink</code>.</p>
-
-                <h2>Repository</h2>
-
-                <p>To get a copy of this project you can use git, and clone the repository:</p>
-
-                <pre><code>
-                  git clone https://github.com/leonardoward/PUMA560-MATLAB-Simulations.git
-                </code></pre>
-
-                <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
-
-                <h2 id="prerequisites">Prerequisites</h2>
-
-                <ol>
-                    <li>MATLAB (Developed using MATLAB R2015b)</li>
-                    <li><a href="http://petercorke.com/wordpress/toolboxes/robotics-toolbox">Peter Corke's Robotics Toolbox</a></li>
-                    <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
-                </ol>
-
-                <h2>Installation</h2>
-
-                <h3 id="robotics-toolbox">Peter Corke's Robotics Toolbox</h3>
-
-                <ul>
-                    <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
-                    <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
-                </ul>
-
-                <h3 id="stl-model">ARTE Library (STL Models)</h3>
-
-                <ul>
-                    <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
-                    <li>Copy the folder /path/to/arte/arte/robots/UNIMATE/, this folder contains the STL models. A copy of this folder can be found on the root path of this repository.</li>
-                    <li>Paste the folder with the STL models in the path /path/to/MATLAB/version/toolbox/phased/phased/data/ARTE/, in this case the version is R2015b.</li>
-                </ul>
-
-                <p>To check that is installed correctly run in the MATLAB terminal:</p>
-
-                <pre><code>
-                  > mdl_puma560
-                  > p560.model3d
-                  ans =
-                  UNIMATE/puma560
-                </code></pre>
-
-                <h2 id="robot-manipulator">RRR Robot Manipulator</h2>
+                <p>The brief: cost under 3000&nbsp;Bsf, everything inside 50&times;50&times;50&nbsp;cm, a simple interface, and a written guide.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/car-on-jig.jpg" width="720" alt="The Baja SAE USB buggy raised on the alignment jig, ready for measurement">
                 </div>
 
-                <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The car on the alignment jig.</p>
+
+                <h2 id="architecture">System Architecture</h2>
+
+                <p>Five modules:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Module</th><th>Radio</th><th>Bus</th><th>Role</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>User interface</strong></td><td>XBee (master)</td><td>&mdash;</td><td>16&times;2 LCD, push&#8209;buttons, &micro;C. Shows the angles and a simple wheel diagram of which way to adjust.</td></tr>
+                            <tr><td><strong>Wheel&nbsp;1</strong></td><td>XBee (slave)</td><td>I&sup2;C (master)</td><td>accelerometer + ultrasonic sensors + &micro;C; bridges the wheel bus to the UI over XBee</td></tr>
+                            <tr><td><strong>Wheels&nbsp;2&ndash;4</strong></td><td>&mdash;</td><td>I&sup2;C (slave)</td><td>accelerometer + ultrasonic sensors + &micro;C</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>On the car the four wheel modules share a single 3&#8209;wire bus &mdash; <strong>Vdd, SDA, SCL</strong> (I&sup2;C, with pull&#8209;ups) &mdash; with Wheel&nbsp;1 as the I&sup2;C master. Wheel&nbsp;1 also carries the XBee that talks wirelessly to the handheld UI module. (A CAN&#8209;bus version was sketched first; the built system uses XBee&nbsp;+&nbsp;I&sup2;C.) Every module has its own 5&nbsp;V and 3.3&nbsp;V regulators and an ICSP header.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/bus-diagram.jpg" width="640" alt="Hand-drawn bus diagram: four wheel-measurement modules (Master + Slave 1/2/3) hanging off a shared Vdd / SDA / SCL bus with pull-up resistors">
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/modules.jpg" width="360" alt="Notebook page listing the five modules: interface (XBee master), Wheel 1 (XBee slave, I2C master), Wheels 2-4 (I2C slave)">
                 </div>
 
-                <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The on&#8209;car I&sup2;C bus, and the module list.</p>
 
-                <h2 id="puma-560">PUMA 560</h2>
+                <h2 id="camber">Camber &mdash; the Accelerometer</h2>
+
+                <p>An <a href="https://www.analog.com/en/products/adxl335.html">ADXL335</a> (&plusmn;3&nbsp;g, 3&#8209;axis) is mounted parallel to the wheel. With the car stationary the only acceleration is gravity, so the sensor's X/Y/Z outputs give the wheel plane's tilt away from vertical. At a 3.3&nbsp;V supply it sits at 0&nbsp;g&nbsp;=&nbsp;1.65&nbsp;V with a 330&nbsp;mV/g scale; read through a 10&#8209;bit ADC:</p>
+
+                <pre><code>a [m/s&sup2;] = ( reading_mV &minus; 1650 ) / 330 &times; 9.80665</code></pre>
+
+                <h2 id="toe">Toe &mdash; the Ultrasonic Sensors</h2>
+
+                <p>40&nbsp;kHz ultrasonic emitter/detector pairs on the <strong>inner</strong> face of each tyre (the wave can't pass through the wheel). Time&#8209;of&#8209;flight &times; the speed of sound gives the distance to a reference point on another wheel; for a symmetric car the paired distances must match &mdash; <code>D1&nbsp;=&nbsp;D2</code>, <code>D3&nbsp;=&nbsp;D4</code>, <code>D5&nbsp;=&nbsp;D6</code>. Ultrasonic was chosen over laser: cheaper, smaller, and no separate receiver structure to mount.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/ultrasonic-layout.jpg" width="360" alt="Top-down sketch of the four wheels with three ultrasonic sensors on each and the distances D1 to D6 measured between them">
                 </div>
 
-                <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
+                <p style="text-align:center">The measured distances between the wheels.</p>
 
-                <div class="col-full" style="text-align:center" id="gui">
-                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
+                <h2 id="mechanical">Mechanical Coupling</h2>
+
+                <p>SolidWorks parts and assemblies attach the electronics to the car: a spring&#8209;loaded clamp (<em>pinza</em>) that grips each tyre, an articulated <strong>link&#8209;chain arm</strong> that references a longitudinal axis of the car, plus the tube&#8209;axle parts and base plates.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/coupling-cad.jpg" width="560" alt="SolidWorks render of the articulated link-chain arm that couples the system to a longitudinal reference axis of the car">
                 </div>
 
-                <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
+                <p style="text-align:center">The link&#8209;chain coupling arm (SolidWorks).</p>
 
+                <h2 id="tests">Tests</h2>
+
+                <p>The ADXL335 was bench&#8209;tested in the datasheet's three reference orientations. The raw sensor showed a clear zero offset and scale error &mdash; on one axis it read about 1.3&nbsp;g where 1&nbsp;g was expected &mdash; so a per&#8209;axis calibration is needed before the angle can be trusted. The ultrasonic driver circuits were prototyped in Multisim.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="robotics.html">Robotics</a>
+                            <a href="bajasae.html">Vehicles</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="puma560.html#description">MATLAB</a>
-                            <a href="puma560.html#robotics-toolbox">Robotics Toolbox</a>
-                            <a href="puma560.html#how-it-works">Forward / Inverse Kinematics</a>
-                            <a href="puma560.html#how-it-works">Jacobian / Singularities</a>
-                            <a href="puma560.html#robot-manipulator">RRR Manipulator</a>
-                            <a href="puma560.html#puma-560">PUMA 560</a>
+                            <a href="wheel-alignment.html#description">Baja SAE USB</a>
+                            <a href="wheel-alignment.html#camber">ADXL335</a>
+                            <a href="wheel-alignment.html#toe">Ultrasonic</a>
+                            <a href="wheel-alignment.html#architecture">XBee</a>
+                            <a href="wheel-alignment.html#architecture">I2C</a>
+                            <a href="wheel-alignment.html#mechanical">SolidWorks</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -566,15 +544,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="brushlessdc.html" rel="prev">
+                    <a href="bajasae.html" rel="prev">
                         <span>Previous Post</span>
-                        Brushless DC Motor Drivers
+                        Baja SAE USB
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="pioneer-slam.html" rel="next">
+                    <a href="car-dashboard.html" rel="next">
                         <span>Next Post</span>
-                        Teleoperated SLAM with a Pioneer P3-DX
+                        Dashboard Module
                     </a>
                 </div>
             </div>

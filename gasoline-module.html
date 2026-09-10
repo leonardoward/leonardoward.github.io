@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward</title>
-    <meta name="description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
+    <title>Fuel-Level Module | Baja SAE USB | Leonardo Ward</title>
+    <meta name="description" content="A CAN-bus fuel-level sender for the Baja SAE USB off-road car: a magnet on the tank float passes a row of six Micronas Hall-effect switches, and a Freescale MC9S08DZ60 broadcasts an 11-step fuel reading on the vehicle CAN bus.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/puma560.html">
+    <link rel="canonical" href="https://leonardoward.github.io/gasoline-module.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward">
-    <meta property="og:description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/puma560/puma560.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/puma560.html">
+    <meta property="og:title" content="Fuel-Level Module | Baja SAE USB | Leonardo Ward">
+    <meta property="og:description" content="A CAN-bus fuel-level sender for the Baja SAE USB car: a float magnet over six Micronas Hall switches, decoded by an MC9S08DZ60 and broadcast on the vehicle CAN bus.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/gasoline_module/board-bench.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/gasoline-module.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -271,7 +271,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="sumo.html">Sumo</a>
@@ -379,7 +379,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
@@ -404,139 +404,143 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full" style="text-align:center">
+            <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/puma560/puma560.jpg" alt="PUMA 560 robotic manipulator simulation">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/gasoline_module/board-bench.jpg" alt="The assembled fuel-level module: a long, narrow green PCB with a Baja USB rabbit logo, powered on the bench from a lab supply through red and black clip leads, its power LED lit">
                 </div>
             </div>
 
-            <div class="entry__header col-full" id="description">
-                <h1 class="entry__header-title display-1">
-                    PUMA 560 Matlab Simulations
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Fuel-Level Module
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">May, 2019</li>
+                    <li class="date">2012</li>
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                     <li>
-                      <h3><a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations"><i class="fab fa-github"></i></a></h3>
+                      <h3><a href="https://github.com/leonardoward/gasoline-module-2012"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Two MATLAB GUIs for exploring serial&#8209;robot kinematics with <a href="https://petercorke.com/toolboxes/robotics-toolbox/">Peter Corke's Robotics Toolbox</a> &mdash; one for a teaching <strong>RRR</strong> arm (3 revolute joints) and one for the classic <strong>Unimation PUMA&nbsp;560</strong> (6 joints), animated with the real STL link meshes from the <a href="https://arvc.umh.es/arte/index_en.html">ARTE</a> library.</p>
-
-                <h2 id="how-it-works">What the GUIs Do</h2>
-
-                <h3>puma560_gui</h3>
-
-                <p>The PUMA&nbsp;560 GUI (built with GUIDE) runs a full forward / inverse kinematics round trip and shows the robotics maths along the way:</p>
-
-                <ul>
-                    <li><strong>Forward kinematics</strong> &mdash; type the six joint angles (degrees). The GUI builds a smooth joint&#8209;space trajectory from the previous pose with <code>jtraj</code> (10&nbsp;steps), and at every step computes the manipulator <strong>Jacobian</strong> (<code>jacobe</code>), its <strong>determinant</strong> and its <strong>rank</strong> &mdash; so a configuration near a <strong>singularity</strong> shows up as a rank drop. It then animates the path and reads the end&#8209;effector pose back out of <code>fkine</code>, reporting X/Y/Z and roll/pitch/yaw (<code>tr2rpy</code>).</li>
-                    <li><strong>Statics</strong> &mdash; an optional force / torque vector <code>[fx fy fz tx ty tz]</code> at the end effector is mapped to the joint torques that would hold it, via the Jacobian transpose (<code>q_add = J' * force</code>), and folded into the trajectory.</li>
-                    <li><strong>Inverse kinematics</strong> &mdash; type a target Cartesian pose; the GUI solves the joint angles with <code>ikine</code> and animates the <code>jtraj</code> path to it.</li>
-                    <li><strong>2D or 3D</strong> &mdash; a toggle switches between the fast wire&#8209;frame plot and the textured STL model; the frames are written out to build the GIFs below.</li>
-                </ul>
-
-                <h3>RRR_Robot_GUI</h3>
-
-                <p>A stripped&#8209;down version for a 3&#8209;revolute (RRR) arm &mdash; the same forward / inverse kinematics on a robot simple enough to check by hand, with the link geometry defined directly through <code>Link</code> / <code>SerialLink</code>.</p>
-
-                <h2>Repository</h2>
-
-                <p>To get a copy of this project you can use git, and clone the repository:</p>
-
-                <pre><code>
-                  git clone https://github.com/leonardoward/PUMA560-MATLAB-Simulations.git
-                </code></pre>
-
-                <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
-
-                <h2 id="prerequisites">Prerequisites</h2>
-
-                <ol>
-                    <li>MATLAB (Developed using MATLAB R2015b)</li>
-                    <li><a href="http://petercorke.com/wordpress/toolboxes/robotics-toolbox">Peter Corke's Robotics Toolbox</a></li>
-                    <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
-                </ol>
-
-                <h2>Installation</h2>
-
-                <h3 id="robotics-toolbox">Peter Corke's Robotics Toolbox</h3>
-
-                <ul>
-                    <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
-                    <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
-                </ul>
-
-                <h3 id="stl-model">ARTE Library (STL Models)</h3>
-
-                <ul>
-                    <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
-                    <li>Copy the folder /path/to/arte/arte/robots/UNIMATE/, this folder contains the STL models. A copy of this folder can be found on the root path of this repository.</li>
-                    <li>Paste the folder with the STL models in the path /path/to/MATLAB/version/toolbox/phased/phased/data/ARTE/, in this case the version is R2015b.</li>
-                </ul>
-
-                <p>To check that is installed correctly run in the MATLAB terminal:</p>
-
-                <pre><code>
-                  > mdl_puma560
-                  > p560.model3d
-                  ans =
-                  UNIMATE/puma560
-                </code></pre>
-
-                <h2 id="robot-manipulator">RRR Robot Manipulator</h2>
+                <p class="lead drop-cap">A CAN&#8209;bus <strong>fuel&#8209;level sender</strong> for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). A magnet riding on the fuel&#8209;tank float passes a vertical row of six Hall&#8209;effect switches; a Freescale&nbsp;S08 microcontroller turns that into an 11&#8209;step &ldquo;how much fuel is left&rdquo; reading and broadcasts it on the car's CAN bus, where the dashboard and on&#8209;board data system pick it up. It is one module of the wider <a href="bajasae.html">Baja SAE USB vehicle electronics</a> &mdash; <em>2012</em>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/gasoline_module/board-bench.jpg" width="440" alt="The assembled module powered up on the bench, fed from a lab supply through clip leads on the 4-pin header, power LED lit">
                 </div>
 
-                <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The assembled board on the bench &mdash; powered through the 4&#8209;pin harness header, power LED lit.</p>
+
+                <h2 id="why">Why</h2>
+
+                <p>A Baja car has a small tank and a long enduro. The driver and pit crew need to know when to fuel &mdash; but there is no room on the dash for a mechanical gauge, and every other sensor on the car (tachometer, brake pressure, speed) already reports over a shared <strong>CAN bus</strong>. The fuel reading should join them: one more small module on the bus, no extra wiring back to the cockpit.</p>
+
+                <p>The float&#8209;and&#8209;magnet approach keeps the electronics <strong>out of the fuel</strong> &mdash; the Hall switches sense the magnet through the tank wall, with nothing but a sealed magnet inside.</p>
+
+                <h2 id="sensing">Sensing &mdash; Six Hall Switches</h2>
+
+                <p>The PCB mounts alongside the float's travel with <strong>six Micronas Hall&#8209;effect switches (HS1&ndash;HS6)</strong> in a straight line. As the level changes the float&#8209;borne magnet moves along that line and trips one &mdash; or two adjacent &mdash; switches. The switches are open&#8209;drain, active&#8209;low, pulled up to port pins <strong>PTA1&ndash;PTA6</strong>.</p>
+
+                <p>The firmware reads all six at once, inverts them (<code>pattern ^ 0b111111</code>, so a <code>1</code> means &ldquo;magnet here&rdquo;) and decodes the pattern to a level of <strong>0&ndash;11</strong>:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Switches seeing the magnet</th><th>Level</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>top one only</td><td>1</td></tr>
+                            <tr><td>top two</td><td>2</td></tr>
+                            <tr><td>next single (or top three)</td><td>3</td></tr>
+                            <tr><td>that pair</td><td>4</td></tr>
+                            <tr><td>&hellip; stepping down the array &hellip;</td><td>5&nbsp;&ndash;&nbsp;10</td></tr>
+                            <tr><td>bottom one only</td><td>11</td></tr>
+                            <tr><td>none</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>A single switch gives an odd level, an adjacent pair gives the even level between &mdash; so six switches resolve <strong>11 discrete steps</strong>. Three&#8209;in&#8209;a&#8209;row patterns are folded onto the middle step, so a wide magnet still reads cleanly.</p>
+
+                <h2 id="firmware">Sampling &amp; Averaging</h2>
+
+                <p>A <strong>TPM1 timer interrupt runs every 200&nbsp;ms (5&nbsp;Hz)</strong>. On each tick the firmware reads and decodes the Hall pattern, adds the level to an accumulator, and toggles the heartbeat LED (DM1). Every <strong>10 ticks (2&nbsp;s)</strong> the main loop divides the accumulator by&nbsp;10 &mdash; a simple running average that rejects float slosh &mdash; and transmits the result.</p>
+
+                <p>The microcontroller is a Freescale <a href="https://www.nxp.com/docs/en/data-sheet/MC9S08DZ60.pdf">MC9S08DZ60</a> (8&#8209;bit S08, 32&#8209;pin LQFP, on&#8209;chip MSCAN, 16&nbsp;MHz bus). The firmware is <strong>CodeWarrior for HCS08</strong> with <strong>Processor Expert 3.07</strong>; the hand&#8209;written code is just the 2&nbsp;s average loop (<code>Gasolina.c</code>) and the sample&#8209;and&#8209;decode timer handler (<code>Events.c</code>). It is flashed through the 6&#8209;pin BDM header with a P&amp;E Multilink.</p>
+
+                <h2 id="can">CAN Output</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <tbody>
+                            <tr><td><strong>Transceiver</strong></td><td>NXP TJA1040 (U3), high&#8209;speed CAN</td></tr>
+                            <tr><td><strong>Frame</strong></td><td>standard (11&#8209;bit) data frame</td></tr>
+                            <tr><td><strong>ID</strong></td><td><code>0x222</code></td></tr>
+                            <tr><td><strong>Length</strong></td><td>1 byte</td></tr>
+                            <tr><td><strong>Payload</strong></td><td>averaged fuel level, 0&ndash;11</td></tr>
+                            <tr><td><strong>Period</strong></td><td>~2&nbsp;s</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Frames are sent round&#8209;robin through the three MSCAN transmit buffers &mdash; <code>CAN1_SendFrame(buffer, 0x222, DATA_FRAME, 1, &amp;level)</code> with <code>buffer</code> cycling 0&nbsp;&rarr;&nbsp;1&nbsp;&rarr;&nbsp;2. Bit timing is SJW&nbsp;1, TSEG1&nbsp;6, TSEG2&nbsp;7 (&asymp;&nbsp;50&nbsp;% sample point).</p>
+
+                <h2 id="hardware">Hardware</h2>
+
+                <p>A long, narrow <strong>2&#8209;layer board</strong> (Altium Designer) so it fits along the tank next to the float.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Ref</th><th>Part</th><th>Function</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>U1</td><td>Freescale MC9S08DZ60 (32&#8209;pin LQFP)</td><td>8&#8209;bit S08 MCU with on&#8209;chip MSCAN</td></tr>
+                            <tr><td>U2</td><td>Micrel MIC2954</td><td>low&#8209;dropout regulator, car rail &rarr; 5&nbsp;V</td></tr>
+                            <tr><td>U3</td><td>NXP TJA1040</td><td>high&#8209;speed CAN transceiver</td></tr>
+                            <tr><td>HS1&ndash;HS6</td><td>Micronas Hall&#8209;effect switch (SOT89)</td><td>fuel&#8209;level pickup</td></tr>
+                            <tr><td>DM2&nbsp;/&nbsp;DM1</td><td>LEDs</td><td>power&nbsp;/&nbsp;heartbeat</td></tr>
+                            <tr><td>P1</td><td>4&#8209;pin header</td><td>+V, GND, CANH, CANL to the car harness</td></tr>
+                            <tr><td>P2</td><td>6&#8209;pin (2&times;3) header</td><td>BDM programming / debug</td></tr>
+                            <tr><td>S1</td><td>push&#8209;button</td><td>reset</td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="col-full" style="text-align:center">
-                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
+                    <img loading="lazy" decoding="async" src="images/gasoline_module/schematic-overview.jpg" width="680" alt="Schematic overview: the MC9S08DZ60 in the centre, the CAN transceiver and regulator with the power/CAN connector at left, and the six identical Hall-switch stages (each with a pull-up and decoupling cap) stacked at right">
                 </div>
 
-                <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
+                <p style="text-align:center">Schematic overview &mdash; MCU centre, CAN&nbsp;+&nbsp;power at left, the six identical Hall&#8209;switch stages at right.</p>
 
-                <h2 id="puma-560">PUMA 560</h2>
+                <p>The Altium project also carries custom library parts for the Micronas sensor, a TIP31C power transistor and a <em>PCB_DisplayGas</em> footprint library &mdash; leftovers from an earlier fuel&#8209;gauge <strong>display</strong> board that are not populated on this design.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
-                </div>
+                <h2 id="tests">Bench Bring-up</h2>
 
-                <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
-
-                <div class="col-full" style="text-align:center" id="gui">
-                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
-                </div>
-
-                <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
-
+                <p>The board was assembled and powered from a lab supply through clip leads on the 4&#8209;pin header (photo above); the power LED lights and the firmware's heartbeat LED blinks at the 5&nbsp;Hz sample rate. Full tank&#8209;side testing needs the float, magnet and a calibrated fill.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="robotics.html">Robotics</a>
+                            <a href="bajasae.html">Vehicles</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="puma560.html#description">MATLAB</a>
-                            <a href="puma560.html#robotics-toolbox">Robotics Toolbox</a>
-                            <a href="puma560.html#how-it-works">Forward / Inverse Kinematics</a>
-                            <a href="puma560.html#how-it-works">Jacobian / Singularities</a>
-                            <a href="puma560.html#robot-manipulator">RRR Manipulator</a>
-                            <a href="puma560.html#puma-560">PUMA 560</a>
+                            <a href="gasoline-module.html#description">Baja SAE USB</a>
+                            <a href="gasoline-module.html#can">CAN Bus</a>
+                            <a href="gasoline-module.html#firmware">MC9S08DZ60</a>
+                            <a href="gasoline-module.html#sensing">Hall Effect</a>
+                            <a href="gasoline-module.html#hardware">Altium</a>
+                            <a href="gasoline-module.html#firmware">CodeWarrior</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -566,15 +570,9 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="brushlessdc.html" rel="prev">
+                    <a href="steering-wheel.html" rel="prev">
                         <span>Previous Post</span>
-                        Brushless DC Motor Drivers
-                    </a>
-                </div>
-                <div class="col-six s-content__next">
-                    <a href="pioneer-slam.html" rel="next">
-                        <span>Next Post</span>
-                        Teleoperated SLAM with a Pioneer P3-DX
+                        Steering-Wheel Display
                     </a>
                 </div>
             </div>

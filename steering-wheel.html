@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward</title>
-    <meta name="description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
+    <title>Steering-Wheel Display | Baja SAE USB | Leonardo Ward</title>
+    <meta name="description" content="The driver's display and control panel for the Baja SAE USB off-road car: a chevron-shaped steering-wheel board with a graphic LCD showing speed, RPM and fuel, and four illuminated buttons for the turn signals and lights, linked to the dashboard over CAN.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/puma560.html">
+    <link rel="canonical" href="https://leonardoward.github.io/steering-wheel.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="PUMA 560 | MATLAB Robotics Simulations | Leonardo Ward">
-    <meta property="og:description" content="MATLAB GUIs for robotic manipulators built on Peter Corke's Robotics Toolbox: one for a 3-revolute (RRR) arm and one for the PUMA 560, using STL models from the ARTE library.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/puma560/puma560.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/puma560.html">
+    <meta property="og:title" content="Steering-Wheel Display | Baja SAE USB | Leonardo Ward">
+    <meta property="og:description" content="A steering-wheel display and control panel for the Baja SAE USB car: a graphic LCD for speed/RPM/fuel and four illuminated buttons, an MC9S08DZ60 talking to the dashboard over CAN.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/steering_wheel/display.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/steering-wheel.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -271,7 +271,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="sumo.html">Sumo</a>
@@ -379,7 +379,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="bajasae.html" title="">Vehicles</a>
                     <ul class="sub-menu">
                         <li><a href="bajasae.html">Baja SAE USB</a></li>
@@ -404,139 +404,133 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full" style="text-align:center">
+            <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/puma560/puma560.jpg" alt="PUMA 560 robotic manipulator simulation">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/steering_wheel/display.jpg" alt="The steering-wheel board running on the bench: a chevron-shaped PCB with an illuminated button at each corner and a graphic LCD in the centre showing &quot;USB&quot;, a large &quot;00 KPH&quot; speed readout, an RPM bar down the left and a fuel bar down the right">
                 </div>
             </div>
 
-            <div class="entry__header col-full" id="description">
-                <h1 class="entry__header-title display-1">
-                    PUMA 560 Matlab Simulations
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    Steering-Wheel Display
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">May, 2019</li>
+                    <li class="date">2011&ndash;2012</li>
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                     <li>
-                      <h3><a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations"><i class="fab fa-github"></i></a></h3>
+                      <h3><a href="https://github.com/leonardoward/steering-wheel-module-2012"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Two MATLAB GUIs for exploring serial&#8209;robot kinematics with <a href="https://petercorke.com/toolboxes/robotics-toolbox/">Peter Corke's Robotics Toolbox</a> &mdash; one for a teaching <strong>RRR</strong> arm (3 revolute joints) and one for the classic <strong>Unimation PUMA&nbsp;560</strong> (6 joints), animated with the real STL link meshes from the <a href="https://arvc.umh.es/arte/index_en.html">ARTE</a> library.</p>
-
-                <h2 id="how-it-works">What the GUIs Do</h2>
-
-                <h3>puma560_gui</h3>
-
-                <p>The PUMA&nbsp;560 GUI (built with GUIDE) runs a full forward / inverse kinematics round trip and shows the robotics maths along the way:</p>
-
-                <ul>
-                    <li><strong>Forward kinematics</strong> &mdash; type the six joint angles (degrees). The GUI builds a smooth joint&#8209;space trajectory from the previous pose with <code>jtraj</code> (10&nbsp;steps), and at every step computes the manipulator <strong>Jacobian</strong> (<code>jacobe</code>), its <strong>determinant</strong> and its <strong>rank</strong> &mdash; so a configuration near a <strong>singularity</strong> shows up as a rank drop. It then animates the path and reads the end&#8209;effector pose back out of <code>fkine</code>, reporting X/Y/Z and roll/pitch/yaw (<code>tr2rpy</code>).</li>
-                    <li><strong>Statics</strong> &mdash; an optional force / torque vector <code>[fx fy fz tx ty tz]</code> at the end effector is mapped to the joint torques that would hold it, via the Jacobian transpose (<code>q_add = J' * force</code>), and folded into the trajectory.</li>
-                    <li><strong>Inverse kinematics</strong> &mdash; type a target Cartesian pose; the GUI solves the joint angles with <code>ikine</code> and animates the <code>jtraj</code> path to it.</li>
-                    <li><strong>2D or 3D</strong> &mdash; a toggle switches between the fast wire&#8209;frame plot and the textured STL model; the frames are written out to build the GIFs below.</li>
-                </ul>
-
-                <h3>RRR_Robot_GUI</h3>
-
-                <p>A stripped&#8209;down version for a 3&#8209;revolute (RRR) arm &mdash; the same forward / inverse kinematics on a robot simple enough to check by hand, with the link geometry defined directly through <code>Link</code> / <code>SerialLink</code>.</p>
-
-                <h2>Repository</h2>
-
-                <p>To get a copy of this project you can use git, and clone the repository:</p>
-
-                <pre><code>
-                  git clone https://github.com/leonardoward/PUMA560-MATLAB-Simulations.git
-                </code></pre>
-
-                <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
-
-                <h2 id="prerequisites">Prerequisites</h2>
-
-                <ol>
-                    <li>MATLAB (Developed using MATLAB R2015b)</li>
-                    <li><a href="http://petercorke.com/wordpress/toolboxes/robotics-toolbox">Peter Corke's Robotics Toolbox</a></li>
-                    <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
-                </ol>
-
-                <h2>Installation</h2>
-
-                <h3 id="robotics-toolbox">Peter Corke's Robotics Toolbox</h3>
-
-                <ul>
-                    <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
-                    <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
-                </ul>
-
-                <h3 id="stl-model">ARTE Library (STL Models)</h3>
-
-                <ul>
-                    <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
-                    <li>Copy the folder /path/to/arte/arte/robots/UNIMATE/, this folder contains the STL models. A copy of this folder can be found on the root path of this repository.</li>
-                    <li>Paste the folder with the STL models in the path /path/to/MATLAB/version/toolbox/phased/phased/data/ARTE/, in this case the version is R2015b.</li>
-                </ul>
-
-                <p>To check that is installed correctly run in the MATLAB terminal:</p>
-
-                <pre><code>
-                  > mdl_puma560
-                  > p560.model3d
-                  ans =
-                  UNIMATE/puma560
-                </code></pre>
-
-                <h2 id="robot-manipulator">RRR Robot Manipulator</h2>
+                <p class="lead drop-cap">The driver's display and control panel for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). A chevron&#8209;shaped board that mounts on the steering&#8209;wheel hub: a <strong>graphic LCD</strong> in the centre shows speed, RPM, fuel and warning tell&#8209;tales, and <strong>four illuminated buttons</strong> at the corners work the turn signals, hazards, night lights and handbrake indicator. It is the companion to the <a href="car-dashboard.html">dashboard module</a> &mdash; the two talk over the car's CAN bus. <em>2011&#8209;2012.</em></p>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/steering_wheel/display.jpg" width="640" alt="The board powered on: four illuminated corner buttons and a graphic LCD showing speed, an RPM bar and a fuel bar">
                 </div>
 
-                <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The board on the bench &mdash; speed, RPM bar and fuel bar on the LCD, a button at each corner.</p>
+
+                <h2 id="why">Why</h2>
+
+                <p>The driver's hands stay on the wheel, so the display and the switches go on the wheel too. Speed, RPM, fuel and the warning tell&#8209;tales are all on one small graphic LCD; the turn signals, hazards, night lights and handbrake indicator are four buttons within thumb&#8209;reach. A single wire loom to the hub &mdash; power and <strong>CAN</strong> &mdash; carries everything.</p>
+
+                <h2 id="display">The Display</h2>
+
+                <p>A <strong>graphic LCD</strong> (with a touch panel) driven over <strong>SPI</strong>, redrawn whenever a CAN frame arrives. It shows a large <strong>speed</strong> readout in <code>KPH</code> (or <code>WAIT&hellip;</code> until the first frame), an <strong>RPM&nbsp;&times;100</strong> bar down the left edge, a <strong>fuel</strong> bar (E&ndash;F) with a pump icon down the right, and a row of <strong>tell&#8209;tales</strong> along the bottom &mdash; headlights, high beam, temperature, brake and a <code>LOW&nbsp;GAS</code> warning.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
+                    <img loading="lazy" decoding="async" src="images/steering_wheel/telltales.jpg" width="620" alt="The LCD showing the RPM and fuel bars, the KPH readout, and the row of tell-tale icons along the bottom with a LOW GAS warning">
                 </div>
 
-                <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
+                <p style="text-align:center">The full display &mdash; RPM and fuel bars, the tell&#8209;tale row, and a <em>LOW&nbsp;GAS</em> warning.</p>
 
-                <h2 id="puma-560">PUMA 560</h2>
+                <p>The values come from the dashboard's <code>0x111</code> frame &mdash; <code>RPM = data[0] / 5</code> (clamped to 40 levels), speed units and tenths from <code>data[1]</code>, a temperature flag from <code>data[2]</code> &mdash; and fuel from <code>data[0]</code> of <code>0x222</code>. The white&#8209;LED <strong>backlight</strong> is a PWM&#8209;dimmed boost (CAT4238): bright by day, dimmed in night mode.</p>
+
+                <h2 id="buttons">The Buttons</h2>
+
+                <p>Four illuminated tactile switches on a keyboard&#8209;interrupt port, one at each corner of the board:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Button</th><th>Action</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>SW1</strong> / <strong>SW3</strong></td><td>right / left turn signal (toggle)</td></tr>
+                            <tr><td><strong>SW1 + SW3</strong></td><td>hazards &mdash; both indicators</td></tr>
+                            <tr><td><strong>SW2</strong></td><td>night lights (toggle) &mdash; also dims the backlight and the corner LEDs</td></tr>
+                            <tr><td><strong>SW4</strong></td><td>handbrake / brake indicator (toggle)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Each press updates the four corner LEDs, sends a 5&#8209;byte frame to the LCD over SPI, and transmits the state on <strong>CAN <code>0x333</code></strong> &mdash; one byte, <code>bit0</code> night, <code>bit1</code> right, <code>bit2</code> left, <code>bit3</code> brake. The <a href="car-dashboard.html">dashboard module</a> reads that frame and drives the actual lamps; the turn arrows blink by re&#8209;arming a timer interrupt.</p>
+
+                <h2 id="firmware">Firmware</h2>
+
+                <p>The MCU is a Freescale <strong>MC9S08DZ60</strong> (8&#8209;bit S08 with on&#8209;chip MSCAN), <strong>CodeWarrior</strong> + <strong>Processor Expert 3.07</strong>, flashed through the 6&#8209;pin BDM header with a P&amp;E Multilink. The main loop is tiny &mdash; a start&#8209;up routine, then poll the buttons; everything else happens in interrupt handlers:</p>
+
+                <pre><code>init_routine();       // backlight ramp + LED chase
+for(;;) Botones();     // on a keypress: update LEDs, send SPI + CAN 0x333
+
+// CAN1_OnFullRxBuffer:  0x111 / 0x222  -&gt; reformat, push to the LCD over SPI
+// Botones_OnInterrupt:  decode SW1..SW4 (and the SW1+SW3 hazard combo)
+// Timer_OnInterrupt:    blink the turn-signal LEDs</code></pre>
+
+                <p>An alternate <strong>MCF51JM128</strong> (ColdFire&nbsp;V1) build of the same application is also in the repository.</p>
+
+                <h2 id="hardware">Hardware</h2>
+
+                <p>A <strong>chevron / arrow outline</strong> &mdash; wide at the top, pointed at the bottom &mdash; so it sits on a steering&#8209;wheel spoke, with the LCD framed in the centre and a button at each corner (Altium Designer).</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Ref</th><th>Part</th><th>Function</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>M1</td><td>Freescale MC9S08DZ60 (32&#8209;pin)</td><td>MCU</td></tr>
+                            <tr><td>P1 + CT</td><td>graphic LCD + touch panel</td><td>the display</td></tr>
+                            <tr><td>UC1</td><td>MAX3051</td><td>3.3&nbsp;V CAN transceiver</td></tr>
+                            <tr><td>UC2</td><td>CAT4238 + inductor / Schottky</td><td>white&#8209;LED backlight boost driver</td></tr>
+                            <tr><td>UR1</td><td>LM2937&#8209;3.3</td><td>3.3&nbsp;V regulator, from the car rail</td></tr>
+                            <tr><td>UW1</td><td>dual N&#8209;MOSFET array</td><td>backlight / LED switching</td></tr>
+                            <tr><td>SW1&ndash;SW4</td><td>illuminated tactile switches</td><td>driver controls</td></tr>
+                            <tr><td>PS1</td><td>4&#8209;pin header</td><td>CANH, CANL, +V, GND to the car harness</td></tr>
+                            <tr><td>PB1</td><td>6&#8209;pin (2&times;3) header</td><td>BDM programming / debug</td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/steering_wheel/schematic-overview.jpg" width="620" alt="Schematic overview: the MC9S08DZ60 at right, the display connector at top, the CAN transceiver, regulator and backlight boost blocks at mid-left, and the switch inputs at bottom-left">
                 </div>
 
-                <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
-
-                <div class="col-full" style="text-align:center" id="gui">
-                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
-                </div>
-
-                <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
-
+                <p style="text-align:center">Schematic overview &mdash; MCU at right, display connector up top, CAN&nbsp;/&nbsp;power&nbsp;/&nbsp;backlight blocks mid&#8209;left, the switches bottom&#8209;left.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="robotics.html">Robotics</a>
+                            <a href="bajasae.html">Vehicles</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="puma560.html#description">MATLAB</a>
-                            <a href="puma560.html#robotics-toolbox">Robotics Toolbox</a>
-                            <a href="puma560.html#how-it-works">Forward / Inverse Kinematics</a>
-                            <a href="puma560.html#how-it-works">Jacobian / Singularities</a>
-                            <a href="puma560.html#robot-manipulator">RRR Manipulator</a>
-                            <a href="puma560.html#puma-560">PUMA 560</a>
+                            <a href="steering-wheel.html#description">Baja SAE USB</a>
+                            <a href="steering-wheel.html#buttons">CAN Bus</a>
+                            <a href="steering-wheel.html#firmware">MC9S08DZ60</a>
+                            <a href="steering-wheel.html#display">Graphic LCD</a>
+                            <a href="steering-wheel.html#display">SPI</a>
+                            <a href="steering-wheel.html#hardware">Altium</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -566,15 +560,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="brushlessdc.html" rel="prev">
+                    <a href="car-dashboard.html" rel="prev">
                         <span>Previous Post</span>
-                        Brushless DC Motor Drivers
+                        Dashboard Module
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="pioneer-slam.html" rel="next">
+                    <a href="gasoline-module.html" rel="next">
                         <span>Next Post</span>
-                        Teleoperated SLAM with a Pioneer P3-DX
+                        Fuel-Level Module
                     </a>
                 </div>
             </div>
