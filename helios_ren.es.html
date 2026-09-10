@@ -59,7 +59,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -72,7 +72,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -371,6 +371,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -404,7 +405,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb" style="text-align:center">
-                    <img src="images/helios_ren/PCB1.jpg" alt="PCB del sistema de luces traseras HELIOS REN ensamblado">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/helios_ren/PCB1.jpg" alt="PCB del sistema de luces traseras HELIOS REN ensamblado">
                 </div>
             </div>
 
@@ -424,7 +425,7 @@
                     <li class="byline">
                         Por
                         <br>
-                        <a href="#0">Carlos Sanoja</a> - <a href="#0">Jesús Guillen</a> - <a href="#0">Leonardo Ward</a> - <a href="#0">Mauricio Marcano</a> - <a href="#0">Oscar Moreno</a> - <a href="#0">Vincenzo D'Argento</a>
+                        <a href="https://github.com/CarSanoja">Carlos Sanoja</a> - <a href="https://github.com/JG-Guillen">Jesús Guillen</a> - <a href="https://github.com/leonardoward">Leonardo Ward</a> - <a href="https://github.com/rinripper">Mauricio Marcano</a> - <a href="https://github.com/OscarEMoreno">Oscar Moreno</a> - <a href="https://github.com/vincdargento">Vincenzo D'Argento</a>
                     </li>
                 </ul>
             </div>
@@ -459,7 +460,7 @@
                 <p>La Figura 1 describe los distintos modos de operación propuestos para el sistema de luces traseras. Además, plantea el uso de un único botón para realizar la transición entre modos. Las luces de cruce no se ven reflejadas en los modos de operación; dichas luces solo tienen dos estados: encendido y apagado.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_Estado.jpg" alt="Diagrama de estados de los modos de operación de las luces traseras">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_Estado.jpg" alt="Diagrama de estados de los modos de operación de las luces traseras">
                     <p>Figura 1: diagrama que muestra los modos de uso de las luces traseras.</p>
                 </div>
 
@@ -470,7 +471,7 @@
                 <p>En la Figura 2 se puede observar el diagrama de bloques de hardware del prototipo. Incluye los componentes esenciales del diseño: pulsadores, baterías, cargador de baterías, luces y los transistores que representan la etapa de control de potencia de cada luz LED. En la Figura 2 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_Hardware.jpg" alt="Diagrama de bloques de hardware del prototipo">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_Hardware.jpg" alt="Diagrama de bloques de hardware del prototipo">
                     <p>Figura 2: diagrama de bloques de hardware.</p>
                 </div>
 
@@ -481,7 +482,7 @@
                 <p>Para dimensionar las baterías se tomó como referencia que el dispositivo debe ser capaz de ofrecer un funcionamiento de 26 horas continuas con ambas luces principales encendidas a máxima potencia, dejando margen sobre el requerimiento de 25 horas. Cada LED presenta un consumo máximo de 180&nbsp;mA, de manera que: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Se decidió usar un arreglo de 4 baterías de 2600&nbsp;mAh en paralelo, lo que ofrece 10&nbsp;400&nbsp;mAh y permite cubrir la demanda de los LED descrita.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/BatC.png" alt="Módulo cargador de baterías TP4056 de corriente y voltaje constante">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/BatC.png" alt="Módulo cargador de baterías TP4056 de corriente y voltaje constante">
                     <p>Figura 3: módulo TP4056, cargador de batería.</p>
                 </div>
 
@@ -513,19 +514,19 @@
                 <p>Además, este dispositivo cuenta con otros periféricos como un convertidor analógico-digital (ADC) de 10 bits y 5 canales y un puerto serie síncrono maestro (MSSP) con SPI e I2C; sin embargo, no se utilizan. El pinout del dispositivo puede observarse en la Figura 4.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Pinout.jpg" alt="Pinout del PIC16F1455">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Pinout.jpg" alt="Pinout del PIC16F1455">
                     <p>Figura 4: pinout del PIC16F1455.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/pic.png" alt="Símbolo esquemático del PIC16F1455">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/pic.png" alt="Símbolo esquemático del PIC16F1455">
                     <p>Figura 5: símbolo del PIC16F1455 en el esquemático.</p>
                 </div>
 
                 <p>Se puede programar el microcontrolador con un programador ICSP (utilizable con cualquier chip PIC). Las conexiones ICSP se muestran en el siguiente diagrama (Figura 6).</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/icsp.png" alt="Conector de programación ICSP en el esquemático">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/icsp.png" alt="Conector de programación ICSP en el esquemático">
                     <p>Figura 6: símbolo para la entrada ICSP en el esquemático.</p>
                 </div>
 
@@ -544,7 +545,7 @@
                 <p>Para controlar los LED se necesitaron cuatro transistores. Se seleccionaron dos integrados BTS3405GXUMA1 de la marca Infineon; cada integrado tiene dos transistores cuyo voltaje drain-source máximo (V<sub>DS</sub>) es de 42&nbsp;V, con una corriente máxima de drain de 350&nbsp;mA cada uno (ideal para los LED escogidos) y un voltaje de activación de 1,7&nbsp;V, por lo que es compatible con la lógica de 3,3&nbsp;V del microcontrolador.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/leds.png" alt="Etapa de control de potencia de los LED">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/leds.png" alt="Etapa de control de potencia de los LED">
                     <p>Figura 7: sistema de control para las luces LED.</p>
                 </div>
 
@@ -553,14 +554,14 @@
                 <p>El control de las luces cuenta con dos formatos. El primero usa un solo botón, capaz de realizar ciclos de encendido pasando por los distintos modos de operación hasta el apagado. Este botón está en la carcasa del dispositivo.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Case2.PNG" alt="Control de un solo botón en la carcasa del dispositivo">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Case2.PNG" alt="Control de un solo botón en la carcasa del dispositivo">
                     <p>Figura 8: sistema de control para las luces LED.</p>
                 </div>
 
                 <p>El segundo formato usa un mando de control. A través de esta opción se pueden incorporar más funciones &mdash; entre ellas luces intermitentes y luces de cruce &mdash;, además de los modos de operación, que se mantienen igual. Esta versión del producto tiene un costo extra y puede observarse a continuación.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/mando.png" alt="Mando de control externo para el manillar">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/mando.png" alt="Mando de control externo para el manillar">
                     <p>Figura 9: sistema de control externo para las luces LED.</p>
                 </div>
 
@@ -603,17 +604,17 @@
                 <p>Adicionalmente, se cuenta con un control de rebote por software para el botón de selección de modos.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_BloquesSoft.jpg" alt="Diagrama de bloques del software">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_BloquesSoft.jpg" alt="Diagrama de bloques del software">
                     <p>Figura 10: diagrama de bloques de software.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_jerarquico.jpg" alt="Diagrama jerárquico del software">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_jerarquico.jpg" alt="Diagrama jerárquico del software">
                     <p>Figura 11: diagrama jerárquico de software.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_decapas.jpg" alt="Diagrama de capas del software">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_decapas.jpg" alt="Diagrama de capas del software">
                     <p>Figura 12: diagrama de capas de software.</p>
                 </div>
 
@@ -622,7 +623,7 @@
                 <p>Se realizó la simulación del circuito propuesto en Proteus; en la Figura 13 se aprecia el diseño realizado. Los interruptores del mando se modelaron como switches, mientras que para el control de los distintos modos se incorporó un botón. El sistema de alimentación no se ilustra en la simulación; únicamente se incorporan fuentes del voltaje correspondiente. Los integrados seleccionados como transistores (BTS3405GXUMA1) no se pueden simular en Proteus, por lo que se representaron mediante sus equivalentes MOSFET. Se lograron simular exitosamente los distintos modos de operación; en el vídeo entregado se muestra su funcionamiento.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Simulacion_Proteus.jpg" alt="Simulación en Proteus del circuito propuesto">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Simulación en Proteus del circuito propuesto">
                     <p>Figura 13: modelo del circuito en Proteus.</p>
                 </div>
 
@@ -631,19 +632,19 @@
                 <p>Como paso extra para desarrollar el proyecto, se hizo el diseño del PCB del sistema completo. Se realizó con el software Altium Designer y los resultados pueden observarse a continuación.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/PCB1.jpg" alt="PCB del sistema, vista 1">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/PCB1.jpg" alt="PCB del sistema, vista 1">
                     <p>Figura 14: PCB del sistema, vista 1.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/PCB2.jpg" alt="PCB del sistema, vista 2">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/PCB2.jpg" alt="PCB del sistema, vista 2">
                     <p>Figura 15: PCB del sistema, vista 2.</p>
                 </div>
 
                 <p>Finalmente, para culminar un prototipo de diseño mecánico, se diseñó una carcasa con el software de modelado 3D AutoCAD. Los resultados finales pueden observarse a continuación.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Case.PNG" alt="Carcasa del PCB modelada en 3D">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Case.PNG" alt="Carcasa del PCB modelada en 3D">
                     <p>Figura 16: carcasa del PCB.</p>
                 </div>
 
@@ -659,22 +660,22 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">PCB Design</a>
-                            <a href="#0">Altium</a>
-                            <a href="#0">LED Applications</a>
-                            <a href="#0">Proteus</a>
-                            <a href="#0">MPLABX</a>
+                            <a href="helios_ren.es.html#top">PCB Design</a>
+                            <a href="helios_ren.es.html#top">Altium</a>
+                            <a href="helios_ren.es.html#top">LED Applications</a>
+                            <a href="helios_ren.es.html#top">Proteus</a>
+                            <a href="helios_ren.es.html#top">MPLABX</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
 
                 <!-- <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">

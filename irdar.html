@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -181,7 +181,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-software.html" title="">Embedded Software</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/irdar/gui_radar.jpg" alt="The IRDAR Processing display: a green radar screen with concentric range rings, a rotating sweep bar and white dots marking detected obstacles all around">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/irdar/gui_radar.jpg" alt="The IRDAR Processing display: a green radar screen with concentric range rings, a rotating sweep bar and white dots marking detected obstacles all around">
                 </div>
             </div>
 
@@ -426,7 +427,7 @@
                 <p class="lead drop-cap"><strong>IRDAR</strong> ("IR radar") is a scanning infrared rangefinder built on a Freescale <a href="https://www.nxp.com/products/no-longer-manufactured/8-bit-mcu-mc9s08qe128:MC9S08QE128">MC9S08QE128</a> (HCS08 8-bit). A servo pans a pair of Sharp infrared distance sensors through a full circle while the microcontroller streams angle and range to a <a href="https://processing.org/">Processing</a> sketch that draws a radar-style sweep.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/irdar/turret.jpg" width="440" alt="The assembled IRDAR turret: a servo at the base, a hand-wired signal board on its front, and an aluminium bracket on top holding an infrared sensor, mounted on a slip-ring bearing">
+                    <img loading="lazy" decoding="async" src="images/irdar/turret.jpg" width="440" alt="The assembled IRDAR turret: a servo at the base, a hand-wired signal board on its front, and an aluminium bracket on top holding an infrared sensor, mounted on a slip-ring bearing">
                 </div>
 
                 <p style="text-align:center">The assembled scanning head &mdash; servo, slip-ring joint, sensor bracket and signal board.</p>
@@ -458,12 +459,12 @@
                 <div class="col-full">
                   <div class="col-six">
                     <p>
-                    <img src="images/irdar/sensor_head.jpg" width="400" alt="Close-up of the sensor bracket: two black Sharp infrared distance sensors bolted to an aluminium bar on top of the servo">
+                    <img loading="lazy" decoding="async" src="images/irdar/sensor_head.jpg" width="400" alt="Close-up of the sensor bracket: two black Sharp infrared distance sensors bolted to an aluminium bar on top of the servo">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img src="images/irdar/signal_board.jpg" width="400" alt="The hand-wired perfboard with two DIP ICs and many resistors that conditions the sensor and encoder signals">
+                    <img loading="lazy" decoding="async" src="images/irdar/signal_board.jpg" width="400" alt="The hand-wired perfboard with two DIP ICs and many resistors that conditions the sensor and encoder signals">
                     </p>
                   </div>
                 </div>
@@ -497,7 +498,7 @@
                 </ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/irdar/gui_photo.jpg" width="600" alt="The IRDAR radar display running on a monitor, showing the sweep bar and two short arcs of detected points from the two sensors">
+                    <img loading="lazy" decoding="async" src="images/irdar/gui_photo.jpg" width="600" alt="The IRDAR radar display running on a monitor, showing the sweep bar and two short arcs of detected points from the two sensors">
                 </div>
 
                 <p style="text-align:center">The display running live, with obstacle points picked up on both sides of the sweep.</p>
@@ -532,12 +533,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -562,9 +563,9 @@
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="gui-onboardgateway.html" rel="next">
+                    <a href="ambient-lights.html" rel="next">
                         <span>Next Post</span>
-                        GUI for the Onboard Gateway v1.0
+                        Sensor-Based Ambient Lights
                     </a>
                 </div>
             </div>

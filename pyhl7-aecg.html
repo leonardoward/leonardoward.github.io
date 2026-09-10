@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -181,7 +181,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-software.html" title="">Embedded Software</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/pyhl7_aecg/ecg_waveform.png" alt="An ECG trace plotted on red graph paper: a repeating heartbeat waveform with sharp QRS spikes">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/pyhl7_aecg/ecg_waveform.png" alt="An ECG trace plotted on red graph paper: a repeating heartbeat waveform with sharp QRS spikes">
                 </div>
             </div>
 
@@ -453,7 +454,7 @@
                 <p><code>example.py</code> fills lead&nbsp;I with a sample waveform, sets a 20&nbsp;ms time resolution (50&nbsp;Hz) and a 0.05&nbsp;mV amplitude resolution, and writes <code>output/ecg.xml</code>:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pyhl7_aecg/ecg_waveform.png" width="700" alt="The example ECG waveform plotted on red graph paper: a repeating heartbeat trace with sharp QRS spikes">
+                    <img loading="lazy" decoding="async" src="images/pyhl7_aecg/ecg_waveform.png" width="700" alt="The example ECG waveform plotted on red graph paper: a repeating heartbeat trace with sharp QRS spikes">
                 </div>
 
                 <p style="text-align:center">The example lead&#8209;I waveform that gets exported.</p>
@@ -507,12 +508,12 @@ e.exportHL7aECGTemplate("output/ecg.xml", "I")</code></pre>
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -531,15 +532,15 @@ e.exportHL7aECGTemplate("output/ecg.xml", "I")</code></pre>
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="gui-onboardgateway.html" rel="prev">
+                    <a href="ambient-lights.html" rel="prev">
                         <span>Previous Post</span>
-                        GUI for the Onboard Gateway v1.0
+                        Sensor-Based Ambient Lights
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="gui-buoyb.html" rel="next">
+                    <a href="gui-onboardgateway.html" rel="next">
                         <span>Next Post</span>
-                        GUI for Buoy B v1.0
+                        GUI for the Onboard Gateway
                     </a>
                 </div>
             </div>

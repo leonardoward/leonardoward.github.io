@@ -59,7 +59,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -72,7 +72,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -371,6 +371,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -404,7 +405,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb" style="text-align:center">
-                    <img src="images/helios_ren/PCB1.jpg" alt="Assembled HELIOS REN bicycle tail-light PCB">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/helios_ren/PCB1.jpg" alt="Assembled HELIOS REN bicycle tail-light PCB">
                 </div>
             </div>
 
@@ -424,7 +425,7 @@
                     <li class="byline">
                         By
                         <br>
-                        <a href="#0">Carlos Sanoja</a> - <a href="#0">Jesús Guillen</a> - <a href="#0">Leonardo Ward</a> - <a href="#0">Mauricio Marcano</a> - <a href="#0">Oscar Moreno</a> - <a href="#0">Vincenzo D'Argento</a>
+                        <a href="https://github.com/CarSanoja">Carlos Sanoja</a> - <a href="https://github.com/JG-Guillen">Jesús Guillen</a> - <a href="https://github.com/leonardoward">Leonardo Ward</a> - <a href="https://github.com/rinripper">Mauricio Marcano</a> - <a href="https://github.com/OscarEMoreno">Oscar Moreno</a> - <a href="https://github.com/vincdargento">Vincenzo D'Argento</a>
                     </li>
                 </ul>
             </div>
@@ -459,7 +460,7 @@
                 <p>Figure 1 describes the operating modes proposed for the tail-light system. It also shows the use of a single button to move between modes. The cornering lights are not part of the operating modes; they have only two states: on and off.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_Estado.jpg" alt="State diagram of the tail-light operating modes">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_Estado.jpg" alt="State diagram of the tail-light operating modes">
                     <p>Figure 1: diagram of the tail-light operating modes.</p>
                 </div>
 
@@ -470,7 +471,7 @@
                 <p>Figure 2 shows the hardware block diagram of the prototype. It includes the essential parts of the design: push-buttons, batteries, battery charger, lights, and the transistors that make up the power-control stage of each LED. In Figure 2, the rear lights that are not used to signal turns are called brake lights.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_Hardware.jpg" alt="Hardware block diagram of the prototype">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_Hardware.jpg" alt="Hardware block diagram of the prototype">
                     <p>Figure 2: hardware block diagram.</p>
                 </div>
 
@@ -481,7 +482,7 @@
                 <p>The battery bank was sized for 26&nbsp;hours of continuous operation with both main lights at full power, leaving margin over the 25-hour requirement. Each LED draws up to 180&nbsp;mA, so: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Four 2600&nbsp;mAh cells were connected in parallel, giving 10&nbsp;400&nbsp;mAh &mdash; enough to cover the LED demand described above.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/BatC.png" alt="TP4056 constant-current / constant-voltage battery-charger module">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/BatC.png" alt="TP4056 constant-current / constant-voltage battery-charger module">
                     <p>Figure 3: TP4056 battery-charger module.</p>
                 </div>
 
@@ -513,19 +514,19 @@
                 <p>The device also has a 10-bit, 5-channel ADC and an MSSP with SPI and I2C, none of which are used here. The pinout is shown in Figure 4.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Pinout.jpg" alt="PIC16F1455 pinout">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Pinout.jpg" alt="PIC16F1455 pinout">
                     <p>Figure 4: PIC16F1455 pinout.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/pic.png" alt="PIC16F1455 schematic symbol">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/pic.png" alt="PIC16F1455 schematic symbol">
                     <p>Figure 5: PIC16F1455 schematic symbol.</p>
                 </div>
 
                 <p>The microcontroller can be programmed with an ICSP programmer (usable with any PIC chip). The ICSP connections are shown in Figure 6.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/icsp.png" alt="ICSP programming header on the schematic">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/icsp.png" alt="ICSP programming header on the schematic">
                     <p>Figure 6: ICSP header on the schematic.</p>
                 </div>
 
@@ -544,7 +545,7 @@
                 <p>Four transistors are needed to drive the LEDs. Two Infineon BTS3405GXUMA1 devices were chosen, each containing two transistors with a maximum drain-source voltage (V<sub>DS</sub>) of 42&nbsp;V, a maximum drain current of 350&nbsp;mA each (ideal for the chosen LEDs) and a 1.7&nbsp;V turn-on voltage, making them compatible with the microcontroller’s 3.3&nbsp;V logic.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/leds.png" alt="LED power-control stage">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/leds.png" alt="LED power-control stage">
                     <p>Figure 7: LED control system.</p>
                 </div>
 
@@ -553,14 +554,14 @@
                 <p>The lights can be controlled in two ways. The first uses a single button that cycles through the operating modes and back to off. This button is on the device enclosure.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Case2.PNG" alt="Single-button control on the device enclosure">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Case2.PNG" alt="Single-button control on the device enclosure">
                     <p>Figure 8: single-button control on the enclosure.</p>
                 </div>
 
                 <p>The second uses a remote control. This option adds features such as turn indicators and cornering lights, while the operating modes stay the same. This version of the product has an extra cost and is shown below.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/mando.png" alt="External handlebar remote control">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/mando.png" alt="External handlebar remote control">
                     <p>Figure 9: external control for the LED lights.</p>
                 </div>
 
@@ -603,17 +604,17 @@
                 <p>The mode-selection button also has a software debounce.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_BloquesSoft.jpg" alt="Software block diagram">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_BloquesSoft.jpg" alt="Software block diagram">
                     <p>Figure 10: software block diagram.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_jerarquico.jpg" alt="Software hierarchy diagram">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_jerarquico.jpg" alt="Software hierarchy diagram">
                     <p>Figure 11: software hierarchy diagram.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/D_decapas.jpg" alt="Software layer diagram">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/D_decapas.jpg" alt="Software layer diagram">
                     <p>Figure 12: software layer diagram.</p>
                 </div>
 
@@ -622,7 +623,7 @@
                 <p>The proposed circuit was simulated in Proteus; Figure 13 shows the design. The remote’s switches were modelled as switches, and a button was added to control the modes. The power supply is not shown in the simulation; only voltage sources of the corresponding value are included. The BTS3405GXUMA1 devices used as transistors cannot be simulated in Proteus, so they were represented by their MOSFET equivalents. The different operating modes were simulated successfully; the delivered video shows them working.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Simulacion_Proteus.jpg" alt="Proteus simulation of the proposed circuit">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Proteus simulation of the proposed circuit">
                     <p>Figure 13: circuit model in Proteus.</p>
                 </div>
 
@@ -631,19 +632,19 @@
                 <p>As an extra step, the PCB for the complete system was designed in Altium Designer; the results are shown below.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/PCB1.jpg" alt="System PCB, view 1">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/PCB1.jpg" alt="System PCB, view 1">
                     <p>Figure 14: system PCB, view 1.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/PCB2.jpg" alt="System PCB, view 2">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/PCB2.jpg" alt="System PCB, view 2">
                     <p>Figure 15: system PCB, view 2.</p>
                 </div>
 
                 <p>Finally, to complete a mechanical design prototype, an enclosure was modelled in AutoCAD. The final results are shown below.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/helios_ren/Case.PNG" alt="3D-modelled enclosure for the PCB">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Case.PNG" alt="3D-modelled enclosure for the PCB">
                     <p>Figure 16: PCB enclosure.</p>
                 </div>
 
@@ -659,22 +660,22 @@
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">PCB Design</a>
-                            <a href="#0">Altium</a>
-                            <a href="#0">LED Applications</a>
-                            <a href="#0">Proteus</a>
-                            <a href="#0">MPLABX</a>
+                            <a href="helios_ren.html#top">PCB Design</a>
+                            <a href="helios_ren.html#top">Altium</a>
+                            <a href="helios_ren.html#top">LED Applications</a>
+                            <a href="helios_ren.html#top">Proteus</a>
+                            <a href="helios_ren.html#top">MPLABX</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
 
                 <!-- <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -693,15 +694,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="gui-onboardgateway.html" rel="prev">
+                    <a href="lora-dev-board.html" rel="prev">
                         <span>Previous Post</span>
-                        GUI for the Onboard Gateway | Hackaday Dream Team 2020
+                        LoRa Development Board
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="pic-proteus-space-invaders.html" rel="next">
+                    <a href="onboardgateway.html" rel="next">
                         <span>Next Post</span>
-                        Embedded Software | Space Invaders adaptation for a 16-Bit PIC Microcontroller
+                        EJA Onboard Gateway
                     </a>
                 </div>
             </div>

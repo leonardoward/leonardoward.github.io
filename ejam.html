@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -69,7 +69,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/ejam/ejam-pcb-top-01.jpg" alt="EJA M v1.0 PCB, top view">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/ejam/ejam-pcb-top-01.jpg" alt="EJA M v1.0 PCB, top view">
                 </div>
             </div>
 
@@ -421,7 +422,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img loading="lazy" decoding="async" src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
@@ -474,13 +475,13 @@
                 <p>The following images present the hardware diagrams for the previous PCB designs <a href="buoya.html">Buoy A</a>, <a href="buoyb.html">Buoy B</a> and <a href="onboardgateway.html">Onboard Gateway</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/hardware_block_diagram_buoy_a_b.jpg" width="640" alt="Hardware Block Diagram of the PCB designs Buoy A and Buoy B">
+                    <img loading="lazy" decoding="async" src="images/ejam/hardware_block_diagram_buoy_a_b.jpg" width="640" alt="Hardware Block Diagram of the PCB designs Buoy A and Buoy B">
                 </div>
 
                 <p style="text-align:center">Hardware Block Diagram of the PCB designs <a href="buoya.html">Buoy A</a> and <a href="buoyb.html">Buoy B</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/hardware_block_diagram_onboard_gateway.jpg" width="640" alt="Hardware Block Diagram of the PCB design Onboard Gateway">
+                    <img loading="lazy" decoding="async" src="images/ejam/hardware_block_diagram_onboard_gateway.jpg" width="640" alt="Hardware Block Diagram of the PCB design Onboard Gateway">
                 </div>
 
                 <p style="text-align:center">Hardware Block Diagram of the PCB design <a href="onboardgateway.html">Onboard Gateway</a>.</p>
@@ -488,7 +489,7 @@
                 <p>Based on the previous images, the hardware diagram of the new design EJA M is proposed. The DC Motor driver (TB6612FNG) and the 4G(LTE) Module, were not included in this design because they are not being used anymore in the project. In the following diagram, the term "Module" refers to a circuit designed by me to adapt the sensor or transceiver to the PCB.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/hardware_block_diagram_ejam.jpg" width="640" alt="Hardware Block Diagram of the PCB design EJA M">
+                    <img loading="lazy" decoding="async" src="images/ejam/hardware_block_diagram_ejam.jpg" width="640" alt="Hardware Block Diagram of the PCB design EJA M">
                 </div>
 
                 <p style="text-align:center">Hardware Block Diagram of the PCB design EJA M.</p>
@@ -502,7 +503,7 @@
                 <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-usb-c.jpg" width="640" alt="Schematic of EJA M: USB C and EMC protections">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-usb-c.jpg" width="640" alt="Schematic of EJA M: USB C and EMC protections">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: USB C and EMC protections.</p>
@@ -512,7 +513,7 @@
                 <p>The design includes the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>, a USB TO UART/I2C FTDI that will be used to program the ESP32.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-ftdi.jpg" width="640" alt="Schematic of EJA M: FTDI circuit using an FT260S-U">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-ftdi.jpg" width="640" alt="Schematic of EJA M: FTDI circuit using an FT260S-U">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: FTDI circuit using an <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>.</p>
@@ -522,7 +523,7 @@
                 <p>The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-auto-reset.jpg" width="640" alt="Schematic of EJA M: Auto reset circuit for the ESP32">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-auto-reset.jpg" width="640" alt="Schematic of EJA M: Auto reset circuit for the ESP32">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Auto reset circuit for the ESP32.</p>
@@ -532,7 +533,7 @@
                 <p>The main microcontroller in the PCB is the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>, the following image shows the signals dedicated to the different pins. The ESP32 is connected to the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FTDI</a>, a <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">GPS</a>, a <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">LoRa transceiver</a>, a connector for a servo motor, a <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421">real-time clock</a>, a circuit to measure the battery level, a connector for an <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931">accelerometer</a>, and a few headers to provide access for the unused peripherals.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-esp32.jpg" width="640" alt="Schematic of EJA M: ESP32">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-esp32.jpg" width="640" alt="Schematic of EJA M: ESP32">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>.</p>
@@ -542,7 +543,7 @@
                 <p>The selected GPS is the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>, one of the modules tested previously in our <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/196269-gps-antenova-m20050-1-and-atgm332d-5n31-dev-board">Development Board for GPS Modules</a>. The schematic is very simple: it has a decoupling capacitor (C2), a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for an external antenna (J4) and a <a href="https://www.digikey.com/en/products/detail/linx-technologies-inc/BAT-HLD-001-THM/3044009">Coin Cell Battery Holder</a> (J2).</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-gps.jpg" width="640" alt="Schematic of EJA M: Circuit for the GPS ATGM332D-5N31">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-gps.jpg" width="640" alt="Schematic of EJA M: Circuit for the GPS ATGM332D-5N31">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Circuit for the GPS <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>.</p>
@@ -552,7 +553,7 @@
                 <p>The selected LoRa transceiver is the <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2</a>, the same module tested in our <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja/log/196116-lora-rfm95w-915s2-development-board">Development Board for LoRa</a>. The schematic contains a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for an external antenna (J9).</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-lora.jpg" width="640" alt="Schematic of EJA M: Circuit for the LoRa transceiver RFM95W-915S2">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-lora.jpg" width="640" alt="Schematic of EJA M: Circuit for the LoRa transceiver RFM95W-915S2">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Circuit for the LoRa transceiver <a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2</a>.</p>
@@ -562,7 +563,7 @@
                 <p>The design includes a dedicated RTC, the <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421?s=N4IgTCBcDaICIGUDMYkEYCyBqAKgJQBkBhHAWgDk4QBdAXyA">DS3231M</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-rtc.jpg" width="640" alt="Schematic of EJA M: Circuit for the RTC DS3231M">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-rtc.jpg" width="640" alt="Schematic of EJA M: Circuit for the RTC DS3231M">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Circuit for the RTC <a href="https://www.digikey.com/en/products/detail/maxim-integrated/DS3231M-TRL/2402421?s=N4IgTCBcDaICIGUDMYkEYCyBqAKgJQBkBhHAWgDk4QBdAXyA">DS3231M</a>.</p>
@@ -572,7 +573,7 @@
                 <p>There is a 1x3 header connector for a Servo Motor, the 5V for the servo is provided by a 5V 2A Stepup.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-servo.jpg" width="640" alt="Schematic of EJA M: Connector for the Servo Motor">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-servo.jpg" width="640" alt="Schematic of EJA M: Connector for the Servo Motor">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Connector for the Servo Motor.</p>
@@ -582,7 +583,7 @@
                 <p>The design includes the <a href="http://digikey.com/en/products/detail/texas-instruments/TPS61030PWPR/550685?s=N4IgTCBcDa4JwDYC0BGALGlyVIHIBEQBdAXyA">TPS61030PWR</a>, a boost converter with a 4A switch current, to provide the 5V for the Servo motor. The schematic contains the components for a 5V 2A output, following the design procedure that starts on the page 13 in the datasheet.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-stepup.jpg" width="640" alt="Schematic of EJA M: Circuit for a 5V 2A Stepup using the TPS61030PWR">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-stepup.jpg" width="640" alt="Schematic of EJA M: Circuit for a 5V 2A Stepup using the TPS61030PWR">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Circuit for a 5V 2A Stepup using the <a href="http://digikey.com/en/products/detail/texas-instruments/TPS61030PWPR/550685?s=N4IgTCBcDa4JwDYC0BGALGlyVIHIBEQBdAXyA">TPS61030PWR</a>.</p>
@@ -592,7 +593,7 @@
                 <p>There is a connector for the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931?s=N4IgTCBcDaIIwFYwA4C0KDsAWVA5AIiALoC%2BQA">ADXL343 3 axis accelerometer</a>, a 1x9 header was used even though it only manages the signals VDD, GND, SCL and SDA, in case we want to use more connections for the accelerometer in future versions.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-accelerometer.jpg" width="640" alt="Schematic of EJA M: Connector for the Accelerometer ADXL343">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-accelerometer.jpg" width="640" alt="Schematic of EJA M: Connector for the Accelerometer ADXL343">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Connector for the Accelerometer <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/4097/9951931?s=N4IgTCBcDaIIwFYwA4C0KDsAWVA5AIiALoC%2BQA">ADXL343</a>.</p>
@@ -602,7 +603,7 @@
                 <p>To charge the 3.3V battery the design includes the <a href="https://www.lcsc.com/product-detail/Battery-Management-ICs_TPOWER-TP4056_C382139.html">TP4056</a>, a 1A standalone linear Li-Ion battery charger. The schematic includes a green led to show the user that the battery is charged and a red led to show the user that the battery is charging. There is a <a href="https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BH-18650-PC/3029216?s=N4IgTCBcDaIEIAkC0BGAHANgKwAYkAUBhJAOQBEQBdAXyA">Battery Holder for a 18650 battery</a> (J5) and an additional 1x2 header (J7) in case we want to use a different 3.3V battery.  There is also a 1x2 header (J3) to use a different type of connection for the charger (instead of the USB C), for example we can connect and test a QI Wireless Charger.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-battery-charger.jpg" width="640" alt="Schematic of EJA M: Battery charging circuit using the TP4056">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-battery-charger.jpg" width="640" alt="Schematic of EJA M: Battery charging circuit using the TP4056">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Battery charging circuit using the <a href="https://www.lcsc.com/product-detail/Battery-Management-ICs_TPOWER-TP4056_C382139.html">TP4056</a>.</p>
@@ -612,7 +613,7 @@
                 <p>The design contains a circuit to measure a battery level, it is a simple resistor divider calculated for a range of 2.7V to 4.2V, the normal range for the 18650 Li-Ion Battery that will be used in the design.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-battery-level.jpg" width="640" alt="Schematic of EJA M: Circuit designed to measure the battery level">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-battery-level.jpg" width="640" alt="Schematic of EJA M: Circuit designed to measure the battery level">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Circuit designed to measure the battery level.</p>
@@ -633,7 +634,7 @@
                 <p>Since the voltage of the battery can change from 2.7V (discharged) to 4.2V (charged), a SEPIC converter is included to provide a constant 3.3V to the digital circuits regardless of the changes in the input voltage from the battery. The selected SEPIC converter is the <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC3113EFE-TRPBF/2521714?s=N4IgTCBcDaIDIBUDCBmAjGlBRAYlgxAgEoAKAQjkggLQByAIiALoC%2BQA">LTC3113EFE#TRPBF</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-sepic.jpg" width="640" alt="Schematic of EJA M: Design of a 3V3 3A Sepic converter using the LTC3113EFE#TRPBF">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-sepic.jpg" width="640" alt="Schematic of EJA M: Design of a 3V3 3A Sepic converter using the LTC3113EFE#TRPBF">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Design of a 3V3 3A Sepic converter using the <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC3113EFE-TRPBF/2521714?s=N4IgTCBcDaIDIBUDCBmAjGlBRAYlgxAgEoAKAQjkggLQByAIiALoC%2BQA">LTC3113EFE#TRPBF</a>.</p>
@@ -647,7 +648,7 @@
                 <p>There is a green LED that turns on with the 3.3V from the SEPIC converter, it will notify the user/developer that the device is ON or OFF.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-on-off-led.jpg" width="640" alt="Schematic of EJA M: ON/OFF Indicator">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-on-off-led.jpg" width="640" alt="Schematic of EJA M: ON/OFF Indicator">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: ON/OFF Indicator.</p>
@@ -657,7 +658,7 @@
                 <p>The design contains a <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC2954ITS8-1-TRPBF/1621452?s=N4IgTCBcDaIDIBUDCYCcBWALASQQZQA4BaARgGIEAlABQCEAxJBIgOQBEQBdAXyA">LTC2954ITS8-1#TRPBF</a>, a pushbutton ON/OFF controller that manages the power supply (enables the 3.3V SEPIC) via a pushbutton interface.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-on-off-button.jpg" width="640" alt="Schematic of EJA M: ON/OFF Circuit using the LTC2954ITS8-1#TRPBF">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-on-off-button.jpg" width="640" alt="Schematic of EJA M: ON/OFF Circuit using the LTC2954ITS8-1#TRPBF">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: ON/OFF Circuit using the <a href="https://www.digikey.com/en/products/detail/analog-devices-inc/LTC2954ITS8-1-TRPBF/1621452?s=N4IgTCBcDaIDIBUDCYCcBWALASQQZQA4BaARgGIEAlABQCEAxJBIgOQBEQBdAXyA">LTC2954ITS8-1#TRPBF</a>.</p>
@@ -667,7 +668,7 @@
                 <p>The design includes an 1x06 header to provide access for some of the unused pins in the ESP32.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/schematic-extra-header.jpg" width="640" alt="Schematic of EJA M: Header connected to unused I/O ports of the ESP32">
+                    <img loading="lazy" decoding="async" src="images/ejam/schematic-extra-header.jpg" width="640" alt="Schematic of EJA M: Header connected to unused I/O ports of the ESP32">
                 </div>
 
                 <p style="text-align:center">Schematic of EJA M: Header connected to unused I/O ports of the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>.</p>
@@ -679,7 +680,7 @@
                 <p>In the back layer there is a restricted region, that can't contain any components because the PCB is directly in contact with the enclosure in that region, those are the boundaries of the back layer. Through-hole footprints must not be placed in that section, even if the footprint is on the front layer.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/pcb_dimensions_boundaries.png" width="640" alt="Diagram with the maximum space available for the PCB">
+                    <img loading="lazy" decoding="async" src="images/ejam/pcb_dimensions_boundaries.png" width="640" alt="Diagram with the maximum space available for the PCB">
                 </div>
 
                 <p style="text-align:center">Diagram with the maximum space available for the PCB.</p>
@@ -967,13 +968,13 @@
                 <p>The following images show the front and back layers of the PCB.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/PCB_02.jpg" width="640" alt="3D Model of the PCB Design">
+                    <img loading="lazy" decoding="async" src="images/ejam/PCB_02.jpg" width="640" alt="3D Model of the PCB Design">
                 </div>
 
                 <p style="text-align:center">3D Model of the PCB Design.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ejam/PCB_03.jpg" width="640" alt="3D Model of the PCB Design">
+                    <img loading="lazy" decoding="async" src="images/ejam/PCB_03.jpg" width="640" alt="3D Model of the PCB Design">
                 </div>
 
                 <p style="text-align:center">3D Model of the PCB Design.</p>
@@ -1006,12 +1007,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -1030,17 +1031,17 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="ftdi-dev-board.html" rel="prev">
+                    <a href="eja.html" rel="prev">
                         <span>Previous Post</span>
-                        FTDI Development Board | FT260S and FT312D
+                        EJA &mdash; Intelligent Popup Buoy
                     </a>
                 </div>
-                <!-- <div class="col-six s-content__next">
-                    <a href="3dmap.html" rel="next">
+                <div class="col-six s-content__next">
+                    <a href="ftdi-dev-board.html" rel="next">
                         <span>Next Post</span>
-                        Real-Time Monitoring on a 3D Printed Map
+                        FTDI Development Board
                     </a>
-                </div> -->
+                </div>
             </div>
         </div> <!-- end s-content__pagenav -->
 

@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -181,7 +181,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-software.html" title="">Embedded Software</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/ambient_lights/proteus-schematic.png" alt="Proteus schematic of the HELA ambient-light module: a mains transformer and bridge rectifier feeding a 7805, a PIC16F1768 with a 16x2 LCD, three buttons, a DS1307 RTC, an APDS-9002 light sensor and a BC547-driven relay switching a mains LED strip">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/ambient_lights/proteus-schematic.png" alt="Proteus schematic of the HELA ambient-light module: a mains transformer and bridge rectifier feeding a 7805, a PIC16F1768 with a 16x2 LCD, three buttons, a DS1307 RTC, an APDS-9002 light sensor and a BC547-driven relay switching a mains LED strip">
                 </div>
             </div>
 
@@ -430,7 +431,7 @@
                 <h2 id="hardware">Hardware</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ambient_lights/block-hardware.png" width="720" alt="Hardware block diagram: a power cord into an HLK-10M05 AC/DC module giving 5 VDC to a PIC16, which connects to an ICSP header, three buttons, an APDS-9002 light sensor on an ADC, an LM016L LCD, a DS1307 RTC over I2C, a debug console over UART, and an HF46F-5-HS1 relay switching a 110 VAC LED strip">
+                    <img loading="lazy" decoding="async" src="images/ambient_lights/block-hardware.png" width="720" alt="Hardware block diagram: a power cord into an HLK-10M05 AC/DC module giving 5 VDC to a PIC16, which connects to an ICSP header, three buttons, an APDS-9002 light sensor on an ADC, an LM016L LCD, a DS1307 RTC over I2C, a debug console over UART, and an HF46F-5-HS1 relay switching a 110 VAC LED strip">
                 </div>
 
                 <p style="text-align:center">Hardware block diagram &mdash; the logic runs from a small 5&nbsp;V supply; only the relay touches the mains.</p>
@@ -453,7 +454,7 @@
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ambient_lights/proteus-schematic.png" width="720" alt="Full Proteus schematic of the module: mains source, transformer, bridge rectifier and 7805 regulator, PIC16F1768, 16x2 LCD, three pull-up buttons, DS1307 with crystal and backup battery, APDS-9002 light sensor, and a BC547-driven relay">
+                    <img loading="lazy" decoding="async" src="images/ambient_lights/proteus-schematic.png" width="720" alt="Full Proteus schematic of the module: mains source, transformer, bridge rectifier and 7805 regulator, PIC16F1768, 16x2 LCD, three pull-up buttons, DS1307 with crystal and backup battery, APDS-9002 light sensor, and a BC547-driven relay">
                 </div>
 
                 <p style="text-align:center">The complete circuit as simulated in Proteus.</p>
@@ -477,7 +478,7 @@
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ambient_lights/menu-flow.png" width="720" alt="Menu state diagram: from the Inicio start state to Screen 1 (time display), then Screen 2 (set time) with hour/minute/second sub-states, Screen 3 (schedule on/off) with its own hour/minute/second sub-states, and Screen 4 (automatic on/off by sensor), navigated with the mode and enter buttons">
+                    <img loading="lazy" decoding="async" src="images/ambient_lights/menu-flow.png" width="720" alt="Menu state diagram: from the Inicio start state to Screen 1 (time display), then Screen 2 (set time) with hour/minute/second sub-states, Screen 3 (schedule on/off) with its own hour/minute/second sub-states, and Screen 4 (automatic on/off by sensor), navigated with the mode and enter buttons">
                 </div>
 
                 <p style="text-align:center">The menu state flow (from the project report) &mdash; the mode and enter buttons move between screens.</p>
@@ -487,7 +488,7 @@
                 <h2 id="firmware">Firmware</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ambient_lights/block-software.png" width="720" alt="Software block diagram: a button-logic block in the middle connected to display logic, set/get time, on/off logic and a get-luminosity block, with persistent memory, and I/O to the LCD, DS1307, relay and debug console">
+                    <img loading="lazy" decoding="async" src="images/ambient_lights/block-software.png" width="720" alt="Software block diagram: a button-logic block in the middle connected to display logic, set/get time, on/off logic and a get-luminosity block, with persistent memory, and I/O to the LCD, DS1307, relay and debug console">
                 </div>
 
                 <p style="text-align:center">Software block diagram &mdash; six subsystems: display, clock, sensor, buttons, persistent memory and the on/off logic that ties them together.</p>
@@ -515,7 +516,7 @@
                 <p>The whole module &mdash; mains supply, regulator, PIC, LCD, RTC, sensor and relay &mdash; is simulated in Proteus using only stock library parts. A virtual terminal on the debug UART shows the time and the live light&#8209;sensor reading.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ambient_lights/demo.jpg" width="720" alt="Proteus running the simulation: a virtual terminal printing repeated 'Current sensor value is: 120' and 'Current time is: 00:00:00' lines next to the powered circuit with the LCD showing 00:00:00">
+                    <img loading="lazy" decoding="async" src="images/ambient_lights/demo.jpg" width="720" alt="Proteus running the simulation: a virtual terminal printing repeated 'Current sensor value is: 120' and 'Current time is: 00:00:00' lines next to the powered circuit with the LCD showing 00:00:00">
                 </div>
 
                 <p style="text-align:center">Running in Proteus &mdash; the debug terminal streams the time and sensor value. There is also a <a href="https://youtu.be/3KqcJgEQBLA">demo video</a> of the last firmware version.</p>
@@ -552,12 +553,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">

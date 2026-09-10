@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -323,7 +323,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="opencv-pointillize.html" title="">Computer Vision</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/cv_pointillize/result.jpg" alt="A landscape photo rendered as pointillism: a field of small non-overlapping coloured dots that resolve into a scene">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/cv_pointillize/result.jpg" alt="A landscape photo rendered as pointillism: a field of small non-overlapping coloured dots that resolve into a scene">
                 </div>
             </div>
 
@@ -428,12 +429,12 @@
                 <div class="col-full">
                   <div class="col-six">
                     <p>
-                    <img src="images/cv_pointillize/source.jpg" width="400" alt="The source photo: a landscape scene">
+                    <img loading="lazy" decoding="async" src="images/cv_pointillize/source.jpg" width="400" alt="The source photo: a landscape scene">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img src="images/cv_pointillize/result.jpg" width="400" alt="The same scene rebuilt from hundreds of small non-overlapping coloured dots">
+                    <img loading="lazy" decoding="async" src="images/cv_pointillize/result.jpg" width="400" alt="The same scene rebuilt from hundreds of small non-overlapping coloured dots">
                     </p>
                   </div>
                 </div>
@@ -479,12 +480,12 @@
                 <div class="col-full">
                   <div class="col-six">
                     <p>
-                    <img src="images/cv_pointillize/portrait_source.jpg" width="240" alt="A portrait photo">
+                    <img loading="lazy" decoding="async" src="images/cv_pointillize/portrait_source.jpg" width="240" alt="A portrait photo">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img src="images/cv_pointillize/portrait.jpg" width="240" alt="The portrait rendered as fine coloured stippling">
+                    <img loading="lazy" decoding="async" src="images/cv_pointillize/portrait.jpg" width="240" alt="The portrait rendered as fine coloured stippling">
                     </p>
                   </div>
                 </div>
@@ -502,7 +503,7 @@
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Computer Vision</a>
+                            <a href="opencv-pointillize.html">Computer Vision</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
@@ -518,12 +519,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -541,12 +542,6 @@
 
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="pic-ws2812.html" rel="prev">
-                        <span>Previous Post</span>
-                        Driving WS2812 LEDs with a PIC16F1717
-                    </a>
-                </div>
                 <div class="col-six s-content__next">
                     <a href="opencv-test-app.html" rel="next">
                         <span>Next Post</span>

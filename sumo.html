@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/sumo/20161101_085539_light60.jpg" alt="The assembled Atlas sumo robot with its aluminium scoop blade and exposed control electronics">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/sumo/20161101_085539_light60.jpg" alt="The assembled Atlas sumo robot with its aluminium scoop blade and exposed control electronics">
                 </div>
             </div>
 
@@ -413,7 +414,7 @@
                     <li class="date">October, 2016</li>
                     <li class="byline">
                         By
-                        <a href="#0">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                     <li>
                       <h3><a href="https://github.com/leonardoward/Atlas-Sumo-Robot"><i class="fab fa-github"></i></a></h3>
@@ -428,7 +429,7 @@
                 <p>Atlas is a two&#8209;wheeled, differential&#8209;drive robot. Its job is to find the opposing robot inside the ring, drive into it and push it out &mdash; without driving itself out in the process. It runs on an Arduino Nano, with a closed&#8209;loop speed controller on each wheel and a sensor&#8209;driven state machine that decides how to move.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/atlas_render_light.jpg" width="620" alt="CAD render of the Atlas sumo robot: a compact box chassis on two drive wheels with a curved aluminium scoop blade at the front">
+                    <img loading="lazy" decoding="async" src="images/sumo/atlas_render_light.jpg" width="620" alt="CAD render of the Atlas sumo robot: a compact box chassis on two drive wheels with a curved aluminium scoop blade at the front">
                 </div>
 
                 <p style="text-align:center">CAD model of Atlas, showing the drive wheels and the front scoop blade.</p>
@@ -438,7 +439,7 @@
                 <p>A sumo match is fought inside a circular ring (the <em>dohy&#333;</em>): 150&nbsp;cm in diameter, with a 5&nbsp;cm border marking the edge and two short starting lines at the centre. The two robots start back&#8209;to&#8209;back and, after a mandatory delay following the start signal, must push the opponent out of the ring or immobilise it. Leaving the ring on your own means losing the round, so edge awareness matters as much as attacking.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/sumo_arena.png" width="440" alt="Competition arena diagram: a 150 cm circle with a 5 cm edge border and two 20 cm central starting lines set 20 cm apart">
+                    <img loading="lazy" decoding="async" src="images/sumo/sumo_arena.png" width="440" alt="Competition arena diagram: a 150 cm circle with a 5 cm edge border and two 20 cm central starting lines set 20 cm apart">
                 </div>
 
                 <p style="text-align:center">Competition arena &mdash; 150&nbsp;cm ring, 5&nbsp;cm edge border, central start lines.</p>
@@ -469,7 +470,7 @@
 
                 <div class="col-six">
                   <p>
-                  <img src="images/sumo/IMG_8945_light40.JPG" width="400" alt="One of the two brushless DC motors salvaged for Atlas, with its driver board attached">
+                  <img loading="lazy" decoding="async" src="images/sumo/IMG_8945_light40.JPG" width="400" alt="One of the two brushless DC motors salvaged for Atlas, with its driver board attached">
                   </p>
                 </div>
 
@@ -485,12 +486,12 @@
                 <div class="col-full">
                   <div class="col-six">
                     <p>
-                    <img src="images/sumo/20161106_213935_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, top view">
+                    <img loading="lazy" decoding="async" src="images/sumo/20161106_213935_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, top view">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img src="images/sumo/20161106_193725_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, wiring detail">
+                    <img loading="lazy" decoding="async" src="images/sumo/20161106_193725_light60.jpg" width="400" alt="Reverse-engineered brushless motor driver board, wiring detail">
                     </p>
                   </div>
                 </div>
@@ -517,7 +518,7 @@
                 <p>Each motor also has an <strong>ACS711 current sensor</strong>. If a motor draws more than its current limit &mdash; typically during a sustained push against the opponent &mdash; a fold&#8209;back limiter lowers that wheel's PID output ceiling until the current comes back down, protecting the driver board from a stalled push.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/control_board_light.jpg" width="620" alt="Hand-wired perfboard control board for Atlas, with the Arduino Nano, an accelerometer breakout and point-to-point wiring between the driver and sensor connectors">
+                    <img loading="lazy" decoding="async" src="images/sumo/control_board_light.jpg" width="620" alt="Hand-wired perfboard control board for Atlas, with the Arduino Nano, an accelerometer breakout and point-to-point wiring between the driver and sensor connectors">
                 </div>
 
                 <p style="text-align:center">The hand&#8209;wired control board: Arduino Nano, sensor conditioning and the connectors to the motor drivers.</p>
@@ -541,7 +542,7 @@
                 <p><strong>2nd place, Sumo category</strong> &mdash; VI Competencia Nacional de Rob&oacute;tica (USB BOTS 2016), Centro &Iacute;talo Venezolano, Caracas, 7&ndash;9 November 2016. Built with Javier Inojosa for FutBot&nbsp;&ndash;&nbsp;Future Robotics.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/sumo/award_light.jpg" width="620" alt="The bare-metal Atlas chassis with its scoop blade next to the USB BOTS 2016 certificate for 2nd place in the Sumo category">
+                    <img loading="lazy" decoding="async" src="images/sumo/award_light.jpg" width="620" alt="The bare-metal Atlas chassis with its scoop blade next to the USB BOTS 2016 certificate for 2nd place in the Sumo category">
                 </div>
 
                 <p style="text-align:center">Atlas next to the USB&nbsp;BOTS&nbsp;2016 second&#8209;place certificate.</p>
@@ -555,7 +556,7 @@
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Robotics</a>
+                            <a href="robotics.html">Robotics</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
@@ -573,12 +574,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -596,16 +597,10 @@
 
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="brushlessdc.html" rel="prev">
-                        <span>Previous Post</span>
-                        Brushless DC Motor Drivers
-                    </a>
-                </div>
                 <div class="col-six s-content__next">
-                    <a href="puma560.html" rel="next">
+                    <a href="hbridgeboards.html" rel="next">
                         <span>Next Post</span>
-                        PUMA 560 Matlab Simulations | Robotic Manipulator
+                        H-Bridge Perfboard Designs
                     </a>
                 </div>
             </div>

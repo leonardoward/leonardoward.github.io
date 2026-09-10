@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -181,7 +181,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-software.html" title="">Embedded Software</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/pic_ws2812/simulation.jpg" alt="Proteus simulation: an 8-LED WS2812 strip lit red, green, blue, yellow, cyan, magenta, pale green and white, with the SPI, PWM and CLC waveforms on a logic analyser">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/pic_ws2812/simulation.jpg" alt="Proteus simulation: an 8-LED WS2812 strip lit red, green, blue, yellow, cyan, magenta, pale green and white, with the SPI, PWM and CLC waveforms on a logic analyser">
                 </div>
             </div>
 
@@ -426,7 +427,7 @@
                 <p class="lead drop-cap">A driver for <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">WS2812</a> addressable RGB LEDs on the <a href="https://www.microchip.com/en-us/product/pic16f1717">PIC16F1717</a>, built so that the <strong>Core Independent Peripherals</strong> generate the LED waveform and the CPU spends no cycles on bit timing. Configured with <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLAB Code Configurator</a> and simulated in <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/schematic.jpg" width="640" alt="Proteus schematic: a PIC16F1717 driving an 8-pixel WS2812 strip from RB1, with a logic analyser probing the SPI and PWM pins">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/schematic.jpg" width="640" alt="Proteus schematic: a PIC16F1717 driving an 8-pixel WS2812 strip from RB1, with a logic analyser probing the SPI and PWM pins">
                 </div>
 
                 <p style="text-align:center">Proteus schematic &mdash; the PIC drives the 8&#8209;pixel strip from a single pin (RB1).</p>
@@ -474,7 +475,7 @@
                 <p>Timer2 is left at a short period (<code>PR2 = 4</code>, no pre&#8209;/post&#8209;scale). It clocks both the SPI and PWM4, which is what keeps the two in lockstep.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/mcc_tmr2.jpg" width="620" alt="MPLAB Code Configurator Timer2 panel with a period register value of 4 and 1:1 prescale and postscale">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/mcc_tmr2.jpg" width="620" alt="MPLAB Code Configurator Timer2 panel with a period register value of 4 and 1:1 prescale and postscale">
                 </div>
 
                 <p style="text-align:center">Timer2 &mdash; the shared time base.</p>
@@ -484,7 +485,7 @@
                 <p>The MSSP is an SPI master in Mode&nbsp;1, clocked from Timer2, giving an ~800&nbsp;kHz bit clock &mdash; one SPI bit per WS2812 bit. Only SCK and SDO are used, feeding the CLC; the LED strip is never wired to them directly.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/mcc_spi.jpg" width="620" alt="MPLAB Code Configurator MSSP panel: SPI, Master, Mode 1, clock source Timer2">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/mcc_spi.jpg" width="620" alt="MPLAB Code Configurator MSSP panel: SPI, Master, Mode 1, clock source Timer2">
                 </div>
 
                 <p style="text-align:center">MSSP &mdash; SPI master clocked from Timer2.</p>
@@ -494,7 +495,7 @@
                 <p>PWM4 shares Timer2 and runs at a low duty cycle, so on every bit it emits a brief high pulse &mdash; the &ldquo;0&rdquo; code and the leading edge of the &ldquo;1&rdquo; code.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/mcc_pwm4.jpg" width="620" alt="MPLAB Code Configurator PWM4 panel with a low duty cycle, timed from Timer2">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/mcc_pwm4.jpg" width="620" alt="MPLAB Code Configurator PWM4 panel with a low duty cycle, timed from Timer2">
                 </div>
 
                 <p style="text-align:center">PWM4 &mdash; the fixed leading pulse.</p>
@@ -504,7 +505,7 @@
                 <p>CLC3 is where the waveform is actually assembled. In AND&#8209;OR mode it takes PWM4&nbsp;OUT, SCK and SDO as inputs and gates them so that the output pin carries the PWM pulse for a &ldquo;0&rdquo; and a stretched pulse for a &ldquo;1&rdquo;. See <a href="http://ww1.microchip.com/downloads/en/appnotes/00001606a.pdf">AN1606</a> for the exact gate equations.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/mcc_clc3.jpg" width="640" alt="MPLAB Code Configurator CLC3 logic diagram: PWM4 OUT, SCK and SDO feeding an AND-OR gate array">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/mcc_clc3.jpg" width="640" alt="MPLAB Code Configurator CLC3 logic diagram: PWM4 OUT, SCK and SDO feeding an AND-OR gate array">
                 </div>
 
                 <p style="text-align:center">CLC3 &mdash; AND&#8209;OR gate combining PWM4, SCK and SDO into the WS2812 waveform.</p>
@@ -527,7 +528,7 @@
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/mcc_pins.jpg" width="640" alt="MPLAB Code Configurator Pin Module grid showing the CLC, PWM and MSSP pin selections">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/mcc_pins.jpg" width="640" alt="MPLAB Code Configurator Pin Module grid showing the CLC, PWM and MSSP pin selections">
                 </div>
 
                 <p style="text-align:center">Pin Module &mdash; only RB1 (the CLC output) drives the LED strip; the SPI and PWM pins are broken out for probing.</p>
@@ -549,7 +550,7 @@
                 <p>In Proteus the PIC drives a WS2812&times;8 part while a logic analyser probes the SPI and PWM pins. The strip shows the eight test colours and the analyser traces show the per&#8209;bit pulses being built.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/pic_ws2812/simulation.jpg" width="640" alt="Proteus simulation result: the 8-pixel strip lit in eight colours with the SPI, PWM and CLC waveforms shown on the logic analyser">
+                    <img loading="lazy" decoding="async" src="images/pic_ws2812/simulation.jpg" width="640" alt="Proteus simulation result: the 8-pixel strip lit in eight colours with the SPI, PWM and CLC waveforms shown on the logic analyser">
                 </div>
 
                 <p style="text-align:center">Simulation result &mdash; the eight&#8209;colour test pattern and the generated waveforms.</p>
@@ -594,12 +595,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -620,13 +621,13 @@
                 <div class="col-six s-content__prev">
                     <a href="pic-proteus-space-invaders.html" rel="prev">
                         <span>Previous Post</span>
-                        Space Invaders adaptation for a 16-Bit PIC microcontroller
+                        Space Invaders on a 16-Bit PIC
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="gui-onboardgateway.html" rel="next">
+                    <a href="irdar.html" rel="next">
                         <span>Next Post</span>
-                        GUI for the Onboard Gateway v1.0
+                        IRDAR &mdash; a Scanning Infrared Rangefinder
                     </a>
                 </div>
             </div>

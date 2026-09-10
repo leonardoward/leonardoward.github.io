@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -181,7 +181,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-software.html" title="">Embedded Software</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/space_invaders/space-invaders2.png" alt="Space Invaders running on a PIC microcontroller in Proteus">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/space_invaders/space-invaders2.png" alt="Space Invaders running on a PIC microcontroller in Proteus">
                 </div>
             </div>
 
@@ -428,7 +429,7 @@
                 <p class="lead drop-cap">A cover of the classic 1978 videogame Space Invaders, written in C for the 16&#8209;bit <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> and simulated in <a href="https://www.labcenter.com/simulation/">Proteus</a>, with a T6963C&#8209;driven 240&times;128 graphics LCD. Built with Mauricio Marcano for <em>PG&#8209;7233 &mdash; C for Embedded Systems</em>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif1.gif" alt="Space Invaders running on the PIC24FJ128GA010, simulated on Proteus">
+                    <video src="images/space_invaders/space-invaders-1.mp4" width="460" poster="images/space_invaders/space-invaders-1.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Space Invaders running on the PIC24FJ128GA010, simulated in Proteus"></video>
                 </div>
 
                 <p style="text-align:center">Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>, simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
@@ -459,7 +460,7 @@
                 <p>The building process is performed in the <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a> development environment to generate the .hex file necessary for the Proteus Simulation. This is done by clicking the clean and build button in MPLAB.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/mplabx-building.png" alt="Menu on MPLABX">
+                    <img loading="lazy" decoding="async" src="images/space_invaders/mplabx-building.png" alt="Menu on MPLABX">
                 </div>
 
                 <p style="text-align:center">Menu on <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a>.</p>
@@ -470,7 +471,7 @@
                 <p>In order to run the simulation in Proteus, the user has to insert the .hex file path in the PIC preferences.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" src="images/space_invaders/proteus-setup.png" alt="Component settings on Proteus">
+                    <img loading="lazy" decoding="async" width="640" src="images/space_invaders/proteus-setup.png" alt="Component settings on Proteus">
                 </div>
 
                 <p style="text-align:center">Component settings on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
@@ -487,7 +488,7 @@
                 <p>The LCD controller used was a T6963C to drive a screen of 240 x 128 pixels. In this project enhancements were made to the library <a href="https://github.com/camilstaps/T6963C_PIC.git">T6963C_PIC</a> of camilstaps in order to drive the screen.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif2.gif" alt="Start animation of the game running on the 240x128 LCD">
+                    <video src="images/space_invaders/space-invaders-2.mp4" width="460" poster="images/space_invaders/space-invaders-2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Start animation of the game on the 240x128 LCD"></video>
                 </div>
 
                 <p style="text-align:center">Start animation of the game running on the 240x128 LCD.</p>
@@ -501,7 +502,7 @@
                 <p>The buttons used were three push buttons native of proteus in pull-up configuration, two of them for lateral movement and the other one to shoot.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/buttons_circuit.png" alt="Pull up circuits on the Schematic">
+                    <img loading="lazy" decoding="async" src="images/space_invaders/buttons_circuit.png" alt="Pull up circuits on the Schematic">
                 </div>
 
                 <p style="text-align:center">Pull up circuits on the Schematic.</p>
@@ -511,7 +512,7 @@
                 <p>The way the invaders render is variable: When the invaders move from right to left the rendering direction is from left to right, and vice versa. This mechanism allows collision detection to be performed on the outermost invader only once at the beginning of the update cycle, regardless of the number of live invaders.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif3.gif" alt="Game render">
+                    <video src="images/space_invaders/space-invaders-3.mp4" width="460" poster="images/space_invaders/space-invaders-3.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="The game being rendered on the LCD"></video>
                 </div>
 
                 <p style="text-align:center">Game render.</p>
@@ -534,7 +535,7 @@
                 <p>The spaceship and mothership sprites, the barriers sprites with the ability to be destroyed with 3 hits, laser shots and explosion sprites.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/space_invaders/sprites.png" alt="Custom sprites">
+                    <img loading="lazy" decoding="async" src="images/space_invaders/sprites.png" alt="Custom sprites">
                 </div>
 
                 <p style="text-align:center">Custom sprites.</p>
@@ -542,7 +543,7 @@
                 <p>The tool used to draw and export the images was <a href="https://www.piskelapp.com/">Piskel</a>, and the tool used to generate the array files from the bitmap pictures was <a href="http://en.radzio.dxp.pl/bitmap_converter/">LCD Assistant</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif4.gif" alt="Space Invaders running on the PIC24FJ128GA010, simulated on Proteus">
+                    <video src="images/space_invaders/space-invaders-4.mp4" width="460" poster="images/space_invaders/space-invaders-4.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Space Invaders gameplay, simulated in Proteus"></video>
                 </div>
 
                 <p style="text-align:center">Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a>, simulated on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
@@ -556,7 +557,7 @@
                 <p>Attack intelligence for invaders has been implemented to spice up the gameplay. Also collision detector alien/barrier and collision detector alien/spaceship, live and score systems, and game over/restart screen were implemented.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="460" height="300" src="images/space_invaders/space-invaders-gif5.gif" alt="Gameplay video">
+                    <video src="images/space_invaders/space-invaders-5.mp4" width="460" poster="images/space_invaders/space-invaders-5.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Space Invaders gameplay video"></video>
                 </div>
 
                 <p style="text-align:center">Gameplay video.</p>
@@ -580,7 +581,7 @@
                 <p>The following image presents a Flowchart of the game.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="480" src="images/space_invaders/game_architecture.jpg" alt="Software Block Diagram">
+                    <img loading="lazy" decoding="async" width="480" src="images/space_invaders/game_architecture.jpg" alt="Software Block Diagram">
                 </div>
 
                 <p style="text-align:center">Software Block Diagram.</p>
@@ -592,7 +593,7 @@
                 <p>We are using <a href="https://en.wikipedia.org/wiki/Linked_list">Singly Linked Circular Lists</a> to manage the animations of the game objects. We only required one or two sprites, but the list is also very convenient during the rendering phase.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="480" src="images/space_invaders/animation_list.jpg" alt="Animation List">
+                    <img loading="lazy" decoding="async" width="480" src="images/space_invaders/animation_list.jpg" alt="Animation List">
                 </div>
 
                 <p style="text-align:center">Animation List.</p>
@@ -602,7 +603,7 @@
                 <p>The invaders have a different rendering order depending of the direction in which the group is moving:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/alien_list.jpg" alt="Alien List">
+                    <img loading="lazy" decoding="async" width="640" height="360" src="images/space_invaders/alien_list.jpg" alt="Alien List">
                 </div>
 
                 <p style="text-align:center">Alien List.</p>
@@ -618,7 +619,7 @@
                 <p>To detect the collisions between game objects we created a game map, a 2D array with the size of the screen where each element contains a pointer to the game object that is associated to that X Y position. This map is updated with each frame according to the new positions of the objects.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img width="640" height="360" src="images/space_invaders/game_map.jpg" alt="Game Map">
+                    <img loading="lazy" decoding="async" width="640" height="360" src="images/space_invaders/game_map.jpg" alt="Game Map">
                 </div>
 
                 <p style="text-align:center">Game Map.</p>
@@ -667,12 +668,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -690,16 +691,10 @@
 
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="helios_ren.html" rel="prev">
-                        <span>Previous Post</span>
-                        HELIOS REN Tail Light System
-                    </a>
-                </div>
                 <div class="col-six s-content__next">
-                    <a href="lora-dev-board.html" rel="next">
+                    <a href="pic-ws2812.html" rel="next">
                         <span>Next Post</span>
-                        LoRa Development Board | RFM95W-915S2
+                        Driving WS2812 LEDs with a PIC16F1717
                     </a>
                 </div>
             </div>

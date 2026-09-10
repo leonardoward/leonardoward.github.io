@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -69,7 +69,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/lora_development_board/Lora_PCB.jpg" alt="LoRa RFM95W-915S2 development board PCB">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/lora_development_board/Lora_PCB.jpg" alt="LoRa RFM95W-915S2 development board PCB">
                 </div>
             </div>
 
@@ -421,7 +422,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img loading="lazy" decoding="async" src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
@@ -444,7 +445,7 @@
                 <h2 id="schematic">Schematic</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/schematic-v1.0.jpg" width="640" alt="Schematic of the LoRa Development Board">
+                    <img loading="lazy" decoding="async" src="images/lora_development_board/schematic-v1.0.jpg" width="640" alt="Schematic of the LoRa Development Board">
                 </div>
 
                 <p style="text-align:center">Schematic of the LoRa Development Board.</p>
@@ -487,13 +488,13 @@
                 <h2 id="pcb">PCB</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/lora-testing-board01.jpg" width="640" alt="3D Model of the LoRa Development Board">
+                    <img loading="lazy" decoding="async" src="images/lora_development_board/lora-testing-board01.jpg" width="640" alt="3D Model of the LoRa Development Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the LoRa Development Board.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/lora-testing-board02.jpg" width="640" alt="3D Model of the LoRa Development Board">
+                    <img loading="lazy" decoding="async" src="images/lora_development_board/lora-testing-board02.jpg" width="640" alt="3D Model of the LoRa Development Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the LoRa Development Board.</p>
@@ -504,7 +505,7 @@
 
                 <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
 
-                <p><strong>Before flashing:</strong> set the frequency in <code>LoRa.begin(...)</code> to your regional band &mdash; the sketches ship with <code>866E6</code> (Europe), but the RFM95W&#8209;<strong>915</strong>S2 module on this board is the 915&nbsp;MHz (North America) variant, so use <code>915E6</code> with it. The sender and receiver must also share the same sync word (<code>LoRa.setSyncWord(0xF3)</code>) or they ignore each other.</p>
+                <p><strong>Before flashing:</strong> the sketches call <code>LoRa.begin(915E6)</code> to match the RFM95W&#8209;<strong>915</strong>S2 (915&nbsp;MHz) module fitted to this board; change that argument only if you pair it with a module for another band (<code>433E6</code> Asia, <code>866E6</code> Europe). The sender and receiver must also share the same sync word (<code>LoRa.setSyncWord(0xF3)</code>) or they ignore each other.</p>
 
                 <p>The connections are the following:</p>
 
@@ -558,7 +559,7 @@
                 </div> <!-- end row -->
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/Lora_Dev_Board.jpg" width="640" alt="Custom LoRa Dev Board and ESP32 used in the test">
+                    <img loading="lazy" decoding="async" src="images/lora_development_board/Lora_Dev_Board.jpg" width="640" alt="Custom LoRa Dev Board and ESP32 used in the test">
                 </div>
 
                 <p style="text-align:center">Custom LoRa Dev Board and ESP32 used in the test.</p>
@@ -613,7 +614,7 @@
                 </div> <!-- end row -->
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/Lora_Adafruit.jpg" width="640" alt="RFM95W transceiver from Adafruit and ESP32 used in the test">
+                    <img loading="lazy" decoding="async" src="images/lora_development_board/Lora_Adafruit.jpg" width="640" alt="RFM95W transceiver from Adafruit and ESP32 used in the test">
                 </div>
 
                 <p style="text-align:center"><a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a> and ESP32 used in the test.</p>
@@ -632,7 +633,7 @@
                 <p>Results visualized in the serial monitor from the receiver circuit:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/lora_development_board/Test-Result.png" width="640" alt="Results from the test">
+                    <img loading="lazy" decoding="async" src="images/lora_development_board/Test-Result.png" width="640" alt="Results from the test">
                 </div>
 
                 <p style="text-align:center">Results from the test.</p>
@@ -660,12 +661,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -684,15 +685,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="pic-proteus-space-invaders.html" rel="prev">
+                    <a href="gps-dev-board.html" rel="prev">
                         <span>Previous Post</span>
-                        Embedded Software | Space Invaders adaptation for a 16-Bit PIC Microcontroller
+                        GPS Development Board
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="gps-dev-board.html" rel="next">
+                    <a href="helios_ren.html" rel="next">
                         <span>Next Post</span>
-                        GPS Development Board | ANTENOVA M20050-1 and ATGM332D-5N31
+                        HELIOS REN Tail Light System
                     </a>
                 </div>
             </div>

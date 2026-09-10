@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full" style="text-align:center">
                 <div class="entry__post-thumb">
-                    <img src="images/puma560/puma560.jpg" alt="PUMA 560 robotic manipulator simulation">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/puma560/puma560.jpg" alt="PUMA 560 robotic manipulator simulation">
                 </div>
             </div>
 
@@ -489,13 +490,13 @@
                 <h2 id="robot-manipulator">RRR Robot Manipulator</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
                 </div>
 
                 <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/rrr_robot.gif" width="640" alt="GUI for the RRR Robot Manipulator">
+                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
                 </div>
 
                 <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
@@ -503,13 +504,13 @@
                 <h2 id="puma-560">PUMA 560</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
+                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
                 </div>
 
                 <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
 
                 <div class="col-full" style="text-align:center" id="gui">
-                    <img src="images/puma560/puma_560_3d_vel20_2.gif" width="640" alt="GUI for the Puma 560 Robot Manipulator">
+                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
                 </div>
 
                 <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
@@ -537,12 +538,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -561,15 +562,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="sumo.html" rel="prev">
+                    <a href="brushlessdc.html" rel="prev">
                         <span>Previous Post</span>
-                        ATLAS, a Robot for Sumo Competitions
+                        Brushless DC Motor Drivers
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="3dmap.html" rel="next">
+                    <a href="pioneer-slam.html" rel="next">
                         <span>Next Post</span>
-                        Real-Time Monitoring on a 3D Printed Map
+                        Teleoperated SLAM with a Pioneer P3-DX
                     </a>
                 </div>
             </div>

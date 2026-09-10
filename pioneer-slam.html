@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -271,7 +271,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="sumo.html">Sumo</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/teleop_slam/scene.jpg" alt="V-REP simulation scene: a Pioneer P3-DX mobile robot with a laser scanner in a room with a table and chairs">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/teleop_slam/scene.jpg" alt="V-REP simulation scene: a Pioneer P3-DX mobile robot with a laser scanner in a room with a table and chairs">
                 </div>
             </div>
 
@@ -430,7 +431,7 @@
                 <p>The robot lives in a V&#8209;REP scene &mdash; a Pioneer&nbsp;P3&#8209;DX differential&#8209;drive base with a laser scanner and a small vision sensor, in a room with furniture. You drive it by keyboard or from the <a href="https://play.google.com/store/apps/details?id=com.robotca.ControlApp">ROS Control</a> Android app; the laser scan and the robot pose come back out of the simulator over ROS, and gmapping turns them into a map you watch build in RViz.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/teleop_slam/laser_scan.jpg" width="640" alt="V-REP simulation with the laser scanner active, its rays sweeping the room floor and furniture as a dense red point pattern">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/laser_scan.jpg" width="640" alt="V-REP simulation with the laser scanner active, its rays sweeping the room floor and furniture as a dense red point pattern">
                 </div>
 
                 <p style="text-align:center">The Pioneer's laser scanner sweeping the V&#8209;REP scene.</p>
@@ -446,7 +447,7 @@
                 </ul>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/teleop_slam/rosgraph.jpg" width="640" alt="rqt_graph of the running system: V-REP's ros interface and the Android controller feeding the external listener node, which outputs tf, odom and the external scan">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/rosgraph.jpg" width="640" alt="rqt_graph of the running system: V-REP's ros interface and the Android controller feeding the external listener node, which outputs tf, odom and the external scan">
                 </div>
 
                 <p style="text-align:center">The running node graph (<code>rqt_graph</code>).</p>
@@ -469,7 +470,7 @@
                 </div>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/teleop_slam/bridge_node.jpg" width="600" alt="Focused node graph: the external listener node taking hokuyo_scan, joy_teleop cmd_vel and pioneer_pose and producing tf_static, tf, odom and extern_scan">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/bridge_node.jpg" width="600" alt="Focused node graph: the external listener node taking hokuyo_scan, joy_teleop cmd_vel and pioneer_pose and producing tf_static, tf, odom and extern_scan">
                 </div>
 
                 <p style="text-align:center">The bridge node's inputs and outputs.</p>
@@ -485,12 +486,12 @@
                 <div class="col-full">
                   <div class="col-six">
                     <p>
-                    <img src="images/teleop_slam/app_master_uri.jpg" width="360" alt="ROS Control app: the Add/Edit Robot dialog with a robot name and a Master URI pointing at a PC IP address">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/app_master_uri.jpg" width="360" alt="ROS Control app: the Add/Edit Robot dialog with a robot name and a Master URI pointing at a PC IP address">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img src="images/teleop_slam/ros_control_app.jpg" width="300" alt="ROS Control app in Joystick mode, showing speed and heading readouts and a virtual joystick">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/ros_control_app.jpg" width="300" alt="ROS Control app in Joystick mode, showing speed and heading readouts and a virtual joystick">
                     </p>
                   </div>
                 </div>
@@ -502,7 +503,7 @@
                 <p>The scene also carries a low&#8209;resolution vision sensor on the robot, published on <code>/image</code> &mdash; a forward camera view of the room, separate from the laser used for mapping.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/teleop_slam/vision_sensor.jpg" width="380" alt="The robot's on-board vision sensor feed shown in rqt image view: a pixelated view of a table and floor">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/vision_sensor.jpg" width="380" alt="The robot's on-board vision sensor feed shown in rqt image view: a pixelated view of a table and floor">
                 </div>
 
                 <p style="text-align:center">The on&#8209;board vision sensor feed.</p>
@@ -552,12 +553,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -578,13 +579,7 @@
                 <div class="col-six s-content__prev">
                     <a href="puma560.html" rel="prev">
                         <span>Previous Post</span>
-                        PUMA 560 Matlab Simulations | Robotic Manipulator
-                    </a>
-                </div>
-                <div class="col-six s-content__next">
-                    <a href="sumo.html" rel="next">
-                        <span>Next Post</span>
-                        ATLAS, a Robot for Sumo Competitions
+                        PUMA 560 MATLAB Simulations
                     </a>
                 </div>
             </div>

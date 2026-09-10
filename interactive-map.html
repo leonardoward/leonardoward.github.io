@@ -34,15 +34,28 @@
     ================================================== -->
     <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
     <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@6.4.3/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@7.5.2/ol.css" type="text/css">
     <style>
-      .map {
-        height: 480px;
-        width: 640px;
-        text-align:center;
+      #map {
+        height: 460px;
+        width: 100%;
+        max-width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        margin: 2.4rem 0;
+      }
+      #map .ol-coord-label {
+        background: #111860;
+        color: #fff;
+        font: 500 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        padding: 3px 8px;
+        border-radius: 3px;
+        white-space: nowrap;
+        transform: translate(-50%, -175%);
+        pointer-events: none;
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/ol@6.4.3/dist/ol.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ol@7.5.2/dist/ol.js"></script>
 
 </head>
 
@@ -65,7 +78,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -377,6 +390,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -410,7 +424,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/interactive_map/worldmap.jpg" alt="Interactive OpenLayers world map">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/interactive_map/worldmap.jpg" alt="Interactive OpenLayers world map">
                 </div>
             </div>
 
@@ -422,7 +436,7 @@
                     <li class="date">February, 2020</li>
                     <li class="byline">
                         By
-                        <a href="#0">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                 </ul>
             </div>
@@ -433,35 +447,38 @@
 
                 <p>The map requires the Javascript library from <a href="https://openlayers.org/">OpenLayers</a>, an open source project that facilitates the use of dynamic maps in the web page. It can display map tiles, vector data and markers.</p>
 
-                <p>The map is interactive, it's possible to zoom in or out using the + and - buttons or the scrolling wheel on the mouse. It's also possible to change the center position of the map by moving the mouse while being on top of the map and holding left click.</p>
+                <p>The map is interactive: zoom in and out with the <strong>+</strong> / <strong>&minus;</strong> buttons or the scroll wheel, and pan by dragging with the left mouse button held down.</p>
 
-                <div id="map" class="map col-full"></div>
+                <div id="map" class="col-full" aria-label="Interactive OpenLayers map centred on the Arc de Triomphe in Paris"></div>
+                <noscript>
+                    <img src="images/interactive_map/worldmap.jpg" width="640" alt="Screenshot of the OpenLayers world map (the interactive version needs JavaScript)">
+                </noscript>
 
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="#0">Web Applications</a>
+                            <a href="interactive-map.html">Web Applications</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="#0">Web Development</a>
-                            <a href="#0">OpenLayers</a>
+                            <a href="interactive-map.html#description">Web Development</a>
+                            <a href="interactive-map.html#description">OpenLayers</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -479,16 +496,10 @@
 
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="3dmap.html" rel="prev">
-                        <span>Previous Post</span>
-                        Real-Time Monitoring on a 3D Printed Map
-                    </a>
-                </div>
                 <div class="col-six s-content__next">
-                    <a href="buoya.html" rel="next">
+                    <a href="em-game.html" rel="next">
                         <span>Next Post</span>
-                        Buoy A | 2020 Hackaday Dream Team Challenge for Conservation X Labs.
+                        An Electromagnetism Learning Game
                     </a>
                 </div>
             </div>
@@ -585,6 +596,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         })
       });
 
+      // Label showing the Arc de Triomphe's latitude and longitude
+      const coordLabel = document.createElement('div');
+      coordLabel.className = 'ol-coord-label';
+      coordLabel.textContent = '48.8738° N, 2.2949° E — Arc de Triomphe';
+      map.addOverlay(new ol.Overlay({
+        position: ol.proj.fromLonLat([2.294946, 48.873756]),
+        element: coordLabel,
+        stopEvent: false,
+      }));
+
       function addRandomFeature() {
         const x = 2.294946;
         const y = 48.873756;
@@ -637,6 +658,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       });
 
       window.setInterval(addRandomFeature, 1000);
+
+      // The Colorlib preloader hides the page briefly on load, so the map can
+      // initialise at the wrong size. Re-measure once everything is visible.
+      window.addEventListener('load', function () {
+        map.updateSize();
+        setTimeout(function () { map.updateSize(); }, 600);
+      });
+      if (window.ResizeObserver) {
+        new ResizeObserver(function () { map.updateSize(); })
+          .observe(document.getElementById('map'));
+      }
     </script>
 
 </body>

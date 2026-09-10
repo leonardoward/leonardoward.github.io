@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -347,7 +347,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="multimppt.html" title="">Power Electronics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="multimppt.html">MultiMPPT &mdash; DPP Architecture</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/multimppt/pcb-render.jpg" alt="3D render of the DPP Architecture Test board v1.0: a green PCB with two large electrolytic capacitors, a flyback transformer, a MOSFET and a gate-driver, with PV+/PV- and secondary barrier-block connectors, silkscreened MultiMPPT / Leonardo Ward">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/multimppt/pcb-render.jpg" alt="3D render of the DPP Architecture Test board v1.0: a green PCB with two large electrolytic capacitors, a flyback transformer, a MOSFET and a gate-driver, with PV+/PV- and secondary barrier-block connectors, silkscreened MultiMPPT / Leonardo Ward">
                 </div>
             </div>
 
@@ -436,7 +437,7 @@
                 <p>The model (repository <a href="https://github.com/leonardoward/dpp-mppt-simulation"><code>dpp-mppt-simulation</code></a>) puts two PV module blocks in series, each with its own irradiance and temperature input and a bypass diode, and connects a DPP flyback converter across each one. A controlled voltage source stands in for the rest of the string, and every module voltage, module current and differential current is logged to the workspace for the plotting scripts.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/multimppt/simulink-model.png" width="820" alt="Simulink block diagram: a PV MODULES group with two series modules and bypass diodes on the left, a DPP group with two DPP converter subsystems, current and voltage measurements and a load on the right, and an Open Loop Algorithm group with two PWM generators">
+                    <img loading="lazy" decoding="async" src="images/multimppt/simulink-model.png" width="820" alt="Simulink block diagram: a PV MODULES group with two series modules and bypass diodes on the left, a DPP group with two DPP converter subsystems, current and voltage measurements and a load on the right, and an Open Loop Algorithm group with two PWM generators">
                 </div>
 
                 <p style="text-align:center">The Simulink model &mdash; two series PV modules, a DPP flyback per module, and the measurement bus.</p>
@@ -451,14 +452,14 @@
                 <p>The key comparison is one MPPT for the whole string (<em>&ldquo;Single Input&rdquo;</em>) against a per&#8209;module DPP converter (<em>&ldquo;Multiple Inputs&rdquo;</em>).</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/multimppt/result-pv-perfect.jpg" width="520" alt="Power versus string voltage under uniform irradiance: the Single Input and Multiple Inputs curves lie exactly on top of each other, peaking near 350 W">
+                    <img loading="lazy" decoding="async" src="images/multimppt/result-pv-perfect.jpg" width="520" alt="Power versus string voltage under uniform irradiance: the Single Input and Multiple Inputs curves lie exactly on top of each other, peaking near 350 W">
                 </div>
 
                 <p style="text-align:center">Uniform irradiance &mdash; the two curves overlap. With no mismatch, DPP neither helps nor hurts.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/multimppt/result-pv-shading.jpg" width="520" alt="Power versus string voltage under partial shading: the Single Input curve has two peaks with a usable maximum near 170 W, while the Multiple Inputs curve keeps a single higher peak near 215 W">
-                    <img src="images/multimppt/result-iv-shading.jpg" width="520" alt="Current versus string voltage under partial shading: the Single Input curve has a sharp step where the shaded module current limits the string, while the Multiple Inputs curve is a smooth single knee">
+                    <img loading="lazy" decoding="async" src="images/multimppt/result-pv-shading.jpg" width="520" alt="Power versus string voltage under partial shading: the Single Input curve has two peaks with a usable maximum near 170 W, while the Multiple Inputs curve keeps a single higher peak near 215 W">
+                    <img loading="lazy" decoding="async" src="images/multimppt/result-iv-shading.jpg" width="520" alt="Current versus string voltage under partial shading: the Single Input curve has a sharp step where the shaded module current limits the string, while the Multiple Inputs curve is a smooth single knee">
                 </div>
 
                 <p style="text-align:center">Partial shading &mdash; the single&#8209;MPPT curve breaks into two peaks and its usable maximum drops; the DPP case keeps one, higher peak because the shaded module no longer throttles the healthy one.</p>
@@ -468,8 +469,8 @@
                 <p>The board (repository <a href="https://github.com/leonardoward/dpp-architecture-pcb"><code>dpp-architecture-pcb</code></a>) is <strong>one</strong> DPP converter cell, broken out so it can be driven, loaded and measured on its own. There is no control loop, no sensing and no microcontroller on the board: the switching MOSFET is driven by an <em>external</em> controller through a 3&#8209;pin header.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/multimppt/pcb-top.jpg" width="640" alt="Top-down 3D render of the test board showing the two 2200 uF capacitors, the flyback transformer T1, the MOSFET Q1, the gate-driver U1 and the four barrier-block connectors">
-                    <img src="images/multimppt/pcb-side.jpg" width="640" alt="Perspective 3D render of the test board from the side, showing component heights">
+                    <img loading="lazy" decoding="async" src="images/multimppt/pcb-top.jpg" width="640" alt="Top-down 3D render of the test board showing the two 2200 uF capacitors, the flyback transformer T1, the MOSFET Q1, the gate-driver U1 and the four barrier-block connectors">
+                    <img loading="lazy" decoding="async" src="images/multimppt/pcb-side.jpg" width="640" alt="Perspective 3D render of the test board from the side, showing component heights">
                 </div>
 
                 <p style="text-align:center">The v1.0 board &mdash; a single isolated flyback channel with PV input, isolated secondary and an external gate&#8209;drive header.</p>
@@ -479,7 +480,7 @@
                 <p>It is a textbook isolated <strong>flyback</strong> converter:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/multimppt/schematic.jpg" width="720" alt="KiCad schematic: PV+ and PV- inputs with a 2200 uF input capacitor, a gate driver U1 fed from a 3-pin header J3, a MOSFET Q1 switching the primary of transformer T1, a snubber network of two 1N4148W diodes and a 47 pF capacitor, and a 2200 uF output capacitor on the isolated secondary feeding connector J4">
+                    <img loading="lazy" decoding="async" src="images/multimppt/schematic.jpg" width="720" alt="KiCad schematic: PV+ and PV- inputs with a 2200 uF input capacitor, a gate driver U1 fed from a 3-pin header J3, a MOSFET Q1 switching the primary of transformer T1, a snubber network of two 1N4148W diodes and a 47 pF capacitor, and a 2200 uF output capacitor on the isolated secondary feeding connector J4">
                 </div>
 
                 <p style="text-align:center">The flyback power stage &mdash; input cap, gate driver, MOSFET, snubber, isolation transformer, output cap.</p>
@@ -539,12 +540,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -558,24 +559,6 @@
             </div> <!-- s-entry__main -->
 
         </article> <!-- end entry/article -->
-
-
-        <div class="s-content__entry-nav">
-            <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="ejam.html" rel="prev">
-                        <span>Previous Post</span>
-                        EJA M
-                    </a>
-                </div>
-                <div class="col-six s-content__next">
-                    <a href="pic-ws2812.html" rel="next">
-                        <span>Next Post</span>
-                        Driving WS2812 LEDs with a PIC16F1717
-                    </a>
-                </div>
-            </div>
-        </div> <!-- end s-content__pagenav -->
 
     </section> <!-- end s-content -->
 

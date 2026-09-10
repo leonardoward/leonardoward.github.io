@@ -56,7 +56,7 @@
 
         <!-- <div class="header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
             </a>
         </div>  -->
         <!-- end header__logo -->
@@ -69,7 +69,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -368,6 +368,7 @@
                     <a href="interactive-map.html" title="">Web Applications</a>
                     <ul class="sub-menu">
                         <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
                     </ul>
                 </li>
 
@@ -401,7 +402,7 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/ftdi_development_board/ftdi-pcb-1.jpg" alt="FTDI development board PCB">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/ftdi_development_board/ftdi-pcb-1.jpg" alt="FTDI development board PCB">
                 </div>
             </div>
 
@@ -421,7 +422,7 @@
             <div class="entry__header col-full">
                 <ul class="entry__header-meta">
                   <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
+                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img loading="lazy" decoding="async" src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
                   </li>
                   <li class="byline">
                     <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
@@ -468,7 +469,7 @@
                 <p>The design includes <a href="https://www.digikey.com/en/products/detail/comchip-technology/CPDT6-5V4-HF/1121118">Transient Voltage Suppression (TVS) diodes</a> and <a href="https://www.digikey.com/en/products/detail/fair-rite-products-corp/2508056017Y0/8594301">Ferrite Beads</a> to reduce the Electromagnetic Interference (EMI). These <a href="https://www.rs-online.com/designspark/usb-port-protection">protections for the USB port</a> will add compliance with the <a href="https://learnemc.com/emc-regulations-and-standards">EMC regulations and standards</a> from the  Federal Communications Commission (FCC) and the European Union.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-usb-c.jpg" width="640" alt="Schematic of the FTDI Dev Board: USB C and EMC protections">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/schematic-usb-c.jpg" width="640" alt="Schematic of the FTDI Dev Board: USB C and EMC protections">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: USB C and EMC protections.</p>
@@ -478,7 +479,7 @@
                 <p>The first USB-to-UART/I2C FTDI device being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>. The design only considers the USB to UART, therefore the I2C is left unconnected.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-ft260s.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the FTDI FT260S-U">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/schematic-ft260s.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the FTDI FT260S-U">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>.</p>
@@ -490,7 +491,7 @@
                 <p>The second USB TO UART/I2C FTDI that is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>. This IC does not support DTR/DSR for the UART, a feature that is required for the auto reset circuit of the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a> that was implemented, nevertheless the PCB has it as a second alternative.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-f312d.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the FTDI FT312D-32L1C-R">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/schematic-f312d.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the FTDI FT312D-32L1C-R">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>.</p>
@@ -500,7 +501,7 @@
                 <p>Finally, the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the ESP32. For more information about this circuit, these blogs <a href="https://forum.micropython.org/viewtopic.php?f=18&t=4966">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" width="640" alt="Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/schematic-esp32-auto-reset.jpg" width="640" alt="Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32.</p>
@@ -510,7 +511,7 @@
                 <p>The design includes a couple of <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a> that will be tested for future implementations.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/schematic-switch.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the SPDT switch TS5A3153DCUR">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/schematic-switch.jpg" width="640" alt="Schematic of the FTDI Dev Board: Circuit for the SPDT switch TS5A3153DCUR">
                 </div>
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the SPDT switch <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a>.</p>
@@ -617,13 +618,13 @@
                 <h2 id="pcb">PCB</h2>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-testing-board01.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/ftdi-testing-board01.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-testing-board02.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/ftdi-testing-board02.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
                 </div>
 
                 <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
@@ -633,7 +634,7 @@
                 <p>The designed auto reset circuit requires the signals 3.3V, GND, TX, RX, RTS and DTR. The commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> (FT232RL) was used to test the circuit, it provides all the required signals.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-programmer.jpg" width="640" alt="Commercial USB to Serial Converter used for testing">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/ftdi-programmer.jpg" width="640" alt="Commercial USB to Serial Converter used for testing">
                 </div>
 
                 <p style="text-align:center">Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> used for testing.</p>
@@ -641,13 +642,13 @@
                 <p>The following wiring diagram shows how to connect the commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> and our FTDI Development Board.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" width="640" alt="Wiring diagram for the FTDI Dev Board and the Commercial USB to Serial Converter">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/ftdi-wiring-diagram-1.jpg" width="640" alt="Wiring diagram for the FTDI Dev Board and the Commercial USB to Serial Converter">
                 </div>
 
                 <p style="text-align:center">Wiring diagram for the FTDI Dev Board and the Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a>.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" width="640" alt="Wiring diagram for the FTDI Dev Board and the Commercial USB to Serial Converter">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/ftdi-wiring-diagram-2.jpg" width="640" alt="Wiring diagram for the FTDI Dev Board and the Commercial USB to Serial Converter">
                 </div>
 
                 <p style="text-align:center">Wiring diagram for the FTDI Dev Board and the Commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a>.</p>
@@ -672,7 +673,7 @@
                 <p>The standard Arduino IDE was used to program the ESP32, with the following configurations:</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/ide-setup.png" width="640" alt="Setup of the Arduino IDE for the test">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/ide-setup.png" width="640" alt="Setup of the Arduino IDE for the test">
                 </div>
 
                 <p style="text-align:center">Setup of the Arduino IDE for the test.</p>
@@ -680,7 +681,7 @@
                 <p>And the test was successful, the following image shows the results in the serial monitor.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img src="images/ftdi_development_board/auto-reset-test-result.png" width="640" alt="Results of the test">
+                    <img loading="lazy" decoding="async" src="images/ftdi_development_board/auto-reset-test-result.png" width="640" alt="Results of the test">
                 </div>
 
                 <p style="text-align:center">Results of the test.</p>
@@ -708,12 +709,12 @@
                 </div> <!-- end s-content__taxonomies -->
 
                 <div class="entry__author">
-                    <img src="images/avatars/foto.png" alt="Leonardo Ward">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
                             <span>Posted by</span>
-                            <a href="#0">Leonardo Ward</a>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
                         </h5>
 
                         <div class="entry__author-desc">
@@ -732,15 +733,15 @@
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="lora-dev-board.html" rel="prev">
+                    <a href="ejam.html" rel="prev">
                         <span>Previous Post</span>
-                        LoRa Development Board | RFM95W-915S2
+                        EJA M
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="ejam.html" rel="next">
+                    <a href="gps-dev-board.html" rel="next">
                         <span>Next Post</span>
-                        EJA M | 2021 Hackaday Dream Team Challenge
+                        GPS Development Board
                     </a>
                 </div>
             </div>
