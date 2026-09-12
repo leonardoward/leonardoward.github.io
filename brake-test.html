@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Steering-Wheel Display | Baja SAE USB | Leonardo Ward</title>
-    <meta name="description" content="The driver's display and control panel for the Baja SAE USB off-road car: a chevron-shaped steering-wheel board with a graphic LCD showing speed, RPM and fuel, and four illuminated buttons for the turn signals and lights, linked to the dashboard over CAN.">
+    <title>Brake Test Data Logger | Baja SAE USB | Leonardo Ward</title>
+    <meta name="description" content="An axle-tip acceleration logger for Baja SAE USB brake tests: an ADXL335 accelerometer, RC-filtered and calibrated, logs 3-axis acceleration to an SD card from an Arduino Uno bolted straight onto the wheel hub.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/steering-wheel.html">
+    <link rel="canonical" href="https://leonardoward.github.io/brake-test.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Steering-Wheel Display | Baja SAE USB | Leonardo Ward">
-    <meta property="og:description" content="A steering-wheel display and control panel for the Baja SAE USB car: a graphic LCD for speed/RPM/fuel and four illuminated buttons, an MC9S08DZ60 talking to the dashboard over CAN.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/steering_wheel/display.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/steering-wheel.html">
+    <meta property="og:title" content="Brake Test Data Logger | Baja SAE USB | Leonardo Ward">
+    <meta property="og:description" content="An axle-tip acceleration logger for Baja SAE USB brake tests: an ADXL335 accelerometer, RC-filtered and calibrated, logs 3-axis acceleration to an SD card bolted straight onto the wheel hub.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/brake_test/box-mounted.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/brake-test.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -407,113 +407,76 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/steering_wheel/display.jpg" alt="The steering-wheel board running on the bench: a chevron-shaped PCB with an illuminated button at each corner and a graphic LCD in the centre showing &quot;USB&quot;, a large &quot;00 KPH&quot; speed readout, an RPM bar down the left and a fuel bar down the right">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/brake_test/box-mounted.jpg" alt="A hand-formed aluminium enclosure bolted to a Baja SAE USB wheel hub, with X, Y and Z axes hand-drawn on it in blue marker and a power switch on the side">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 id="description" class="entry__header-title display-1">
-                    Steering-Wheel Display
+                    Brake Test Data Logger
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">2011&ndash;2012</li>
+                    <li class="date">December, 2013</li>
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>
                     </li>
                     <li>
-                      <h3><a href="https://github.com/leonardoward/steering-wheel-module-2012"><i class="fab fa-github"></i></a></h3>
+                      <h3><a href="https://github.com/leonardoward/brake-test"><i class="fab fa-github"></i></a></h3>
                     </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">The driver's display and control panel for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). A chevron&#8209;shaped board that mounts on the steering&#8209;wheel hub: a <strong>graphic LCD</strong> in the centre shows speed, RPM, fuel and warning tell&#8209;tales, and <strong>four illuminated buttons</strong> at the corners work the turn signals, hazards, night lights and handbrake indicator. It is the companion to the <a href="car-dashboard.html">dashboard module</a> &mdash; the two talk over the car's CAN bus. <em>2011&#8209;2012.</em></p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/steering_wheel/display.jpg" width="640" alt="The board powered on: four illuminated corner buttons and a graphic LCD showing speed, an RPM bar and a fuel bar">
-                </div>
-
-                <p style="text-align:center">The board on the bench &mdash; speed, RPM bar and fuel bar on the LCD, a button at each corner.</p>
+                <p class="lead drop-cap">An axle&#8209;tip acceleration logger for <strong>Baja SAE USB</strong> brake tests (Universidad Sim&oacute;n Bol&iacute;var, Divisi&oacute;n de Electr&oacute;nica). A hand&#8209;formed metal box bolts straight onto a wheel hub and logs 3&#8209;axis acceleration to an SD card as the car is driven and braked &mdash; closer to the wheel/road interface than a chassis&#8209;mounted sensor, and self&#8209;contained rather than needing a live telemetry link. Another of the <a href="bajasae.html">Baja SAE USB electronics</a> sub&#8209;systems &mdash; <em>December&nbsp;2013</em>.</p>
 
                 <h2 id="why">Why</h2>
 
-                <p>The driver's hands stay on the wheel, so the display and the switches go on the wheel too. Speed, RPM, fuel and the warning tell&#8209;tales are all on one small graphic LCD; the turn signals, hazards, night lights and handbrake indicator are four buttons within thumb&#8209;reach. A single wire loom to the hub &mdash; power and <strong>CAN</strong> &mdash; carries everything.</p>
-
-                <h2 id="display">The Display</h2>
-
-                <p>A <strong>graphic LCD</strong> (with a touch panel) driven over <strong>SPI</strong>, redrawn whenever a CAN frame arrives. It shows a large <strong>speed</strong> readout in <code>KPH</code> (or <code>WAIT&hellip;</code> until the first frame), an <strong>RPM&nbsp;&times;100</strong> bar down the left edge, a <strong>fuel</strong> bar (E&ndash;F) with a pump icon down the right, and a row of <strong>tell&#8209;tales</strong> along the bottom &mdash; headlights, high beam, temperature, brake and a <code>LOW&nbsp;GAS</code> warning.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/steering_wheel/telltales.jpg" width="620" alt="The LCD showing the RPM and fuel bars, the KPH readout, and the row of tell-tale icons along the bottom with a LOW GAS warning">
-                </div>
-
-                <p style="text-align:center">The full display &mdash; RPM and fuel bars, the tell&#8209;tale row, and a <em>LOW&nbsp;GAS</em> warning.</p>
-
-                <p>The values come from the dashboard's <code>0x111</code> frame &mdash; <code>RPM = data[0] / 5</code> (clamped to 40 levels), speed units and tenths from <code>data[1]</code>, a temperature flag from <code>data[2]</code> &mdash; and fuel from <code>data[0]</code> of <code>0x222</code>. The white&#8209;LED <strong>backlight</strong> is a PWM&#8209;dimmed boost (CAT4238): bright by day, dimmed in night mode.</p>
-
-                <h2 id="buttons">The Buttons</h2>
-
-                <p>Four illuminated tactile switches on a keyboard&#8209;interrupt port, one at each corner of the board:</p>
-
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr><th>Button</th><th>Action</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>SW1</strong> / <strong>SW3</strong></td><td>right / left turn signal (toggle)</td></tr>
-                            <tr><td><strong>SW1 + SW3</strong></td><td>hazards &mdash; both indicators</td></tr>
-                            <tr><td><strong>SW2</strong></td><td>night lights (toggle) &mdash; also dims the backlight and the corner LEDs</td></tr>
-                            <tr><td><strong>SW4</strong></td><td>handbrake / brake indicator (toggle)</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <p>Each press updates the four corner LEDs, sends a 5&#8209;byte frame to the LCD over SPI, and transmits the state on <strong>CAN <code>0x333</code></strong> &mdash; one byte, <code>bit0</code> night, <code>bit1</code> right, <code>bit2</code> left, <code>bit3</code> brake. The <a href="car-dashboard.html">dashboard module</a> reads that frame and drives the actual lamps; the turn arrows blink by re&#8209;arming a timer interrupt.</p>
-
-                <h2 id="firmware">Firmware</h2>
-
-                <p>The MCU is a Freescale <strong>MC9S08DZ60</strong> (8&#8209;bit S08 with on&#8209;chip MSCAN), <strong>CodeWarrior</strong> + <strong>Processor Expert 3.07</strong>, flashed through the 6&#8209;pin BDM header with a P&amp;E Multilink. The main loop is tiny &mdash; a start&#8209;up routine, then poll the buttons; everything else happens in interrupt handlers:</p>
-
-                <pre><code>init_routine();       // backlight ramp + LED chase
-for(;;) Botones();     // on a keypress: update LEDs, send SPI + CAN 0x333
-
-// CAN1_OnFullRxBuffer:  0x111 / 0x222  -&gt; reformat, push to the LCD over SPI
-// Botones_OnInterrupt:  decode SW1..SW4 (and the SW1+SW3 hazard combo)
-// Timer_OnInterrupt:    blink the turn-signal LEDs</code></pre>
-
-                <p>An alternate <strong>MCF51JM128</strong> (ColdFire&nbsp;V1) build of the same application is also in the repository.</p>
+                <p>The team's existing telemetry system &mdash; a prior thesis project built around Freescale MCUs, GPS, a gyroscope, Hall&#8209;effect and IR sensors, and XBee/ZigBee links into a CAN network, all displayed live in LabVIEW &mdash; is a full vehicle telemetry suite. For a focused brake test, that's a lot of system to bring up. This logger is the opposite trade&#8209;off: one sensor, one axis of the car, no radio link, no live display &mdash; just an accelerometer at the axle tip and a microSD card, small enough to bolt onto a wheel and forget about until the run is over.</p>
 
                 <h2 id="hardware">Hardware</h2>
 
-                <p>A <strong>chevron / arrow outline</strong> &mdash; wide at the top, pointed at the bottom &mdash; so it sits on a steering&#8209;wheel spoke, with the LCD framed in the centre and a button at each corner (Altium Designer).</p>
-
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr><th>Ref</th><th>Part</th><th>Function</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>M1</td><td>Freescale MC9S08DZ60 (32&#8209;pin)</td><td>MCU</td></tr>
-                            <tr><td>P1 + CT</td><td>graphic LCD + touch panel</td><td>the display</td></tr>
-                            <tr><td>UC1</td><td>MAX3051</td><td>3.3&nbsp;V CAN transceiver</td></tr>
-                            <tr><td>UC2</td><td>CAT4238 + inductor / Schottky</td><td>white&#8209;LED backlight boost driver</td></tr>
-                            <tr><td>UR1</td><td>LM2937&#8209;3.3</td><td>3.3&nbsp;V regulator, from the car rail</td></tr>
-                            <tr><td>UW1</td><td>dual N&#8209;MOSFET array</td><td>backlight / LED switching</td></tr>
-                            <tr><td>SW1&ndash;SW4</td><td>illuminated tactile switches</td><td>driver controls</td></tr>
-                            <tr><td>PS1</td><td>4&#8209;pin header</td><td>CANH, CANL, +V, GND to the car harness</td></tr>
-                            <tr><td>PB1</td><td>6&#8209;pin (2&times;3) header</td><td>BDM programming / debug</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p>An <a href="https://www.analog.com/en/products/adxl335.html">ADXL335</a> (&plusmn;3&nbsp;g, 3&#8209;axis, analog output) on a small breakout board, wired into an <strong>Arduino Uno</strong> together with a microSD &ldquo;SD Card Shield&rdquo; over SPI. A single 9&nbsp;V battery feeds an <code>L7805CV</code> (5&nbsp;V, for the Arduino) and an <code>LD33V</code> (3.3&nbsp;V, for the accelerometer), each with 4.7&nbsp;nF bypass caps.</p>
 
                 <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/steering_wheel/schematic-overview.jpg" width="620" alt="Schematic overview: the MC9S08DZ60 at right, the display connector at top, the CAN transceiver, regulator and backlight boost blocks at mid-left, and the switch inputs at bottom-left">
+                    <img loading="lazy" decoding="async" src="images/brake_test/electronics-kit.jpg" width="360" alt="The full kit laid out: an Arduino Uno, an SD card shield with a microSD adapter inserted, the ADXL335 filter perfboard, and a 9V battery with clip">
+                    <img loading="lazy" decoding="async" src="images/brake_test/sensor-board.jpg" width="360" alt="Close-up of the ADXL335 breakout board on a perfboard, wired to three RC filter resistors and three electrolytic bypass capacitors">
                 </div>
 
-                <p style="text-align:center">Schematic overview &mdash; MCU at right, display connector up top, CAN&nbsp;/&nbsp;power&nbsp;/&nbsp;backlight blocks mid&#8209;left, the switches bottom&#8209;left.</p>
+                <p style="text-align:center">The full kit &mdash; Arduino, SD shield and battery &mdash; and a close&#8209;up of the ADXL335 filter board.</p>
+
+                <h2 id="filtering">Filtering &amp; Calibration</h2>
+
+                <p>Each axis is filtered twice before it reaches the ADC. The ADXL335 itself has 32&nbsp;k&Omega; internal resistors that form an RC low&#8209;pass with whatever capacitor sits on its X/Y/Z pins &mdash; the breakout board's 0.1&nbsp;&micro;F caps put that corner at &asymp;49.7&nbsp;Hz. On top of that, each output runs through an external 10&nbsp;k&Omega; + 1&nbsp;&micro;F RC low&#8209;pass, cutting at 15.915&nbsp;Hz, to knock down high&#8209;frequency vibration from the wheel/road interface before logging.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/brake_test/rc-filter.png" width="480" alt="RC low-pass filter schematic and simulated frequency-response curve, cutoff marked at 15.916 Hz">
+                </div>
+
+                <p style="text-align:center">The external RC low&#8209;pass stage and its simulated response.</p>
+
+                <p>The ADXL335 is a raw&#8209;voltage sensor, so each axis still needs its own zero&#8209;offset and scale before the logged counts mean anything. The calibration used here: with the sensor at rest, read the raw ADC count on an axis in two orientations 180&deg; apart (+1&nbsp;g and &minus;1&nbsp;g on that axis); the midpoint of the two readings is the zero&#8209;g offset, half their difference is the 1&nbsp;g scale:</p>
+
+                <pre><code>acceleration [m/s&sup2;] = ( raw_count &minus; zero_offset ) / scale &times; 9.80665</code></pre>
+
+                <h2 id="mounting">Mounting</h2>
+
+                <p>The enclosure &mdash; hand&#8209;formed sheet metal, the sensor circuit itself on a bakelite perfboard &mdash; bolts directly to a wheel hub through the wheel's own lug holes, putting the accelerometer as close to the axle tip as the hardware allows. The X, Y and Z axes are marked in pen straight on the box so a run's raw log can be matched back to the car's real orientation during analysis; a switch on the side turns logging on and off.</p>
+
+                <h2 id="data">The Data</h2>
+
+                <p>Runs were driven and braked around Centro San Ignacio in Chacao, Caracas &mdash; a reconnaissance lap, then several braking laps per wheel (front&#8209;right, front&#8209;left, rear&#8209;right), each logged as raw <code>TIEMPO,ACEX,ACEY,ACEZ</code> counts to the SD card and converted to m/s&sup2; afterwards with the calibration above.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/brake_test/acceleration-plot.png" width="900" alt="Line chart of X, Y and Z acceleration in m/s squared over about 60 seconds for the front-right wheel's first brake-test lap, showing a noisy signal swinging roughly between minus 30 and plus 25">
+                </div>
+
+                <p style="text-align:center">Front&#8209;right wheel, brake&#8209;test lap&nbsp;1 &mdash; X, Y and Z acceleration over one run.</p>
+
+                <h2 id="notes">Notes</h2>
+
+                <p>Mounted directly on the hub, the signal is dominated by wheel rotation and road texture rather than a clean braking signature &mdash; there's no obvious single deceleration spike to pick out by eye in the raw trace above; extracting a braking event from this data would need proper filtering or event detection downstream, which this project didn't get to. The logger's own Arduino sketch wasn't preserved in the repository &mdash; only its logged output and the analysis spreadsheets survive.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -526,12 +489,12 @@ for(;;) Botones();     // on a keypress: update LEDs, send SPI + CAN 0x333
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="steering-wheel.html#description">Baja SAE USB</a>
-                            <a href="steering-wheel.html#buttons">CAN Bus</a>
-                            <a href="steering-wheel.html#firmware">MC9S08DZ60</a>
-                            <a href="steering-wheel.html#display">Graphic LCD</a>
-                            <a href="steering-wheel.html#display">SPI</a>
-                            <a href="steering-wheel.html#hardware">Altium</a>
+                            <a href="brake-test.html#description">Baja SAE USB</a>
+                            <a href="brake-test.html#hardware">ADXL335</a>
+                            <a href="brake-test.html#filtering">RC Filter</a>
+                            <a href="brake-test.html#hardware">Arduino</a>
+                            <a href="brake-test.html#data">Data Logging</a>
+                            <a href="brake-test.html#mounting">Axle-Tip Mount</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -561,15 +524,15 @@ for(;;) Botones();     // on a keypress: update LEDs, send SPI + CAN 0x333
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
                 <div class="col-six s-content__prev">
-                    <a href="car-dashboard.html" rel="prev">
+                    <a href="wheel-alignment.html" rel="prev">
                         <span>Previous Post</span>
-                        Dashboard Module
+                        Electronic Wheel Alignment
                     </a>
                 </div>
                 <div class="col-six s-content__next">
-                    <a href="gasoline-module.html" rel="next">
+                    <a href="car-dashboard.html" rel="next">
                         <span>Next Post</span>
-                        Fuel-Level Module
+                        Dashboard Module
                     </a>
                 </div>
             </div>
