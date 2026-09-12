@@ -389,6 +389,7 @@
                         <li><a href="gasoline-module.html">Fuel-Level Module</a></li>
                     </ul>
                 </li>
+                <li><a href="about.html" title="">About</a></li>
             </ul> <!-- end header__nav -->
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -432,7 +433,7 @@
 
                 <h2 id="overview">Overview</h2>
 
-                <p>The robot lives in a V&#8209;REP scene &mdash; a Pioneer&nbsp;P3&#8209;DX differential&#8209;drive base with a laser scanner and a small vision sensor, in a room with furniture. You drive it by keyboard or from the <a href="https://play.google.com/store/apps/details?id=com.robotca.ControlApp">ROS Control</a> Android app; the laser scan and the robot pose come back out of the simulator over ROS, and gmapping turns them into a map you watch build in RViz.</p>
+                <p>The robot lives in a V&#8209;REP scene &mdash; a Pioneer&nbsp;P3&#8209;DX differential&#8209;drive base with a laser scanner and a small vision sensor, in a room with furniture. You drive it by keyboard or from the <a href="https://github.com/ros-autom/RobotCA">ROS Control</a> Android app; the laser scan and the robot pose come back out of the simulator over ROS, and gmapping turns them into a map you watch build in RViz.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/teleop_slam/laser_scan.jpg" width="640" alt="V-REP simulation with the laser scanner active, its rays sweeping the room floor and furniture as a dense red point pattern">
@@ -485,7 +486,7 @@
 
                 <h2 id="android-app">Android Control</h2>
 
-                <p>The <a href="https://play.google.com/store/apps/details?id=com.robotca.ControlApp">ROS Control</a> app connects straight to the ROS master. Add a robot, set its <em>Master URI</em> to the PC running <code>roscore</code> (its LAN IP, not <code>localhost</code>), and pick Joystick mode.</p>
+                <p>The <a href="https://github.com/ros-autom/RobotCA">ROS Control</a> app connects straight to the ROS master. Add a robot, set its <em>Master URI</em> to the PC running <code>roscore</code> (its LAN IP, not <code>localhost</code>), and pick Joystick mode.</p>
 
                 <div class="col-full">
                   <div class="col-six">

@@ -5,19 +5,16 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>HELIOS REN | Bicycle Tail Light System | Leonardo Ward</title>
-    <meta name="description" content="HELIOS REN, a prototype rechargeable tail-light system for bicycles: component selection, PIC16F1455 firmware, Proteus simulation and an Altium PCB and enclosure design.">
+    <title>About | Leonardo Ward</title>
+    <meta name="description" content="Leonardo Ward is an Electronics Engineer designing schematics, PCB layouts and firmware. A short bio, with links to his LinkedIn profile and GitHub repositories.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/helios_ren.html">
-    <link rel="alternate" hreflang="en" href="https://leonardoward.github.io/helios_ren.html">
-    <link rel="alternate" hreflang="es" href="https://leonardoward.github.io/helios_ren.es.html">
-    <link rel="alternate" hreflang="x-default" href="https://leonardoward.github.io/helios_ren.html">
+    <link rel="canonical" href="https://leonardoward.github.io/about.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="HELIOS REN | Bicycle Tail Light System | Leonardo Ward">
-    <meta property="og:description" content="HELIOS REN, a prototype rechargeable tail-light system for bicycles: component selection, PIC16F1455 firmware, Proteus simulation and an Altium PCB and enclosure design.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/helios_ren/PCB1.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/helios_ren.html">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="About | Leonardo Ward">
+    <meta property="og:description" content="Leonardo Ward is an Electronics Engineer designing schematics, PCB layouts and firmware. A short bio, with links to his LinkedIn profile and GitHub repositories.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/avatars/foto.png">
+    <meta property="og:url" content="https://leonardoward.github.io/about.html">
+    <meta name="twitter:card" content="summary">
 
     <!-- mobile specific metas
     ================================================== -->
@@ -72,7 +69,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children current">
+                <li class="has-children">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -392,7 +389,8 @@
                         <li><a href="gasoline-module.html">Fuel-Level Module</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html" title="">About</a></li>
+
+                <li class="current"><a href="about.html" title="">About</a></li>
             </ul> <!-- end header__nav -->
 
             <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -408,310 +406,40 @@
 
         <article class="row entry format-standard">
 
-            <div class="entry__media col-full">
-                <div class="entry__post-thumb" style="text-align:center">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/helios_ren/PCB1.jpg" alt="Assembled HELIOS REN bicycle tail-light PCB">
-                </div>
-            </div>
-
-            <div class="col-full entry__tags" style="text-align:center; margin:2.4rem 0 0;">
-                    <span class="entry__tax-list entry__tax-list--pill">
-                        <a href="helios_ren.html" aria-current="page"><strong>English</strong></a>
-                        <a href="helios_ren.es.html">Español</a>
-                    </span>
-                </div>
-
             <div class="entry__header col-full">
-                <h1 class="entry__header-title display-1">
-                    HELIOS REN Tail Light System
+                <h1 id="description" class="entry__header-title display-1">
+                    About
                 </h1>
-                <ul class="entry__header-meta">
-                    <li class="date">February, 2021</li>
-                    <li class="byline">
-                        By
-                        <br>
-                        <a href="https://github.com/CarSanoja">Carlos Sanoja</a> - <a href="https://github.com/JG-Guillen">Jesús Guillen</a> - <a href="https://github.com/leonardoward">Leonardo Ward</a> - <a href="https://github.com/rinripper">Mauricio Marcano</a> - <a href="https://github.com/OscarEMoreno">Oscar Moreno</a> - <a href="https://github.com/vincdargento">Vincenzo D'Argento</a>
-                    </li>
-                </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">This project presents the design stages of a prototype tail-light system for a bicycle. Components were selected to match the project requirements and the team’s criteria. The system’s operation was simulated in Proteus and the firmware was written with MPLAB X. The circuit’s PCB design and the changes made to the competition brief are also presented.</p>
-
-                <h2 id="requirements">Requirements</h2>
-
-                <h3>General requirements</h3>
-
-                <p>Design a prototype of a tail-light system for bicycles.</p>
-
-                <h3>Specific requirements</h3>
-
-                <ul>
-                  <li>25 hours of autonomy in continuous operation.</li>
-                  <li>Rechargeable batteries, recharged through a USB port.</li>
-                  <li>Three operating modes.</li>
-                  <li>A market-viable final price (25 &euro; &lt; price &lt; 40 &euro;).</li>
-                  <li>Use components that are available, affordable and supported on the market.</li>
-                </ul>
-
-                <p>A PRO version of the product is also proposed, with these additional requirements:</p>
-
-                <ul>
-                  <li>Cornering lights on each side, plus turn indicators.</li>
-                  <li>A handlebar-mounted remote to control the product’s behaviour.</li>
-                </ul>
-
-                <p>Figure 1 describes the operating modes proposed for the tail-light system. It also shows the use of a single button to move between modes. The cornering lights are not part of the operating modes; they have only two states: on and off.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/D_Estado.jpg" alt="State diagram of the tail-light operating modes">
-                    <p>Figure 1: diagram of the tail-light operating modes.</p>
-                </div>
-
-                <h2 id="design">Design</h2>
-
-                <h3>Hardware</h3>
-
-                <p>Figure 2 shows the hardware block diagram of the prototype. It includes the essential parts of the design: push-buttons, batteries, battery charger, lights, and the transistors that make up the power-control stage of each LED. In Figure 2, the rear lights that are not used to signal turns are called brake lights.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/D_Hardware.jpg" alt="Hardware block diagram of the prototype">
-                    <p>Figure 2: hardware block diagram.</p>
-                </div>
-
-                <h4>Power supply</h4>
-
-                <p>To use rechargeable lithium batteries, a module based on the TP4056 IC was chosen; it provides constant-current / constant-voltage charging for single-cell lithium-ion batteries (Figure 3). A single cell has a nominal voltage of 3.7&nbsp;V, which is used as the supply voltage for the logic circuits in the design.</p>
-
-                <p>The battery bank was sized for 26&nbsp;hours of continuous operation with both main lights at full power, leaving margin over the 25-hour requirement. Each LED draws up to 180&nbsp;mA, so: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Four 2600&nbsp;mAh cells were connected in parallel, giving 10&nbsp;400&nbsp;mAh &mdash; enough to cover the LED demand described above.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/BatC.png" alt="TP4056 constant-current / constant-voltage battery-charger module">
-                    <p>Figure 3: TP4056 battery-charger module.</p>
-                </div>
-
-                <h4>Microcontroller</h4>
-
-                <p>The project’s functional requirements are:</p>
-
-                <ul>
-                  <li>4 digital outputs to drive 4 LEDs.</li>
-                  <li>In-circuit serial programming (ICSP).</li>
-                  <li>3.7&nbsp;V supply.</li>
-                  <li>4 digital inputs to control the behaviour of the LEDs.</li>
-                </ul>
-
-                <p>The main constraint when choosing a microcontroller for this application is the number of digital I/O pins, so the search focused on a device that met that need while being conservative with internal resources. The PIC12F and PIC16F families have an 8-bit CPU running at up to 5&nbsp;MIPS (millions of instructions per second); PIC12F devices have 8 pins, while PIC16F devices come in 14- to 64-pin packages. The Microchip PIC16F1454 was chosen as the family closest to meeting the functional requirements.</p>
-
-                <p>The PIC16F1454/1455/1459 family is based on the mid-range core with 49 instructions and delivers up to 12&nbsp;MIPS, 14&nbsp;KB of program memory and 1024&nbsp;bytes of RAM. The board uses the configurable internal oscillator, which is accurate to &plusmn;0.25&nbsp;%.</p>
-
-                <p>Key features of the PIC16F1455:</p>
-
-                <ul>
-                  <li>CPU speed up to 48&nbsp;MHz.</li>
-                  <li>16&nbsp;MHz internal oscillator block, selectable from 16&nbsp;MHz down to 32&nbsp;kHz.</li>
-                  <li>12 I/O pins (PIC16F1454/1455).</li>
-                  <li>In-circuit serial programming (ICSP).</li>
-                  <li>Two 8-bit timers.</li>
-                </ul>
-
-                <p>The device also has a 10-bit, 5-channel ADC and an MSSP with SPI and I2C, none of which are used here. The pinout is shown in Figure 4.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/Pinout.jpg" alt="PIC16F1455 pinout">
-                    <p>Figure 4: PIC16F1455 pinout.</p>
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/pic.png" alt="PIC16F1455 schematic symbol">
-                    <p>Figure 5: PIC16F1455 schematic symbol.</p>
-                </div>
-
-                <p>The microcontroller can be programmed with an ICSP programmer (usable with any PIC chip). The ICSP connections are shown in Figure 6.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/icsp.png" alt="ICSP programming header on the schematic">
-                    <p>Figure 6: ICSP header on the schematic.</p>
-                </div>
-
-                <p>An external oscillator was not considered necessary, for two reasons:</p>
-
-                <ul>
-                  <li>The microcontroller has an accurate, configurable 16&nbsp;MHz internal oscillator.</li>
-                  <li>Although timing errors are possible, this application is not sensitive to millisecond-level changes: the light modes are measured in seconds, so any change in behaviour would be practically imperceptible and would not justify the added hardware complexity.</li>
-                  <li>An external device would use 2 more GPIO pins for this purpose.</li>
-                </ul>
-
-                <h4>Lighting</h4>
-
-                <p>Four 0.5&nbsp;W LEDs were used: two for the brake lights and two for the cornering lights. The white LED OVS5MWBCR4 from TT Electronics (50&nbsp;lm) was selected; its forward voltage is in the [3.0 ; 4.1]&nbsp;V range, with a nominal current of 180&nbsp;mA and a peak current of 350&nbsp;mA. No current-limiting resistor is needed for these LEDs because the supply is 3.7&nbsp;V. A 10&deg; focusing lens is fitted to each LED to improve viewing distance.</p>
-
-                <p>Four transistors are needed to drive the LEDs. Two Infineon BTS3405GXUMA1 devices were chosen, each containing two transistors with a maximum drain-source voltage (V<sub>DS</sub>) of 42&nbsp;V, a maximum drain current of 350&nbsp;mA each (ideal for the chosen LEDs) and a 1.7&nbsp;V turn-on voltage, making them compatible with the microcontroller’s 3.3&nbsp;V logic.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/leds.png" alt="LED power-control stage">
-                    <p>Figure 7: LED control system.</p>
-                </div>
-
-                <h4>Control interface</h4>
-
-                <p>The lights can be controlled in two ways. The first uses a single button that cycles through the operating modes and back to off. This button is on the device enclosure.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/Case2.PNG" alt="Single-button control on the device enclosure">
-                    <p>Figure 8: single-button control on the enclosure.</p>
-                </div>
-
-                <p>The second uses a remote control. This option adds features such as turn indicators and cornering lights, while the operating modes stay the same. This version of the product has an extra cost and is shown below.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/mando.png" alt="External handlebar remote control">
-                    <p>Figure 9: external control for the LED lights.</p>
-                </div>
-
-                <h3>Software</h3>
-
-                <p>Figure 10 shows the software block diagram for the microcontroller. Each push-button is connected to an I/O port configured as an input. The microcontroller reads the state of each input and handles any switch bounce.</p>
-
-                <p>A slider selects which cornering light is used. A button puts both cornering lights into blinking mode. A push-button changes the state of the rear lights, which follow the modes shown in Figure 1.</p>
-
-                <p>Since no peripherals are used, the only configuration applied to the microcontroller was the oscillator selection. As noted above, the internal oscillator was used at 31&nbsp;kHz, the lowest available frequency, because high precision is not required and it lowers battery consumption.</p>
-
-                <p>Once the hardware was selected, the software block diagram in Figure 10 was produced. It shows the peripherals used and the essential software elements: reading the ports, debouncing where needed, and a controller that sets the signals for the lights and drives the output ports connected to the power transistors. A software hierarchy diagram (Figure 11) shows how these elements relate to each other. Finally, a software layer diagram (Figure 12) focuses on which elements are likely to be the most complex; there, the controllers are considered the most complex blocks because they have to manage the state of each light, and the diagram also shows the heavy use of I/O ports in the project.</p>
-
-                <p>In Figures 10, 11 and 12, the rear lights that are not used to signal turns are called brake lights.</p>
-
-                <h4>Implementation</h4>
-
-                <p>In the code, after the system and the required variables are initialised, the program runs as follows:</p>
-
-                <ul>
-                  <li>All inputs are read, i.e. whether or not each button has been pressed.</li>
-                  <li>The program checks whether the indicator button has been pressed; it takes priority over any cornering light. If so, that action is performed.</li>
-                  <li>If the indicator button was not pressed, the program checks whether the right cornering-light button was pressed. If so, that action is performed.</li>
-                  <li>If neither the indicator button nor the right cornering-light button was pressed, the program checks whether the left cornering-light button was pressed. If so, that action is performed.</li>
-                  <li>If none of these three buttons was pressed, the cornering lights stay off.</li>
-                  <li>The program checks whether the button that changes the brake-light operating mode has been pressed. The mode starts at 0 by default and changes on a falling edge, i.e. when the button is released. The modes are:
-                    <ul>
-                      <li>Mode 0: the brake lights stay off.</li>
-                      <li>Mode 1: the brake lights stay permanently on.</li>
-                      <li>Mode 2: the brake lights blink.</li>
-                      <li>Mode 3: the brake lights blink with the on/off cycles inverted, i.e. only one LED is lit at a time.</li>
-                    </ul>
-                  </li>
-                  <li>The selected control mode is applied; it is handled by a state machine, shown in Figure 1.</li>
-                  <li>All control variables are updated.</li>
-                </ul>
-
-                <p>The on/off cycles of the lights, when needed, are timed with cycle counters. The correct number of cycles &mdash; so that the lights change state at a reasonable rate &mdash; was found iteratively by testing different values.</p>
-
-                <p>The mode-selection button also has a software debounce.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/D_BloquesSoft.jpg" alt="Software block diagram">
-                    <p>Figure 10: software block diagram.</p>
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/D_jerarquico.jpg" alt="Software hierarchy diagram">
-                    <p>Figure 11: software hierarchy diagram.</p>
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/D_decapas.jpg" alt="Software layer diagram">
-                    <p>Figure 12: software layer diagram.</p>
-                </div>
-
-                <h2 id="results">Results</h2>
-
-                <p>The proposed circuit was simulated in Proteus; Figure 13 shows the design. The remote’s switches were modelled as switches, and a button was added to control the modes. The power supply is not shown in the simulation; only voltage sources of the corresponding value are included. The BTS3405GXUMA1 devices used as transistors cannot be simulated in Proteus, so they were represented by their MOSFET equivalents. The different operating modes were simulated successfully; the delivered video shows them working.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Proteus simulation of the proposed circuit">
-                    <p>Figure 13: circuit model in Proteus.</p>
-                </div>
-
-                <p>The final sale prices fall within the required range and, depending on the configuration and order size, this solution offers more value at a competitive price.</p>
-
-                <p>As an extra step, the PCB for the complete system was designed in Altium Designer; the results are shown below.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/PCB1.jpg" alt="System PCB, view 1">
-                    <p>Figure 14: system PCB, view 1.</p>
-                </div>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/PCB2.jpg" alt="System PCB, view 2">
-                    <p>Figure 15: system PCB, view 2.</p>
-                </div>
-
-                <p>Finally, to complete a mechanical design prototype, an enclosure was modelled in AutoCAD. The final results are shown below.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/Case.PNG" alt="3D-modelled enclosure for the PCB">
-                    <p>Figure 16: PCB enclosure.</p>
-                </div>
-
-
-                <div class="entry__taxonomies">
-                    <div class="entry__cat">
-                        <h5>Posted In: </h5>
-                        <span class="entry__tax-list">
-                            <a href="embedded-hardware.html">Embedded Hardware</a>
-                        </span>
-                    </div> <!-- end entry__cat -->
-
-                    <div class="entry__tags">
-                        <h5>Tags: </h5>
-                        <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="helios_ren.html#top">PCB Design</a>
-                            <a href="helios_ren.html#top">Altium</a>
-                            <a href="helios_ren.html#top">LED Applications</a>
-                            <a href="helios_ren.html#top">Proteus</a>
-                            <a href="helios_ren.html#top">MPLABX</a>
-                        </span>
-                    </div> <!-- end entry__tags -->
-                </div> <!-- end s-content__taxonomies -->
-
-                <!-- <div class="entry__author">
-                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
+                <div class="entry__author" style="margin-top:0;">
+                    <img loading="eager" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
 
                     <div class="entry__author-about">
                         <h5 class="entry__author-name">
-                            <span>Posted by</span>
-                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                            <span>Leonardo Ward</span>
                         </h5>
 
                         <div class="entry__author-desc">
-                            <p>
-                            Electronics Engineer
-                            </p>
+                            <p>Electronics Engineer</p>
                         </div>
                     </div>
-                </div> -->
+                </div>
+
+                <p class="lead drop-cap">I design schematics, PCB layouts (Altium Designer, KiCad) and firmware (C++, Python) for consumer and industrial products, coordinating manufacturing directly with suppliers and PCB houses in Europe and China. The projects on this site &mdash; embedded hardware, robotics, PCB design and a few vehicle&#8209;electronics builds &mdash; are the personal and academic work alongside that.</p>
+
+                <p style="text-align:center; margin:3.2rem 0 1.6rem;">
+                    <a class="btn btn--primary" href="https://www.linkedin.com/in/leonardo-ward/" target="_blank" rel="noopener" style="font-size:1.4rem; padding:1.2rem 2.8rem;"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn Profile</a>
+                    <a class="btn btn--stroke" href="https://github.com/leonardoward" target="_blank" rel="noopener" style="font-size:1.4rem; padding:1.2rem 2.8rem;"><i class="fab fa-github"></i>&nbsp; GitHub Repositories</a>
+                </p>
+
+                <p style="text-align:center">Work history, education and recommendations are on LinkedIn; source code for every project above is on GitHub.</p>
 
             </div> <!-- s-entry__main -->
 
         </article> <!-- end entry/article -->
-
-
-        <div class="s-content__entry-nav">
-            <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="lora-dev-board.html" rel="prev">
-                        <span>Previous Post</span>
-                        LoRa Development Board
-                    </a>
-                </div>
-                <div class="col-six s-content__next">
-                    <a href="onboardgateway.html" rel="next">
-                        <span>Next Post</span>
-                        EJA Onboard Gateway
-                    </a>
-                </div>
-            </div>
-        </div> <!-- end s-content__pagenav -->
 
     </section> <!-- end s-content -->
 
