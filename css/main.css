@@ -2884,6 +2884,20 @@ body.search-is-visible {
   margin: 3rem 0 3rem -7rem;
 }
 
+/* Images nested inside a multi-column row (col-six/col-four/col-three) are not
+ * full-bleed: the negative left margin and generous max-width above are meant
+ * for a single edge-to-edge image and make columned images overflow their
+ * column and overlap their neighbor. Constrain them to their column instead. */
+.entry__main .col-six img,
+.entry__main .col-four img,
+.entry__main .col-three img,
+.s-content__main .col-six img,
+.s-content__main .col-four img,
+.s-content__main .col-three img {
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+}
+
 .s-content__main p img, .entry__main p img {
   margin-bottom: 0;
 }

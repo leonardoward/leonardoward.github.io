@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>ECG Digitization Service | Computer Vision | Leonardo Ward</title>
+    <meta name="description" content="An undergraduate thesis project: a RESTful web service, Android app and OpenCV/Python image-processing pipeline that extracts a digital ECG signal from a photo of a printed electrocardiogram strip.">
+    <meta name="author" content="Leonardo Ward">
+    <link rel="canonical" href="https://leonardoward.github.io/ecg-digitization.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ECG Digitization Service | Computer Vision | Leonardo Ward">
+    <meta property="og:description" content="A RESTful web service, Android app and OpenCV/Python image-processing pipeline that extracts a digital ECG signal from a photo of a printed electrocardiogram strip.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/ecg-digitization/hero.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/ecg-digitization.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header header">
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li><a href="index.html" title="">Home</a></li>
+
+                                <li class="has-children">
+                    <a href="embedded-hardware.html" title="">Embedded Hardware</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="ejam.html">EJA M</a>
+                          <ul class="sub-menu">
+                            <li><a href="ejam.html" title="">Description</a></li>
+                            <li><a href="ejam.html#planning" title="">Planning</a></li>
+                            <li><a href="ejam.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ejam.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ejam.html#ftdi-ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ejam.html#auto-reset-circuit-for-the-esp32" title="">Auto Reset Circuit</a></li>
+                            <li><a href="ejam.html#esp32" title="">ESP32</a></li>
+                            <li><a href="ejam.html#gps" title="">GPS</a></li>
+                            <li><a href="ejam.html#lora" title="">LoRa</a></li>
+                            <li><a href="ejam.html#real-time-clock-rtc" title="">Real time Clock RTC</a></li>
+                            <li><a href="ejam.html#5v-2a-stepup" title="">5V 2A Stepup</a></li>
+                            <li><a href="ejam.html#battery-charging-circuit" title="">Battery Charging</a></li>
+                            <li><a href="ejam.html#3v3-3a-sepic-converter" title="">3V3 3A SEPIC Converter</a></li>
+                            <li><a href="ejam.html#on-off-button-circuit" title="">ON-OFF Button Circuit</a></li>
+                            <li><a href="ejam.html#pcb-dimensions-and-boundaries" title="">PCB Dimensions and Boundaries</a></li>
+                            <li><a href="ejam.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ejam.html#pcb" title="">PCB</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ftdi-dev-board.html">FTDI Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="ftdi-dev-board.html" title="">Description</a></li>
+                            <li><a href="ftdi-dev-board.html#findings" title="">Findings</a></li>
+                            <li><a href="ftdi-dev-board.html#hardware-design" title="">Hardware Design</a></li>
+                            <li><a href="ftdi-dev-board.html#usb-c-port-with-electromagnetic-compatibility-emc" title="">USB C Port with EMC</a></li>
+                            <li><a href="ftdi-dev-board.html#ft260s" title="">FTDI FT260S</a></li>
+                            <li><a href="ftdi-dev-board.html#ft312d" title="">FTDI FT312D</a></li>
+                            <li><a href="ftdi-dev-board.html#esp32-with-auto-reset" title="">ESP32 with Auto Reset</a></li>
+                            <li><a href="ftdi-dev-board.html#ic-switch" title="">IC Switch</a></li>
+                            <li><a href="ftdi-dev-board.html#bill-of-materials" title="">Bill of Materials</a></li>
+                            <li><a href="ftdi-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="ftdi-dev-board.html#testing" title="">Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gps-dev-board.html">GPS Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="gps-dev-board.html" title="">Description</a></li>
+                            <li><a href="gps-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-m20050" title="">GPS ANTENOVA M20050-1</a></li>
+                            <li><a href="gps-dev-board.html#gps-antenova-atgm332d" title="">GPS ATGM332D-5N31</a></li>
+                            <li><a href="gps-dev-board.html#battery-holders" title="">Coin Cell Battery Holders</a></li>
+                            <li><a href="gps-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="gps-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="gps-dev-board.html#firmware" title="">Firmware &amp; Testing</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="lora-dev-board.html">LoRa Development Board</a>
+                          <ul class="sub-menu">
+                            <li><a href="lora-dev-board.html" title="">Description</a></li>
+                            <li><a href="lora-dev-board.html#schematic" title="">Schematic</a></li>
+                            <li><a href="lora-dev-board.html#bill_of_materials" title="">Bill of Materials</a></li>
+                            <li><a href="lora-dev-board.html#pcb" title="">PCB</a></li>
+                            <li><a href="lora-dev-board.html#firmware-and-testing" title="">Firmware and Testing</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="helios_ren.html">HELIOS REN Tail Light System</a></li>
+                        <li class="has-children"><a href="onboardgateway.html">Onboard Gateway</a>
+                          <ul class="sub-menu">
+                            <li><a href="onboardgateway.html" title="">Description</a></li>
+                            <li><a href="onboardgateway.html#main_components" title="">Main Components</a></li>
+                            <li><a href="onboardgateway.html#schematic" title="">Schematic</a></li>
+                            <li><a href="onboardgateway.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="onboardgateway.html#pcb" title="">PCB</a></li>
+                            <li><a href="onboardgateway.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="onboardgateway.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="onboardgateway.html#firmware" title="">Firmware</a></li>
+                            <li><a href="onboardgateway.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoya.html">Buoy A</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoya.html" title="">Description</a></li>
+                            <li><a href="buoya.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoya.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoya.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoya.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoya.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoya.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoya.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoya.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoya.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoya.html#firmware" title="">Firmware</a></li>
+                            <li><a href="buoya.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="buoyb.html">Buoy B</a>
+                          <ul class="sub-menu">
+                            <li><a href="buoyb.html" title="">Description</a></li>
+                            <li><a href="buoyb.html#main_components" title="">Main Components</a></li>
+                            <li><a href="buoyb.html#schematic" title="">Schematic</a></li>
+                            <li><a href="buoyb.html#pcb_layout" title="">Layout</a></li>
+                            <li><a href="buoyb.html#pcb" title="">PCB</a></li>
+                            <li><a href="buoyb.html#assembly_guide" title="">Assembly</a></li>
+                            <li><a href="buoyb.html#wiring_diagrams" title="">Wiring Diagrams</a></li>
+                            <li><a href="buoyb.html#power-management" title="">Power Management</a></li>
+                            <li><a href="buoyb.html#servo-motor" title="">Servo Motor</a></li>
+                            <li><a href="buoyb.html#stepper-motor" title="">Stepper Motor</a></li>
+                            <li><a href="buoyb.html#dc-motor" title="">DC Motor</a></li>
+                            <li><a href="buoyb.html#firmware" title="">Firmware</a></li>
+                            <li><a href="buoyb.html#user_interface" title="">User Interface</a></li>
+                            <li><a href="buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="embedded-software.html" title="">Embedded Software</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="pic-proteus-space-invaders.html">Space Invaders in a 16-Bit PIC</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-proteus-space-invaders.html" title="">Description</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#getting_started" title="">Getting Started</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#design_and_architecture" title="">Design and Architecture</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#pic" title="">PIC</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#lcd" title="">LCD</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#buttons" title="">Buttons</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#render" title="">Render</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#sprites" title="">Sprites</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#animations" title="">Animations</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-proteus-space-invaders.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pic-ws2812.html">WS2812 LEDs on a PIC16F1717</a>
+                          <ul class="sub-menu">
+                            <li><a href="pic-ws2812.html" title="">Description</a></li>
+                            <li><a href="pic-ws2812.html#the-ws2812-protocol" title="">The WS2812 Protocol</a></li>
+                            <li><a href="pic-ws2812.html#the-approach" title="">The Approach</a></li>
+                            <li><a href="pic-ws2812.html#getting-started" title="">Getting Started</a></li>
+                            <li><a href="pic-ws2812.html#configuration" title="">Peripheral Configuration</a></li>
+                            <li><a href="pic-ws2812.html#firmware" title="">Firmware</a></li>
+                            <li><a href="pic-ws2812.html#simulation" title="">Simulation</a></li>
+                            <li><a href="pic-ws2812.html#notes" title="">Notes</a></li>
+                            <li><a href="pic-ws2812.html#further-reading" title="">Further Reading</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="irdar.html">IRDAR &mdash; Infrared Rangefinder</a>
+                          <ul class="sub-menu">
+                            <li><a href="irdar.html" title="">Description</a></li>
+                            <li><a href="irdar.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="irdar.html#hardware" title="">Hardware</a></li>
+                            <li><a href="irdar.html#firmware" title="">Firmware</a></li>
+                            <li><a href="irdar.html#gui" title="">The Radar Display</a></li>
+                            <li><a href="irdar.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ambient-lights.html">Sensor-Based Ambient Lights</a>
+                          <ul class="sub-menu">
+                            <li><a href="ambient-lights.html" title="">Description</a></li>
+                            <li><a href="ambient-lights.html#hardware" title="">Hardware</a></li>
+                            <li><a href="ambient-lights.html#modes" title="">Operation Modes</a></li>
+                            <li><a href="ambient-lights.html#firmware" title="">Firmware</a></li>
+                            <li><a href="ambient-lights.html#simulation" title="">Simulation</a></li>
+                            <li><a href="ambient-lights.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pyhl7-aecg.html">pyHL7 aECG</a>
+                          <ul class="sub-menu">
+                            <li><a href="pyhl7-aecg.html" title="">Description</a></li>
+                            <li><a href="pyhl7-aecg.html#overview" title="">Overview</a></li>
+                            <li><a href="pyhl7-aecg.html#classes" title="">Classes</a></li>
+                            <li><a href="pyhl7-aecg.html#example" title="">Example</a></li>
+                            <li><a href="pyhl7-aecg.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-onboardgateway.html">GUI for the Onboard Gateway v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-onboardgateway.html" title="">Description</a></li>
+                            <li><a href="gui-onboardgateway.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-onboardgateway.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-onboardgateway.html#home" title="">Home</a></li>
+                            <li><a href="gui-onboardgateway.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-onboardgateway.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-onboardgateway.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-onboardgateway.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-onboardgateway.html#led-test" title="">Led Test</a></li>
+                            <li><a href="gui-onboardgateway.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="gui-buoyb.html">GUI for Buoy B v1.0</a>
+                          <ul class="sub-menu">
+                            <li><a href="gui-buoyb.html" title="">Description</a></li>
+                            <li><a href="gui-buoyb.html#requirements" title="">Requirements</a></li>
+                            <li><a href="gui-buoyb.html#async-web-server" title="">Async Web Server</a></li>
+                            <li><a href="gui-buoyb.html#home" title="">Home</a></li>
+                            <li><a href="gui-buoyb.html#gps" title="">GPS</a></li>
+                            <li><a href="gui-buoyb.html#timer" title="">Timer</a></li>
+                            <li><a href="gui-buoyb.html#lora" title="">Lora</a></li>
+                            <li><a href="gui-buoyb.html#terminal" title="">Terminal</a></li>
+                            <li><a href="gui-buoyb.html#future_improvements" title="">Future Improvements</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="robotics.html" title="">Robotics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="sumo.html">Sumo</a>
+                          <ul class="sub-menu">
+                            <li><a href="sumo.html" title="">Description</a></li>
+                            <li><a href="sumo.html#competition" title="">The Arena</a></li>
+                            <li><a href="sumo.html#system-overview" title="">System Overview</a></li>
+                            <li><a href="sumo.html#mechanical" title="">Mechanical Design</a></li>
+                            <li><a href="sumo.html#drivetrain" title="">Drivetrain &amp; Motors</a></li>
+                            <li><a href="sumo.html#sensing" title="">Sensing</a></li>
+                            <li><a href="sumo.html#control" title="">Control System</a></li>
+                            <li><a href="sumo.html#strategy" title="">Match Strategy</a></li>
+                            <li><a href="sumo.html#result" title="">Competition Result</a></li>
+                            <li><a href="sumo.html#repository" title="">Repository</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="hbridgeboards.html">Motor Driver Design</a>
+                          <ul class="sub-menu">
+                            <li><a href="hbridgeboards.html" title="">H-Bridge Designs</a></li>
+                            <li><a href="uln2003board.html" title="">ULN2003 Perfboard</a></li>
+                            <li><a href="brushlessdc.html" title="">Brushless DC Motor Drivers</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="puma560.html">PUMA 560</a>
+                          <ul class="sub-menu">
+                            <li><a href="puma560.html#description" title="">Description</a></li>
+                            <li><a href="puma560.html#how-it-works" title="">What the GUIs Do</a></li>
+                            <li><a href="puma560.html#prerequisites" title="">Prerequisites</a></li>
+                            <li><a href="puma560.html#robotics-toolbox" title="">Robotics Toolbox</a></li>
+                            <li><a href="puma560.html#stl-model" title="">STL Models</a></li>
+                            <li><a href="puma560.html#robot-manipulator" title="">RRR Robot Manipulator</a></li>
+                            <li><a href="puma560.html#puma-560" title="">PUMA 560 Manipulator</a></li>
+                            <li><a href="puma560.html#gui" title="">GUI</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a>
+                          <ul class="sub-menu">
+                            <li><a href="pioneer-slam.html" title="">Description</a></li>
+                            <li><a href="pioneer-slam.html#overview" title="">Overview</a></li>
+                            <li><a href="pioneer-slam.html#architecture" title="">ROS Architecture</a></li>
+                            <li><a href="pioneer-slam.html#bridge-node" title="">The Bridge Node</a></li>
+                            <li><a href="pioneer-slam.html#slam" title="">SLAM</a></li>
+                            <li><a href="pioneer-slam.html#android-app" title="">Android Control</a></li>
+                            <li><a href="pioneer-slam.html#vision-sensor" title="">Vision Sensor</a></li>
+                            <li><a href="pioneer-slam.html#running" title="">Running It</a></li>
+                            <li><a href="pioneer-slam.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children current">
+                    <a href="opencv-pointillize.html" title="">Computer Vision</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="opencv-pointillize.html">OpenCV &mdash; Pointillize</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-pointillize.html" title="">Description</a></li>
+                            <li><a href="opencv-pointillize.html#how-it-works" title="">How It Works</a></li>
+                            <li><a href="opencv-pointillize.html#usage" title="">Usage</a></li>
+                            <li><a href="opencv-pointillize.html#portrait" title="">Another Example</a></li>
+                            <li><a href="opencv-pointillize.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="opencv-test-app.html">OpenCV Test App</a>
+                          <ul class="sub-menu">
+                            <li><a href="opencv-test-app.html" title="">Description</a></li>
+                            <li><a href="opencv-test-app.html#canny" title="">Canny Edge Detection</a></li>
+                            <li><a href="opencv-test-app.html#scanner" title="">Document Scanner</a></li>
+                            <li><a href="opencv-test-app.html#layout" title="">Code</a></li>
+                            <li><a href="opencv-test-app.html#notes" title="">Notes</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children"><a href="ecg-digitization.html">ECG Digitization Service</a>
+                          <ul class="sub-menu">
+                            <li><a href="ecg-digitization.html" title="">Description</a></li>
+                            <li><a href="ecg-digitization.html#ecg-basics" title="">ECG Primer</a></li>
+                            <li><a href="ecg-digitization.html#architecture" title="">System Architecture</a></li>
+                            <li><a href="ecg-digitization.html#pipeline" title="">Digitization Pipeline</a></li>
+                            <li><a href="ecg-digitization.html#api" title="">REST API</a></li>
+                            <li><a href="ecg-digitization.html#app" title="">Android App</a></li>
+                            <li><a href="ecg-digitization.html#results" title="">Results</a></li>
+                            <li><a href="ecg-digitization.html#future-work" title="">Future Work</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="multimppt.html" title="">Power Electronics</a>
+                    <ul class="sub-menu">
+                        <li class="has-children"><a href="multimppt.html">MultiMPPT &mdash; DPP Architecture</a>
+                          <ul class="sub-menu">
+                            <li><a href="multimppt.html" title="">Description</a></li>
+                            <li><a href="multimppt.html#why-dpp" title="">Why DPP</a></li>
+                            <li><a href="multimppt.html#simulation" title="">Simulation</a></li>
+                            <li><a href="multimppt.html#results" title="">Simulation Results</a></li>
+                            <li><a href="multimppt.html#board" title="">Test Board</a></li>
+                            <li><a href="multimppt.html#circuit" title="">Circuit</a></li>
+                            <li><a href="multimppt.html#repository" title="">Repositories</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="interactive-map.html" title="">Web Applications</a>
+                    <ul class="sub-menu">
+                        <li><a href="interactive-map.html">Interactive Map</a></li>
+                        <li><a href="em-game.html">Electromagnetism Game</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="3dmap.html" title="">3D Printing</a>
+                    <ul class="sub-menu">
+                        <li><a href="3dmap.html">Map</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-children">
+                    <a href="bajasae.html" title="">Vehicles</a>
+                    <ul class="sub-menu">
+                        <li><a href="bajasae.html">Baja SAE USB</a></li>
+                        <li><a href="wheel-alignment.html">Electronic Wheel Alignment</a></li>
+                        <li><a href="brake-test.html">Brake Test Data Logger</a></li>
+                        <li><a href="car-dashboard.html">Dashboard Module</a></li>
+                        <li><a href="steering-wheel.html">Steering-Wheel Display</a></li>
+                        <li><a href="gasoline-module.html">Fuel-Level Module</a></li>
+                    </ul>
+                </li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--top-padding s-content--narrow">
+
+        <article class="row entry format-standard">
+
+            <div class="entry__media col-full">
+                <div class="entry__post-thumb">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/ecg-digitization/hero.jpg" alt="An Android app showing a captured photo of a printed ECG strip, precordial leads V1&ndash;V6, on a dark background">
+                </div>
+            </div>
+
+            <div class="entry__header col-full">
+                <h1 id="description" class="entry__header-title display-1">
+                    A Service to Digitize ECG Strips
+                </h1>
+                <ul class="entry__header-meta">
+                    <li class="date">May, 2018</li>
+                    <li class="byline">
+                        By
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                        &amp;
+                        Emanuel S&aacute;nchez
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-full entry__main">
+
+                <p class="lead drop-cap">Every electrocardiogram (ECG) machine in routine clinical use does the same thing with its result: it prints it on a strip of paper. The waveform that follows is proof &mdash; a cardiologist can read it, but a computer can't, and the reading is stuck on that one piece of paper forever unless someone re-measures it by hand with a ruler. This is an undergraduate thesis project (Universidad Sim&oacute;n Bol&iacute;var, Ingenier&iacute;a Electr&oacute;nica, defended May 2018, advised by Prof. Masun Homsi) built with Emanuel S&aacute;nchez to close that gap: a photo of a printed 12-lead ECG goes in, and a calibrated millivolts-vs-milliseconds signal comes out &mdash; exportable as JSON, WFDB, MATLAB, or the FDA-backed <a href="https://en.wikipedia.org/wiki/Health_Level_7">HL7</a> annotated-ECG (aECG) XML standard used in clinical trials.</p>
+
+                <p>The project has three parts that all shipped together: a Python/OpenCV <strong>image-processing pipeline</strong> that does the actual digitization, a Node.js <strong>RESTful API</strong> that exposes it to the world with user accounts and a MongoDB-backed job queue, and a companion Android app that lets a patient photograph their own ECG strip, watch it get processed, and pull up the resulting waveform on their phone.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p>
+                    <img loading="lazy" decoding="async" src="images/ecg-digitization/clean-input-example.jpg" width="500" alt="A clean scanned 12-lead ECG in the standard 4x4 layout: I aVR V1 V4 / II aVL V2 V5 / III aVF V3 V6, plus a lead-II rhythm strip">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img loading="lazy" decoding="async" src="images/ecg-digitization/phone-capture-raw.jpg" width="500" alt="A real Schiller ECG paper strip photographed on a wooden table with a phone camera, showing the device's gain and filter settings printed along the strip">
+                    </p>
+                  </div>
+                </div>
+                <p style="text-align:center">The two kinds of input the pipeline had to handle: a clean scan (left) and an uncontrolled phone photo (right).</p>
+
+                <h2 id="ecg-basics">A Very Short ECG Primer</h2>
+
+                <p>A standard resting ECG records 12 different views ("leads") of the heart's electrical activity from combinations of electrodes on the limbs and chest, and prints them on grid paper where <strong>1&nbsp;small square = 40&nbsp;ms horizontally and 100&nbsp;&micro;V vertically</strong>. That grid calibration is exactly what makes digitization possible: if you can find the grid, you can convert pixels back into real units.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p>
+                    <img loading="lazy" decoding="async" src="images/ecg-digitization/einthoven-triangle.jpg" width="400" alt="Einthoven's triangle: the three bipolar limb leads I, II, III formed between the right arm, left arm and left leg">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img loading="lazy" decoding="async" src="images/ecg-digitization/precordial-leads.jpg" width="400" alt="The six precordial chest leads V1 through V6 arranged in an arc around the heart">
+                    </p>
+                  </div>
+                </div>
+                <p style="text-align:center">The bipolar limb leads I/II/III plus augmented aVR/aVL/aVF (left), and the six precordial chest leads V1&ndash;V6 (right).</p>
+
+                <p>The pipeline targets the printout convention most machines default to: a 4&times;4 grid &mdash; row&nbsp;1: I, aVR, V1, V4; row&nbsp;2: II, aVL, V2, V5; row&nbsp;3: III, aVF, V3, V6; row&nbsp;4: an extended single-lead rhythm strip (usually lead&nbsp;II) &mdash; which is also why lead&nbsp;II ends up being the one the thesis analyzes in full depth.</p>
+
+                <h2 id="datasets">Two Test Datasets, on Purpose</h2>
+
+                <p>Two datasets were built specifically to separate two very different failure modes:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Dataset</th><th>Source</th><th>Size</th><th>Purpose</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Database&nbsp;1</strong></td><td>Web-collected scanned ECG images</td><td>107 collected &rarr; 54 kept (right grid spec + 4&times;4 layout), avg.&nbsp;~1200&times;640&nbsp;px</td><td>Already flat &mdash; used to evaluate segmentation and signal extraction in isolation</td></tr>
+                            <tr><td><strong>Database&nbsp;2</strong></td><td>Self-captured phone photos</td><td>10 images, uncontrolled angle &amp; lighting</td><td>The only dataset that can test perspective correction</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="architecture">System Architecture</h2>
+
+                <p>The three pieces talk over a JSON/multipart REST API; the heavy image processing runs in Python and is invoked from the Node service via <code>python-shell</code> rather than being reimplemented in JavaScript.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p>
+                    <img loading="lazy" decoding="async" src="images/ecg-digitization/architecture-layers.jpg" width="500" alt="Layered service architecture: OpenAPI/Swagger presentation layer, cloud processing (signal extraction + additional algorithms), REST API with JSON and HL7-aECG, and a User to ECG to Segment MongoDB data model">
+                    </p>
+                  </div>
+                  <div class="col-six">
+                    <p>
+                    <img loading="lazy" decoding="async" src="images/ecg-digitization/tech-stack.jpg" width="500" alt="Tech stack diagram: OpenAPI and Swagger for docs, OpenCV and scikit-learn for cloud processing, Node.js, JSON and HL7 for the web service, MongoDB and Mongoose for storage">
+                    </p>
+                  </div>
+                </div>
+                <p style="text-align:center">Service layers and the concrete tools behind each one.</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Layer</th><th>Choice</th><th>Why</th></tr></thead>
+                        <tbody>
+                            <tr><td>API style</td><td>REST over SOAP/WSDL</td><td>The thesis cites Fielding's 2000 dissertation directly; REST's stateless, resource-based model was judged a better fit than SOAP's contract-heavy tooling for a service this size</td></tr>
+                            <tr><td>Backend runtime</td><td>Node.js 8.11.1 over Java</td><td>A cited PayPal benchmark showed roughly 2&times; requests/sec and 35% lower response time versus an equivalent Java app</td></tr>
+                            <tr><td>Backend modules</td><td><code>express</code>, <code>mongoose</code>, <code>passport</code>, <code>jsonwebtoken</code>, <code>bcrypt</code>, <code>multer</code>, <code>body-parser</code>, <code>python-shell</code>, <code>rotating-file-stream</code></td><td>Routing, MongoDB ODM, auth strategies, JWT issuing, password hashing, multipart uploads, calling into Python, and weekly-rotated access/error logs</td></tr>
+                            <tr><td>Database</td><td>MongoDB + Mongoose</td><td>Document storage suited the variable, nested shape of an ECG job (segments, leads, processing state) better than a fixed relational schema</td></tr>
+                            <tr><td>Image processing</td><td>Python: OpenCV, NumPy, SciPy, Pandas, scikit-learn, WFDB</td><td>OpenCV alone exposes 500+ ready-made CV primitives; scikit-learn's clustering and WFDB's export routines were reused rather than rewritten</td></tr>
+                            <tr><td>API docs</td><td>OpenAPI v3 + Swagger UI, served at <code>/api-docs</code></td><td>Interactive, testable documentation instead of a static spec</td></tr>
+                            <tr><td>Push notifications</td><td>Firebase Cloud Messaging</td><td>Digitization is asynchronous; FCM tells the phone the moment a result is ready instead of polling</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Auth is stateless: <code>bcrypt</code> (cost factor 10, random salt) hashes passwords, and a signed JWT &mdash; its payload additionally protected with SHA-256 and a server secret &mdash; travels in an <code>x-api-key</code> header on every subsequent request.</p>
+
+                <h2 id="pipeline">The Digitization Pipeline</h2>
+
+                <p>This is the core of the thesis: turning a photograph of a paper ECG into a clean, calibrated signal. It runs in three stages.</p>
+
+                <div class="col-full">
+                  <p>
+                  <img loading="lazy" decoding="async" src="images/ecg-digitization/pipeline-overview.jpg" width="900" alt="Pipeline overview: image acquisition, perspective adjustment, partial segmentation of the four lead rows, then per-lead analysis, ending in a calibrated digital signal">
+                  </p>
+                </div>
+                <p style="text-align:center">Top-level flow: acquire &rarr; correct perspective (phone photos only) &rarr; segment into the four lead-rows &rarr; extract &amp; calibrate the target lead.</p>
+
+                <h3 id="perspective-correction">Stage 1 &mdash; Perspective Correction</h3>
+
+                <p>Only phone photos need this stage &mdash; scans are already flat. It assumes the paper is the largest object in frame and all four corners are visible:</p>
+
+                <ol>
+                    <li>Downscale the photo to roughly 240&times;320 (the exact factor depends on aspect ratio) so contour-finding stays fast.</li>
+                    <li>Run <strong>Canny edge detection</strong> (thresholds 50/150) and keep the largest closed contour &mdash; that's assumed to be the paper.</li>
+                    <li>Run a <strong>Hough line transform</strong> over that contour (&rho; resolution 1&nbsp;px, &theta; resolution 1&deg;, minimum 70 intersections per line), intersect the detected lines pairwise, and pick the four points that form the largest quadrilateral as the paper's corners.</li>
+                    <li>Scale those corner coordinates back up to the original photo resolution.</li>
+                    <li>Compute a perspective transform matrix from the four corners and warp the full-resolution image with it.</li>
+                </ol>
+
+                <div class="row">
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/test-card-perspective.jpg" alt="A playing card photographed at an angle, used as a controlled test target for the perspective-correction algorithm"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/test-card-contour.jpg" alt="The largest-contour detection step isolating the playing card's outline against a black background"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/test-card-corners.jpg" alt="The four detected corners of the playing card, found by intersecting Hough lines along its outline"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">The same contour&rarr;corners logic, sanity-checked on a playing card before trusting it on paper.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-contour.jpg" alt="Block diagram of the largest-contour-detection stage"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-corners.jpg" alt="Block diagram of the corner-detection-on-contour stage"></p>
+                  </div>
+                </div>
+
+                <p>This turned out to be the <strong>weakest link in the whole pipeline</strong>: roughly half of the 10 phone photos in Database&nbsp;2 failed here, mostly to uneven lighting (of the failures, 30% found no corners at all, 20% found the wrong ones). Because it's also the <em>first</em> stage, a bad result here poisons everything downstream with no fallback &mdash; which is why the accuracy numbers further down were only measured on the already-flat Database&nbsp;1.</p>
+
+                <h3 id="segmentation">Stage 2 &mdash; Splitting the Four Lead Rows</h3>
+
+                <p>A flat 4&times;4 image is next split into its four row-groups (and the row-4 rhythm strip is set aside for full analysis). Two independent signals are combined to find the row boundaries:</p>
+
+                <ul>
+                    <li><strong>Color clustering</strong> &mdash; pixels are grouped into 3 clusters in RGB space (a K-means-style "K-Vecinos" pass), producing binary masks for signal, grid and background. The cluster with the fewest pixels is assumed to be the trace; the one with the most, the background; the rest, the grid.</li>
+                    <li><strong>Entropy filtering</strong> &mdash; local image entropy is computed with a radius-7 disk structuring element; a histogram of entropy values is bucketed, and everything past the highest-density bucket is thresholded away (the grid tends to read as higher-entropy than the signal at this stage).</li>
+                </ul>
+
+                <p>The normalized row-sums of the color mask and the entropy mask are added together; the four largest peaks in that combined curve mark the centers of the four lead rows, and the nearest local minima on each side (via the first derivative) mark where to cut.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/row-segmentation.jpg" width="800" alt="An ECG image with its four lead rows outlined in green boxes after successful row segmentation"></p>
+                </div>
+                <p style="text-align:center">The four rows located and boxed off.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/rgb-color-space.jpg" alt="An RGB color cube used to illustrate the color space the pixel-clustering step operates in"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/entropy-histogram.jpg" alt="A histogram of image entropy values used to pick the grid-removal threshold"></p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-segmentation.jpg" alt="Block diagram of the partial lead-row segmentation stage"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-limit-selection.jpg" alt="Block diagram of the row-boundary selection stage using the combined color and entropy histogram"></p>
+                  </div>
+                </div>
+
+                <p>Combining color and entropy clearly beats either alone at this stage: row-boundary accuracy was 48.1% with color only, 63.0% with entropy only, and the two together landed at 61.1% &mdash; a large jump over color alone, though roughly a wash against entropy on its own. For the narrower job of separating lead&nbsp;II specifically, the combination did win outright: 85.2% (color), 83.3% (entropy), <strong>90.7% combined</strong> &mdash; the version actually carried forward.</p>
+
+                <h3 id="lead-analysis">Stage 3 &mdash; Extracting and Calibrating the Signal</h3>
+
+                <p>The same 3-cluster/entropy pass is repeated at the single-lead crop scale (the earlier row-scale masks are too coarse to trace a single line reliably). From there:</p>
+
+                <ol>
+                    <li><strong>Minimum-distance-between-points tracking</strong>: scanning column by column, pixels within 1&nbsp;px of each other are grouped, and each column's group is chosen by proximity to the group picked in the previous column &mdash; a simple nearest-neighbor trace. This runs twice, left-to-right and right-to-left, and the two passes are XOR'd: columns that agree both ways become "definitive"; ambiguous columns are resolved against the nearest definitive ones. The very first column (no history yet) picks whichever group sits closest to the row with the most signal pixels overall.</li>
+                    <li><strong>One pixel per column</strong>: within the winning group, the point farthest from that central row is kept &mdash; which is what correctly captures the tip of a QRS spike instead of clipping it.</li>
+                    <li><strong>Grid calibration</strong>: a second, more permissive Hough transform (&rho;=1&nbsp;px, &theta;=1&deg;, 0&ndash;1 minimum intersections) finds the grid lines themselves &mdash; horizontal near &theta;&isin;[89&deg;,91&deg;], vertical near &theta;&asymp;0&deg;/180&deg; &mdash; and a histogram of the spacing between consecutive lines gives the pixel size of one grid square in each direction.</li>
+                    <li><strong>Unit conversion</strong>: the pixel-space point vector is rescaled into millivolts vs. milliseconds using that calibration and the standard 40&nbsp;ms / 100&nbsp;&micro;V grid spec.</li>
+                </ol>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-lead-analysis.jpg" alt="Block diagram of the single-lead analysis stage"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-min-distance-points.jpg" alt="Block diagram of the minimum-distance-between-points tracing algorithm, run left-to-right and right-to-left then combined"></p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/diagram-grid-calibration.jpg" alt="Block diagram of the grid-line-distance calibration algorithm"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/distance-histogram.jpg" alt="A histogram combining color and entropy row-sums, used to locate lead-row centers"></p>
+                  </div>
+                </div>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/digitized-signal-plot.jpg" width="700" alt="The final digitized lead-II signal, plotted in millivolts against milliseconds"></p>
+                </div>
+                <p style="text-align:center">The end product of the pipeline: a calibrated, plottable signal.</p>
+
+                <p>Grid calibration turned out uneven &mdash; correct to within 1&nbsp;px on width in 59.3% of images but on height in only 33.3% (RMSE 0.407 vs. 1.111 grid squares), which the thesis flags as a real weak point, since height error propagates directly into amplitude error.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/debug-desktop.jpg" width="800" alt="A development screenshot: the pipeline's OpenCV debug viewer and a Matplotlib figure showing the same digitized ECG lead side by side">
+                  </p>
+                </div>
+                <p style="text-align:center">The debug tooling used while developing the extraction stage &mdash; an OpenCV image viewer next to the equivalent Matplotlib plot.</p>
+
+                <h2 id="api">The REST API</h2>
+
+                <p>Everything is under <code>/api-v1</code> and returns JSON with a <code>success</code> flag (except binary/XML result downloads):</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Endpoint</th><th>What it does</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>POST /auth/register</code></td><td>Create an account (email, name, password)</td></tr>
+                            <tr><td><code>POST /auth/login</code></td><td>Returns a signed JWT + user object</td></tr>
+                            <tr><td><code>POST /user/{userId}/ecg</code></td><td>Upload an ECG image (multipart) for digitization, optionally with an FCM token for a push notification on completion</td></tr>
+                            <tr><td><code>GET /user/{userId}/ecg</code></td><td>List a user's submitted ECG jobs</td></tr>
+                            <tr><td><code>GET /user/{userId}/ecg/{ecgId}?format=</code></td><td>Fetch a result as JSON, HL7-aECG, MATLAB (<code>.m</code>) or WFDB &mdash; returns <code>409</code> while still processing</td></tr>
+                            <tr><td><code>POST /user/{userId}/ecg/{ecgId}/preprocessed</code></td><td>Attach an already perspective-corrected image (e.g. corrected client-side by the app)</td></tr>
+                            <tr><td><code>POST /user/{userId}/ecg/{ecgId}/segmented</code></td><td>Attach an already-segmented single lead, skipping straight to Stage&nbsp;3</td></tr>
+                            <tr><td><code>DELETE /user/{userId}/ecg/{ecgId}</code></td><td>Delete a job and its stored files</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The staged-upload endpoints (<code>/preprocessed</code>, <code>/segmented</code>) exist so a thinner client &mdash; or a different app entirely &mdash; can do part of the pipeline locally and only hand the server what it can't do itself.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/data-model.jpg" width="800" alt="MongoDB data model: User, ECG, Segment, DigitizationStatus, ProcessingType and Role collections and their relationships">
+                  </p>
+                </div>
+                <p style="text-align:center">The MongoDB collections behind the API: a <code>User</code> owns <code>ECG</code> jobs, each made of <code>Segment</code>s tagged with a lead, a <code>DigitizationStatus</code> (raw/preprocessed/segmented/digitized) and a <code>ProcessingType</code>.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/swagger-docs.jpg" width="700" alt="The Swagger UI auto-generated documentation for the ECG digitization API, listing the auth and ECG endpoints">
+                  </p>
+                </div>
+                <p style="text-align:center">Interactive API docs, generated straight from the OpenAPI v3 spec.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/postman-upload.jpg" alt="A Postman request uploading an ECG image to the digitization endpoint"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/postman-hl7-result.jpg" alt="A Postman response showing a digitization result exported as HL7 annotated-ECG XML"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">Submitting an image for digitization, and pulling the result back out as HL7-aECG XML.</p>
+
+                <h2 id="app">The Android App</h2>
+
+                <p>The mobile client wraps the whole API behind a reusable API-client class, targets API&nbsp;16+, and mirrors the server-side pipeline locally with OpenCV4Android for the parts a phone can do on its own.</p>
+
+                <div class="row">
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/app-login.jpg" alt="The Android app's login screen"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/app-capture.jpg" alt="The app's camera capture screen framing an ECG strip"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/app-leaf-detection.jpg" alt="The app highlighting the detected paper outline over the captured photo in green"></p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/app-lead-select.jpg" alt="The app's manual lead-selection screen with a draggable, resizable rectangle over the target lead"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/app-result-chart.jpg" alt="The app's results screen showing a zoomable, pannable chart of the digitized ECG signal"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/app-list.jpg" alt="The app's list of previously submitted ECG exams with their processing status and date"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">Login &rarr; capture &rarr; leaf detection &rarr; manual lead selection &rarr; interactive result chart &rarr; exam history.</p>
+
+                <p>Login is optional &mdash; you can continue as a guest, you just don't get your results saved. Once a photo is captured, the app runs the same contour/corner homography as Stage&nbsp;1 locally (via OpenCV4Android) to flag the detected sheet outline in green; the user then drags a resizable rectangle over the lead they want digitized before the crop is uploaded. A <code>RegistrationIntentService</code> keeps the device's FCM token fresh with the server, and a <code>FirebaseMessagingService</code> listener fires a local notification &mdash; and immediately fetches the JSON result &mdash; the moment the server finishes processing. Results render in <a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a>, with pinch-zoom and pan over the mV-vs-ms trace.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/fcm-architecture.jpg" width="500" alt="Firebase Cloud Messaging architecture: the web interface and server both talk to Firebase, which pushes notifications to Android, iOS and web clients">
+                  </p>
+                </div>
+                <p style="text-align:center">How a finished digitization reaches the phone without polling.</p>
+
+                <h2 id="methodology">Project Methodology</h2>
+
+                <p>The service and app were built with SCRUM &mdash; a backlog of requirements broken into sprints, each aiming to ship a genuinely usable increment.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/scrum-diagram.jpg" width="500" alt="A simple SCRUM diagram: requirements feed a sprint backlog, daily and monthly meetings drive each sprint iteration toward a deliverable">
+                  </p>
+                </div>
+
+                <h2 id="results">Results</h2>
+
+                <h3>Digitization Accuracy</h3>
+
+                <p>Measured on Database&nbsp;1's 54 images (perspective correction on Database&nbsp;2's phone photos failed too often &mdash; about half &mdash; to build a fair accuracy number on, so later stages were only scored on already-flat scans):</p>
+
+                <div class="row">
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/results-format-check.jpg" alt="Bar chart: percentage of test images in the correct 4x4 ECG format"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/results-region-id.jpg" alt="Bar chart: accuracy of identifying the signal, grid and background regions by RGB distance versus pixel percentage"></p>
+                  </div>
+                  <div class="col-four">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/results-lead-separation.jpg" alt="Bar chart: accuracy of separating lead II using color and entropy combined"></p>
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Stage</th><th>Result</th></tr></thead>
+                        <tbody>
+                            <tr><td>Signal/grid/background clustering (RGB-distance-from-origin criterion)</td><td>98.1% correct (53/54)</td></tr>
+                            <tr><td>Same, but classified by pixel-percentage instead</td><td>88.9% correct (48/54) &mdash; and confused grid with background 9.3% of the time, vs. 0% for the distance criterion</td></tr>
+                            <tr><td>Entropy filtering removing genuine signal pixels</td><td>happened in 40.7% of images at row-segmentation scale, but only 1.9% at the single-lead re-analysis scale</td></tr>
+                            <tr><td>Row-boundary selection</td><td>48.1% color only &middot; 63.0% entropy only &middot; 61.1% combined</td></tr>
+                            <tr><td>Lead-II separation</td><td>85.2% color only &middot; 83.3% entropy only &middot; <strong>90.7% combined</strong> (the version used downstream)</td></tr>
+                            <tr><td>Point-selection quality</td><td>48.1% of images kept under 150 erroneous pixels in the final traced vector</td></tr>
+                            <tr><td>Grid-size detection (&plusmn;1px)</td><td>width 59.3% (RMSE 0.407 squares) &middot; height 33.3% (RMSE 1.111 squares)</td></tr>
+                            <tr><td><strong>Overall end-to-end accuracy</strong></td><td><strong>39% (21/54)</strong> &mdash; correct grid size <em>and</em> under 150 erroneous points</td></tr>
+                            <tr><td>Heart-rate estimate vs. manual reference</td><td>RMSE 11,239.6 bpm&sup2; (1&ndash;193 bpm spread) &mdash; not usable for pathology detection as-is</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Two consistent findings across all of this: identifying regions by <strong>distance from the RGB origin clearly beats classifying by raw pixel percentage</strong>, and <strong>combining color and entropy clearly beats using either alone</strong> for segmentation. Also worth noting: accuracy held up similarly whether the source printout was in color or grayscale, so the pipeline doesn't quietly depend on colored ink.</p>
+
+                <h3>Load Testing</h3>
+
+                <p>The API was load-tested with <a href="https://www.artillery.io/">Artillery</a> against a modest test server (2&times; Intel Xeon @3.20GHz, 4GB RAM, Ubuntu Server 16.04), sustaining about 1 request/second per virtual user for one minute per tier:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Concurrent users</th><th>Sessions</th><th>Completed</th><th>Error rate</th><th>Responses/sec</th></tr></thead>
+                        <tbody>
+                            <tr><td>20</td><td>1,200</td><td>1,200</td><td>0%</td><td>19.85</td></tr>
+                            <tr><td>50</td><td>3,000</td><td>2,667</td><td>11.1%</td><td>14.74</td></tr>
+                            <tr><td>100</td><td>6,000</td><td>3,975</td><td>33.8%</td><td>26.17</td></tr>
+                            <tr><td>150</td><td>9,000</td><td>3,180</td><td>64.7%</td><td>37.4</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The service handled 20 concurrent users cleanly (0% errors), stayed reasonably usable at 50 (~89% success), and degraded sharply past that on this single, unscaled instance &mdash; the recommendations section below is mostly about fixing exactly that.</p>
+
+                <h2 id="limitations">Limitations</h2>
+
+                <ul>
+                    <li>At 39% end-to-end accuracy, <strong>this is a research prototype, not a clinically reliable digitizer</strong> &mdash; it was never claimed to be one.</li>
+                    <li>There was no independently-verified ground truth to compare against; heart-rate and grid-size references were themselves measured by hand, which puts a human-error floor under every accuracy number above.</li>
+                    <li>Perspective correction &mdash; the very first stage &mdash; is also the least reliable one, and a failure there has no fallback; it just blocks the rest of the pipeline.</li>
+                    <li>Lighting normalization was never solved; most of the phone-photo failures trace back to it.</li>
+                    <li>Grid-height detection and the point-selection step are the weakest individual links, and they're exactly what feeds the poor heart-rate estimate.</li>
+                </ul>
+
+                <h2 id="future-work">Future Work &amp; Recommendations</h2>
+
+                <div class="row">
+                  <div class="col-six">
+                    <h4>From the thesis's own future-work list</h4>
+                    <ul>
+                        <li>A web app and an iOS app, alongside the existing Android client</li>
+                        <li>Pathology-detection algorithms built on top of the extracted signal</li>
+                        <li>A real deployment inside a clinical/telemedicine setting</li>
+                        <li>Support for other grid-paper signal types beyond ECG</li>
+                        <li>A dedicated shadow-removal preprocessing stage</li>
+                        <li>Automating per-lead segmentation (today it's a manual rectangle in the app)</li>
+                        <li>Better entropy-threshold selection to keep more real signal while still clearing the grid</li>
+                    </ul>
+                  </div>
+                  <div class="col-six">
+                    <h4>Recommendations for the service itself</h4>
+                    <ul>
+                        <li>Scale out with a load balancer / server cluster, or a job queue, to survive the 100&ndash;150 concurrent-user range</li>
+                        <li>Test the Android app across more API levels (only 4.3/4.4 were verified)</li>
+                        <li>Extend the data model toward EMR (Electronic Medical Record) compatibility</li>
+                        <li>Add doctor-facing feedback/consultation features</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="entry__taxonomies">
+                    <div class="entry__cat">
+                        <h5>Posted In: </h5>
+                        <span class="entry__tax-list">
+                            <a href="opencv-pointillize.html">Computer Vision</a>
+                        </span>
+                    </div> <!-- end entry__cat -->
+
+                    <div class="entry__tags">
+                        <h5>Tags: </h5>
+                        <span class="entry__tax-list entry__tax-list--pill">
+                            <a href="ecg-digitization.html#pipeline">OpenCV</a>
+                            <a href="ecg-digitization.html#pipeline">Python</a>
+                            <a href="ecg-digitization.html#api">Node.js</a>
+                            <a href="ecg-digitization.html#api">MongoDB</a>
+                            <a href="ecg-digitization.html#api">REST API</a>
+                            <a href="ecg-digitization.html#app">Android</a>
+                            <a href="ecg-digitization.html#api">HL7 aECG</a>
+                            <a href="ecg-digitization.html#results">Image Processing</a>
+                        </span>
+                    </div> <!-- end entry__tags -->
+                </div> <!-- end s-content__taxonomies -->
+
+                <div class="entry__author">
+                    <img loading="lazy" decoding="async" src="images/avatars/foto.png" alt="Leonardo Ward">
+
+                    <div class="entry__author-about">
+                        <h5 class="entry__author-name">
+                            <span>Posted by</span>
+                            <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                        </h5>
+
+                        <div class="entry__author-desc">
+                            <p>
+                            Electronics Engineer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- s-entry__main -->
+
+        </article> <!-- end entry/article -->
+
+
+        <div class="s-content__entry-nav">
+            <div class="row s-content__nav">
+                <div class="col-six s-content__prev">
+                    <a href="opencv-test-app.html" rel="prev">
+                        <span>Previous Post</span>
+                        OpenCV Test App
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end s-content__pagenav -->
+
+    </section> <!-- end s-content -->
+
+    <!-- s-footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__main">
+            <div class="row">
+              <div class="tab-full s-footer__about">
+
+                  <h4>Leonardo Ward</h4>
+
+                  <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python. <a href="about.html">More about me &rarr;</a></p>
+
+              </div>
+            </div>
+        </div> <!-- end s-footer__main -->
+
+        <div class="s-footer__bottom">
+            <div class="row">
+
+                <div class="col-six">
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.linkedin.com/in/leonardo-ward"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/leonardoward"><i class="fab fa-github"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-six">
+                    <div class="s-footer__copyright">
+                        <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- end s-footer__bottom -->
+
+        <div class="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
