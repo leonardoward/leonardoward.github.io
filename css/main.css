@@ -1782,7 +1782,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .s-header {
   background-color: #FFFFFF;
   text-align: center;
-  height: 78px;
+  min-height: 78px;
   width: 100%;
   position: absolute;
   top: 0;
@@ -2135,6 +2135,14 @@ body.search-is-visible {
   visibility: hidden;
 }
 
+/* The rightmost top-level item's dropdown would otherwise grow further right
+ * from an already-near-the-edge position and run off the viewport. Anchor it
+ * to its own right edge instead, so it grows back toward the left. */
+.header__nav > li:last-child > ul {
+  left: auto;
+  right: 0;
+}
+
 .header__nav li ul ul {
   position: absolute;
   top: 0;
@@ -2195,20 +2203,29 @@ body.search-is-visible {
     right: 30px;
   }
 
+}
+
+/* The nav has 9 top-level items; at 12px/2px-letter-spacing/1.5rem-padding it
+ * only reliably fits one line on very wide screens. Tighten it over a much
+ * wider range so it keeps fitting on ordinary desktop/laptop widths instead
+ * of wrapping to a second line that spills out of the fixed-height header
+ * (see .s-header's min-height fallback for when it wraps anyway). */
+@media only screen and (max-width:1550px) {
   .header__nav {
     font-size: 11px;
+    letter-spacing: 1.2px;
   }
 
   .header__nav > li {
-    padding: 0 1rem;
+    padding: 0 0.9rem;
   }
 
   .header__nav > li.has-children {
-    padding-right: 2.3rem;
+    padding-right: 2rem;
   }
 
   .header__nav > li.has-children > a::after {
-    right: 1.2rem;
+    right: 1.3rem;
   }
 
 }

@@ -5,15 +5,15 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>LoRa Development Board | RFM95W-915S2 | Leonardo Ward</title>
-    <meta name="description" content="A development board for the RFM95W-915S2 LoRa transceiver with a U.FL antenna connector and broken-out pins, plus ESP32 send and receive test firmware.">
+    <title>E-wanna &mdash; Power-Line Inspection Robot | Robotics | Leonardo Ward</title>
+    <meta name="description" content="An autonomous robot that rides a high-tension power line, finds hot spots and vegetation, reports their distance, and cuts weeds off the wire — built for the UNETBots 2015 national robotics competition.">
     <meta name="author" content="Leonardo Ward">
-    <link rel="canonical" href="https://leonardoward.github.io/lora-dev-board.html">
+    <link rel="canonical" href="https://leonardoward.github.io/unetbot.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="LoRa Development Board | RFM95W-915S2 | Leonardo Ward">
-    <meta property="og:description" content="A development board for the RFM95W-915S2 LoRa transceiver with a U.FL antenna connector and broken-out pins, plus ESP32 send and receive test firmware.">
-    <meta property="og:image" content="https://leonardoward.github.io/images/lora_development_board/Lora_PCB.jpg">
-    <meta property="og:url" content="https://leonardoward.github.io/lora-dev-board.html">
+    <meta property="og:title" content="E-wanna &mdash; Power-Line Inspection Robot | Robotics | Leonardo Ward">
+    <meta property="og:description" content="An autonomous robot that rides a high-tension power line, finds hot spots and vegetation, reports their distance, and cuts weeds off the wire — built for the UNETBots 2015 national robotics competition.">
+    <meta property="og:image" content="https://leonardoward.github.io/images/unetbot/hero.jpg">
+    <meta property="og:url" content="https://leonardoward.github.io/unetbot.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- mobile specific metas
@@ -54,13 +54,6 @@
     ================================================== -->
     <header class="s-header header">
 
-        <!-- <div class="header__logo">
-            <a class="logo" href="index.html">
-                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
-            </a>
-        </div>  -->
-        <!-- end header__logo -->
-
         <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
         <nav class="header__nav-wrap">
 
@@ -69,7 +62,7 @@
             <ul class="header__nav">
                 <li><a href="index.html" title="">Home</a></li>
 
-                <li class="has-children current">
+                                <li class="has-children">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="ejam.html">EJA M</a>
@@ -271,7 +264,7 @@
                     </ul>
                 </li>
 
-                <li class="has-children">
+                <li class="has-children current">
                     <a href="robotics.html" title="">Robotics</a>
                     <ul class="sub-menu">
                         <li class="has-children"><a href="unetbot.html">E-wanna &mdash; Power-Line Robot</a>
@@ -431,260 +424,224 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img loading="eager" decoding="async" fetchpriority="high" src="images/lora_development_board/Lora_PCB.jpg" alt="LoRa RFM95W-915S2 development board PCB">
+                    <img loading="eager" decoding="async" fetchpriority="high" src="images/unetbot/hero.jpg" alt="The robot E-wanna riding the twin steel cables of a mock high-tension power line at night, headlights on, during the UNETBots 2015 competition">
                 </div>
             </div>
 
             <div class="entry__header col-full">
                 <h1 id="description" class="entry__header-title display-1">
-                    LoRa Development Board | RFM95W-915S2
+                    E-wanna &mdash; a Power-Line Inspection Robot
                 </h1>
                 <ul class="entry__header-meta">
-                    <li class="date">September, 2021</li>
+                    <li class="date">October, 2015</li>
                     <li class="byline">
                         By
-                        <a href="https://github.com/leonardoward">Leonardo Ward</a>
+                        <a href="https://github.com/leonardoward">Leonardo Ward</a>,
+                        Jorge P&eacute;rez, Said Alvarado &amp; N&eacute;stor S&aacute;nchez
                     </li>
-                </ul>
-            </div>
-
-            <div class="entry__header col-full">
-                <ul class="entry__header-meta">
-                  <li class="byline">
-                    <h3><a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja"><img loading="lazy" decoding="async" src="images/hackaday.png" width="32" alt="Hackaday.io"></a></h3>
-                  </li>
-                  <li class="byline">
-                    <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">Main Project</a>
-                  </li>
-                  <li class="byline">
-                    <h3><a href="https://github.com/leonardoward/lora-development-boards"><i class="fab fa-github"></i></a></h3>
-                  </li>
-                  <li class="byline">
-                    <a href="https://github.com/leonardoward/lora-development-boards">Github</a>
-                  </li>
                 </ul>
             </div>
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains an RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
+                <p class="lead drop-cap">Real high-tension transmission lines run for kilometers through terrain that's slow and dangerous for a person to walk, so keeping them running means either sending a lineman to climb the towers or renting a helicopter. <strong>E-wanna</strong> is a robot built by team <strong>ZERO</strong> (Zero Enterprise of Robotics Operations, Universidad Sim&oacute;n Bol&iacute;var) for the <em>DESAF&Iacute;O</em> category of <strong>UNETBots 2015</strong>, a national robotics competition whose challenge was exactly that: build an autonomous robot that rides the cable itself, finds hot spots and encroaching vegetation, reports how far each one is from the start, and physically cuts the vegetation off the line &mdash; all while two electric fans blow simulated wind at it.</p>
 
-                <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team). LoRa is how the buoy reports its position to a surface gateway, so the RFM95W was proved out here before going onto the <a href="ejam.html">EJA&nbsp;M</a> board and the <a href="onboardgateway.html">Onboard Gateway</a>.</p>
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/robot-closeup.jpg" alt="Close-up of E-wanna's electronics stack: a PIC perfboard, a Raspberry Pi, ribbon cable, four stepper motors and two headlight LEDs, mounted on pink foam padding"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/test-rig-home.jpg" alt="A small home-built mock power-line tower with a wooden mast, twin steel cables, and foam blocks standing in for roadside vegetation, used to test the robot before the real rig was available"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">The finished electronics stack (left), and the improvised test rig the team built at home so the vision code had something to practice on before the official one existed (right).</p>
 
-                <h2 id="schematic">Schematic</h2>
+                <h2 id="challenge">The Challenge</h2>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/lora_development_board/schematic-v1.0.jpg" width="640" alt="Schematic of the LoRa Development Board">
+                <p>UNETBots is Venezuela's national robotics competition, hosted by <a href="https://en.wikipedia.org/wiki/National_Experimental_University_of_T%C3%A1chira">Universidad Nacional Experimental del T&aacute;chira</a> (UNET) together with AVERD (Asociaci&oacute;n Venezolana de Rob&oacute;tica y Dom&oacute;tica) and FUNDELEC, the government's electrical-service development foundation. The 2015 edition's DESAF&Iacute;O category asked teams to automate exactly the kind of inspection real utility linemen do by hand or by helicopter.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/course-diagram.jpg" width="900" alt="Official diagram of the competition rig: five towers carrying twin steel cables with ceramic insulators, marked hot points, tissue-paper vegetation knots on the wires, foam vegetation blocks below, and two wind fans">
+                  </p>
+                </div>
+                <p style="text-align:center">The official course (from the competition rulebook): 5 towers, twin 1/4&Prime; steel cables 25&nbsp;cm apart, white-tape "hot points," paper-tissue vegetation knots on the wire, foam blocks simulating roadside brush, and two 3-speed fans for wind.</p>
+
+                <p>Robots had to weigh 1500&nbsp;g or less and fit in a 30&times;30&times;30&nbsp;cm cube. Points were awarded per hot point found (more if its distance from the start was also reported correctly), per tower cleared, per dangerous weed detected within 40&nbsp;cm of a conductor, and per piece of on-wire vegetation actually removed &mdash; with a penalty for any left behind. Running with the wind fans on paid a speed bonus. The event ran classification &rarr; quarterfinals/semifinal &rarr; a single-attempt final over three days (Oct 28&ndash;30, 2015) in San Crist&oacute;bal.</p>
+
+                <h2 id="architecture">System Architecture</h2>
+
+                <p>E-wanna splits the work across three boards, each doing only what it's best suited for:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Board</th><th>Role</th><th>Why</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Raspberry Pi</strong></td><td>Main controller &mdash; runs the state machine and the computer-vision pipeline, makes all high-level decisions</td><td>Only board in the stack with enough headroom to run OpenCV on camera frames in real time</td></tr>
+                            <tr><td><strong>Arduino Mega 2560</strong></td><td>Sensor controller &mdash; reads the IR/line sensors, talks to the motor board, validates sensor data before passing it up</td><td>Huge pin count for the sensor fan-out, plus a custom shield soldered directly to it</td></tr>
+                            <tr><td><strong>PIC16F877A</strong></td><td>Motor controller &mdash; generates the step/direction signals and drives the ULN2003 power stage for all four motors</td><td>A dedicated, interrupt-driven board keeps motor timing precise regardless of what the Pi/Arduino are doing</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <p style="text-align:center">Schematic of the LoRa Development Board.</p>
+                <p>The Pi talks to the Arduino over a plain serial link; the Arduino talks to the PIC over I&sup2;C. Both hops use small, fixed-format text/byte commands rather than anything heavier &mdash; see <a href="unetbot.html#communication">Communication</a> below.</p>
 
-                <h2 id="bill_of_materials">Bill of Materials</h2>
+                <h2 id="mechanical">Mechanical Design</h2>
 
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>Reference</th>
-                                        <th>Quantity</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/rf-solutions/RFM95W-915S2/6564923">RFM95W-915S2 LoRa™ Transceiver Module 915MHz SMD</a></td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21A106KQCLNNC/3888062">10 µF ±10% 6.3V Ceramic Capacitor 0805</a></td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL (UMCC) Connector Receptacle, Male Pin 50 Ohm SMD</a></td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="https://www.digikey.com/en/products/detail/3m/2340-6111TG/1237275">Conn Header 40POS 2.54</a></td>
-                                        <td>1</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
+                <p>The chassis is welded from thick steel wire rather than sheet metal or 3D-printed plastic &mdash; lighter, and its open lattice doesn't catch much wind. Getting a clean weld on wire that thick took a few failed attempts; the fix that worked was wrapping each joint with a thin wound wire before soldering, so the joint closed around something instead of trying to bridge bare wire to wire.</p>
 
-                <h2 id="pcb">PCB</h2>
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/chassis-build-1.jpg" alt="The robot's welded steel-wire chassis frame, with a sheet-metal deck riveted on top and a cutout for the camera"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/chassis-build-2.jpg" alt="A side view of the assembled chassis showing the stepper motors and wheel mounts at the rear"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">The welded frame under construction, and the finished chassis with motors mounted.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/lora_development_board/lora-testing-board01.jpg" width="640" alt="3D Model of the LoRa Development Board">
+                <p>Four 3D-printed wheels carry the robot: the rear two are keyed directly to the stepper motor shafts (a friction-fit adapter clamps each wheel on with a single screw) and provide all the driving force; the front two spin freely on a bearing axle and are only along for balance. Every wheel has a machined groove sized to ride the 1/4&Prime; cable while still clearing the ceramic insulators bolted to each tower ring &mdash; a couple of millimeters of tolerance is the difference between rolling through cleanly and getting stuck on every single insulator.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/motor-sketch.jpg" width="500" alt="A hand-drawn design sketch dimensioning the wheel groove against the cable diameter (0.65 cm) and the insulator diameter (1.1 cm)">
+                  </p>
+                </div>
+                <p style="text-align:center">Working out the wheel-groove clearance by hand: the groove has to pass a 0.65&nbsp;cm cable <em>and</em> the 1.1&nbsp;cm insulators bolted along it.</p>
+
+                <p>Vegetation removal borrows straight from a string-trimmer: a small DC motor spins two twisted lengths of thin copper wire fast enough to shred the paper-tissue "weed" bundles clipped to the line, and switches on only when the vision system has actually flagged vegetation ahead &mdash; it doesn't run continuously.</p>
+
+                <h2 id="electronics">Electronics</h2>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Sensor</th><th>Purpose</th></tr></thead>
+                        <tbody>
+                            <tr><td>Camera (Pi Camera)</td><td>Finds the wire and towers ahead, and is the primary way the robot measures how far it's traveled from the start</td></tr>
+                            <tr><td>IMU</td><td>Tracks the robot's tilt relative to the cable, to correct the camera-based distance estimate on sloped sections (the center tower sits higher than the rest, so the line isn't flat)</td></tr>
+                            <tr><td>2&times; line sensors</td><td>Tell the robot which side is riding correctly on a conductor</td></tr>
+                            <tr><td>Sharp analog IR</td><td>Ranges the corridor below the line for waist-height vegetation encroaching on the right-of-way</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <p style="text-align:center">3D Model of the LoRa Development Board.</p>
+                <p>Everything runs on +12&nbsp;V and +5&nbsp;V from a single 12&nbsp;V/4.8&nbsp;Ah battery, stepped down to 5&nbsp;V with a switching regulator. An LCD on the chassis shows the live distance reading, three status LEDs (green/red/blue) report what the robot last found, and a physical switch is the only way to power it on.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/lora_development_board/lora-testing-board02.jpg" width="640" alt="3D Model of the LoRa Development Board">
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/electronics-build.jpg" alt="An Arduino Uno wired to a custom PIC perfboard with terminal blocks, alongside two unipolar stepper motors, during bench testing"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/pcb-soldering.jpg" alt="Hand-soldering the motor driver perfboard"></p>
+                  </div>
                 </div>
+                <p style="text-align:center">Bench-testing the motor driver with an Arduino stand-in before the real Mega 2560 shield was ready, and hand-soldering the board itself.</p>
 
-                <p style="text-align:center">3D Model of the LoRa Development Board.</p>
-
-                <h2 id="firmware-and-testing">Firmware and Testing</h2>
-
-                <p>The webpage randomnerdtutorials.com has an amazing tutorial named <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">ESP32 with LoRa using Arduino IDE – Getting Started</a>, that tutorial contains detailed information about how to use the RFM95 with an ESP32 (the same microcontroller that was selected for our designs). I used the same firmware and connections provided by the tutorial.</p>
-
-                <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
-
-                <p><strong>Before flashing:</strong> the sketches call <code>LoRa.begin(915E6)</code> to match the RFM95W&#8209;<strong>915</strong>S2 (915&nbsp;MHz) module fitted to this board; change that argument only if you pair it with a module for another band (<code>433E6</code> Asia, <code>866E6</code> Europe). The sender and receiver must also share the same sync word (<code>LoRa.setSyncWord(0xF3)</code>) or they ignore each other.</p>
-
-                <p>The connections are the following:</p>
-
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ESP32</th>
-                                        <th>RFM95W-915S2 Development Board</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>3V3</td>
-                                        <td>3.3V</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GND</td>
-                                        <td>GND</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 14</td>
-                                        <td>RST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 5</td>
-                                        <td>CS / NSS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 2</td>
-                                        <td>DIO0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 18</td>
-                                        <td>SCK</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 23</td>
-                                        <td>MOSI</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 19</td>
-                                        <td>MISO</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/lora_development_board/Lora_Dev_Board.jpg" width="640" alt="Custom LoRa Dev Board and ESP32 used in the test">
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/motor-driver-schematic.jpg" width="900" alt="Schematic of the motor driver board: a PIC16F877A driving four ULN2003A Darlington arrays, one per motor, communicating over I2C and serial to the Arduino">
+                  </p>
                 </div>
+                <p style="text-align:center">The motor driver board: a PIC16F877A plus four ULN2003A Darlington arrays &mdash; one per motor &mdash; for the two drive steppers and the two cutter motors.</p>
 
-                <p style="text-align:center">Custom LoRa Dev Board and ESP32 used in the test.</p>
-
-                <div class="row add-bottom">
-                    <div class="col-twelve">
-                        <div class="table-responsive">
-                            <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ESP32</th>
-                                        <th>RFM95W Board from Adafruit</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>3V3</td>
-                                        <td>VIN</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GND</td>
-                                        <td>GND</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 14</td>
-                                        <td>RST</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 5</td>
-                                        <td>CS / NSS</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 2</td>
-                                        <td>DIO0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 18</td>
-                                        <td>SCK</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 23</td>
-                                        <td>MOSI</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GPIO 19</td>
-                                        <td>MISO</td>
-                                    </tr>
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/lora_development_board/Lora_Adafruit.jpg" width="640" alt="RFM95W transceiver from Adafruit and ESP32 used in the test">
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/wiring-diagram.jpg" width="800" alt="Power distribution diagram showing which components connect to the GND, 12V and 5V rails">
+                  </p>
                 </div>
+                <p style="text-align:center">Power distribution across the three rails &mdash; motors and headlights on 12&nbsp;V, logic and sensors on 5&nbsp;V.</p>
 
-                <p style="text-align:center"><a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a> and ESP32 used in the test.</p>
+                <p>The Sharp IR sensor needed its own calibration curve, since the raw ADC reading isn't linear with distance. A quick bench measurement and curve fit gave a clean exponential relationship that the firmware could invert cheaply:</p>
 
-                <p>This repository contains a folder named /Firmware/ that contains the project for the transceiver as a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_receiver/esp32_RFM95_receiver.ino">receiver</a> and a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_sender/esp32_RFM95_sender.ino">sender</a>.</p>
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/ir-calibration.jpg" width="600" alt="A plot of measured distance versus ADC reading for the Sharp IR sensor, with a fitted exponential curve y = 147.5 e^(-0.01x) + 10.36">
+                  </p>
+                </div>
+                <p style="text-align:center">Distance vs. ADC-conversion curve for the Sharp sensor, fitted to <code>y = 147.5&middot;e<sup>&minus;0.01x</sup> + 10.36</code>. The PIC firmware carries the same relationship baked into a lookup table.</p>
 
-                <p>Both of the RFM95W Boards were used as a sender and receiver, the result was successful in both cases. During the test, one of the transceivers sends the package "hello counter", where the counter is a number that goes from 0 to 32767. The other transceiver receives the package and prints the message through serial.</p>
+                <h2 id="vision">Computer Vision</h2>
 
-                <h3>Requirements</h3>
+                <p>Rather than anything ML-based, the vision pipeline is a deliberately simple, deliberately robust color-blob detector &mdash; the team's own postmortem specifically flags lighting sensitivity as the main risk with camera-based approaches at a competition where you don't control the room. The Pi Camera runs with auto white balance <strong>locked off</strong> and a fixed "sports" (fast-shutter) exposure mode, so frame-to-frame color doesn't drift while the robot is moving:</p>
 
                 <ol>
-                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
-                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa Library</a></li>
+                    <li>Crop a window around the expected tower location in the frame.</li>
+                    <li>Convert to HSV and threshold for the tower's known color range.</li>
+                    <li>Clean up the mask with a morphological opening and take the largest contour.</li>
+                    <li>Estimate distance to the tower from the contour's bounding-box width, using the classic similar-triangles relationship: <code>distance = (real_width &times; focal_length) / pixel_width</code>.</li>
+                    <li>A sudden jump in that distance means the robot just passed under a tower &mdash; increment the tower counter.</li>
                 </ol>
 
-                <p>Results visualized in the serial monitor from the receiver circuit:</p>
+                <div class="col-full">
+                  <video src="images/unetbot/vision-debug.mp4" width="900" poster="images/unetbot/vision-debug-poster.jpg" controls muted playsinline preload="metadata" aria-label="Split-screen debug recording: raw camera feed on the left, detected tower contour and tracking overlay on the right"></video>
+                </div>
+                <p style="text-align:center">A debug recording from development: raw camera feed (left) next to the detected-contour overlay (right) used to tune the color thresholds on the bench before the real rig existed.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/lora_development_board/Test-Result.png" width="640" alt="Results from the test">
+                <p>On the Raspberry Pi, vision runs in its own OS process (Python's <code>multiprocessing</code>), separate from the process driving the OLED status display and the one handling serial I/O to the Arduino, connected by pipes. That way a slow camera frame never stalls the serial link or freezes the display.</p>
+
+                <h2 id="communication">Communication Protocol</h2>
+
+                <p>Both hops in the control chain use small, fixed-format messages instead of anything heavier:</p>
+
+                <p><strong>Arduino &rarr; PIC (I&sup2;C, address <code>0x61</code>)</strong> &mdash; a 6-byte frame per command:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Byte</th><th>Meaning</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>Mode: <code>0</code> move N steps, <code>1</code> set each coil pin directly, <code>2</code> move continuously</td></tr>
+                            <tr><td>2</td><td>Which motor (<code>0</code>&ndash;<code>3</code>)</td></tr>
+                            <tr><td>3</td><td>Step type: <code>s</code>ingle / <code>d</code>ouble / <code>h</code>alf</td></tr>
+                            <tr><td>4</td><td>Direction: <code>d</code>erecha / <code>i</code>zquierda</td></tr>
+                            <tr><td>5</td><td>Number of steps</td></tr>
+                            <tr><td>6</td><td>Delay between steps, in ms</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <p style="text-align:center">Results from the test.</p>
+                <p>On the PIC, all of this runs entirely from interrupts (Timer0 steps the motors, SSP handles I&sup2;C, RB-change reads the line sensors, RDA reads serial) &mdash; <code>main()</code> itself is just an empty <code>while(true)</code> loop. The step sequencing itself is a straightforward set of lookup tables for single/double/half-step unipolar drive, one table per direction.</p>
 
-                <p>For more information about the firmware visit the <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">original tutorial for the RFM95W</a>.</p>
+                <p><strong>Raspberry Pi &rarr; Arduino (serial)</strong> &mdash; short, human-readable ASCII commands, each character sent 5&times; in a row for reliability, e.g. <code>MON</code>/<code>MOFF</code> (drive motors on/off), <code>CON</code>/<code>COFF</code> (cutter on/off), <code>RON</code>/<code>ROFF</code>, <code>VON</code>/<code>VOFF</code>, <code>ZON</code>/<code>ZOFF</code> (red/green/blue status LEDs), and <code>MFREC30</code>&ndash;<code>MFREC90</code> for seven preset drive speeds.</p>
+
+                <h2 id="problems">Problems Along the Way</h2>
+
+                <ul>
+                    <li><strong>Welding the chassis</strong> &mdash; thick wire wouldn't take a clean joint until they started wrapping each junction with a thin coiled wire first, giving the solder something to close around.</li>
+                    <li><strong>Motor selection</strong> &mdash; DC motors were prototyped first, but steppers won out because step count gives distance-traveled for free. Getting enough torque to carry the robot's weight over the whole course took more than one redesign of the driver circuit for higher current.</li>
+                    <li><strong>Vision under real lighting</strong> &mdash; development started before the real test rig existed, using an improvised home-built stand-in, so the color thresholds were tuned somewhat blind to the actual competition lighting. Locking the camera's white balance and exposure was the main mitigation.</li>
+                </ul>
+
+                <h2 id="recommendations">What They'd Do Differently</h2>
+
+                <ul>
+                    <li>Build (or borrow) a course rig at the very start of the project, not near the end &mdash; it's the only way to test vision honestly.</li>
+                    <li>Consider dedicated color sensors instead of a camera, if the mission allows it &mdash; a lot of complexity in this build exists purely to compensate for camera/lighting variability.</li>
+                    <li>Size motor torque for the fully-loaded robot from day one; guessing low cost them multiple motor swaps.</li>
+                    <li>Budget at least three months full-time for a project with this many interacting sensors and subsystems.</li>
+                </ul>
+
+                <h2 id="team">Team</h2>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/team-photo.jpg" width="900" alt="Team ZERO posing with E-wanna mounted on the display rig at the UNETBots 2015 competition">
+                  </p>
+                </div>
+                <p style="text-align:center">Team ZERO at UNETBots 2015, San Crist&oacute;bal.</p>
+
+                <p>E-wanna was designed and built by <strong>Jorge P&eacute;rez, Said Alvarado, N&eacute;stor S&aacute;nchez</strong> and <strong>Leonardo Ward</strong> &mdash; team <em>ZERO</em>, Universidad Sim&oacute;n Bol&iacute;var &mdash; for the DESAF&Iacute;O category of UNETBots 2015.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
                         <h5>Posted In: </h5>
                         <span class="entry__tax-list">
-                            <a href="embedded-hardware.html">Embedded Hardware</a>
+                            <a href="sumo.html">Robotics</a>
                         </span>
                     </div> <!-- end entry__cat -->
 
                     <div class="entry__tags">
                         <h5>Tags: </h5>
                         <span class="entry__tax-list entry__tax-list--pill">
-                            <a href="lora-dev-board.html#schematic">RFM95W</a>
-                            <a href="lora-dev-board.html#schematic">LoRa</a>
-                            <a href="lora-dev-board.html#firmware-and-testing">ESP32</a>
-                            <a href="lora-dev-board.html#firmware-and-testing">915 MHz</a>
-                            <a href="lora-dev-board.html#pcb">KiCad</a>
+                            <a href="unetbot.html#architecture">Raspberry Pi</a>
+                            <a href="unetbot.html#architecture">Arduino</a>
+                            <a href="unetbot.html#electronics">PIC</a>
+                            <a href="unetbot.html#mechanical">Stepper Motors</a>
+                            <a href="unetbot.html#vision">OpenCV</a>
+                            <a href="unetbot.html#communication">I2C</a>
                         </span>
                     </div> <!-- end entry__tags -->
                 </div> <!-- end s-content__taxonomies -->
@@ -713,16 +670,10 @@
 
         <div class="s-content__entry-nav">
             <div class="row s-content__nav">
-                <div class="col-six s-content__prev">
-                    <a href="gps-dev-board.html" rel="prev">
-                        <span>Previous Post</span>
-                        GPS Development Board
-                    </a>
-                </div>
                 <div class="col-six s-content__next">
-                    <a href="helios_ren.html" rel="next">
+                    <a href="sumo.html" rel="next">
                         <span>Next Post</span>
-                        HELIOS REN Tail Light System
+                        Sumo
                     </a>
                 </div>
             </div>
@@ -743,14 +694,6 @@
                   <p>My name is Leonardo Ward and I have a Bachelor's Degree in Electronics Engineering. I have experience developing consumer and industrial products: I design the schematics and the PCB layouts (with Altium Designer and KiCad). I coordinate the manufacture process directly with the suppliers and PCB manufacturers, in Europe and China. Finally, I design the firmware for those products in C++ and/or Python. <a href="about.html">More about me &rarr;</a></p>
 
               </div>
-              <!-- <div class="col-six tab-full s-footer__about">
-
-                  <p>I have designed and developed applications using object-oriented programming in Python, Java and C++. Also I have experience in front-end, back-end, database and mobile development using HTML, CSS, Javascript, Angular, Vuejs, Quasar, NodeJS and MySQL.</p>
-
-                  <p>I have worked with linux-based systems (like Ubuntu), and version control systems (Github
-                  and Bitbucket).</p>
-
-              </div> -->
             </div>
         </div> <!-- end s-footer__main -->
 
