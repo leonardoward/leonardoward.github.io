@@ -444,7 +444,7 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Real high-tension transmission lines run for kilometers through terrain that's slow and dangerous for a person to walk, so keeping them running means either sending a lineman to climb the towers or renting a helicopter. <strong>E-wanna</strong> is a robot built by team <strong>ZERO</strong> (Zero Enterprise of Robotics Operations, Universidad Sim&oacute;n Bol&iacute;var) for the <em>DESAF&Iacute;O</em> category of <strong>UNETBots 2015</strong>, a national robotics competition whose challenge was exactly that: build an autonomous robot that rides the cable itself, finds hot spots and encroaching vegetation, reports how far each one is from the start, and physically cuts the vegetation off the line &mdash; all while two electric fans blow simulated wind at it.</p>
+                <p class="lead drop-cap">Real high-tension transmission lines run for kilometers through terrain that's slow and dangerous for a person to walk, so keeping them running means either sending a lineman to climb the towers or renting a helicopter. <strong>E-wanna</strong> is a robot built by team <strong>FutBot USB</strong> (Universidad Sim&oacute;n Bol&iacute;var) for the <em>DESAF&Iacute;O</em> category of <strong>UNETBots 2015</strong>, a national robotics competition whose challenge was exactly that: build an autonomous robot that rides the cable itself, finds hot spots and encroaching vegetation, reports how far each one is from the start, and physically cuts the vegetation off the line &mdash; all while two electric fans blow simulated wind at it.</p>
 
                 <div class="row">
                   <div class="col-six">
@@ -455,6 +455,16 @@
                   </div>
                 </div>
                 <p style="text-align:center">The finished electronics stack (left), and the improvised test rig the team built at home so the vision code had something to practice on before the official one existed (right).</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig1-robot.jpg" alt="E-wanna semi-assembled on the lab's cable rig, with a FutBot USB team poster visible on the wall behind it"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig8-test-rig.jpg" alt="The team's own classroom test rig: a single cable strung between two welded towers, with a hand-drawn system architecture diagram on the whiteboard behind it"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">From the team's own paper on E-wanna: the semi-assembled robot, and the single-cable classroom rig they eventually built to test it &mdash; note the system-architecture diagram sketched on the whiteboard behind it.</p>
 
                 <h2 id="challenge">The Challenge</h2>
 
@@ -478,12 +488,20 @@
                         <tbody>
                             <tr><td><strong>Raspberry Pi</strong></td><td>Main controller &mdash; runs the state machine and the computer-vision pipeline, makes all high-level decisions</td><td>Only board in the stack with enough headroom to run OpenCV on camera frames in real time</td></tr>
                             <tr><td><strong>Arduino Mega 2560</strong></td><td>Sensor controller &mdash; reads the IR/line sensors, talks to the motor board, validates sensor data before passing it up</td><td>Huge pin count for the sensor fan-out, plus a custom shield soldered directly to it</td></tr>
-                            <tr><td><strong>PIC16F877A</strong></td><td>Motor controller &mdash; generates the step/direction signals and drives the ULN2003 power stage for all four motors</td><td>A dedicated, interrupt-driven board keeps motor timing precise regardless of what the Pi/Arduino are doing</td></tr>
+                            <tr><td><strong>PIC16F877A</strong></td><td>Motor controller &mdash; generates the step/direction signals and drives five ULN2003 Darlington arrays that provide the actual motor power</td><td>A dedicated, interrupt-driven board keeps motor timing precise regardless of what the Pi/Arduino are doing</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <p>The Pi talks to the Arduino over a plain serial link; the Arduino talks to the PIC over I&sup2;C. Both hops use small, fixed-format text/byte commands rather than anything heavier &mdash; see <a href="unetbot.html#communication">Communication</a> below.</p>
+
+                <p>The team's own writeup is explicit about why: a plain microcontroller wouldn't have had the headroom to run computer vision, so the Pi does all the high-level decision-making through a state machine and treats every other board as a subordinate that only hands up already-processed sensor data. That state machine is also what decides how long the robot pauses at each hot point or vegetation cluster to show its reading before moving on.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig7-pi-camera-shield.jpg" width="800" alt="A Raspberry Pi in a case with a red 3D-printed pan-tilt camera mount, connected by ribbon cable to the Arduino shield perfboard">
+                  </p>
+                </div>
+                <p style="text-align:center">The Raspberry Pi with its 3D-printed camera mount, wired to the Arduino shield.</p>
 
                 <h2 id="mechanical">Mechanical Design</h2>
 
@@ -499,13 +517,23 @@
                 </div>
                 <p style="text-align:center">The welded frame under construction, and the finished chassis with motors mounted.</p>
 
-                <p>Four 3D-printed wheels carry the robot: the rear two are keyed directly to the stepper motor shafts (a friction-fit adapter clamps each wheel on with a single screw) and provide all the driving force; the front two spin freely on a bearing axle and are only along for balance. Every wheel has a machined groove sized to ride the 1/4&Prime; cable while still clearing the ceramic insulators bolted to each tower ring &mdash; a couple of millimeters of tolerance is the difference between rolling through cleanly and getting stuck on every single insulator.</p>
-
                 <div class="col-full">
-                  <p><img loading="lazy" decoding="async" src="images/unetbot/motor-sketch.jpg" width="500" alt="A hand-drawn design sketch dimensioning the wheel groove against the cable diameter (0.65 cm) and the insulator diameter (1.1 cm)">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig5-chassis-wheels.jpg" width="600" alt="Top-down view of the finished chassis mounted on all four wheels on the cable, showing the sheet-metal deck cutout with wiring passing through">
                   </p>
                 </div>
-                <p style="text-align:center">Working out the wheel-groove clearance by hand: the groove has to pass a 0.65&nbsp;cm cable <em>and</em> the 1.1&nbsp;cm insulators bolted along it.</p>
+                <p style="text-align:center">The finished chassis riding the cable on all four wheels, from the team's paper.</p>
+
+                <p>Four 3D-printed wheels carry the robot: the rear two are keyed directly to the stepper motor shafts (a friction-fit adapter clamps each wheel on with a single screw) and provide all the driving force; the front two spin freely on a bearing axle and are only along for balance. Every wheel has a machined groove sized to ride the 1/4&Prime; cable while still clearing the ceramic insulators bolted to each tower ring &mdash; a couple of millimeters of tolerance is the difference between rolling through cleanly and getting stuck on every single insulator.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/motor-sketch.jpg" alt="A hand-drawn design sketch dimensioning the wheel groove against the cable diameter (0.65 cm) and the insulator diameter (1.1 cm)"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig4-axle-bearing.jpg" alt="Close-up of the robot's front axle and bearings, which let the front wheels spin freely while being pushed by the rear stepper motors"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">Working out the wheel-groove clearance by hand &mdash; the groove has to pass a 0.65&nbsp;cm cable <em>and</em> the 1.1&nbsp;cm insulators bolted along it &mdash; and the free-rolling front axle and bearings themselves.</p>
 
                 <p>Vegetation removal borrows straight from a string-trimmer: a small DC motor spins two twisted lengths of thin copper wire fast enough to shred the paper-tissue "weed" bundles clipped to the line, and switches on only when the vision system has actually flagged vegetation ahead &mdash; it doesn't run continuously.</p>
 
@@ -535,11 +563,21 @@
                 </div>
                 <p style="text-align:center">Bench-testing the motor driver with an Arduino stand-in before the real Mega 2560 shield was ready, and hand-soldering the board itself.</p>
 
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig2-shield-traces.jpg" alt="The underside of the Arduino Mega shield perfboard, showing the hand-soldered tin traces connecting all the sensor headers"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig3-motor-lcd.jpg" alt="The motor driver board and the distance-readout LCD mounted on the chassis, with a stepper motor visible on each side"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">The Arduino shield's hand-soldered underside, and the motor driver board with the distance-readout LCD mounted on the chassis &mdash; both from the team's paper.</p>
+
                 <div class="col-full">
-                  <p><img loading="lazy" decoding="async" src="images/unetbot/motor-driver-schematic.jpg" width="900" alt="Schematic of the motor driver board: a PIC16F877A driving four ULN2003A Darlington arrays, one per motor, communicating over I2C and serial to the Arduino">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/motor-driver-schematic.jpg" width="900" alt="Schematic of the motor driver board: a PIC16F877A driving ULN2003A Darlington arrays, communicating over I2C and serial to the Arduino">
                   </p>
                 </div>
-                <p style="text-align:center">The motor driver board: a PIC16F877A plus four ULN2003A Darlington arrays &mdash; one per motor &mdash; for the two drive steppers and the two cutter motors.</p>
+                <p style="text-align:center">The motor driver board: a PIC16F877A plus five ULN2003 Darlington arrays for the drive and cutter motors.</p>
 
                 <div class="col-full">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/wiring-diagram.jpg" width="800" alt="Power distribution diagram showing which components connect to the GND, 12V and 5V rails">
@@ -571,6 +609,14 @@
                   <video src="images/unetbot/vision-debug.mp4" width="900" poster="images/unetbot/vision-debug-poster.jpg" controls muted playsinline preload="metadata" aria-label="Split-screen debug recording: raw camera feed on the left, detected tower contour and tracking overlay on the right"></video>
                 </div>
                 <p style="text-align:center">A debug recording from development: raw camera feed (left) next to the detected-contour overlay (right) used to tune the color thresholds on the bench before the real rig existed.</p>
+
+                <p>The team describes the finished module as able to tell apart the three things the rig actually throws at it &mdash; hot points, insulators, and vegetation &mdash; once it's running on the real course. Hot points on the official rig are marked with white tape, which shows up clearly in this annotated frame from their paper: several white and yellow markers, each labeled and carrying its own measured distance from the start, overlaid directly on the image.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig6-vision-system.jpg" width="500" alt="An annotated camera frame from the vision system showing several detected markers labeled 'blanco' (white) and 'amarillo' (yellow), each tagged with its own measured distance in centimeters">
+                  </p>
+                </div>
+                <p style="text-align:center">The vision system's own output, from the team's paper: detected markers labeled by color, each carrying its measured distance in centimeters.</p>
 
                 <p>On the Raspberry Pi, vision runs in its own OS process (Python's <code>multiprocessing</code>), separate from the process driving the OLED status display and the one handling serial I/O to the Arduino, connected by pipes. That way a slow camera frame never stalls the serial link or freezes the display.</p>
 
@@ -609,21 +655,24 @@
                 <h2 id="recommendations">What They'd Do Differently</h2>
 
                 <ul>
-                    <li>Build (or borrow) a course rig at the very start of the project, not near the end &mdash; it's the only way to test vision honestly.</li>
+                    <li>Build (or borrow) a course rig at the very start of the project, not near the end &mdash; it's the only way to test vision honestly, and it also gives a fast, concrete way to check whether the robot is even sized correctly.</li>
                     <li>Consider dedicated color sensors instead of a camera, if the mission allows it &mdash; a lot of complexity in this build exists purely to compensate for camera/lighting variability.</li>
-                    <li>Size motor torque for the fully-loaded robot from day one; guessing low cost them multiple motor swaps.</li>
-                    <li>Budget at least three months full-time for a project with this many interacting sensors and subsystems.</li>
+                    <li>Work out the actual power the motors need to consume for good performance <em>before</em> picking them, not after &mdash; guessing low cost the team multiple motor swaps mid-project.</li>
+                    <li>Many mechanical parts, and even the rig's own insulators, were 3D-printed; find an affordable commercial partner for that ahead of time rather than during the crunch.</li>
+                    <li>Budget at least three months, full-time, for a project with this many interacting sensors and subsystems.</li>
                 </ul>
+
+                <p>In the team's own words, the goal was never just to win the category: they built E-wanna hoping the approach could genuinely be extrapolated to real high-tension lines, and to help push the national maintenance problem it's modeled on a little further along.</p>
 
                 <h2 id="team">Team</h2>
 
                 <div class="col-full">
-                  <p><img loading="lazy" decoding="async" src="images/unetbot/team-photo.jpg" width="900" alt="Team ZERO posing with E-wanna mounted on the display rig at the UNETBots 2015 competition">
+                  <p><img loading="lazy" decoding="async" src="images/unetbot/team-photo.jpg" width="900" alt="Team FutBot USB posing with E-wanna mounted on the display rig at the UNETBots 2015 competition">
                   </p>
                 </div>
-                <p style="text-align:center">Team ZERO at UNETBots 2015, San Crist&oacute;bal.</p>
+                <p style="text-align:center">Team FutBot USB at UNETBots 2015, San Crist&oacute;bal.</p>
 
-                <p>E-wanna was designed and built by <strong>Jorge P&eacute;rez, Said Alvarado, N&eacute;stor S&aacute;nchez</strong> and <strong>Leonardo Ward</strong> &mdash; team <em>ZERO</em>, Universidad Sim&oacute;n Bol&iacute;var &mdash; for the DESAF&Iacute;O category of UNETBots 2015.</p>
+                <p>E-wanna was designed and built by <strong>Jorge P&eacute;rez, Said Alvarado, N&eacute;stor S&aacute;nchez</strong> and <strong>Leonardo Ward</strong> &mdash; team <em>FutBot USB</em>, Universidad Sim&oacute;n Bol&iacute;var &mdash; for the DESAF&Iacute;O category of UNETBots 2015.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
