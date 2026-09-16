@@ -437,7 +437,7 @@
                     <li class="byline">
                         By
                         <a href="https://github.com/leonardoward">Leonardo Ward</a>,
-                        Jorge P&eacute;rez, Said Alvarado &amp; N&eacute;stor S&aacute;nchez
+                        Jorge P&eacute;rez, Said Alvarado &amp; Nestor S&aacute;nchez
                     </li>
                 </ul>
             </div>
@@ -470,7 +470,7 @@
 
                 <p>UNETBots is Venezuela's national robotics competition, hosted by <a href="https://en.wikipedia.org/wiki/National_Experimental_University_of_T%C3%A1chira">Universidad Nacional Experimental del T&aacute;chira</a> (UNET) together with AVERD (Asociaci&oacute;n Venezolana de Rob&oacute;tica y Dom&oacute;tica) and FUNDELEC, the government's electrical-service development foundation. The 2015 edition's DESAF&Iacute;O category asked teams to automate exactly the kind of inspection real utility linemen do by hand or by helicopter.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/course-diagram.jpg" width="900" alt="Official diagram of the competition rig: five towers carrying twin steel cables with ceramic insulators, marked hot points, tissue-paper vegetation knots on the wires, foam vegetation blocks below, and two wind fans">
                   </p>
                 </div>
@@ -497,7 +497,7 @@
 
                 <p>The team's own writeup is explicit about why: a plain microcontroller wouldn't have had the headroom to run computer vision, so the Pi does all the high-level decision-making through a state machine and treats every other board as a subordinate that only hands up already-processed sensor data. That state machine is also what decides how long the robot pauses at each hot point or vegetation cluster to show its reading before moving on.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig7-pi-camera-shield.jpg" width="800" alt="A Raspberry Pi in a case with a red 3D-printed pan-tilt camera mount, connected by ribbon cable to the Arduino shield perfboard">
                   </p>
                 </div>
@@ -517,7 +517,7 @@
                 </div>
                 <p style="text-align:center">The welded frame under construction, and the finished chassis with motors mounted.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig5-chassis-wheels.jpg" width="600" alt="Top-down view of the finished chassis mounted on all four wheels on the cable, showing the sheet-metal deck cutout with wiring passing through">
                   </p>
                 </div>
@@ -573,13 +573,13 @@
                 </div>
                 <p style="text-align:center">The Arduino shield's hand-soldered underside, and the motor driver board with the distance-readout LCD mounted on the chassis &mdash; both from the team's paper.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/motor-driver-schematic.jpg" width="900" alt="Schematic of the motor driver board: a PIC16F877A driving ULN2003A Darlington arrays, communicating over I2C and serial to the Arduino">
                   </p>
                 </div>
                 <p style="text-align:center">The motor driver board: a PIC16F877A plus five ULN2003 Darlington arrays for the drive and cutter motors.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/wiring-diagram.jpg" width="800" alt="Power distribution diagram showing which components connect to the GND, 12V and 5V rails">
                   </p>
                 </div>
@@ -587,7 +587,7 @@
 
                 <p>The Sharp IR sensor needed its own calibration curve, since the raw ADC reading isn't linear with distance. A quick bench measurement and curve fit gave a clean exponential relationship that the firmware could invert cheaply:</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/ir-calibration.jpg" width="600" alt="A plot of measured distance versus ADC reading for the Sharp IR sensor, with a fitted exponential curve y = 147.5 e^(-0.01x) + 10.36">
                   </p>
                 </div>
@@ -612,7 +612,7 @@
 
                 <p>The team describes the finished module as able to tell apart the three things the rig actually throws at it &mdash; hot points, insulators, and vegetation &mdash; once it's running on the real course. Hot points on the official rig are marked with white tape, which shows up clearly in this annotated frame from their paper: several white and yellow markers, each labeled and carrying its own measured distance from the start, overlaid directly on the image.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig6-vision-system.jpg" width="500" alt="An annotated camera frame from the vision system showing several detected markers labeled 'blanco' (white) and 'amarillo' (yellow), each tagged with its own measured distance in centimeters">
                   </p>
                 </div>
@@ -666,13 +666,13 @@
 
                 <h2 id="team">Team</h2>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/team-photo.jpg" width="900" alt="Team FutBot USB posing with E-wanna mounted on the display rig at the UNETBots 2015 competition">
                   </p>
                 </div>
                 <p style="text-align:center">Team FutBot USB at UNETBots 2015, San Crist&oacute;bal.</p>
 
-                <p>E-wanna was designed and built by <strong>Jorge P&eacute;rez, Said Alvarado, N&eacute;stor S&aacute;nchez</strong> and <strong>Leonardo Ward</strong> &mdash; team <em>FutBot USB</em>, Universidad Sim&oacute;n Bol&iacute;var &mdash; for the DESAF&Iacute;O category of UNETBots 2015.</p>
+                <p>E-wanna was designed and built by <strong>Jorge P&eacute;rez, Said Alvarado, Nestor S&aacute;nchez</strong> and <strong>Leonardo Ward</strong> &mdash; team <em>FutBot USB</em>, Universidad Sim&oacute;n Bol&iacute;var &mdash; for the DESAF&Iacute;O category of UNETBots 2015.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

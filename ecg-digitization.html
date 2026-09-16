@@ -536,7 +536,7 @@
 
                 <p>This is the core of the thesis: turning a photograph of a paper ECG into a clean, calibrated signal. It runs in three stages.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p>
                   <img loading="lazy" decoding="async" src="images/ecg-digitization/pipeline-overview.jpg" width="900" alt="Pipeline overview: image acquisition, perspective adjustment, partial segmentation of the four lead rows, then per-lead analysis, ending in a calibrated digital signal">
                   </p>
@@ -590,7 +590,7 @@
 
                 <p>The normalized row-sums of the color mask and the entropy mask are added together; the four largest peaks in that combined curve mark the centers of the four lead rows, and the nearest local minima on each side (via the first derivative) mark where to cut.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/row-segmentation.jpg" width="800" alt="An ECG image with its four lead rows outlined in green boxes after successful row segmentation"></p>
                 </div>
                 <p style="text-align:center">The four rows located and boxed off.</p>
@@ -644,14 +644,14 @@
                   </div>
                 </div>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/digitized-signal-plot.jpg" width="700" alt="The final digitized lead-II signal, plotted in millivolts against milliseconds"></p>
                 </div>
                 <p style="text-align:center">The end product of the pipeline: a calibrated, plottable signal.</p>
 
                 <p>Grid calibration turned out uneven &mdash; correct to within 1&nbsp;px on width in 59.3% of images but on height in only 33.3% (RMSE 0.407 vs. 1.111 grid squares), which the thesis flags as a real weak point, since height error propagates directly into amplitude error.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/debug-desktop.jpg" width="800" alt="A development screenshot: the pipeline's OpenCV debug viewer and a Matplotlib figure showing the same digitized ECG lead side by side">
                   </p>
                 </div>
@@ -679,13 +679,13 @@
 
                 <p>The staged-upload endpoints (<code>/preprocessed</code>, <code>/segmented</code>) exist so a thinner client &mdash; or a different app entirely &mdash; can do part of the pipeline locally and only hand the server what it can't do itself.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/data-model.jpg" width="800" alt="MongoDB data model: User, ECG, Segment, DigitizationStatus, ProcessingType and Role collections and their relationships">
                   </p>
                 </div>
                 <p style="text-align:center">The MongoDB collections behind the API: a <code>User</code> owns <code>ECG</code> jobs, each made of <code>Segment</code>s tagged with a lead, a <code>DigitizationStatus</code> (raw/preprocessed/segmented/digitized) and a <code>ProcessingType</code>.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/swagger-docs.jpg" width="700" alt="The Swagger UI auto-generated documentation for the ECG digitization API, listing the auth and ECG endpoints">
                   </p>
                 </div>
@@ -732,7 +732,7 @@
 
                 <p>Login is optional &mdash; you can continue as a guest, you just don't get your results saved. Once a photo is captured, the app runs the same contour/corner homography as Stage&nbsp;1 locally (via OpenCV4Android) to flag the detected sheet outline in green; the user then drags a resizable rectangle over the lead they want digitized before the crop is uploaded. A <code>RegistrationIntentService</code> keeps the device's FCM token fresh with the server, and a <code>FirebaseMessagingService</code> listener fires a local notification &mdash; and immediately fetches the JSON result &mdash; the moment the server finishes processing. Results render in <a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a>, with pinch-zoom and pan over the mV-vs-ms trace.</p>
 
-                <div class="col-full">
+                <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/fcm-architecture.jpg" width="500" alt="Firebase Cloud Messaging architecture: the web interface and server both talk to Firebase, which pushes notifications to Android, iOS and web clients">
                   </p>
                 </div>
