@@ -456,6 +456,20 @@
 
                 <p class="lead drop-cap">A digital control interface for the <strong>Kelly KEB72601XF</strong> brushless&#8209;DC motor controllers used by the <strong>USB&nbsp;Solar</strong> team (the Universidad Sim&oacute;n Bol&iacute;var solar car). The Kelly controllers give you the power hardware but expect mechanical switches and potentiometers on their input connector; this project replaces those with an <strong>Arduino Uno</strong> driven over serial, so a control board can set the motor's speed and direction.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Vehicles thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vehicles">Vehicles</a> thread &middot; 2011&ndash;2020</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="steering-wheel.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/steering-wheel-71dbbbb9.jpg" alt=""></span><span class="cs-thread__name">Steering-wheel display</span><span class="cs-thread__year">2011&ndash;12</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="car-dashboard.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/car-dashboard-5eafa676.jpg" alt=""></span><span class="cs-thread__name">Dashboard module</span><span class="cs-thread__year">2012&ndash;13</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="gasoline-module.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gasoline-module-9c17c403.jpg" alt=""></span><span class="cs-thread__name">Fuel-level module</span><span class="cs-thread__year">2012</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="wheel-alignment.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/wheel-alignment-26b59118.jpg" alt=""></span><span class="cs-thread__name">Wheel alignment</span><span class="cs-thread__year">2013</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="brake-test.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brake-test-ae1149ed.jpg" alt=""></span><span class="cs-thread__name">Brake test logger</span><span class="cs-thread__year">2013</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="bajasae.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/bajasae-fb87cd3a.jpg" alt=""></span><span class="cs-thread__name">Baja SAE electronics</span><span class="cs-thread__year">2011&ndash;14</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brushlessdc-471a1e8e.jpg" alt=""></span><span class="cs-thread__name">Solar car motor interface</span><span class="cs-thread__year">2016 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="interactive-map.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/interactive-map-45ca725d.jpg" alt=""></span><span class="cs-thread__name">Interactive map</span><span class="cs-thread__year">2020</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -514,7 +528,7 @@
                     <img loading="lazy" decoding="async" src="images/brushless_dc_drivers/controller_setup.jpg" width="640" alt="Recommended interface for the Kelly KEB72601XF">
                 </div>
 
-                <p style="text-align:center">Recommended interface for the Kelly KEB72601XF.</p>
+                <p style="text-align:center">Recommended interface for the Kelly KEB72601XF From the Kelly KEB controller manual.</p>
 
                 <p id="relays">Three electrical <strong>relays</strong> replace the switches from the original circuit &mdash; each pulls a <code>J2</code> input to ground:</p>
 
@@ -534,7 +548,7 @@
                     <img loading="lazy" decoding="async" src="images/brushless_dc_drivers/front_panel.jpg" width="640" alt="Front Panel of the Kelly KEB72601XF">
                 </div>
 
-                <p style="text-align:center">Front Panel of the Kelly KEB72601XF.</p>
+                <p style="text-align:center">Front Panel of the Kelly KEB72601XF From the Kelly KEB controller manual.</p>
 
                 <p>The J2 connector is used to interact with the controller using a development board (Arduino Uno), the next image describes the J2 connector.</p>
 
@@ -542,7 +556,7 @@
                     <img loading="lazy" decoding="async" src="images/brushless_dc_drivers/j2.jpg" width="640" alt="J2 Pin Description">
                 </div>
 
-                <p style="text-align:center">J2 Pin Description.</p>
+                <p style="text-align:center">J2 Pin Description From the Kelly KEB controller manual.</p>
 
                 <h3 id="firmware"><a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino"><i class="fab fa-github"></i></a>&nbsp; Firmware</h3>
 
@@ -634,7 +648,7 @@
 
                 <h3 id="recommendations">Recommended Changes</h3>
 
-                <p>The report's other recommendation: replace the relay&#8209;based switches with <strong>transistor&#8209;based</strong> ones. The board already carries the three transistors that energise the relay coils, so the relays could be dropped entirely &mdash; simpler, and lower current draw.</p>
+                <p>My report's other recommendation: replace the relay&#8209;based switches with <strong>transistor&#8209;based</strong> ones. The board already carries the three transistors that energise the relay coils, so the relays could be dropped entirely &mdash; simpler, and lower current draw.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -760,6 +774,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

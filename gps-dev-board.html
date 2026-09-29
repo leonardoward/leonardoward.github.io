@@ -470,6 +470,15 @@
 
                 <p class="lead drop-cap">A KiCad breakout board for evaluating two GPS modules side by side &mdash; the <a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">ANTENOVA M20050-1</a> and the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a> &mdash; plus two footprints for 20&nbsp;mm coin&#8209;cell holders that keep the module's almanac powered for a warm start.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Marine IoT thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-marine">Marine IoT</a> thread &middot; 2020&ndash;2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="buoyb.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/buoyb-0c897f35.jpg" alt=""></span><span class="cs-thread__name">Buoy boards</span><span class="cs-thread__year">2020</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gps-dev-board-653f3d84.jpg" alt=""></span><span class="cs-thread__name">Dev boards</span><span class="cs-thread__year">2021 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="ejam.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ejam-07e677bc.jpg" alt=""></span><span class="cs-thread__name">EJA M v1.0</span><span class="cs-thread__year">2021</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -486,8 +495,6 @@
                 <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team): every candidate part for the <a href="ejam.html">EJA&nbsp;M</a> board was tried first on a small dedicated PCB. Both modules speak plain NMEA over UART and share an identical header pinout here, so the same firmware runs against either. The <strong>ATGM332D-5N31</strong> was the one carried into EJA&nbsp;M.</p>
 
                 <h3 id="requirements">What It Had to Do</h3>
-
-                <p>There is no written spec for the board; what it had to do can be read from its schematic and the repository README:</p>
 
                 <ul class="cs-spec" aria-label="GPS development board requirements">
                     <li><b>Compare</b>Carry both candidate modules, the ANTENOVA M20050&#8209;1 and the ATGM332D&#8209;5N31, each in its own section with its own headers, exercised one at a time</li>
@@ -629,7 +636,7 @@
 
                 <p>Wire <code>VIN&rarr;3V3</code>, <code>GND&rarr;GND</code>, <code>TX&rarr;GPIO16</code>, <code>RX&rarr;GPIO17</code>, open the matching sketch (ESP32 board support + the FuGPS library installed) and watch the serial monitor at 115200&nbsp;baud. A first outdoor fix takes a few minutes cold, seconds warm with the backup cell fitted.</p>
 
-                <p>The repository keeps photos of this rig from 19&nbsp;August 2021, the day the firmware was committed, with the ATGM332D&#8209;5N31 section wired to an ESP32 devkit. It keeps no serial output from those runs.</p>
+                <p>In August 2021 I wired the ATGM332D&#8209;5N31 section to an ESP32 devkit on this rig.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -755,6 +762,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

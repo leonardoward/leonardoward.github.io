@@ -456,6 +456,23 @@
 
                 <p class="lead drop-cap">The <strong>HELA Module</strong> is a modular ambient&#8209;light controller: one piece of hardware that can switch an ordinary mains <strong>110&nbsp;V / 220&nbsp;V AC LED strip</strong> on and off <strong>manually</strong>, on a <strong>schedule</strong>, or <strong>automatically from the ambient light level</strong>. It was built for <em>PG&#8209;7232 Embedded Systems</em> at the <a href="http://www.usb.ve/">Universidad Sim&oacute;n Bol&iacute;var</a> as a six&#8209;person team project, with the firmware on a <a href="https://www.microchip.com/en-us/product/pic16f1768">PIC16F1768</a> and the whole circuit validated in <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the PIC firmware thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-pic">PIC firmware</a> thread &middot; 2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="helios_ren.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/helios_ren-bcfd89a5.jpg" alt=""></span><span class="cs-thread__name">HELIOS REN</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ambient-lights-63b84f31.jpg" alt=""></span><span class="cs-thread__name">HELA ambient lights</span><span class="cs-thread__year">2021 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pic-ws2812.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pic-ws2812-71f2636d.jpg" alt=""></span><span class="cs-thread__name">WS2812 driver</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pic-proteus-space-invaders.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pic-proteus-space-invaders-a2820d80.jpg" alt=""></span><span class="cs-thread__name">Space Invaders on a PIC</span><span class="cs-thread__year">2021</span></a></li>
+                    </ol>
+                </nav>
+
+                <aside class="cs-credits" id="team" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>My role</dt><dd>I designed the hardware and built the Proteus model: schematic, power supply, light sensor and connectors.</dd></div>
+                        <div><dt>Team</dt><dd>Carlos Sanoja, Jes&uacute;s Guillen, Mauricio Marcano, Oscar Moreno, Vincenzo D&rsquo;Argento and I. Carlos and Vincenzo wrote the firmware, and Carlos recorded the demo video.</dd></div>
+                    </dl>
+                </aside>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -588,7 +605,7 @@
 
                 <h3 id="cost">Cost</h3>
 
-                <p>From the report's BOM analysis the electronics come to about <strong>$7</strong> in one&#8209;off quantities and the full production cost (with assembly and lamp materials) to about <strong>$31</strong> against a $70 retail target &mdash; inside the 50% goal. The report's cost table, by order quantity:</p>
+                <p>From our report's BOM analysis the electronics come to about <strong>$7</strong> in one&#8209;off quantities and the full production cost (with assembly and lamp materials) to about <strong>$31</strong> against a $70 retail target &mdash; inside the 50% goal. The report's cost table, by order quantity:</p>
 
                 <div class="table-responsive">
                     <table>
@@ -610,14 +627,9 @@
                 <h3 id="notes">Open Items</h3>
 
                 <ul>
-                    <li>The committed firmware implements the menu, the light sensor, the schedule comparison and the relay control. The DS1307 is on the board and in the schematic, but this build does not yet read it over I&sup2;C (no I&sup2;C module is generated and there is no timekeeping interrupt) &mdash; the clock is set and held through the <em>Configure time</em> screen. Wiring the RTC and writing the selected mode to Flash are the open items.</li>
+                    <li>The firmware implements the menu, the light sensor, the schedule comparison and the relay control. The DS1307 is on the board and in the schematic, but this build does not yet read it over I&sup2;C (no I&sup2;C module is generated and there is no timekeeping interrupt) &mdash; the clock is set and held through the <em>Configure time</em> screen. Wiring the RTC and writing the selected mode to Flash are the open items.</li>
                     <li>The off&#8209;timer in the requirements (15, 30, 45 or 60&nbsp;minutes) is not a menu option in this build; the scheduled window is the only timed switch&#8209;off.</li>
-                    <li>The repository has no <code>LICENSE</code> file yet.</li>
                 </ul>
-
-                <h2 id="team" class="cs-after__title">Team</h2>
-
-                <p>Carlos Sanoja, Jes&uacute;s Guillen, Leonardo Ward, Mauricio Marcano, Oscar Moreno and Vincenzo D&rsquo;Argento.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -744,6 +756,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

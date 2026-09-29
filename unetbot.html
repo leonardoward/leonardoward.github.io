@@ -447,6 +447,24 @@
 
                 <p class="lead drop-cap">Real high-tension transmission lines run for kilometers through terrain that's slow and dangerous for a person to walk, so keeping them running means either sending a lineman to climb the towers or renting a helicopter. <strong>E-wanna</strong> is a robot built by team <strong>FutBot USB</strong> (Universidad Sim&oacute;n Bol&iacute;var) for the <em>DESAF&Iacute;O</em> category of <strong>UNETBots 2015</strong>, a national robotics competition whose challenge was exactly that: build an autonomous robot that rides the cable itself, finds hot spots and encroaching vegetation, reports how far each one is from the start, and physically cuts the vegetation off the line &mdash; all while two electric fans blow simulated wind at it.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Mobile robots thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-mobile-robots">Mobile robots</a> thread &middot; 2014&ndash;2019</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="hbridgeboards.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/hbridgeboards-4a38f579.jpg" alt=""></span><span class="cs-thread__name">H-bridge drivers</span><span class="cs-thread__year">2014</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="uln2003board.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/uln2003board-357a2fc5.jpg" alt=""></span><span class="cs-thread__name">ULN2003 drivers</span><span class="cs-thread__year">2015</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="carried"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/unetbot-784313dc.jpg" alt=""></span><span class="cs-thread__name">E-wanna</span><span class="cs-thread__year">2015 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="irdar.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/irdar-c3a9cbfa.jpg" alt=""></span><span class="cs-thread__name">IRDAR</span><span class="cs-thread__year">2016</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="sumo.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/sumo-c7443d45.jpg" alt=""></span><span class="cs-thread__name">ATLAS sumo robot</span><span class="cs-thread__year">2016</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pioneer-slam.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pioneer-slam-7e74193c.jpg" alt=""></span><span class="cs-thread__name">Pioneer SLAM</span><span class="cs-thread__year">2019</span></a></li>
+                    </ol>
+                </nav>
+
+                <aside class="cs-credits" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>Team</dt><dd>Jorge P&eacute;rez, Said Alvarado, Nestor S&aacute;nchez and I built E&#8209;wanna. Our teammate An&iacute;bal Cabezas worked on its infrared sensors for his internship.</dd></div>
+                    </dl>
+                </aside>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -474,7 +492,7 @@
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>The competition rulebook (<code>UNETBotsDesafio.pdf</code> in the project files) spells out the brief; these are the parts that shaped E-wanna:</p>
+                <p>The competition rulebook spells out the brief; these are the parts that shaped E-wanna:</p>
 
                 <ul class="cs-spec" aria-label="E-wanna requirements from the UNETBots 2015 rulebook">
                     <li><b>Size</b>1500&nbsp;g or less, fitting inside a 30&times;30&times;30&nbsp;cm cube</li>
@@ -490,7 +508,7 @@
 
                 <h3 id="proteus-model">Motor Driver in Proteus</h3>
 
-                <p>The motor driver was first drawn as a Proteus model (<code>MotorDriver16F877A.pdsprj</code> in the project files), dated 16 August 2015; the earliest photo of the soldered board in the project files is from a week later. The schematic below is that model rather than a board drawing: the PIC16F877A drives ULN2003A arrays, each wired to one of Proteus's animated unipolar stepper motors (the <code>+88.8</code> boxes are their live readouts), ideal 5&nbsp;V and 12&nbsp;V batteries stand in for the supply, and the I&sup2;C, serial, step and direction lines end in labelled terminals.</p>
+                <p>We first drew the motor driver as a Proteus model in mid&#8209;August 2015, about a week before the board was soldered. The schematic below is that model rather than a board drawing: the PIC16F877A drives ULN2003A arrays, each wired to one of Proteus's animated unipolar stepper motors (the <code>+88.8</code> boxes are their live readouts), ideal 5&nbsp;V and 12&nbsp;V batteries stand in for the supply, and the I&sup2;C, serial, step and direction lines end in labelled terminals.</p>
 
                 <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/motor-driver-schematic.jpg" width="900" alt="Schematic of the motor driver board: a PIC16F877A driving ULN2003A Darlington arrays, communicating over I2C and serial to the Arduino">
@@ -517,7 +535,7 @@
 
                 <p>The Pi talks to the Arduino over a plain serial link; the Arduino talks to the PIC over I&sup2;C. Both hops use small, fixed-format text/byte commands rather than anything heavier &mdash; see <a href="unetbot.html#communication">Communication</a> below.</p>
 
-                <p>The team's own writeup is explicit about why: a plain microcontroller wouldn't have had the headroom to run computer vision, so the Pi does all the high-level decision-making through a state machine and treats every other board as a subordinate that only hands up already-processed sensor data. That state machine is also what decides how long the robot pauses at each hot point or vegetation cluster to show its reading before moving on.</p>
+                <p>Our write&#8209;up is explicit about why: a plain microcontroller wouldn't have had the headroom to run computer vision, so the Pi does all the high-level decision-making through a state machine and treats every other board as a subordinate that only hands up already-processed sensor data. That state machine is also what decides how long the robot pauses at each hot point or vegetation cluster to show its reading before moving on.</p>
 
                 <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig7-pi-camera-shield.jpg" width="800" alt="A Raspberry Pi in a case with a red 3D-printed pan-tilt camera mount, connected by ribbon cable to the Arduino shield perfboard">
@@ -533,7 +551,7 @@
                     <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig1-robot.jpg" alt="E-wanna semi-assembled on the lab's cable rig, with a FutBot USB team poster visible on the wall behind it"></p>
                   </div>
                 </div>
-                <p style="text-align:center">The finished electronics stack (left), and, from the team's own paper on E-wanna, the semi-assembled robot (right).</p>
+                <p style="text-align:center">The finished electronics stack (left), and, from our paper on E-wanna, the semi-assembled robot (right).</p>
 
                 <h3 id="mechanical">Mechanical Design</h3>
 
@@ -553,7 +571,7 @@
                   <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig5-chassis-wheels.jpg" width="600" alt="Top-down view of the finished chassis mounted on all four wheels on the cable, showing the sheet-metal deck cutout with wiring passing through">
                   </p>
                 </div>
-                <p style="text-align:center">The finished chassis riding the cable on all four wheels, from the team's paper.</p>
+                <p style="text-align:center">The finished chassis riding the cable on all four wheels, from our paper.</p>
 
                 <p>Four 3D-printed wheels carry the robot: the rear two are keyed directly to the stepper motor shafts (a friction-fit adapter clamps each wheel on with a single screw) and provide all the driving force; the front two spin freely on a bearing axle and are only along for balance. Every wheel has a machined groove sized to ride the 1/4&Prime; cable while still clearing the ceramic insulators bolted to each tower ring &mdash; a couple of millimeters of tolerance is the difference between rolling through cleanly and getting stuck on every single insulator.</p>
 
@@ -603,7 +621,7 @@
                     <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig3-motor-lcd.jpg" alt="The motor driver board and the distance-readout LCD mounted on the chassis, with a stepper motor visible on each side"></p>
                   </div>
                 </div>
-                <p style="text-align:center">The Arduino shield's hand-soldered underside, and the motor driver board with the distance-readout LCD mounted on the chassis &mdash; both from the team's paper.</p>
+                <p style="text-align:center">The Arduino shield's hand-soldered underside, and the motor driver board with the distance-readout LCD mounted on the chassis &mdash; both from our paper.</p>
 
                 <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/wiring-diagram.jpg" width="800" alt="Power distribution diagram showing which components connect to the GND, 12V and 5V rails">
@@ -613,7 +631,7 @@
 
                 <h3 id="vision">Computer Vision</h3>
 
-                <p>Rather than anything ML-based, the vision pipeline is a deliberately simple, deliberately robust color-blob detector &mdash; the team's own postmortem specifically flags lighting sensitivity as the main risk with camera-based approaches at a competition where you don't control the room. The Pi Camera runs with auto white balance <strong>locked off</strong> and a fixed "sports" (fast-shutter) exposure mode, so frame-to-frame color doesn't drift while the robot is moving:</p>
+                <p>Rather than anything ML-based, the vision pipeline is a deliberately simple, deliberately robust color-blob detector &mdash; our own postmortem specifically flags lighting sensitivity as the main risk with camera-based approaches at a competition where you don't control the room. The Pi Camera runs with auto white balance <strong>locked off</strong> and a fixed "sports" (fast-shutter) exposure mode, so frame-to-frame color doesn't drift while the robot is moving:</p>
 
                 <ol>
                     <li>Crop a window around the expected tower location in the frame.</li>
@@ -653,17 +671,17 @@
 
                 <h3 id="test-rigs">Test Rigs</h3>
 
-                <p>The official course didn't exist yet for most of the build, so the team tested on stand&#8209;ins of its own: first a small mock tower at home, with twin steel cables and foam blocks for the brush, and later a single cable strung between two welded towers in a classroom.</p>
+                <p>The official course didn't exist yet for most of the build, so we tested on stand&#8209;ins of our own: first a small mock tower at home, with twin steel cables and foam blocks for the brush, and later a single cable strung between two welded towers in a classroom.</p>
 
                 <div class="row">
                   <div class="col-six">
                     <p><img loading="lazy" decoding="async" src="images/unetbot/test-rig-home.jpg" alt="A small home-built mock power-line tower with a wooden mast, twin steel cables, and foam blocks standing in for roadside vegetation, used to test the robot before the real rig was available"></p>
                   </div>
                   <div class="col-six">
-                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig8-test-rig.jpg" alt="The team's own classroom test rig: a single cable strung between two welded towers, with a hand-drawn system architecture diagram on the whiteboard behind it"></p>
+                    <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig8-test-rig.jpg" alt="Our classroom test rig: a single cable strung between two welded towers, with a hand-drawn system architecture diagram on the whiteboard behind it"></p>
                   </div>
                 </div>
-                <p style="text-align:center">The improvised test rig the team built at home so the vision code had something to practice on before the official one existed (left), and, from the team's paper, the single-cable classroom rig they eventually built to test it (right) &mdash; note the system-architecture diagram sketched on the whiteboard behind it.</p>
+                <p style="text-align:center">The improvised test rig we built at home so the vision code had something to practice on before the official one existed (left), and, from our paper, the single-cable classroom rig we eventually built to test it (right) &mdash; note the system-architecture diagram sketched on the whiteboard behind it.</p>
 
                 <h3 id="ir-calibration">Sharp IR Calibration</h3>
 
@@ -675,7 +693,7 @@
                 </div>
                 <p style="text-align:center">Distance vs. ADC-conversion curve for the Sharp sensor, fitted to <code>y = 147.5&middot;e<sup>&minus;0.01x</sup> + 10.36</code>. The PIC firmware carries the same relationship baked into a lookup table.</p>
 
-                <p>A photo from 24 October 2015 shows the bench: the sensor on a small bracket at the start of a tape measure, aimed along it at a cardboard target, and wired back to the Arduino and the PIC board. A second table in the project files (<code>Mediciones Sharp.xlsx</code>) lists the PIC's ADC reading for every centimetre from 10 to 45&nbsp;cm, which covers the band the rules cared about: weeds within 40&nbsp;cm of a conductor had to be reported, and none would be placed closer than 20&nbsp;cm.</p>
+                <p>A photo from 24 October 2015 shows the bench: the sensor on a small bracket at the start of a tape measure, aimed along it at a cardboard target, and wired back to the Arduino and the PIC board. A second table lists the PIC's ADC reading for every centimetre from 10 to 45&nbsp;cm, which covers the band the rules cared about: weeds within 40&nbsp;cm of a conductor had to be reported, and none would be placed closer than 20&nbsp;cm.</p>
 
                 <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/sharp-calibration-bench.jpg" width="600" alt="The Sharp IR sensor clamped on a small bracket at the zero end of a yellow tape measure on a wooden board, aimed at a cardboard target, with its wires running back to an Arduino Uno and a PIC perfboard with terminal blocks">
@@ -690,37 +708,37 @@
                 </div>
                 <p style="text-align:center">A debug recording from development: raw camera feed (left) next to the detected-contour overlay (right) used to tune the color thresholds on the bench before the real rig existed.</p>
 
-                <p>The team describes the finished module as able to tell apart the three things the rig actually throws at it &mdash; hot points, insulators, and vegetation &mdash; once it's running on the real course. Hot points on the official rig are marked with white tape, which shows up clearly in this annotated frame from their paper: several white and yellow markers, each labeled and carrying its own measured distance from the start, overlaid directly on the image.</p>
+                <p>Our team developed a system that was able to tell apart the three things the rig actually throws at it &mdash; hot points, insulators, and vegetation &mdash; once it was running on the real course. Hot points on the official rig are marked with white tape, which shows up clearly in this annotated frame from our paper: several white and yellow markers, each labeled and carrying its own measured distance from the start, overlaid directly on the image.</p>
 
                 <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/unetbot/paper-fig6-vision-system.jpg" width="500" alt="An annotated camera frame from the vision system showing several detected markers labeled 'blanco' (white) and 'amarillo' (yellow), each tagged with its own measured distance in centimeters">
                   </p>
                 </div>
-                <p style="text-align:center">The vision system's own output, from the team's paper: detected markers labeled by color, each carrying its measured distance in centimeters.</p>
+                <p style="text-align:center">The vision system's own output, from our paper: detected markers labeled by color, each carrying its measured distance in centimeters.</p>
 
-                <p>That frame is the result of the final test in Said Alvarado's internship report on the distance measurement (September 2015). During development the algorithm was checked against two black lines drawn on a sheet of paper, with the camera about 11&nbsp;cm above them; the final test used two steel cables 25&nbsp;cm apart, as in the rules, over an irregular floor. Once the colour filters were recalibrated for it, the measurements came out with less than 5&nbsp;mm of error &mdash; the rules allowed &plusmn;5&nbsp;cm &mdash; at no more than 7 analysed frames per second on the development computer.</p>
+                <p>That frame is the result of the final test in my teammate Said Alvarado's internship report on the distance measurement (September 2015). During development the algorithm was checked against two black lines drawn on a sheet of paper, with the camera about 11&nbsp;cm above them; the final test used two steel cables 25&nbsp;cm apart, as in the rules, over an irregular floor. Once the colour filters were recalibrated for it, the measurements came out with less than 5&nbsp;mm of error &mdash; the rules allowed &plusmn;5&nbsp;cm &mdash; at no more than 7 analysed frames per second on the development computer.</p>
 
                 <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
 
                 <h3 id="problems">Problems Along the Way</h3>
 
                 <ul>
-                    <li><strong>Welding the chassis</strong> &mdash; thick wire wouldn't take a clean joint until they started wrapping each junction with a thin coiled wire first, giving the solder something to close around.</li>
+                    <li><strong>Welding the chassis</strong> &mdash; thick wire wouldn't take a clean joint until we started wrapping each junction with a thin coiled wire first, giving the solder something to close around.</li>
                     <li><strong>Motor selection</strong> &mdash; DC motors were prototyped first, but steppers won out because step count gives distance-traveled for free. Getting enough torque to carry the robot's weight over the whole course took more than one redesign of the driver circuit for higher current.</li>
                     <li><strong>Vision under real lighting</strong> &mdash; development started before the real test rig existed, using an improvised home-built stand-in, so the color thresholds were tuned somewhat blind to the actual competition lighting. Locking the camera's white balance and exposure was the main mitigation.</li>
                 </ul>
 
-                <h3 id="recommendations">What They'd Do Differently</h3>
+                <h3 id="recommendations">What We'd Do Differently</h3>
 
                 <ul>
                     <li>Build (or borrow) a course rig at the very start of the project, not near the end &mdash; it's the only way to test vision honestly, and it also gives a fast, concrete way to check whether the robot is even sized correctly.</li>
                     <li>Consider dedicated color sensors instead of a camera, if the mission allows it &mdash; a lot of complexity in this build exists purely to compensate for camera/lighting variability.</li>
-                    <li>Work out the actual power the motors need to consume for good performance <em>before</em> picking them, not after &mdash; guessing low cost the team multiple motor swaps mid-project.</li>
+                    <li>Work out the actual power the motors need to consume for good performance <em>before</em> picking them, not after &mdash; guessing low cost us multiple motor swaps mid-project.</li>
                     <li>Many mechanical parts, and even the rig's own insulators, were 3D-printed; find an affordable commercial partner for that ahead of time rather than during the crunch.</li>
                     <li>Budget at least three months, full-time, for a project with this many interacting sensors and subsystems.</li>
                 </ul>
 
-                <p>In the team's own words, the goal was never just to win the category: they built E-wanna hoping the approach could genuinely be extrapolated to real high-tension lines, and to help push the national maintenance problem it's modeled on a little further along.</p>
+                <p>Our goal was never just to win the category: we built E-wanna hoping the approach could genuinely be extrapolated to real high-tension lines, and to help push the national maintenance problem it's modeled on a little further along.</p>
 
                 <h2 id="team" class="cs-after__title">Team</h2>
 
@@ -843,6 +861,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

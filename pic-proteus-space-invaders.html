@@ -458,6 +458,22 @@
 
                 <p class="lead drop-cap">A cover of the classic 1978 videogame Space Invaders, written in C for the 16&#8209;bit <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> and simulated in <a href="https://www.labcenter.com/simulation/">Proteus</a>, with a T6963C&#8209;driven 240&times;128 graphics LCD. Built with Mauricio Marcano for <em>PG&#8209;7233 &mdash; C for Embedded Systems</em>.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the PIC firmware thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-pic">PIC firmware</a> thread &middot; 2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="helios_ren.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/helios_ren-bcfd89a5.jpg" alt=""></span><span class="cs-thread__name">HELIOS REN</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="ambient-lights.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ambient-lights-63b84f31.jpg" alt=""></span><span class="cs-thread__name">HELA ambient lights</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pic-ws2812.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pic-ws2812-71f2636d.jpg" alt=""></span><span class="cs-thread__name">WS2812 driver</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pic-proteus-space-invaders-a2820d80.jpg" alt=""></span><span class="cs-thread__name">Space Invaders on a PIC</span><span class="cs-thread__year">2021 &middot; this project</span></span></li>
+                    </ol>
+                </nav>
+
+                <aside class="cs-credits" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>Credits</dt><dd>The LCD driver is Camil Staps&rsquo; T6963C library (GPL&#8209;2.0 or later), with my changes.</dd></div>
+                    </dl>
+                </aside>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -472,8 +488,6 @@
                 <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
                 <h3 id="requirements">What It Had to Do</h3>
-
-                <p>The repository has no requirements document; this is what the design had to satisfy, read from the README and the firmware:</p>
 
                 <ul class="cs-spec" aria-label="Space Invaders design goals">
                     <li><b>Game</b>A playable cover of the 1978 original: three types of invader, a mothership, four barriers that break after three hits, three lives and a score</li>
@@ -825,6 +839,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

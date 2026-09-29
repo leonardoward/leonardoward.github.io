@@ -60,7 +60,6 @@ p_js/
 assets/                        sprites, spritesheets, audio, tilesets, thumbnails
 p_assets/                      platformer art, incl. Circuits/
 runserver.py                   static-server helper
-miseriadolor-modulos-base-*.zip   original base modules (internal working name)
 ```
 
 ## Authors

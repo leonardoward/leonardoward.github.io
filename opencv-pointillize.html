@@ -456,6 +456,16 @@
 
                 <p class="lead drop-cap">A short Python&nbsp;3 + <a href="https://opencv.org/">OpenCV</a> script that turns a photo into a <a href="https://en.wikipedia.org/wiki/Pointillism">pointillism</a>-style image &mdash; a scatter of non-overlapping coloured dots, each sampled from the source.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Vision & medical thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vision">Vision &amp; medical</a> thread &middot; 2017&ndash;2018</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="opencv-test-app.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/opencv-test-app-d5210538.jpg" alt=""></span><span class="cs-thread__name">OpenCV Test App</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/opencv-pointillize-308dcef0.jpg" alt=""></span><span class="cs-thread__name">Pointillize</span><span class="cs-thread__year">2017 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pyhl7-aecg.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pyhl7-aecg-5b1b821d.jpg" alt=""></span><span class="cs-thread__name">pyHL7 aECG</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="ecg-digitization.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ecg-digitization-ad3abf42.jpg" alt=""></span><span class="cs-thread__name">ECG digitization</span><span class="cs-thread__year">2018</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -470,8 +480,6 @@
                 <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
                 <h3 id="requirements">What It Had to Do</h3>
-
-                <p>A small experiment with no written brief; the script&rsquo;s design shows what it had to do:</p>
 
                 <ul class="cs-spec" aria-label="Pointillize script requirements">
                     <li><b>Look</b>Round dots that never overlap, on a white canvas</li>
@@ -552,7 +560,7 @@
 
                 <h3 id="notes">What the Run Log Shows</h3>
 
-                <p>The repository keeps the console log of the test runs (<code>nohup.out</code>, written with <code>--debug True</code>), which records every attempt and whether its dot was kept. The portrait above is the output of the longest run in it: 1,000,000 attempts on the full 1836&times;3264 photo, which placed 473,500 dots. The share of attempts that still found free space fell steadily as the canvas filled:</p>
+                <p>I logged every test run to the console (<code>nohup.out</code>, with <code>--debug True</code>), recording each attempt and whether its dot was kept. The portrait above is the output of the longest run in it: 1,000,000 attempts on the full 1836&times;3264 photo, which placed 473,500 dots. The share of attempts that still found free space fell steadily as the canvas filled:</p>
 
                 <div class="table-responsive">
                     <table>
@@ -571,7 +579,7 @@
                     <img loading="lazy" decoding="async" src="images/cv_pointillize/attempts-progression.jpg" width="800" alt="Three pointillized versions of the same small portrait crop, left to right after 1,000, 10,000 and 1,000,000 attempts: scattered sparse dots, then a recognisable face, then dense fine stippling">
                 </div>
 
-                <p style="text-align:center">The 271&times;295 portrait crop after 1,000, 10,000 and 1,000,000 attempts &mdash; outputs saved in the repository&rsquo;s first commit.</p>
+                <p style="text-align:center">The 271&times;295 portrait crop after 1,000, 10,000 and 1,000,000 attempts.</p>
 
                 <ul>
                     <li>With a small radius you need tens of thousands of attempts to cover a photo, since <code>--cycles</code> counts tries, not hits.</li>
@@ -581,7 +589,7 @@
 
                 <h3 id="collision-check">A Faster Collision Check</h3>
 
-                <p>The first version of the script (initial commit, 23&nbsp;October&nbsp;2017) checked each candidate dot pixel by pixel: it scanned the whole candidate image in Python to list the circle&rsquo;s pixels, then compared every one of them against the stored pixel list of every dot already placed, so each attempt got slower as dots piled up. A commit later the same day replaced that with the mask test described under <a href="#how-it-works">How It Works</a>: one running mask of all placed dots, checked with a single <code>cv2.bitwise_xor</code> per attempt.</p>
+                <p>The first version of the script (23&nbsp;October&nbsp;2017) checked each candidate dot pixel by pixel: it scanned the whole candidate image in Python to list the circle&rsquo;s pixels, then compared every one of them against the stored pixel list of every dot already placed, so each attempt got slower as dots piled up. Later the same day I replaced that with the mask test described under <a href="#how-it-works">How It Works</a>: one running mask of all placed dots, checked with a single <code>cv2.bitwise_xor</code> per attempt.</p>
 
                 <ul>
                     <li>An earlier per&#8209;pixel collision function is still in the file but unused &mdash; the mask&#8209;XOR approach replaced it.</li>
@@ -703,6 +711,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

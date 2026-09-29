@@ -456,6 +456,20 @@
 
                 <p class="lead drop-cap">An axle&#8209;tip acceleration logger for <strong>Baja SAE USB</strong> brake tests (Universidad Sim&oacute;n Bol&iacute;var, Divisi&oacute;n de Electr&oacute;nica). A hand&#8209;formed metal box bolts straight onto a wheel hub and logs 3&#8209;axis acceleration to an SD card as the car is driven and braked &mdash; closer to the wheel/road interface than a chassis&#8209;mounted sensor, and self&#8209;contained rather than needing a live telemetry link. Another of the <a href="bajasae.html">Baja SAE USB electronics</a> sub&#8209;systems &mdash; <em>December&nbsp;2013</em>.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Vehicles thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vehicles">Vehicles</a> thread &middot; 2011&ndash;2020</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="steering-wheel.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/steering-wheel-71dbbbb9.jpg" alt=""></span><span class="cs-thread__name">Steering-wheel display</span><span class="cs-thread__year">2011&ndash;12</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="car-dashboard.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/car-dashboard-5eafa676.jpg" alt=""></span><span class="cs-thread__name">Dashboard module</span><span class="cs-thread__year">2012&ndash;13</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="gasoline-module.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gasoline-module-9c17c403.jpg" alt=""></span><span class="cs-thread__name">Fuel-level module</span><span class="cs-thread__year">2012</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="wheel-alignment.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/wheel-alignment-26b59118.jpg" alt=""></span><span class="cs-thread__name">Wheel alignment</span><span class="cs-thread__year">2013</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brake-test-ae1149ed.jpg" alt=""></span><span class="cs-thread__name">Brake test logger</span><span class="cs-thread__year">2013 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="bajasae.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/bajasae-fb87cd3a.jpg" alt=""></span><span class="cs-thread__name">Baja SAE electronics</span><span class="cs-thread__year">2011&ndash;14</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="brushlessdc.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brushlessdc-471a1e8e.jpg" alt=""></span><span class="cs-thread__name">Solar car motor interface</span><span class="cs-thread__year">2016</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="interactive-map.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/interactive-map-45ca725d.jpg" alt=""></span><span class="cs-thread__name">Interactive map</span><span class="cs-thread__year">2020</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -471,11 +485,11 @@
 
                 <h3 id="why">Why</h3>
 
-                <p>The team's existing telemetry system &mdash; a prior thesis project built around Freescale MCUs, GPS, a gyroscope, Hall&#8209;effect and IR sensors, and XBee/ZigBee links into a CAN network, all displayed live in LabVIEW &mdash; is a full vehicle telemetry suite. For a focused brake test, that's a lot of system to bring up. This logger is the opposite trade&#8209;off: one sensor, one axis of the car, no radio link, no live display &mdash; just an accelerometer at the axle tip and a microSD card, small enough to bolt onto a wheel and forget about until the run is over.</p>
+                <p>Our team's existing telemetry system &mdash; a prior thesis project built around Freescale MCUs, GPS, a gyroscope, Hall&#8209;effect and IR sensors, and XBee/ZigBee links into a CAN network, all displayed live in LabVIEW &mdash; is a full vehicle telemetry suite. For a focused brake test, that's a lot of system to bring up. This logger is the opposite trade&#8209;off: one sensor, one axis of the car, no radio link, no live display &mdash; just an accelerometer at the axle tip and a microSD card, small enough to bolt onto a wheel and forget about until the run is over.</p>
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>The 2013 build report states the goal in one line: measure the accelerations in X, Y and Z at the axle tip of the team's Baja prototype. The rest of the brief follows from how the logger was going to be used:</p>
+                <p>The goal was to measure the accelerations in X, Y and Z at the axle tip of our Baja prototype. The rest followed from how the logger would be used:</p>
 
                 <ul class="cs-spec" aria-label="Brake test logger requirements">
                     <li><b>Measure</b>X, Y and Z acceleration at the axle tip, not on the chassis</li>
@@ -535,7 +549,7 @@
 
                 <h3 id="notes">What the Data Showed</h3>
 
-                <p>Mounted directly on the hub, the signal is dominated by wheel rotation and road texture rather than a clean braking signature &mdash; there's no obvious single deceleration spike to pick out by eye in the raw trace above; extracting a braking event from this data would need proper filtering or event detection downstream, which this project didn't get to. The logger's own Arduino sketch wasn't preserved in the repository &mdash; only its logged output and the analysis spreadsheets survive.</p>
+                <p>Mounted directly on the hub, the signal is dominated by wheel rotation and road texture rather than a clean braking signature &mdash; there's no obvious single deceleration spike to pick out by eye in the raw trace above; extracting a braking event from this data would need proper filtering or event detection downstream, which this project didn't get to.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -661,6 +675,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

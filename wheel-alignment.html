@@ -456,6 +456,20 @@
 
                 <p class="lead drop-cap">An electronic wheel&#8209;alignment system for the <strong>Baja SAE USB</strong> off&#8209;road vehicle prototypes (Universidad Sim&oacute;n Bol&iacute;var). It reads each wheel's <strong>camber</strong> with an accelerometer and the <strong>toe</strong> with ultrasonic sensors, then shows the mechanic what to adjust on a small handheld display. It is one of the sub&#8209;systems of the wider <a href="bajasae.html">Baja SAE USB electronics</a> work &mdash; <em>Divisiones de Electr&oacute;nica y de Suspensi&oacute;n, August&nbsp;2013</em>.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Vehicles thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vehicles">Vehicles</a> thread &middot; 2011&ndash;2020</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="steering-wheel.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/steering-wheel-71dbbbb9.jpg" alt=""></span><span class="cs-thread__name">Steering-wheel display</span><span class="cs-thread__year">2011&ndash;12</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="car-dashboard.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/car-dashboard-5eafa676.jpg" alt=""></span><span class="cs-thread__name">Dashboard module</span><span class="cs-thread__year">2012&ndash;13</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="gasoline-module.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gasoline-module-9c17c403.jpg" alt=""></span><span class="cs-thread__name">Fuel-level module</span><span class="cs-thread__year">2012</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/wheel-alignment-26b59118.jpg" alt=""></span><span class="cs-thread__name">Wheel alignment</span><span class="cs-thread__year">2013 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="brake-test.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brake-test-ae1149ed.jpg" alt=""></span><span class="cs-thread__name">Brake test logger</span><span class="cs-thread__year">2013</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="bajasae.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/bajasae-fb87cd3a.jpg" alt=""></span><span class="cs-thread__name">Baja SAE electronics</span><span class="cs-thread__year">2011&ndash;14</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="brushlessdc.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brushlessdc-471a1e8e.jpg" alt=""></span><span class="cs-thread__name">Solar car motor interface</span><span class="cs-thread__year">2016</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="interactive-map.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/interactive-map-45ca725d.jpg" alt=""></span><span class="cs-thread__name">Interactive map</span><span class="cs-thread__year">2020</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -471,7 +485,7 @@
 
                 <h3 id="why">Why</h3>
 
-                <p>The team aligned its cars <strong>by hand</strong>: parallel lines chalked on the floor (or cones joined with string), then a tape measure to set each wheel parallel to them. There was no way to read the actual <strong>camber</strong> angle, or to check that the four wheels were symmetric. Commercial electronic aligners &mdash; infrared heads bolted to a bench, a PC doing the maths &mdash; are far too big and expensive for a student team.</p>
+                <p>We aligned our cars <strong>by hand</strong>: parallel lines chalked on the floor (or cones joined with string), then a tape measure to set each wheel parallel to them. There was no way to read the actual <strong>camber</strong> angle, or to check that the four wheels were symmetric. Commercial electronic aligners &mdash; infrared heads bolted to a bench, a PC doing the maths &mdash; are far too big and expensive for a student team.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/wheel_alignment/car-on-jig.jpg" width="720" alt="The Baja SAE USB buggy raised on the alignment jig, ready for measurement">
@@ -493,7 +507,7 @@
 
                 <h3 id="procedure">How It Would Be Used</h3>
 
-                <p>The team's function&#8209;tree notes lay out the procedure the system had to support, from start to finish:</p>
+                <p>Our function&#8209;tree notes lay out the procedure the system had to support, from start to finish:</p>
 
                 <ol>
                     <li>Seat the driver in the car and level the car.</li>
@@ -509,7 +523,7 @@
 
                 <h3 id="ultrasonic-circuit">The Ultrasonic Transceiver</h3>
 
-                <p>The ultrasonic driver circuits were prototyped in Multisim &mdash; the repository keeps the receiver (<code>Receptor.ms12</code>) and two versions of an alternate system (<code>Sistema de alineaci&oacute;n alterno</code>). The schematic saved with them (<em>Driver Ultrasonido</em>, November&nbsp;2013) uses one transducer for both jobs, switched by a relay (driven by a 2N3904 from a <code>Tx/Rx</code> line) between the driver and the receiver:</p>
+                <p>I prototyped the ultrasonic circuits in Multisim: a receiver and two versions of an alternate system. The driver schematic (November&nbsp;2013) uses one transducer for both jobs, switched by a relay (driven by a 2N3904 from a <code>Tx/Rx</code> line) between the driver and the receiver:</p>
 
                 <ul>
                     <li><strong>Transmit</strong> &mdash; an NE555, enabled by an input signal, feeds a MAX232 directly on one channel and through a 2N3904 inverter on the other, so its two outputs drive the transducer from both ends.</li>
@@ -609,7 +623,7 @@
 
                 <h3 id="next-steps">Next Steps</h3>
 
-                <p>The report's conclusions name two changes: the accelerometer tests gave the expected results, but the readings should be adjusted to come out more exact &mdash; the per&#8209;axis calibration the table above calls for &mdash; and the ultrasonic sensors will have to be coordinated so they don't interfere with one another.</p>
+                <p>Our report's conclusions name two changes: the accelerometer tests gave the expected results, but the readings should be adjusted to come out more exact &mdash; the per&#8209;axis calibration the table above calls for &mdash; and the ultrasonic sensors will have to be coordinated so they don't interfere with one another.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -735,6 +749,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

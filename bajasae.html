@@ -6,12 +6,12 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>Electronic Devices for Racing Vehicles | Baja SAE | Leonardo Ward</title>
-    <meta name="description" content="Data-acquisition electronics for Baja SAE racing vehicles: fuel-level meters, tachometers, brake-pressure and wheel-alignment meters and speedometers, linked over a CAN bus.">
+    <meta name="description" content="The electronics of our Baja SAE USB off-road car: a dashboard module, a steering-wheel display and a fuel-level sender sharing one CAN bus, plus wheel-alignment and brake-test tools for the workshop.">
     <meta name="author" content="Leonardo Ward">
     <link rel="canonical" href="https://leonardoward.github.io/bajasae.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Electronic Devices for Racing Vehicles | Baja SAE | Leonardo Ward">
-    <meta property="og:description" content="Data-acquisition electronics for Baja SAE racing vehicles: fuel-level meters, tachometers, brake-pressure and wheel-alignment meters and speedometers, linked over a CAN bus.">
+    <meta property="og:description" content="The electronics of our Baja SAE USB off-road car: a dashboard module, a steering-wheel display and a fuel-level sender sharing one CAN bus, plus wheel-alignment and brake-test tools for the workshop.">
     <meta property="og:image" content="https://leonardoward.github.io/images/bajasae/00011466.jpg">
     <meta property="og:url" content="https://leonardoward.github.io/bajasae.html">
     <meta name="twitter:card" content="summary_large_image">
@@ -451,7 +451,29 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Design and development of electronic devices for data acquisition in racing vehicles, including fuel level meters, tachometers, brake pressure meters, wheel alignment systems (toe, camber and caster), and speedometers. The process included prototyping, PCB design, firmware programming, soldering (through hole and surface-mount) and testing. The complete system included a CAN bus (Controller Area Network) for robust communication between microcontrollers.</p>
+                <p class="lead drop-cap">The electronics of our <strong>Baja SAE USB</strong> off&#8209;road car at Universidad Sim&oacute;n Bol&iacute;var, 2011&ndash;2014. I worked on the three boards that ran the car's instruments &mdash; a <a href="car-dashboard.html">dashboard module</a>, a <a href="steering-wheel.html">steering&#8209;wheel display</a> and a <a href="gasoline-module.html">fuel&#8209;level sender</a>, joined by one CAN bus &mdash; and on two tools our team used around the car: a <a href="wheel-alignment.html">wheel&#8209;alignment system</a> and a <a href="brake-test.html">brake&#8209;test logger</a>. The work covered prototyping, PCB design, firmware, through&#8209;hole and surface&#8209;mount soldering, and testing. Each part has its own page; this one shows how they fit together in the car.</p>
+
+                <nav class="cs-thread" aria-label="Projects in the Vehicles thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vehicles">Vehicles</a> thread &middot; 2011&ndash;2020</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="steering-wheel.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/steering-wheel-71dbbbb9.jpg" alt=""></span><span class="cs-thread__name">Steering-wheel display</span><span class="cs-thread__year">2011&ndash;12</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="car-dashboard.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/car-dashboard-5eafa676.jpg" alt=""></span><span class="cs-thread__name">Dashboard module</span><span class="cs-thread__year">2012&ndash;13</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="gasoline-module.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gasoline-module-9c17c403.jpg" alt=""></span><span class="cs-thread__name">Fuel-level module</span><span class="cs-thread__year">2012</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="wheel-alignment.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/wheel-alignment-26b59118.jpg" alt=""></span><span class="cs-thread__name">Wheel alignment</span><span class="cs-thread__year">2013</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="brake-test.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brake-test-ae1149ed.jpg" alt=""></span><span class="cs-thread__name">Brake test logger</span><span class="cs-thread__year">2013</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/bajasae-fb87cd3a.jpg" alt=""></span><span class="cs-thread__name">Baja SAE electronics</span><span class="cs-thread__year">2011&ndash;14 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="brushlessdc.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/brushlessdc-471a1e8e.jpg" alt=""></span><span class="cs-thread__name">Solar car motor interface</span><span class="cs-thread__year">2016</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="interactive-map.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/interactive-map-45ca725d.jpg" alt=""></span><span class="cs-thread__name">Interactive map</span><span class="cs-thread__year">2020</span></a></li>
+                    </ol>
+                </nav>
+
+                <aside class="cs-credits" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>My role</dt><dd>2011&ndash;12: in the group that soldered the steering&#8209;wheel display, and on the tachometer and speedometer tests. 2012&ndash;13: I led the dashboard module with C&eacute;sar Dur&aacute;n and Luis Da Silva. 2013&ndash;14: the wheel&#8209;alignment system, the brake&#8209;test logger, and the fuel&#8209;module programming and tests.</dd></div>
+                        <div><dt>Team</dt><dd>Baja SAE USB&rsquo;s electronics division, led in 2012&ndash;13 by Miguel Veloso. The CAN frame scheme is by Jorge Mar&iacute;n.</dd></div>
+                        <div><dt>Competition</dt><dd>Car&nbsp;15, our 2012 prototype, was entered as vehicle 015 at <strong>Baja SAE Wisconsin</strong> in June 2012.</dd></div>
+                    </dl>
+                </aside>
 
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
@@ -466,19 +488,27 @@
 
                 <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
+                <h3 id="car">The Car</h3>
+
+                <p>Baja SAE is a collegiate engineering competition: student teams design and build a single&#8209;seat off&#8209;road car and race it over rough terrain. Car&nbsp;15, in the photos on this page, was our 2012 prototype. Our design report for Baja SAE Wisconsin that June describes its electronics as three modules linked by a CAN bus &mdash; the fuel level, the dashboard and the steering&#8209;wheel screen &mdash; which are the boards below. The two tools were built for working on our cars.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/bajasae/00009795.jpg" width="900" alt="The Baja SAE USB car, number 15, climbing out of a dirt dip on a course lined with yellow tape, a driver in a white helmet at the wheel">
+                </div>
+
+                <p style="text-align:center">Our car, number&nbsp;15, on a dirt course.</p>
+
                 <h3 id="why">Why</h3>
 
-                <p>The Baja SAE USB cars needed electronics on two fronts. On the car: instruments and controls for the driver &mdash; speed, RPM, fuel and warning lamps on the dash and on the steering wheel &mdash; with every sensor reporting over one shared <strong>CAN bus</strong> instead of its own wire to the cockpit. Off the car: tools for the team's own setup and testing &mdash; wheel alignment, until then done by hand with chalk lines and a tape measure, and a logger for the acceleration at a wheel during brake tests.</p>
+                <p>Our cars needed electronics on two fronts. On the car: instruments and controls for the driver &mdash; speed, RPM, fuel and warning lamps on the dash and on the steering wheel &mdash; with the modules reporting over one shared <strong>CAN bus</strong> instead of each running its own wire to the cockpit. Off the car: tools for our own setup and testing &mdash; wheel alignment, until then done by hand with chalk lines and a tape measure, and a logger for the acceleration at a wheel during brake tests.</p>
 
                 <h3 id="requirements">What It Had to Do</h3>
-
-                <p>No single requirements document covers the program; taken together, the modules show what the system had to do:</p>
 
                 <ul class="cs-spec" aria-label="Baja SAE USB electronics requirements">
                     <li><b>Driver</b>Speed, RPM, fuel, temperature and brake warnings readable at a glance, on the dash and on the steering wheel</li>
                     <li><b>Controls</b>Turn signals, hazards, night lights and the brake indicator worked from buttons on the wheel</li>
-                    <li><b>Bus</b>Every module on one CAN bus: a new sensor joins as one more node, with no extra wiring back to the cockpit</li>
-                    <li><b>Logging</b>Gauge values rebroadcast for the on&#8209;board logger, and streamed out over RS&#8209;232</li>
+                    <li><b>Bus</b>Modules share one CAN bus: a new sensor joins as one more node, with no extra wiring back to the cockpit</li>
+                    <li><b>Logging</b>The dashboard streams its readings out over a serial (RS&#8209;232) port</li>
                     <li><b>Power</b>On&#8209;car modules run from the car's 12&nbsp;V rail through automotive regulators</li>
                     <li><b>Tools</b>An aligner under 3000&nbsp;Bsf that fits in 50&times;50&times;50&nbsp;cm, and a self&#8209;contained brake&#8209;test logger</li>
                 </ul>
@@ -491,9 +521,125 @@
 
                 <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
 
+                <h3 id="system">The Electronics at a Glance</h3>
+
+                <p>Everything on the car meets at the dashboard module. It reads engine RPM from a Hall&#8209;effect sensor on the engine, road speed from a proximity sensor on a wheel and the temperature of the CVT (the car's belt transmission) over a serial line from a separate temperature board, and it drives the needles and every lamp. The steering&#8209;wheel display and the fuel&#8209;level module share the CAN bus with it, so no board needs its own wiring back to the dash.</p>
+
+                <figure class="cs-diagram">
+                    <svg viewBox="0 0 800 470" role="img" aria-labelledby="baja-diagram-title baja-diagram-desc">
+                        <title id="baja-diagram-title">Baja SAE USB car electronics</title>
+                        <desc id="baja-diagram-desc">Four inputs feed the dashboard module: a Hall-effect sensor on the engine for RPM, a proximity sensor on a wheel for speed, a temperature module over a serial line, and a photo-sensor box for light level. The dashboard drives the tachometer and speedometer needles, the head, night and turn lamps, four warning LEDs and an RS-232 telemetry port. Below it, a CAN bus links three boards: the dashboard sends frame 0x111 with RPM, speed and temperature and reads 0x222 and 0x333; the steering-wheel display sends frame 0x333 with its button state and reads 0x111 and 0x222; the fuel-level module sends frame 0x222 with the fuel level every two seconds.</desc>
+                        <defs>
+                            <marker id="baja-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                <path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/>
+                            </marker>
+                        </defs>
+
+                        <!-- inputs -->
+                        <g font-size="13" fill="#000000" text-anchor="middle">
+                            <rect x="10" y="30" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4"/>
+                            <text x="110" y="50">Hall sensor on the engine</text>
+                            <rect x="10" y="70" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4"/>
+                            <text x="110" y="90">Proximity sensor on a wheel</text>
+                            <rect x="10" y="110" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4" stroke-dasharray="5 4"/>
+                            <text x="110" y="130">Temperature module</text>
+                            <rect x="10" y="150" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4" stroke-dasharray="5 4"/>
+                            <text x="110" y="170">Photo&#8209;sensor box</text>
+                        </g>
+                        <g stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#baja-arrow)">
+                            <line x1="212" y1="45" x2="276" y2="45"/>
+                            <line x1="212" y1="85" x2="276" y2="85"/>
+                            <line x1="212" y1="125" x2="276" y2="125"/>
+                            <line x1="212" y1="165" x2="276" y2="165"/>
+                        </g>
+                        <g font-size="11" fill="#6b6b6b" text-anchor="middle">
+                            <text x="244" y="39">RPM</text>
+                            <text x="244" y="79">speed</text>
+                            <text x="244" y="119">serial</text>
+                            <text x="244" y="159">light</text>
+                        </g>
+
+                        <!-- dashboard -->
+                        <a href="car-dashboard.html">
+                            <rect x="280" y="30" width="240" height="150" rx="4" fill="#ffffff" stroke="#1d28a1" stroke-width="1.5"/>
+                            <text x="400" y="66" text-anchor="middle" font-size="17" font-weight="700" fill="#1d28a1">Dashboard module</text>
+                            <text x="400" y="88" text-anchor="middle" font-size="12" fill="#6b6b6b">MCF51JM128 &#183; behind the dash</text>
+                            <text x="400" y="122" text-anchor="middle" font-size="13" fill="#000000">reads the sensors and the bus,</text>
+                            <text x="400" y="141" text-anchor="middle" font-size="13" fill="#000000">drives the needles and lamps</text>
+                        </a>
+
+                        <!-- outputs -->
+                        <g stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#baja-arrow)">
+                            <line x1="522" y1="45" x2="586" y2="45"/>
+                            <line x1="522" y1="85" x2="586" y2="85"/>
+                            <line x1="522" y1="125" x2="586" y2="125"/>
+                            <line x1="522" y1="165" x2="586" y2="165"/>
+                        </g>
+                        <g font-size="13" fill="#000000" text-anchor="middle">
+                            <rect x="590" y="30" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4"/>
+                            <text x="690" y="50">Tachometer &amp; speedometer</text>
+                            <rect x="590" y="70" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4"/>
+                            <text x="690" y="90">Head, night &amp; turn lamps</text>
+                            <rect x="590" y="110" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4"/>
+                            <text x="690" y="130">4 warning LEDs</text>
+                            <rect x="590" y="150" width="200" height="30" rx="3" fill="#ffffff" stroke="#c4c4c4"/>
+                            <text x="690" y="170">RS&#8209;232 telemetry port</text>
+                        </g>
+
+                        <!-- CAN bus -->
+                        <line x1="40" y1="240" x2="760" y2="240" stroke="#b8692f" stroke-width="4" stroke-linecap="round"/>
+                        <text x="40" y="228" font-size="13" font-weight="700" fill="#93501f">CAN bus</text>
+                        <g stroke="#b8692f" stroke-width="2">
+                            <line x1="400" y1="180" x2="400" y2="240"/>
+                            <line x1="220" y1="240" x2="220" y2="300"/>
+                            <line x1="580" y1="240" x2="580" y2="300"/>
+                        </g>
+                        <g fill="#b8692f">
+                            <circle cx="400" cy="240" r="5"/>
+                            <circle cx="220" cy="240" r="5"/>
+                            <circle cx="580" cy="240" r="5"/>
+                        </g>
+                        <g font-size="12" font-family="Consolas, 'Andale Mono', Courier, monospace" fill="#93501f">
+                            <text x="410" y="204">sends 0x111</text>
+                            <text x="410" y="222">reads 0x222, 0x333</text>
+                            <text x="230" y="266">sends 0x333 on each press</text>
+                            <text x="230" y="284">reads 0x111, 0x222</text>
+                            <text x="590" y="276">sends 0x222 every 2 s</text>
+                        </g>
+
+                        <!-- steering wheel -->
+                        <a href="steering-wheel.html">
+                            <rect x="90" y="300" width="260" height="120" rx="4" fill="#ffffff" stroke="#1d28a1" stroke-width="1.5"/>
+                            <text x="220" y="332" text-anchor="middle" font-size="17" font-weight="700" fill="#1d28a1">Steering&#8209;wheel display</text>
+                            <text x="220" y="352" text-anchor="middle" font-size="12" fill="#6b6b6b">MC9S08DZ60 &#183; on the wheel</text>
+                            <text x="220" y="380" text-anchor="middle" font-size="13" fill="#000000">4 buttons: turn, hazard, night, brake</text>
+                            <text x="220" y="400" text-anchor="middle" font-size="13" fill="#000000">LCD: speed, RPM, fuel, warnings</text>
+                        </a>
+
+                        <!-- fuel level -->
+                        <a href="gasoline-module.html">
+                            <rect x="450" y="300" width="260" height="120" rx="4" fill="#ffffff" stroke="#1d28a1" stroke-width="1.5"/>
+                            <text x="580" y="332" text-anchor="middle" font-size="17" font-weight="700" fill="#1d28a1">Fuel&#8209;level module</text>
+                            <text x="580" y="352" text-anchor="middle" font-size="12" fill="#6b6b6b">MC9S08DZ60 &#183; along the tank</text>
+                            <text x="580" y="380" text-anchor="middle" font-size="13" fill="#000000">float magnet over 6 Hall switches</text>
+                            <text x="580" y="400" text-anchor="middle" font-size="13" fill="#000000">fuel level in 11 steps</text>
+                        </a>
+
+                        <!-- legend -->
+                        <g font-size="12" fill="#6b6b6b">
+                            <rect x="90" y="446" width="22" height="12" rx="2" fill="#ffffff" stroke="#1d28a1" stroke-width="1.5"/>
+                            <text x="120" y="456">boards with their own page</text>
+                            <rect x="300" y="446" width="22" height="12" rx="2" fill="#ffffff" stroke="#c4c4c4" stroke-dasharray="5 4"/>
+                            <text x="330" y="456">other parts of the system</text>
+                        </g>
+                    </svg>
+                </figure>
+
+                <p style="text-align:center">How the boards connect. The three in blue each have their own page; select one to open it.<span class="cs-diagram__hint"> Swipe sideways to see the whole diagram.</span></p>
+
                 <h3 id="network">The CAN Network</h3>
 
-                <p>Three modules share the car's CAN bus. Each one broadcasts its own frame and picks the frames it needs out of the others':</p>
+                <p>Each module broadcasts its own frame on the bus and picks the frames it needs out of the others'. Our teammate Jorge Mar&iacute;n set out this three&#8209;frame scheme in March 2012:</p>
 
                 <div class="table-responsive">
                     <table>
@@ -502,53 +648,82 @@
                         </thead>
                         <tbody>
                             <tr><td><a href="car-dashboard.html"><strong>Dashboard</strong></a></td><td>MCF51JM128 (ColdFire&nbsp;V1)</td><td><code>0x111</code> &mdash; RPM, speed, temperature</td><td><code>0x222</code>, <code>0x333</code></td></tr>
-                            <tr><td><a href="steering-wheel.html"><strong>Steering&#8209;wheel display</strong></a></td><td>MC9S08DZ60 (S08)</td><td><code>0x333</code> &mdash; night lights, turn signals, brake; on each button press</td><td><code>0x111</code>, <code>0x222</code></td></tr>
+                            <tr><td><a href="steering-wheel.html"><strong>Steering&#8209;wheel display</strong></a></td><td>MC9S08DZ60 (S08)</td><td><code>0x333</code> &mdash; its button state, on each press</td><td><code>0x111</code>, <code>0x222</code></td></tr>
                             <tr><td><a href="gasoline-module.html"><strong>Fuel&#8209;level module</strong></a></td><td>MC9S08DZ60 (S08)</td><td><code>0x222</code> &mdash; fuel level 0&ndash;11, every ~2&nbsp;s</td><td>&mdash;</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <p>The dashboard's <code>0x111</code> frame also feeds the on&#8209;board logger, and the dashboard streams a six&#8209;byte telemetry frame out over RS&#8209;232. At power&#8209;up it blinks its four LEDs until the first CAN frame arrives, so a dead bus shows before the car moves. All three boards were laid out in Altium Designer and programmed in CodeWarrior with Processor Expert, flashed through a BDM header with a P&amp;E Multilink.</p>
+                <p>Inside, the 2011&ndash;12 steering&#8209;wheel display was two microcontrollers: an S08 on the bus picked out the dashboard and fuel frames and passed them over SPI to a ColdFire that drew the LCD. The dashboard also streams its readings out over RS&#8209;232 for a PC or logger. At power&#8209;up the dashboard blinks its four LEDs until the first CAN frame arrives, so a dead bus shows before the car moves. All three boards were laid out in Altium Designer and programmed in CodeWarrior with Processor Expert, flashed through a BDM header with a P&amp;E Multilink.</p>
 
                 <h3 id="modules">The Modules</h3>
 
-                <div class="row">
-                  <div class="col-six">
-                    <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00017556_light40.jpg" width="400" alt="Assembled Baja SAE USB dashboard-module PCB with its automotive connectors, DE-9 port and microcontroller">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00018248_light40.jpg" width="400" alt="The steering-wheel display running on the bench: a chevron-shaped board with a graphic LCD showing 00 KPH, an RPM bar and a fuel bar, and a button at each corner">
-                    </p>
-                  </div>
-                </div>
+                <ul class="cs-parts">
+                    <li class="cs-part">
+                        <a class="cs-part__media" href="car-dashboard.html" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/bajasae/00017556_light40.jpg" alt=""></a>
+                        <p class="cs-part__where">Behind the dash</p>
+                        <h4 class="cs-part__title"><a href="car-dashboard.html">Dashboard module</a></h4>
+                        <p class="cs-part__text">The hub. It reads RPM, speed and temperature, shares them on the bus as frame <code>0x111</code>, and drives the two needle gauges, the headlights, night and turn lamps and four warning LEDs. Its turn signals fade in and out instead of blinking.</p>
+                    </li>
+                    <li class="cs-part">
+                        <a class="cs-part__media" href="steering-wheel.html" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/bajasae/00018248_light40.jpg" alt=""></a>
+                        <p class="cs-part__where">On the steering wheel</p>
+                        <h4 class="cs-part__title"><a href="steering-wheel.html">Steering&#8209;wheel display</a></h4>
+                        <p class="cs-part__text">A graphic LCD for speed, RPM, fuel and warnings, fed from the dashboard's <code>0x111</code> and the fuel module's <code>0x222</code>, framed by four illuminated buttons for the turn signals, hazards, night lights and brake indicator. Each press goes out on the bus as <code>0x333</code>.</p>
+                    </li>
+                    <li class="cs-part">
+                        <a class="cs-part__media" href="gasoline-module.html" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/bajasae/00017557_light40.jpg" alt=""></a>
+                        <p class="cs-part__where">Along the fuel tank</p>
+                        <h4 class="cs-part__title"><a href="gasoline-module.html">Fuel&#8209;level module</a></h4>
+                        <p class="cs-part__text">A long, narrow board beside the tank float. A magnet on the float passes six Hall&#8209;effect switches; the board turns that into a fuel level in 11 steps and broadcasts it every 2&nbsp;s as frame <code>0x222</code>.</p>
+                    </li>
+                    <li class="cs-part">
+                        <a class="cs-part__media" href="car-dashboard.html#outputs" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/bajasae/00017171_light40.jpg" alt=""></a>
+                        <p class="cs-part__where">In the dash</p>
+                        <h4 class="cs-part__title"><a href="car-dashboard.html#outputs">Needle gauges</a></h4>
+                        <p class="cs-part__text">The tachometer and speedometer are moving&#8209;coil meters re&#8209;scaled for RPM and km/h, driven by the dashboard's PWM through an RC filter. Here a pair of gauges is opened up on the bench.</p>
+                    </li>
+                </ul>
 
-                <p style="text-align:center">The <a href="car-dashboard.html">dashboard module</a> with its keyed harness connectors, and the <a href="steering-wheel.html">steering&#8209;wheel display</a> running on the bench.</p>
+                <h3 id="tools">Around the Car</h3>
 
-                <div class="row">
-                  <div class="col-six">
-                    <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00017557_light40.jpg" width="400" alt="The fuel-level module: a long, narrow PCB with the Baja USB rabbit logo, its microcontroller and the 40117 board tag">
-                    </p>
-                  </div>
-                  <div class="col-six">
-                    <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00017171_light40.jpg" width="400" alt="Two TRISCO 60-0-60 automotive gauges, one opened up with its dial face lying beside it">
-                    </p>
-                  </div>
-                </div>
+                <p>Two tools stayed off the bus. They served the car in the workshop and on test days:</p>
 
-                <p style="text-align:center">The <a href="gasoline-module.html">fuel&#8209;level module</a>, the long narrow board that runs along the tank, and a pair of moving&#8209;coil gauges opened up on the bench.</p>
+                <ul class="cs-parts">
+                    <li class="cs-part">
+                        <a class="cs-part__media" href="wheel-alignment.html" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/wheel_alignment/car-on-jig.jpg" alt=""></a>
+                        <p class="cs-part__where">On all four wheels</p>
+                        <h4 class="cs-part__title"><a href="wheel-alignment.html">Wheel&#8209;alignment system</a></h4>
+                        <p class="cs-part__text">In place of chalk lines and a tape measure: an ATmega328P, an ADXL335 and ultrasonic sensors on each wheel, linked over I&sup2;C, with an XBee radio to a handheld display for camber and toe.</p>
+                    </li>
+                    <li class="cs-part">
+                        <a class="cs-part__media" href="brake-test.html" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/brake_test/box-mounted.jpg" alt=""></a>
+                        <p class="cs-part__where">Bolted to a wheel hub</p>
+                        <h4 class="cs-part__title"><a href="brake-test.html">Brake&#8209;test logger</a></h4>
+                        <p class="cs-part__text">An Arduino, an ADXL335 and a microSD card in a hand&#8209;formed box that bolts onto a wheel hub and logs 3&#8209;axis acceleration through a braking run.</p>
+                    </li>
+                </ul>
 
-                <p>Two tools work off the car's bus. The <a href="wheel-alignment.html">wheel&#8209;alignment system</a> puts an ATmega328P, an ADXL335 and ultrasonic sensors on each wheel, linked over I&sup2;C, with an XBee radio to a handheld display. The <a href="brake-test.html">brake&#8209;test logger</a> is an Arduino, an ADXL335 and a microSD card in a box that bolts onto a wheel hub.</p>
+                <h3 id="timeline">How It Came Together</h3>
+
+                <p>Dates from the firmware, fabrication files and reports in the project repositories:</p>
+
+                <ol class="cs-spec" aria-label="Timeline of the Baja SAE USB electronics">
+                    <li><b>2011&ndash;12</b>Dashboard firmware, our team's 2011&ndash;12 version: sensors, CAN, needles and lamps</li>
+                    <li><b>Feb&ndash;Mar 2012</b>Steering&#8209;wheel display firmware: buttons, backlight and LCD</li>
+                    <li><b>Feb&ndash;May 2012</b>Fuel&#8209;level module firmware</li>
+                    <li><b>Mar 2012</b>The CAN frame scheme: <code>0x111</code>, <code>0x222</code>, <code>0x333</code></li>
+                    <li><b>Nov 2012</b>Fuel&#8209;level board fabrication files</li>
+                    <li><b>Jan&ndash;Apr 2013</b>Dashboard board redesigned for 2012&ndash;13</li>
+                    <li><b>Aug 2013</b><a href="wheel-alignment.html">Wheel&#8209;alignment system</a></li>
+                    <li><b>Oct&ndash;Dec 2013</b><a href="brake-test.html">Brake&#8209;test logger</a>: test runs in October, report in December</li>
+                </ol>
 
                 <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
 
                 <h3 id="tests">What Was Tested</h3>
 
-                <p>The test records that survive belong to three of the sub&#8209;systems:</p>
+                <p>I tested three of the sub&#8209;systems:</p>
 
                 <ul>
                     <li><a href="brake-test.html#data"><strong>Brake&#8209;test logger</strong></a> &mdash; driven and braked around Centro San Ignacio in Chacao, Caracas: a reconnaissance lap, then several braking laps per wheel (front&#8209;right, front&#8209;left, rear&#8209;right), logged to the SD card and converted to m/s&sup2; with a two&#8209;orientation calibration.</li>
@@ -675,6 +850,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

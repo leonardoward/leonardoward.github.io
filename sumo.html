@@ -456,6 +456,25 @@
 
                 <p class="lead drop-cap">Atlas is an autonomous sumo robot built for the VI Venezuelan National Robotics Competition (USB BOTS 2016), where it took <strong>2nd place</strong> in the Sumo category. It was developed by the FutBot&nbsp;&ndash;&nbsp;Future Robotics team at the Universidad Sim&oacute;n Bol&iacute;var (USB).</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Mobile robots thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-mobile-robots">Mobile robots</a> thread &middot; 2014&ndash;2019</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="hbridgeboards.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/hbridgeboards-4a38f579.jpg" alt=""></span><span class="cs-thread__name">H-bridge drivers</span><span class="cs-thread__year">2014</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="uln2003board.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/uln2003board-357a2fc5.jpg" alt=""></span><span class="cs-thread__name">ULN2003 drivers</span><span class="cs-thread__year">2015</span></a></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="unetbot.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/unetbot-784313dc.jpg" alt=""></span><span class="cs-thread__name">E-wanna</span><span class="cs-thread__year">2015</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="irdar.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/irdar-c3a9cbfa.jpg" alt=""></span><span class="cs-thread__name">IRDAR</span><span class="cs-thread__year">2016</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/sumo-c7443d45.jpg" alt=""></span><span class="cs-thread__name">ATLAS sumo robot</span><span class="cs-thread__year">2016 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pioneer-slam.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pioneer-slam-7e74193c.jpg" alt=""></span><span class="cs-thread__name">Pioneer SLAM</span><span class="cs-thread__year">2019</span></a></li>
+                    </ol>
+                </nav>
+
+                <aside class="cs-credits" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>Team</dt><dd>Javier Inojosa and I built Atlas for team FutBot USB; the CAD drawings are by Reinaly Bigott.</dd></div>
+                        <div><dt>Recognition</dt><dd><strong>2nd place</strong>, Sumo category &mdash; VI Competencia Nacional de Rob&oacute;tica (USB BOTS 2016), Caracas, 7&ndash;9 November 2016.</dd></div>
+                    </dl>
+                </aside>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -483,7 +502,7 @@
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>There is no requirements document in the repository; this is what the design had to satisfy, taken from the ring rules above and from how Atlas was built:</p>
+                <p>Within the ring rules above, Atlas had to:</p>
 
                 <ul class="cs-spec" aria-label="Atlas design requirements">
                     <li><b>Find</b>Locate the opponent anywhere around the robot: front, sides and rear</li>
@@ -542,7 +561,7 @@
                   </p>
                 </div>
 
-                <p>Atlas is driven by two brushless DC motors salvaged from office equipment. There was no datasheet or wiring diagram for them, so the team <strong>reverse&#8209;engineered the driver board</strong> to work out how to command it from the Arduino. The board is built around two ICs:</p>
+                <p>Atlas is driven by two brushless DC motors salvaged from office equipment. There was no datasheet or wiring diagram for them, so we <strong>reverse&#8209;engineered the driver board</strong> to work out how to command it from the Arduino. The board is built around two ICs:</p>
 
                 <ul>
                     <li><a href="https://www.digikey.com.mx/product-detail/es/sanken/SLA6023/SLA6023-ND/4289323">SLA6023</a> &mdash; 3&#8209;phase brushless motor driver (60&nbsp;V, 6&nbsp;A, 25&nbsp;W).</li>
@@ -638,7 +657,7 @@
 
                 <h3 id="next-revision">What I'd Change</h3>
 
-                <p>Going back through the firmware later turned up bugs, and the repository README now lists them with a suggested order of fixes. The first ones on that list:</p>
+                <p>Going back through the firmware later, I found bugs. These are the fixes I&rsquo;d make first:</p>
 
                 <ul>
                     <li><strong>Ring&#8209;edge escape</strong> &mdash; the four edge reflectance channels are sampled, but nothing reacts to them. A back&#8209;up&#8209;and&#8209;turn reaction to any edge reading comes first.</li>
@@ -777,6 +796,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

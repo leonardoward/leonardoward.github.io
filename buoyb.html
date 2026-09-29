@@ -476,6 +476,15 @@
 
                 <p class="lead drop-cap">Buoy B V1.0 is a 102.46 mm x 44.20 mm PCB that integrates 4 of the main components (ESP32, LoRa, GPS and Motor Driver).</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Marine IoT thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-marine">Marine IoT</a> thread &middot; 2020&ndash;2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item is-here"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/buoyb-0c897f35.jpg" alt=""></span><span class="cs-thread__name">Buoy boards</span><span class="cs-thread__year">2020 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="gps-dev-board.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gps-dev-board-653f3d84.jpg" alt=""></span><span class="cs-thread__name">Dev boards</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="ejam.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ejam-07e677bc.jpg" alt=""></span><span class="cs-thread__name">EJA M v1.0</span><span class="cs-thread__year">2021</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -491,7 +500,7 @@
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>Buoy&nbsp;B is the lighter of the two buoy boards: the same job as <a href="buoya.html">Buoy&nbsp;A</a> (go into the buoy on the trap, keep the release timer, report the GPS position so the gear can be recovered) without the 4G(LTE) shield, on a smaller PCB. The list below is read from the board's schematic, wiring diagrams and firmware rather than from a written spec:</p>
+                <p>Buoy&nbsp;B is the lighter of the two buoy boards: the same job as <a href="buoya.html">Buoy&nbsp;A</a> (go into the buoy on the trap, keep the release timer, report the GPS position so the gear can be recovered) without the 4G(LTE) shield, on a smaller PCB.</p>
 
                 <ul class="cs-spec" aria-label="Buoy B requirements, read from the design">
                     <li><b>Locate</b>Read position and time from an Adafruit Ultimate GPS over UART</li>
@@ -884,7 +893,7 @@
 
                 <p style="text-align:center">Buoy&nbsp;B (left) and the Onboard Gateway on the bench, with the gateway's GPS page open on a phone.</p>
 
-                <p>What the repository doesn't show is a position fix, a range test, or the release firing: the block that drives the actuator is still a stub in the firmware.</p>
+                <p>The release itself was still open: in this firmware, the block that drives the actuator is a stub.</p>
 
                 <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
 
@@ -1028,6 +1037,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

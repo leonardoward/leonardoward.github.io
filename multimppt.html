@@ -456,6 +456,12 @@
 
                 <p class="lead drop-cap"><strong>MultiMPPT</strong> is a design study for a low&#8209;cost, high&#8209;efficiency <a href="https://en.wikipedia.org/wiki/Maximum_power_point_tracking">maximum power point tracker</a> with <strong>multiple independent inputs</strong>, built on a <strong>Differential Power Processing (DPP)</strong> architecture. It is documented on <a href="https://hackaday.io/project/185092-multimppt">Hackaday</a>; this page covers two pieces of it &mdash; a <a href="https://www.mathworks.com/products/simulink.html">Simulink</a> model that tests whether the DPP idea actually helps, and a <a href="https://www.kicad.org/">KiCad&nbsp;6</a> v1.0 board that breaks out one converter cell for the bench.</p>
 
+                <aside class="cs-credits" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>Credits</dt><dd>The Simulink files started from a 2016 PV model by Rodney Tan.</dd></div>
+                    </dl>
+                </aside>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -477,7 +483,7 @@
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>The repository README gives the project's brief in one line: a low&#8209;cost, high&#8209;efficiency MPPT with multiple independent inputs. With the DPP approach above, that meant:</p>
+                <p>The goal was a low&#8209;cost, high&#8209;efficiency MPPT with multiple independent inputs. With the DPP approach above, that meant:</p>
 
                 <ul class="cs-spec" aria-label="MultiMPPT requirements">
                     <li><b>Inputs</b>Hold each module in a series string at its own maximum power point, instead of one operating point for the whole string</li>

@@ -163,6 +163,7 @@
         this.index = i;
 
         this.chipText.textContent = frame.label;
+        this.chipText.parentNode.hidden = !frame.label;
         this.box.classList.toggle('is-labelled', !frame.step);
 
         var at = frame.step ? STEPS.indexOf(frame.step) : -1;

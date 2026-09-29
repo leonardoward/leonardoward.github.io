@@ -456,6 +456,16 @@
 
                 <p class="lead drop-cap">An Android app for trying <a href="https://opencv.org/">OpenCV</a> image&#8209;processing algorithms on the phone &mdash; from the camera or the gallery. Built as a sandbox while learning the OpenCV Android SDK.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Vision & medical thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vision">Vision &amp; medical</a> thread &middot; 2017&ndash;2018</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item is-here"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/opencv-test-app-d5210538.jpg" alt=""></span><span class="cs-thread__name">OpenCV Test App</span><span class="cs-thread__year">2017 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="opencv-pointillize.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/opencv-pointillize-308dcef0.jpg" alt=""></span><span class="cs-thread__name">Pointillize</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pyhl7-aecg.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pyhl7-aecg-5b1b821d.jpg" alt=""></span><span class="cs-thread__name">pyHL7 aECG</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="ecg-digitization.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ecg-digitization-ad3abf42.jpg" alt=""></span><span class="cs-thread__name">ECG digitization</span><span class="cs-thread__year">2018</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -470,8 +480,6 @@
                 <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
                 <h3 id="requirements">What It Had to Do</h3>
-
-                <p>A learning sandbox with no written brief; the app&rsquo;s design shows what it had to do:</p>
 
                 <ul class="cs-spec" aria-label="OpenCV test app requirements">
                     <li><b>Input</b>A still photo from the camera or the gallery, or the live camera feed</li>
@@ -533,14 +541,13 @@
                 <ul>
                     <li>Old SDK (25) and OpenCV&nbsp;3.2.0; the OpenCV API is largely unchanged in 4.x but the Gradle/SDK setup would need updating.</li>
                     <li>The scanner's Hough&#8209;intersection corner finding is brittle on cluttered backgrounds &mdash; an <code>approxPolyDP</code> on the largest contour is usually steadier.</li>
-                    <li>The vendored native libraries and OpenCV build output are committed, which makes the repo large.</li>
                 </ul>
 
                 <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
 
                 <h3 id="scanner-next">Where the Scanner Went Next</h3>
 
-                <p>The scanner&rsquo;s pipeline reappears as Stage&nbsp;1 of the 2018 <a href="ecg-digitization.html#perspective-correction">ECG digitization thesis</a>, and in that project&rsquo;s Android app, which runs it on the phone to outline the ECG sheet. The core settings are the same &mdash; a downscale toward 320&times;240, Canny at 50/150, the largest contour, a Hough transform with a 70&#8209;vote threshold, pairwise line intersections and a perspective warp &mdash; but the rule for picking corners changed: of all the intersections, the thesis keeps the four that form the largest quadrilateral, where this app takes the four farthest from their centroid. <a href="ecg-digitization.html#stage-results">Tested there</a> on ten phone photos of ECG strips, about half failed, mostly because of uneven lighting.</p>
+                <p>The scanner&rsquo;s pipeline reappears as Stage&nbsp;1 of our 2018 <a href="ecg-digitization.html#perspective-correction">ECG digitization thesis</a>, and in that project&rsquo;s Android app, which runs it on the phone to outline the ECG sheet. The core settings are the same &mdash; a downscale toward 320&times;240, Canny at 50/150, the largest contour, a Hough transform with a 70&#8209;vote threshold, pairwise line intersections and a perspective warp &mdash; but the rule for picking corners changed: of all the intersections, the thesis keeps the four that form the largest quadrilateral, where this app takes the four farthest from their centroid. <a href="ecg-digitization.html#stage-results">Tested there</a> on ten phone photos of ECG strips, about half failed, mostly because of uneven lighting.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -665,6 +672,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

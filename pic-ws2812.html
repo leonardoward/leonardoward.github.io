@@ -456,6 +456,16 @@
 
                 <p class="lead drop-cap">A driver for <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">WS2812</a> addressable RGB LEDs on the <a href="https://www.microchip.com/en-us/product/pic16f1717">PIC16F1717</a>, built so that the <strong>Core Independent Peripherals</strong> generate the LED waveform and the CPU spends no cycles on bit timing. Configured with <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLAB Code Configurator</a> and simulated in <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the PIC firmware thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-pic">PIC firmware</a> thread &middot; 2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="helios_ren.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/helios_ren-bcfd89a5.jpg" alt=""></span><span class="cs-thread__name">HELIOS REN</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="ambient-lights.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ambient-lights-63b84f31.jpg" alt=""></span><span class="cs-thread__name">HELA ambient lights</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pic-ws2812-71f2636d.jpg" alt=""></span><span class="cs-thread__name">WS2812 driver</span><span class="cs-thread__year">2021 &middot; this project</span></span></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pic-proteus-space-invaders.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pic-proteus-space-invaders-a2820d80.jpg" alt=""></span><span class="cs-thread__name">Space Invaders on a PIC</span><span class="cs-thread__year">2021</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -510,7 +520,7 @@
 
                 <h3 id="configuration">Peripheral Configuration (MCC)</h3>
 
-                <p>Every peripheral is set up in MPLAB Code Configurator; the repository has a screenshot of each panel. The device runs from the 8&nbsp;MHz internal oscillator with the 4&times; PLL, for a 32&nbsp;MHz system clock.</p>
+                <p>I set up every peripheral in MPLAB Code Configurator; each panel is shown below. The device runs from the 8&nbsp;MHz internal oscillator with the 4&times; PLL, for a 32&nbsp;MHz system clock.</p>
 
                 <h4 id="timer2">Timer2</h4>
 
@@ -746,6 +756,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

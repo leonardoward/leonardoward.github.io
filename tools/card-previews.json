@@ -1,0 +1,164 @@
+{
+  "buoyb.html": [
+    {"step": "define", "src": "images/ejam/hardware_block_diagram_buoy_a_b.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/buoy_b/Buoy-B-01.jpg"},
+    {"step": "build", "src": "images/buoy_b/Components_Buoy_B_light40.jpg"},
+    {"step": "refine", "src": "images/buoy_b/buoy-b-v2-ethernet-render.jpg"}
+  ],
+  "gps-dev-board.html": [
+    {"label": "LoRa board", "src": "images/lora_development_board/Lora_PCB.jpg"},
+    {"label": "FTDI board", "src": "images/ftdi_development_board/ftdi-pcb-1.jpg"},
+    {"step": "build", "src": "images/gps_development_board/schematic_atgm332d-5n31.jpg", "fit": "contain"},
+    {"step": "test", "src": "images/gps_development_board/gps-test-setup.jpg"}
+  ],
+  "ejam.html": [
+    {"step": "define", "src": "images/ejam/pcb_dimensions_boundaries.png", "fit": "contain"},
+    {"step": "simulate", "src": "images/ejam/schematic-battery-level.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/ejam/ejam-pcb-top-closeup-01.jpg"},
+    {"step": "refine", "src": "images/ejam/hardware_block_diagram_buoy_a_b.jpg", "fit": "contain"}
+  ],
+  "helios_ren.html": [
+    {"step": "define", "src": "images/helios_ren/D_Estado.jpg", "fit": "contain"},
+    {"step": "simulate", "src": "images/helios_ren/Simulacion_Proteus.jpg"},
+    {"step": "build", "src": "images/helios_ren/D_Hardware.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/helios_ren/Case.PNG", "fit": "contain"}
+  ],
+  "ambient-lights.html": [
+    {"step": "simulate", "src": "images/ambient_lights/demo.jpg"},
+    {"step": "build", "src": "images/ambient_lights/block-hardware.png"},
+    {"step": "build", "src": "images/ambient_lights/menu-flow.png"},
+    {"step": "build", "src": "images/ambient_lights/block-software.png"}
+  ],
+  "pic-ws2812.html": [
+    {"step": "simulate", "src": "images/pic_ws2812/schematic.jpg"},
+    {"step": "build", "src": "images/pic_ws2812/mcc_clc3.jpg", "fit": "contain"}
+  ],
+  "pic-proteus-space-invaders.html": [
+    {"step": "simulate", "src": "images/space_invaders/space-invaders-1.mp4", "fit": "contain", "bg": "black", "t": [0, 5]},
+    {"step": "build", "src": "images/space_invaders/alien_list.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/space_invaders/game_map.jpg"}
+  ],
+  "opencv-test-app.html": [],
+  "opencv-pointillize.html": [
+    {"step": "define", "src": "images/cv_pointillize/source.jpg"},
+    {"step": "test", "src": "images/cv_pointillize/attempts-progression.jpg", "crop": [0, 0, 407, 442], "fit": "contain"},
+    {"step": "test", "src": "images/cv_pointillize/attempts-progression.jpg", "crop": [417, 0, 412, 442], "fit": "contain"},
+    {"step": "test", "src": "images/cv_pointillize/attempts-progression.jpg", "crop": [840, 0, 406, 442], "fit": "contain"},
+    {"step": "test", "src": "images/cv_pointillize/portrait.jpg"}
+  ],
+  "pyhl7-aecg.html": [
+    {"step": "build", "src": "images/pyhl7_aecg/carousel.jpg", "fit": "contain", "bg": "black"}
+  ],
+  "ecg-digitization.html": [
+    {"step": "define", "src": "images/ecg-digitization/phone-capture-raw.jpg"},
+    {"step": "build", "src": "images/ecg-digitization/row-segmentation.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/ecg-digitization/app-capture.jpg"},
+    {"step": "build", "src": "images/ecg-digitization/app-result-chart.jpg"},
+    {"step": "test", "src": "images/ecg-digitization/results-lead-separation.jpg", "fit": "contain"}
+  ],
+  "hbridgeboards.html": [
+    {"step": "build", "src": "images/stepper_drivers/diagram_01.JPG", "fit": "contain"},
+    {"step": "build", "src": "images/stepper_drivers/protoboard_04_light40.JPG"},
+    {"step": "test", "src": "images/stepper_drivers/test_03_light40.JPG"},
+    {"step": "test", "src": "images/dc_motor_drivers/dc_driver_test_light40.JPG"}
+  ],
+  "uln2003board.html": [
+    {"step": "build", "src": "images/uln2003_designs/upper_light60.jpg"},
+    {"step": "build", "src": "images/uln2003_designs/front_light60.jpg"}
+  ],
+  "unetbot.html": [
+    {"step": "define", "src": "images/unetbot/course-diagram.jpg"},
+    {"step": "simulate", "src": "images/unetbot/motor-driver-schematic.jpg"},
+    {"step": "build", "src": "images/unetbot/paper-fig7-pi-camera-shield.jpg"},
+    {"step": "test", "src": "images/unetbot/test-rig-home.jpg"}
+  ],
+  "irdar.html": [
+    {"step": "build", "src": "images/irdar/turret.jpg"},
+    {"step": "build", "src": "images/irdar/sensor_head.jpg"},
+    {"step": "build", "src": "images/irdar/signal_board.jpg"},
+    {"step": "test", "src": "images/irdar/sharp-calibration.png"}
+  ],
+  "sumo.html": [
+    {"step": "define", "src": "images/sumo/sumo_arena.png"},
+    {"step": "build", "src": "images/sumo/atlas_render_light.jpg"},
+    {"step": "build", "src": "images/sumo/IMG_8945_light40.JPG"},
+    {"step": "test", "src": "images/sumo/award_light.jpg"}
+  ],
+  "pioneer-slam.html": [
+    {"step": "simulate", "src": "images/teleop_slam/laser_scan.jpg"},
+    {"step": "simulate", "src": "images/teleop_slam/vision_sensor.jpg"},
+    {"step": "build", "src": "images/teleop_slam/rosgraph.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/teleop_slam/ros_control_app.jpg", "fit": "contain", "bg": "#f2f2f2"}
+  ],
+  "steering-wheel.html": [
+    {"step": "build", "src": "images/steering_wheel/telltales.jpg"},
+    {"step": "build", "src": "images/steering_wheel/schematic-overview.jpg"}
+  ],
+  "car-dashboard.html": [
+    {"step": "build", "src": "images/car_dashboard/pcb-layout.jpg"},
+    {"step": "build", "src": "images/car_dashboard/schematic-overview.jpg"}
+  ],
+  "gasoline-module.html": [
+    {"step": "build", "src": "images/gasoline_module/schematic-overview.jpg"}
+  ],
+  "wheel-alignment.html": [
+    {"step": "simulate", "src": "images/wheel_alignment/ultrasonic-transceiver.png", "fit": "contain"},
+    {"step": "build", "src": "images/wheel_alignment/coupling-cad.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/wheel_alignment/wheel-module-schematic.jpg"},
+    {"step": "build", "src": "images/wheel_alignment/bus-diagram.jpg", "fit": "contain"}
+  ],
+  "brake-test.html": [
+    {"step": "simulate", "src": "images/brake_test/rc-filter.png"},
+    {"step": "build", "src": "images/brake_test/electronics-kit.jpg"},
+    {"step": "build", "src": "images/brake_test/sensor-board.jpg"},
+    {"step": "test", "src": "images/brake_test/acceleration-plot.png"}
+  ],
+  "bajasae.html": [
+    {"step": "build", "src": "images/bajasae/00017556_light40.jpg"},
+    {"step": "build", "src": "images/bajasae/00018248_light40.jpg"},
+    {"step": "build", "src": "images/bajasae/00017557_light40.jpg"},
+    {"step": "test", "src": "images/brake_test/acceleration-plot.png"}
+  ],
+  "brushlessdc.html": [
+    {"step": "define", "src": "images/brushless_dc_drivers/motor_2_light60.jpg"},
+    {"step": "define", "src": "images/brushless_dc_drivers/driver_light60.JPG"},
+    {"step": "test", "src": "images/brushless_dc_drivers/circuit_1_light60.jpg"},
+    {"step": "test", "src": "images/brushless_dc_drivers/circuit_3_light60.jpg"}
+  ],
+  "interactive-map.html": [
+    {"step": "build", "src": "images/interactive_map/worldmap.jpg"}
+  ],
+  "multimppt.html": [
+    {"step": "simulate", "src": "images/multimppt/simulink-model.png", "fit": "contain"},
+    {"step": "simulate", "src": "images/multimppt/result-pv-shading.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/multimppt/schematic.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/multimppt/pcb-side.jpg"}
+  ],
+  "3dmap.html": [
+    {"step": "build", "src": "images/3dmap/20190426_081254_light60.jpg"},
+    {"step": "build", "src": "images/3dmap/20190426_132819_light60.jpg"},
+    {"step": "build", "src": "images/3dmap/WhatsApp Image 2020-06-14 at 7.52.56 PM (3).jpeg"},
+    {"step": "build", "src": "images/3dmap/IMG-20190823-WA0006.jpg"}
+  ],
+  "puma560.html": [
+    {"step": "simulate", "src": "images/puma560/rrr_robot.mp4", "crop": [480, 60, 440, 330], "t": [0, 5]},
+    {"step": "simulate", "src": "images/puma560/puma_560_3d_vel20_2.mp4", "crop": [440, 150, 460, 345], "t": [0, 5]}
+  ],
+  "em-game.html": [
+    {"step": "build", "src": "game/assets/Coulomb1.png", "fit": "contain"},
+    {"step": "build", "src": "images/charges_game/carousel.jpg"}
+  ],
+  "eja.html": [
+    {"step": "define", "src": "images/eja/ejav2-problem.png"},
+    {"step": "build", "src": "images/eja/ejav2-prototype1.jpg"},
+    {"step": "build", "src": "images/onboard_gateway/gui-onboard-gateway.jpg"},
+    {"step": "refine", "src": "images/eja/ejav2-prototype2.jpg"}
+  ],
+  "embedded-hardware.html": [
+    {"label": "FTDI board", "src": "images/ftdi_development_board/ftdi-pcb-1.jpg"},
+    {"label": "GPS board", "src": "images/gps_development_board/gps-pcb.jpg"},
+    {"label": "LoRa board", "src": "images/lora_development_board/Lora_PCB.jpg"},
+    {"label": "Onboard Gateway", "src": "images/onboard_gateway/onboard_gateway_main_light60.jpg"},
+    {"label": "Buoy B", "src": "images/buoy_b/Buoy-B-01.jpg"}
+  ]
+}

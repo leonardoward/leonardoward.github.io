@@ -448,6 +448,24 @@
 
                 <p class="lead drop-cap">Every electrocardiogram (ECG) machine in routine clinical use does the same thing with its result: it prints it on a strip of paper. The waveform that follows is proof &mdash; a cardiologist can read it, but a computer can't, and the reading is stuck on that one piece of paper forever unless someone re-measures it by hand with a ruler. This is an undergraduate thesis project (Universidad Sim&oacute;n Bol&iacute;var, Ingenier&iacute;a Electr&oacute;nica, defended May 2018, advised by Prof. Masun Homsi) built with Emanuel S&aacute;nchez to close that gap: a photo of a printed 12-lead ECG goes in, and a calibrated millivolts-vs-milliseconds signal comes out &mdash; exportable as JSON, WFDB, MATLAB, or the FDA-backed <a href="https://en.wikipedia.org/wiki/Health_Level_7">HL7</a> annotated-ECG (aECG) XML standard used in clinical trials.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Vision & medical thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-vision">Vision &amp; medical</a> thread &middot; 2017&ndash;2018</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="opencv-test-app.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/opencv-test-app-d5210538.jpg" alt=""></span><span class="cs-thread__name">OpenCV Test App</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="opencv-pointillize.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/opencv-pointillize-308dcef0.jpg" alt=""></span><span class="cs-thread__name">Pointillize</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="pyhl7-aecg.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/pyhl7-aecg-5b1b821d.jpg" alt=""></span><span class="cs-thread__name">pyHL7 aECG</span><span class="cs-thread__year">2017</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="carried"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ecg-digitization-ad3abf42.jpg" alt=""></span><span class="cs-thread__name">ECG digitization</span><span class="cs-thread__year">2018 &middot; this project</span></span></li>
+                    </ol>
+                </nav>
+
+                <aside class="cs-credits" aria-label="Team and credits">
+                    <dl>
+                        <div><dt>Team</dt><dd>Emanuel S&aacute;nchez and I wrote this undergraduate thesis at Universidad Sim&oacute;n Bol&iacute;var, tutored by Prof. Masun Nabhan Homsi.</dd></div>
+                        <div><dt>Recognition</dt><dd>Defended on 22 May 2018 and awarded a unanimous <strong>Menci&oacute;n Sobresaliente</strong> (distinction) by the jury.</dd></div>
+                        <div><dt>Credits</dt><dd>Test set&nbsp;1 is Mike Cadogan&rsquo;s ECG Library image database (Life in the Fast Lane). The 12&#8209;lead ECG in the pipeline figures is from Kayani, Huang, Bandeali and Birnbaum (2012).</dd></div>
+                    </dl>
+                </aside>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -463,7 +481,7 @@
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>The thesis states its general objective in one line: design and develop a service that extracts the electrocardiographic information from the image of a routine ECG exam. It breaks that into five specific objectives:</p>
+                <p>Our thesis had one general objective &mdash; design and develop a service that extracts the electrocardiographic information from the image of a routine ECG exam &mdash; and five specific ones:</p>
 
                 <ul class="cs-spec" aria-label="ECG digitization service objectives">
                     <li><b>Locate</b>Extract the region of the image that holds the ECG, correct its orientation and filter out image noise</li>
@@ -544,7 +562,7 @@
                     <table>
                         <thead><tr><th>Layer</th><th>Choice</th><th>Why</th></tr></thead>
                         <tbody>
-                            <tr><td>API style</td><td>REST over SOAP/WSDL</td><td>The thesis cites Fielding's 2000 dissertation directly; REST's stateless, resource-based model was judged a better fit than SOAP's contract-heavy tooling for a service this size</td></tr>
+                            <tr><td>API style</td><td>REST over SOAP/WSDL</td><td>Our thesis cites Fielding's 2000 dissertation directly; REST's stateless, resource-based model was judged a better fit than SOAP's contract-heavy tooling for a service this size</td></tr>
                             <tr><td>Backend runtime</td><td>Node.js 8.11.1 over Java</td><td>A cited PayPal benchmark showed roughly 2&times; requests/sec and 35% lower response time versus an equivalent Java app</td></tr>
                             <tr><td>Backend modules</td><td><code>express</code>, <code>mongoose</code>, <code>passport</code>, <code>jsonwebtoken</code>, <code>bcrypt</code>, <code>multer</code>, <code>body-parser</code>, <code>python-shell</code>, <code>rotating-file-stream</code></td><td>Routing, MongoDB ODM, auth strategies, JWT issuing, password hashing, multipart uploads, calling into Python, and weekly-rotated access/error logs</td></tr>
                             <tr><td>Database</td><td>MongoDB + Mongoose</td><td>Document storage suited the variable, nested shape of an ECG job (segments, leads, processing state) better than a fixed relational schema</td></tr>
@@ -559,7 +577,7 @@
 
                 <h3 id="pipeline">The Digitization Pipeline</h3>
 
-                <p>This is the core of the thesis: turning a photograph of a paper ECG into a clean, calibrated signal. It runs in three stages.</p>
+                <p>This is the core of our thesis: turning a photograph of a paper ECG into a clean, calibrated signal. It runs in three stages.</p>
 
                 <div class="col-full" style="text-align:center">
                   <p>
@@ -773,7 +791,7 @@
 
                 <p>In Stage&nbsp;2, combining color and entropy clearly beats either alone: row-boundary accuracy was 48.1% with color only, 63.0% with entropy only, and the two together landed at 61.1% &mdash; a large jump over color alone, though roughly a wash against entropy on its own. For the narrower job of separating lead&nbsp;II specifically, the combination did win outright: 85.2% (color), 83.3% (entropy), <strong>90.7% combined</strong> &mdash; the version actually carried forward.</p>
 
-                <p>Stage&nbsp;3&rsquo;s grid calibration turned out uneven &mdash; correct to within 1&nbsp;px on width in 59.3% of images but on height in only 33.3% (RMSE 0.407 vs. 1.111 grid squares), which the thesis flags as a real weak point, since height error propagates directly into amplitude error.</p>
+                <p>Stage&nbsp;3&rsquo;s grid calibration turned out uneven &mdash; correct to within 1&nbsp;px on width in 59.3% of images but on height in only 33.3% (RMSE 0.407 vs. 1.111 grid squares), which our thesis flags as a real weak point, since height error propagates directly into amplitude error.</p>
 
                 <h4>Digitization Accuracy</h4>
 
@@ -842,7 +860,7 @@
 
                 <p>The service handled 20 concurrent users cleanly (0% errors), stayed reasonably usable at 50 (~89% success), and degraded sharply past that on this single, unscaled instance &mdash; the recommendations section below is mostly about fixing exactly that.</p>
 
-                <p>The load test targeted the endpoint that returns results, not digitization itself. Digitization is the expensive part: the thesis found that the number of simultaneous digitization requests the server can take is directly proportional to its number of processors.</p>
+                <p>The load test targeted the endpoint that returns results, not digitization itself. Digitization is the expensive part: we found that the number of simultaneous digitization requests the server can take is directly proportional to its number of processors.</p>
 
                 <h3 id="limitations">Limitations</h3>
 
@@ -860,7 +878,7 @@
 
                 <div class="row">
                   <div class="col-six">
-                    <h5>From the thesis's own future-work list</h5>
+                    <h5>From our thesis's future-work list</h5>
                     <ul>
                         <li>A web app and an iOS app, alongside the existing Android client</li>
                         <li>Pathology-detection algorithms built on top of the extracted signal</li>
@@ -994,6 +1012,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

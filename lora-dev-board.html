@@ -470,6 +470,15 @@
 
                 <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains an RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Marine IoT thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-marine">Marine IoT</a> thread &middot; 2020&ndash;2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="buoyb.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/buoyb-0c897f35.jpg" alt=""></span><span class="cs-thread__name">Buoy boards</span><span class="cs-thread__year">2020</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><a href="gps-dev-board.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gps-dev-board-653f3d84.jpg" alt=""></span><span class="cs-thread__name">Dev boards</span><span class="cs-thread__year">2021 &middot; this project</span></a></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="ejam.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ejam-07e677bc.jpg" alt=""></span><span class="cs-thread__name">EJA M v1.0</span><span class="cs-thread__year">2021</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -487,7 +496,7 @@
 
                 <h3 id="requirements">What It Had to Do</h3>
 
-                <p>There is no written spec for the board; the repository README calls it intentionally minimal, and the design shows what it had to do:</p>
+                <p>I kept the board intentionally minimal:</p>
 
                 <ul class="cs-spec" aria-label="LoRa development board requirements">
                     <li><b>Radio</b>Carry an RFM95W&#8209;915S2 LoRa transceiver (915&nbsp;MHz band) that can work as sender or receiver</li>
@@ -701,7 +710,7 @@
 
                 <p style="text-align:center">Results from the test.</p>
 
-                <p>The capture shows packets <code>hello 0</code> to <code>hello 17</code> arriving in order, none missing, with an RSSI between &minus;78 and &minus;92&nbsp;dBm. The repository doesn't record the distance between the two boards, or which of them was receiving in that capture.</p>
+                <p>The capture shows packets <code>hello 0</code> to <code>hello 17</code> arriving in order, none missing, with an RSSI between &minus;78 and &minus;92&nbsp;dBm.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">
@@ -826,6 +835,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

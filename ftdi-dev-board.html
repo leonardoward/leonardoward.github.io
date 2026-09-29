@@ -470,6 +470,15 @@
 
                 <p class="lead drop-cap">A KiCad breakout board for two FTDI USB interface chips &mdash; the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S</a> and the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D</a> &mdash; alongside a USB&#8209;C EMC front end, an ESP32 with an auto&#8209;reset circuit and a TS5A3153 analog switch.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Marine IoT thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-marine">Marine IoT</a> thread &middot; 2020&ndash;2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="buoyb.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/buoyb-0c897f35.jpg" alt=""></span><span class="cs-thread__name">Buoy boards</span><span class="cs-thread__year">2020</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="next"><a href="gps-dev-board.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gps-dev-board-653f3d84.jpg" alt=""></span><span class="cs-thread__name">Dev boards</span><span class="cs-thread__year">2021 &middot; this project</span></a></li>
+                        <li class="cs-thread__item" data-link="carried"><a href="ejam.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ejam-07e677bc.jpg" alt=""></span><span class="cs-thread__name">EJA M v1.0</span><span class="cs-thread__year">2021</span></a></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -486,8 +495,6 @@
                 <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team). The question it was built to answer: is there a single USB&#8209;C interface chip that can both <em>program the ESP32</em> (via the RTS/DTR auto&#8209;reset handshake) and act as a <em>serial console</em>, so the buoy needs only one USB connector?</p>
 
                 <h3 id="requirements">What It Had to Do</h3>
-
-                <p>There is no written spec for the board; what it had to do follows from that question and from the way the board is laid out:</p>
 
                 <ul class="cs-spec" aria-label="FTDI development board requirements">
                     <li><b>Candidates</b>Carry both FTDI candidates, the FT260S and the FT312D, each in its own section of the board</li>
@@ -871,6 +878,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 

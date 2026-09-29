@@ -470,6 +470,15 @@
 
                 <p class="lead drop-cap">The new EJA M v1.0 is an upgrade/replacement of my older PCB designs: <a href="buoya.html">Buoy A v1.0</a>, <a href="buoyb.html">Buoy B v1.0</a>, and <a href="onboardgateway.html">Onboard Gateway v1.0</a>.</p>
 
+                <nav class="cs-thread" aria-label="Projects in the Marine IoT thread">
+                    <p class="cs-thread__label">Part of the <a href="index.html#thread-marine">Marine IoT</a> thread &middot; 2020&ndash;2021</p>
+                    <ol class="cs-thread__list" data-trace=".cs-thread__thumb">
+                        <li class="cs-thread__item"><a href="buoyb.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/buoyb-0c897f35.jpg" alt=""></span><span class="cs-thread__name">Buoy boards</span><span class="cs-thread__year">2020</span></a></li>
+                        <li class="cs-thread__item" data-link="next"><a href="gps-dev-board.html"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/gps-dev-board-653f3d84.jpg" alt=""></span><span class="cs-thread__name">Dev boards</span><span class="cs-thread__year">2021</span></a></li>
+                        <li class="cs-thread__item is-here" data-link="carried"><span aria-current="page"><span class="cs-thread__thumb"><img loading="lazy" decoding="async" src="images/threads/ejam-07e677bc.jpg" alt=""></span><span class="cs-thread__name">EJA M v1.0</span><span class="cs-thread__year">2021 &middot; this project</span></span></li>
+                    </ol>
+                </nav>
+
                 <nav class="cs-steps" aria-label="Steps documented on this page">
                     <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
                     <ol class="cs-steps__list">
@@ -1026,7 +1035,7 @@
 
                 <h3 id="tested-on-dev-boards">Tested on Development Boards</h3>
 
-                <p>The repository has no bring&#8209;up results for the assembled EJA&nbsp;M board. What was tested are the parts it depends on, each on its own development board:</p>
+                <p>I tested the parts EJA&nbsp;M depends on, each on its own development board:</p>
 
                 <ul>
                     <li><strong>LoRa</strong> &mdash; the RFM95W&#8209;915S2 on the <a href="lora-dev-board.html#firmware-and-testing">LoRa development board</a> was paired with an Adafruit RFM95W. Each board was used as sender and as receiver, and the link worked in both directions.</li>
@@ -1039,7 +1048,7 @@
 
                 <h3 id="three-boards-to-one">From Three Boards to One</h3>
 
-                <p>EJA&nbsp;M is the second iteration of the EJA electronics (see the <a href="eja.html">EJA project page</a>). The first prototype used three boards, each built around an ESP32 development kit, with modules such as the LoRa radio, the GPS or the battery charger on off&#8209;the&#8209;shelf breakout boards plugged into headers. EJA&nbsp;M folds them into one board with the parts placed directly on it; the KiCad project in the repository is still named <code>buoy-c</code>.</p>
+                <p>EJA&nbsp;M is the second iteration of the EJA electronics (see the <a href="eja.html">EJA project page</a>). The first prototype used three boards, each built around an ESP32 development kit, with modules such as the LoRa radio, the GPS or the battery charger on off&#8209;the&#8209;shelf breakout boards plugged into headers. EJA&nbsp;M folds them into one board with the parts placed directly on it.</p>
 
                 <p>The following images present the hardware diagrams for the previous PCB designs <a href="buoya.html">Buoy A</a>, <a href="buoyb.html">Buoy B</a> and <a href="onboardgateway.html">Onboard Gateway</a>.</p>
 
@@ -1197,6 +1206,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/threads.js"></script>
 
 </body>
 
