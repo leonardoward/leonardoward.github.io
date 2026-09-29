@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -8 80 80">
+  <!-- tab icon: the same chip as images/mark.svg, centred on a square canvas -->
+  <defs>
+    <!-- the notch and the pin-1 dot are cut out, so the mark sits on any background -->
+    <mask id="cut">
+      <rect y="-8" width="80" height="80" fill="#fff"/>
+      <path d="M34 4 a6 6 0 0 0 12 0" fill="#000"/>
+      <circle cx="23" cy="13" r="2.6" fill="#000"/>
+    </mask>
+  </defs>
+  <g fill="#b8692f">
+    <rect x="4" y="11" width="12" height="5" rx="1"/><rect x="4" y="23" width="12" height="5" rx="1"/>
+    <rect x="4" y="35" width="12" height="5" rx="1"/><rect x="4" y="47" width="12" height="5" rx="1"/>
+    <rect x="64" y="11" width="12" height="5" rx="1"/><rect x="64" y="23" width="12" height="5" rx="1"/>
+    <rect x="64" y="35" width="12" height="5" rx="1"/><rect x="64" y="47" width="12" height="5" rx="1"/>
+  </g>
+  <rect x="15" y="4" width="50" height="56" rx="3" fill="#131916" mask="url(#cut)"/>
+  <!-- the L, drawn as a stroke so it renders the same everywhere -->
+  <path d="M35 25 V40.5 H45" fill="none" stroke="#f3f4ee" stroke-width="4.2" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>

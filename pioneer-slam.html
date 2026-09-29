@@ -33,8 +33,9 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
-    <link rel="icon" href="icons8-curly-brackets-48.png" type="image/x-icon">
+    <link rel="icon" href="favicon.svg?v=5" type="image/svg+xml">
+    <link rel="icon" href="favicon-32.png?v=5" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=5">
 
 </head>
 
@@ -55,11 +56,9 @@
     ================================================== -->
     <header class="s-header header">
 
-        <!-- <div class="header__logo">
-            <a class="logo" href="index.html">
-                <img loading="lazy" decoding="async" src="images/logo.svg" alt="Homepage">
-            </a>
-        </div>  -->
+        <div class="header__logo header__logo--mark">
+            <a class="logo" href="index.html"><img src="images/mark.svg" alt="" width="38" height="30"><span>Leonardo Ward</span></a>
+        </div>
         <!-- end header__logo -->
 
         <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
@@ -68,7 +67,7 @@
             <h2 class="header__nav-heading h6">Navigate to</h2>
 
             <ul class="header__nav">
-                <li><a href="index.html" title="">Home</a></li>
+                <li class="header__home"><a href="index.html" title="Home"><img src="images/mark.svg" alt="" width="38" height="30"><span>Home</span></a></li>
 
                 <li class="has-children">
                     <a href="embedded-hardware.html" title="">Embedded Hardware</a>
@@ -666,6 +665,8 @@
         <div class="s-footer__main">
             <div class="row">
               <div class="tab-full s-footer__about">
+
+                  <img class="s-footer__mark" src="images/mark.svg" alt="" width="60" height="48">
 
                   <h4>Leonardo Ward</h4>
 

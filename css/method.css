@@ -1306,3 +1306,93 @@
   white-space: normal;
   overflow-wrap: anywhere;
 }
+
+
+/* ===================================================================
+ * # the L.W. mark
+ *
+ * The letter L printed on an IC package, with copper pins, a notch and the
+ * pin-1 dot (images/mark.svg; favicon.svg is the same chip for the browser
+ * tab).
+ * On desktop it is the menu's Home item; on phones, where the menu folds
+ * into its button, it sits in the header with the name; and it signs the
+ * footer.
+ *
+ * ------------------------------------------------------------------- */
+
+.header__nav > li.header__home > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  vertical-align: middle;
+}
+
+.header__home img {
+  display: block;
+  width: auto;
+  height: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.header__home a:hover img, .header__home a:focus img {
+  transform: translateY(-1px);
+}
+
+.header__logo--mark {
+  display: none;
+}
+
+.header__logo.header__logo--mark a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .25rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #000000;
+}
+
+.header__logo.header__logo--mark img {
+  display: block;
+  width: auto;
+  height: 30px;
+}
+
+.s-footer__mark {
+  display: block;
+  width: auto;
+  height: 48px;
+  margin: 0 0 1.8rem;
+}
+
+/* desktop: the mark alone stands for Home; the word stays for screen readers */
+@media only screen and (min-width:901px) {
+  .header__home span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+
+/* phones and tablets: the menu folds away, so the header carries the mark and the name */
+@media only screen and (max-width:900px) {
+  .header__logo--mark {
+    display: inline-block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__home img {
+    transition: none;
+  }
+  .header__home a:hover img, .header__home a:focus img {
+    transform: none;
+  }
+}

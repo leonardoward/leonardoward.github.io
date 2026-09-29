@@ -19,6 +19,7 @@ step — it is served as-is by GitHub Pages.
 | `css/`, `js/`, `images/` | Template assets, scripts and media (`css/method.css` and `js/card-preview.js` are the site's own additions; `images/previews/` is generated) |
 | `tools/update_cards.py`, `tools/card-previews.json` | Keeps the homepage project cards in step with the project pages (see below) |
 | `game/` | The playable electromagnetism game, linked from `em-game.html` |
+| `images/mark.svg`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | The mark: the letter L printed on an IC package, with copper pins, notch and pin-1 dot. In the menu (Home), the phone header, the footer and the browser tab (`favicon.svg` is the same chip on a square canvas; bump its `?v=` in the page heads when it changes, or browsers keep the old icon) |
 
 Every page carries its own copy of the shared header/nav and footer, so changes to
 that chrome must be applied to all pages.
