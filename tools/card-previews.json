@@ -1,9 +1,21 @@
 {
+  "buoya.html": [
+    {"step": "define", "src": "images/ejam/hardware_block_diagram_buoy_a_b.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/buoy_a/Components_Buoy_4_light40.jpg"},
+    {"step": "build", "src": "images/buoy_a/Layout_Buoy_A.png", "fit": "contain"},
+    {"step": "build", "src": "images/buoy_a/pcb_a_2.jpg"}
+  ],
   "buoyb.html": [
     {"step": "define", "src": "images/ejam/hardware_block_diagram_buoy_a_b.jpg", "fit": "contain"},
-    {"step": "build", "src": "images/buoy_b/Buoy-B-01.jpg"},
     {"step": "build", "src": "images/buoy_b/Components_Buoy_B_light40.jpg"},
+    {"step": "test", "src": "images/buoy_b/bench-buoy-b-and-gateway.jpg"},
     {"step": "refine", "src": "images/buoy_b/buoy-b-v2-ethernet-render.jpg"}
+  ],
+  "onboardgateway.html": [
+    {"step": "define", "src": "images/ejam/hardware_block_diagram_onboard_gateway.jpg", "fit": "contain"},
+    {"step": "build", "src": "images/onboard_gateway/Components_onboard_gateway_4_light40.jpg"},
+    {"step": "build", "src": "images/onboard_gateway/gui-onboard-gateway.jpg", "fit": "contain"},
+    {"step": "test", "src": "images/onboard_gateway/bench-buoy-b-and-gateway.jpg"}
   ],
   "gps-dev-board.html": [
     {"label": "LoRa board", "src": "images/lora_development_board/Lora_PCB.jpg"},
