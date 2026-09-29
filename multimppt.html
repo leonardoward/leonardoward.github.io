@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,13 +456,40 @@
 
                 <p class="lead drop-cap"><strong>MultiMPPT</strong> is a design study for a low&#8209;cost, high&#8209;efficiency <a href="https://en.wikipedia.org/wiki/Maximum_power_point_tracking">maximum power point tracker</a> with <strong>multiple independent inputs</strong>, built on a <strong>Differential Power Processing (DPP)</strong> architecture. It is documented on <a href="https://hackaday.io/project/185092-multimppt">Hackaday</a>; this page covers two pieces of it &mdash; a <a href="https://www.mathworks.com/products/simulink.html">Simulink</a> model that tests whether the DPP idea actually helps, and a <a href="https://www.kicad.org/">KiCad&nbsp;6</a> v1.0 board that breaks out one converter cell for the bench.</p>
 
-                <h2 id="why-dpp">Why Differential Power Processing</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="why-dpp">Why Differential Power Processing</h3>
 
                 <p>In an ordinary series PV string every module is forced to carry the <em>same</em> current. As soon as one module is shaded, dirty or simply weaker than its neighbours it becomes the bottleneck: the string either gives up that module's share of the power, or bypasses it entirely through its bypass diode. Worse, the string's power&ndash;voltage curve grows several local peaks, and a single MPPT controller can lock onto the wrong one.</p>
 
                 <p><strong>DPP</strong> keeps the modules in series feeding the load directly &mdash; where the bulk of the energy flows straight through at high efficiency &mdash; but adds a small converter at each module that handles only the <em>difference</em> in current needed to hold that module at its own maximum power point. Because each converter processes just the mismatch, it can be small and cheap. This project uses the <strong>module&#8209;to&#8209;bus</strong> flavour: each DPP converter is an isolated <strong>flyback</strong> that shuttles the differential current between its module and the common string bus.</p>
 
-                <h2 id="simulation">The Simulink Model</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The repository README gives the project's brief in one line: a low&#8209;cost, high&#8209;efficiency MPPT with multiple independent inputs. With the DPP approach above, that meant:</p>
+
+                <ul class="cs-spec" aria-label="MultiMPPT requirements">
+                    <li><b>Inputs</b>Hold each module in a series string at its own maximum power point, instead of one operating point for the whole string</li>
+                    <li><b>Efficiency</b>Leave the bulk of the energy flowing straight through the string; a converter handles only its module's mismatch current</li>
+                    <li><b>Cost</b>Keep the per&#8209;module converters small and cheap, which works because each one processes only the mismatch</li>
+                    <li><b>Isolation</b>Galvanic isolation between each module and the common string bus (module&#8209;to&#8209;bus DPP with an isolated flyback)</li>
+                    <li><b>Bench</b>Break one converter cell out on its own board, gate driven from an external controller, so the real power stage can be driven, loaded and measured</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="simulation">The Simulink Model</h3>
 
                 <p>The model (repository <a href="https://github.com/leonardoward/dpp-mppt-simulation"><code>dpp-mppt-simulation</code></a>) puts two PV module blocks in series, each with its own irradiance and temperature input and a bypass diode, and connects a DPP flyback converter across each one. A controlled voltage source stands in for the rest of the string, and every module voltage, module current and differential current is logged to the workspace for the plotting scripts.</p>
 
@@ -476,9 +504,11 @@
                     <li><strong><code>DPP_perturb_and_observe.slx</code></strong> adds a Perturb&nbsp;&amp;&nbsp;Observe loop that walks the duty cycles to the maximum power point, so the tracker can be watched settling after a change in shading.</li>
                 </ul>
 
-                <h2 id="results">Simulation Results</h2>
+                <h3 id="results">Simulation Results</h3>
 
                 <p>The key comparison is one MPPT for the whole string (<em>&ldquo;Single Input&rdquo;</em>) against a per&#8209;module DPP converter (<em>&ldquo;Multiple Inputs&rdquo;</em>).</p>
+
+                <p>Both cases run the same model. In the single&#8209;input run the tap between the two modules (<code>+PV1</code> in the diagram above) is left unconnected, so the pair of converters sees the whole string as one input; in the multiple&#8209;inputs run that tap is connected and each module gets its own converter. Mismatch is set by giving the two modules unequal irradiance and temperature constants, and <code>plot_data_single_vs_multiple_inputs.m</code> overlays the two logged runs.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/multimppt/result-pv-perfect.jpg" width="520" alt="Power versus string voltage under uniform irradiance: the Single Input and Multiple Inputs curves lie exactly on top of each other, peaking near 350 W">
@@ -493,7 +523,9 @@
 
                 <p style="text-align:center">Partial shading &mdash; the single&#8209;MPPT curve breaks into two peaks and its usable maximum drops; the DPP case keeps one, higher peak because the shaded module no longer throttles the healthy one.</p>
 
-                <h2 id="board">The Test Board (v1.0)</h2>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="board">The Test Board (v1.0)</h3>
 
                 <p>The board (repository <a href="https://github.com/leonardoward/dpp-architecture-pcb"><code>dpp-architecture-pcb</code></a>) is <strong>one</strong> DPP converter cell, broken out so it can be driven, loaded and measured on its own. There is no control loop, no sensing and no microcontroller on the board: the switching MOSFET is driven by an <em>external</em> controller through a 3&#8209;pin header.</p>
 
@@ -504,7 +536,7 @@
 
                 <p style="text-align:center">The v1.0 board &mdash; a single isolated flyback channel with PV input, isolated secondary and an external gate&#8209;drive header.</p>
 
-                <h2 id="circuit">How the Circuit Works</h2>
+                <h3 id="circuit">How the Circuit Works</h3>
 
                 <p>It is a textbook isolated <strong>flyback</strong> converter:</p>
 
@@ -536,7 +568,7 @@
                     </table>
                 </div>
 
-                <h2 id="repository">Repositories</h2>
+                <h2 id="repository" class="cs-after__title">Repositories</h2>
 
                 <ul>
                     <li><a href="https://github.com/leonardoward/dpp-mppt-simulation"><code>dpp-mppt-simulation</code></a> &mdash; the MATLAB/Simulink model and plotting scripts. GPL&nbsp;v3.0.</li>

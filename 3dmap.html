@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -451,6 +452,33 @@
             <div class="col-full entry__main">
 
                 <p class="lead drop-cap">Geographical maps are commonly used to display information. Depending on the importance and complexity of the data, a visual representation can be very valuable. This project uses 3D Printing to assemble a display screen with the shape of the map.</p>
+
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>Read back from the finished design, these are the goals the map had to meet:</p>
+
+                <ul class="cs-spec" aria-label="3D printed map design goals">
+                    <li><b>Display</b>Show monitoring data as color on a screen shaped like the map itself</li>
+                    <li><b>Regions</b>Make every state easy to pick out, each with at least one LED that changes color on its own</li>
+                    <li><b>Light</b>Keep each LED's light from spilling into its neighbors</li>
+                    <li><b>Network</b>Let other applications set the color of each LED over Ethernet or LAN</li>
+                    <li><b>Enclosure</b>Fit the LEDs, the support circuits and the controller inside the map, with only the AC&#8209;DC charger outside</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
 
                 <p id="printing">A modular approach was used to design different parts of the map. Each state in the map is easily identifiable, and has at least one LED assigned to it that can change its color independently.
                 </p>

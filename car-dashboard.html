@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,17 +456,39 @@
 
                 <p class="lead drop-cap">The <strong>instrument cluster</strong> for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). One board behind the dash reads engine RPM, road speed and temperature, listens to the car's CAN bus, drives the two needle gauges and every dashboard lamp, and streams a telemetry frame out over RS&#8209;232. It is the hub of the wider <a href="bajasae.html">Baja SAE USB vehicle electronics</a> &mdash; it receives the <a href="gasoline-module.html">fuel&#8209;level module</a>'s CAN frame and rebroadcasts the gauge values for the on&#8209;board logger. <em>Continues the team's earlier &ldquo;Tablero 2011&#8209;2012&rdquo; firmware; 2012&#8209;2013.</em></p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/car_dashboard/board.jpg" width="620" alt="The assembled board with keyed connector housings on both harness headers, the DB9 and reset button at left, and the ColdFire microcontroller in the centre">
-                </div>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <p style="text-align:center">The assembled board &mdash; <em>BAJA SAE USB 2012 &middot; Dashboard Module</em> &mdash; with the keyed harness connectors fitted.</p>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
-                <h2 id="why">Why</h2>
+                <h3 id="why">Why</h3>
 
                 <p>The Baja car needs a real dashboard: a tachometer and speedometer the driver can read at a glance, warning lights for fuel, temperature and brake, plus headlight and turn&#8209;signal control. The team already had sensors scattered around the car and a <strong>CAN bus</strong> tying the electronics together &mdash; so one microcontroller board can gather everything and run the whole panel, instead of a bundle of separate gauges and relays.</p>
 
-                <h2 id="inputs">What It Reads</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>No requirements document survives in the repository; these are the goals the finished board clearly had to meet:</p>
+
+                <ul class="cs-spec" aria-label="Dashboard module requirements">
+                    <li><b>Gauges</b>Engine RPM and road speed on two needle gauges, readable at a glance</li>
+                    <li><b>Lamps</b>Headlights, turn signals, panel lights, and warning LEDs for low fuel, over&#8209;temperature, brake and night lights</li>
+                    <li><b>Bus</b>Read the fuel level and the steering&#8209;wheel controls off the CAN bus, and put the gauge values back on it for the on&#8209;board logger</li>
+                    <li><b>Telemetry</b>Stream every reading out over RS&#8209;232 as well</li>
+                    <li><b>Power</b>Run from the car's 12&nbsp;V rail</li>
+                    <li><b>Fit</b>Sized for the dashboard box behind the dash</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="inputs">What It Reads</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -482,7 +505,7 @@
                     </table>
                 </div>
 
-                <h2 id="outputs">What It Drives</h2>
+                <h3 id="outputs">What It Drives</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -501,7 +524,7 @@
 
                 <p>Low&#8209;side <strong>transistor drivers</strong> (2N3904 for logic&#8209;level loads, BCX54 for the lamps) switch everything; the two <strong>DM74LS126 quad tri&#8209;state buffers</strong> give eight individually&#8209;enabled lamp / LED lines, and five SMD trimmers calibrate the gauges.</p>
 
-                <h2 id="firmware">Firmware</h2>
+                <h3 id="firmware">Firmware</h3>
 
                 <p>The MCU is a Freescale <strong>MCF51JM128</strong> (ColdFire&nbsp;V1, 32&#8209;bit, 48&nbsp;MHz), programmed in <strong>CodeWarrior for ColdFire V1</strong> with <strong>Processor Expert</strong> and flashed through the BDM header with a P&amp;E Multilink. The main loop is a flat round&#8209;robin &mdash; read the sensors, update each gauge and lamp, and every few ticks send the CAN and serial frames:</p>
 
@@ -520,7 +543,7 @@ for(;;){
 
                 <p>The repository also carries the working predecessor firmware (<code>Informaci&oacute;n 2012&#8209;2013/Tablero 2011&#8209;2012/</code>, same MCU family) and both builds &mdash; S08 and ColdFire &mdash; of the companion <strong>steering&#8209;wheel display unit</strong>.</p>
 
-                <h2 id="bus">Bus Traffic Out</h2>
+                <h3 id="bus">Bus Traffic Out</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -534,7 +557,7 @@ for(;;){
                     </table>
                 </div>
 
-                <h2 id="hardware">Hardware</h2>
+                <h3 id="hardware">Hardware</h3>
 
                 <p>Compact 2&#8209;layer board (Altium Designer, ECOs dated December&nbsp;2012) sized for the dashboard box, with two 16&#8209;pin harness headers top and bottom and the DB9 on one edge.</p>
 
@@ -562,6 +585,12 @@ for(;;){
                 </div>
 
                 <p style="text-align:center">The board layout, and the schematic overview &mdash; MCU at one corner, the transistor driver stages filling one side, power&nbsp;/&nbsp;CAN&nbsp;/&nbsp;RS&#8209;232 along the bottom.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/car_dashboard/board.jpg" width="620" alt="The assembled board with keyed connector housings on both harness headers, the DB9 and reset button at left, and the ColdFire microcontroller in the centre">
+                </div>
+
+                <p style="text-align:center">The assembled board &mdash; <em>BAJA SAE USB 2012 &middot; Dashboard Module</em> &mdash; with the keyed harness connectors fitted.</p>
 
                 <p>A companion <strong>photo&#8209;sensor board</strong> (<em>circuito fotosensible</em>, in its own printed box) feeds the automatic night&#8209;lights, and a SolidWorks two&#8209;part enclosure (<em>Caja Tablero</em>) houses the board behind the dash.</p>
 

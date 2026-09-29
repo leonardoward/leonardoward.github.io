@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -463,13 +464,26 @@
 
                 <p class="lead drop-cap">This project presents the design stages of a prototype tail-light system for a bicycle. Components were selected to match the project requirements and the team’s criteria. The system’s operation was simulated in Proteus and the firmware was written with MPLAB X. The circuit’s PCB design and the changes made to the competition brief are also presented.</p>
 
-                <h2 id="requirements">Requirements</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <h3>General requirements</h3>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">Requirements</h3>
+
+                <h4>General requirements</h4>
 
                 <p>Design a prototype of a tail-light system for bicycles.</p>
 
-                <h3>Specific requirements</h3>
+                <h4>Specific requirements</h4>
 
                 <ul>
                   <li>25 hours of autonomy in continuous operation.</li>
@@ -493,26 +507,39 @@
                     <p>Figure 1: diagram of the tail-light operating modes.</p>
                 </div>
 
-                <h2 id="design">Design</h2>
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
 
-                <h3>Hardware</h3>
+                <h3 id="battery-sizing">Battery Sizing</h3>
 
-                <p>Figure 2 shows the hardware block diagram of the prototype. It includes the essential parts of the design: push-buttons, batteries, battery charger, lights, and the transistors that make up the power-control stage of each LED. In Figure 2, the rear lights that are not used to signal turns are called brake lights.</p>
+                <p>The battery bank was sized for 26&nbsp;hours of continuous operation with both main lights at full power, leaving margin over the 25-hour requirement. Each LED draws up to 180&nbsp;mA, so: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Four 2600&nbsp;mAh cells were connected in parallel, giving 10&nbsp;400&nbsp;mAh &mdash; enough to cover the LED demand described above.</p>
+
+                <h3 id="results">Proteus Simulation</h3>
+
+                <p>The proposed circuit was simulated in Proteus; Figure 2 shows the design. The remote’s switches were modelled as switches, and a button was added to control the modes. The power supply is not shown in the simulation; only voltage sources of the corresponding value are included. The BTS3405GXUMA1 devices used as transistors cannot be simulated in Proteus, so they were represented by their MOSFET equivalents. The different operating modes were simulated successfully; the delivered video shows them working.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Proteus simulation of the proposed circuit">
+                    <p>Figure 2: circuit model in Proteus.</p>
+                </div>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="design">Hardware</h3>
+
+                <p>Figure 3 shows the hardware block diagram of the prototype. It includes the essential parts of the design: push-buttons, batteries, battery charger, lights, and the transistors that make up the power-control stage of each LED. In Figure 3, the rear lights that are not used to signal turns are called brake lights.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_Hardware.jpg" alt="Hardware block diagram of the prototype">
-                    <p>Figure 2: hardware block diagram.</p>
+                    <p>Figure 3: hardware block diagram.</p>
                 </div>
 
                 <h4>Power supply</h4>
 
-                <p>To use rechargeable lithium batteries, a module based on the TP4056 IC was chosen; it provides constant-current / constant-voltage charging for single-cell lithium-ion batteries (Figure 3). A single cell has a nominal voltage of 3.7&nbsp;V, which is used as the supply voltage for the logic circuits in the design.</p>
-
-                <p>The battery bank was sized for 26&nbsp;hours of continuous operation with both main lights at full power, leaving margin over the 25-hour requirement. Each LED draws up to 180&nbsp;mA, so: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Four 2600&nbsp;mAh cells were connected in parallel, giving 10&nbsp;400&nbsp;mAh &mdash; enough to cover the LED demand described above.</p>
+                <p>To use rechargeable lithium batteries, a module based on the TP4056 IC was chosen; it provides constant-current / constant-voltage charging for single-cell lithium-ion batteries (Figure 4). A single cell has a nominal voltage of 3.7&nbsp;V, which is used as the supply voltage for the logic circuits in the design.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/BatC.png" alt="TP4056 constant-current / constant-voltage battery-charger module">
-                    <p>Figure 3: TP4056 battery-charger module.</p>
+                    <p>Figure 4: TP4056 battery-charger module.</p>
                 </div>
 
                 <h4>Microcontroller</h4>
@@ -540,23 +567,23 @@
                   <li>Two 8-bit timers.</li>
                 </ul>
 
-                <p>The device also has a 10-bit, 5-channel ADC and an MSSP with SPI and I2C, none of which are used here. The pinout is shown in Figure 4.</p>
+                <p>The device also has a 10-bit, 5-channel ADC and an MSSP with SPI and I2C, none of which are used here. The pinout is shown in Figure 5.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/Pinout.jpg" alt="PIC16F1455 pinout">
-                    <p>Figure 4: PIC16F1455 pinout.</p>
+                    <p>Figure 5: PIC16F1455 pinout.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/pic.png" alt="PIC16F1455 schematic symbol">
-                    <p>Figure 5: PIC16F1455 schematic symbol.</p>
+                    <p>Figure 6: PIC16F1455 schematic symbol.</p>
                 </div>
 
-                <p>The microcontroller can be programmed with an ICSP programmer (usable with any PIC chip). The ICSP connections are shown in Figure 6.</p>
+                <p>The microcontroller can be programmed with an ICSP programmer (usable with any PIC chip). The ICSP connections are shown in Figure 7.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/icsp.png" alt="ICSP programming header on the schematic">
-                    <p>Figure 6: ICSP header on the schematic.</p>
+                    <p>Figure 7: ICSP header on the schematic.</p>
                 </div>
 
                 <p>An external oscillator was not considered necessary, for two reasons:</p>
@@ -575,7 +602,7 @@
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/leds.png" alt="LED power-control stage">
-                    <p>Figure 7: LED control system.</p>
+                    <p>Figure 8: LED control system.</p>
                 </div>
 
                 <h4>Control interface</h4>
@@ -584,27 +611,27 @@
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/Case2.PNG" alt="Single-button control on the device enclosure">
-                    <p>Figure 8: single-button control on the enclosure.</p>
+                    <p>Figure 9: single-button control on the enclosure.</p>
                 </div>
 
                 <p>The second uses a remote control. This option adds features such as turn indicators and cornering lights, while the operating modes stay the same. This version of the product has an extra cost and is shown below.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/mando.png" alt="External handlebar remote control">
-                    <p>Figure 9: external control for the LED lights.</p>
+                    <p>Figure 10: external control for the LED lights.</p>
                 </div>
 
                 <h3>Software</h3>
 
-                <p>Figure 10 shows the software block diagram for the microcontroller. Each push-button is connected to an I/O port configured as an input. The microcontroller reads the state of each input and handles any switch bounce.</p>
+                <p>Figure 11 shows the software block diagram for the microcontroller. Each push-button is connected to an I/O port configured as an input. The microcontroller reads the state of each input and handles any switch bounce.</p>
 
                 <p>A slider selects which cornering light is used. A button puts both cornering lights into blinking mode. A push-button changes the state of the rear lights, which follow the modes shown in Figure 1.</p>
 
                 <p>Since no peripherals are used, the only configuration applied to the microcontroller was the oscillator selection. As noted above, the internal oscillator was used at 31&nbsp;kHz, the lowest available frequency, because high precision is not required and it lowers battery consumption.</p>
 
-                <p>Once the hardware was selected, the software block diagram in Figure 10 was produced. It shows the peripherals used and the essential software elements: reading the ports, debouncing where needed, and a controller that sets the signals for the lights and drives the output ports connected to the power transistors. A software hierarchy diagram (Figure 11) shows how these elements relate to each other. Finally, a software layer diagram (Figure 12) focuses on which elements are likely to be the most complex; there, the controllers are considered the most complex blocks because they have to manage the state of each light, and the diagram also shows the heavy use of I/O ports in the project.</p>
+                <p>Once the hardware was selected, the software block diagram in Figure 11 was produced. It shows the peripherals used and the essential software elements: reading the ports, debouncing where needed, and a controller that sets the signals for the lights and drives the output ports connected to the power transistors. A software hierarchy diagram (Figure 12) shows how these elements relate to each other. Finally, a software layer diagram (Figure 13) focuses on which elements are likely to be the most complex; there, the controllers are considered the most complex blocks because they have to manage the state of each light, and the diagram also shows the heavy use of I/O ports in the project.</p>
 
-                <p>In Figures 10, 11 and 12, the rear lights that are not used to signal turns are called brake lights.</p>
+                <p>In Figures 11, 12 and 13, the rear lights that are not used to signal turns are called brake lights.</p>
 
                 <h4>Implementation</h4>
 
@@ -634,29 +661,20 @@
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_BloquesSoft.jpg" alt="Software block diagram">
-                    <p>Figure 10: software block diagram.</p>
+                    <p>Figure 11: software block diagram.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_jerarquico.jpg" alt="Software hierarchy diagram">
-                    <p>Figure 11: software hierarchy diagram.</p>
+                    <p>Figure 12: software hierarchy diagram.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_decapas.jpg" alt="Software layer diagram">
-                    <p>Figure 12: software layer diagram.</p>
+                    <p>Figure 13: software layer diagram.</p>
                 </div>
 
-                <h2 id="results">Results</h2>
-
-                <p>The proposed circuit was simulated in Proteus; Figure 13 shows the design. The remote’s switches were modelled as switches, and a button was added to control the modes. The power supply is not shown in the simulation; only voltage sources of the corresponding value are included. The BTS3405GXUMA1 devices used as transistors cannot be simulated in Proteus, so they were represented by their MOSFET equivalents. The different operating modes were simulated successfully; the delivered video shows them working.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Proteus simulation of the proposed circuit">
-                    <p>Figure 13: circuit model in Proteus.</p>
-                </div>
-
-                <p>The final sale prices fall within the required range and, depending on the configuration and order size, this solution offers more value at a competitive price.</p>
+                <h3 id="pcb-enclosure">PCB and Enclosure</h3>
 
                 <p>As an extra step, the PCB for the complete system was designed in Altium Designer; the results are shown below.</p>
 
@@ -677,6 +695,7 @@
                     <p>Figure 16: PCB enclosure.</p>
                 </div>
 
+                <p>The final sale prices fall within the required range and, depending on the configuration and order size, this solution offers more value at a competitive price.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

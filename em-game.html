@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,15 +456,33 @@
 
                 <p class="lead drop-cap">A browser game built to help teach an introductory <strong>electromagnetism and circuits</strong> course, made as a university <em>Servicio&nbsp;Comunitario</em> (community&#8209;service) project with Cristhian&nbsp;Bravo and Said&nbsp;Alvarado. It is written in JavaScript on <a href="https://phaser.io/">Phaser</a>&nbsp;2.</p>
 
-                <h2 id="play">Play It</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <p style="text-align:center; margin:2.4rem 0;">
-                    <a class="btn btn--primary" href="game/index.html" target="_blank" rel="noopener" style="font-size:1.7rem; padding:1.2rem 2.8rem;">&#9654;&nbsp; Play the game</a>
-                </p>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
-                <p style="text-align:center">Opens in a new tab. Use the mouse to aim and launch; press <strong>M</strong> for the in&#8209;game menu.</p>
+                <h3 id="requirements">What It Had to Do</h3>
 
-                <h2 id="charges">The Charge Puzzles</h2>
+                <p>The repository has no written brief; this is what the game's design had to satisfy:</p>
+
+                <ul class="cs-spec" aria-label="Electromagnetism game design goals">
+                    <li><b>Audience</b>Students taking an introductory electromagnetism and circuits course</li>
+                    <li><b>Topics</b>Coulomb's law and the electric field of discrete charges; electric currents, push&#8209;buttons and resistance</li>
+                    <li><b>Physics</b>Let the player see the forces act while playing, not only read about them</li>
+                    <li><b>Platform</b>Run in a web browser from static files: nothing for the player to install and no build step</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="charges">The Charge Puzzles</h3>
 
                 <p>Six levels (the first is <em>&ldquo;Electro Dash&rdquo;</em>) built around <strong>Coulomb's law and the electric field of discrete charges</strong>. You click and drag to launch a charged particle from a start zone; fixed charges placed around the level bend its path &mdash; same polarity repels, opposite attracts, and the force grows as the particle gets closer &mdash; and you have to land it in the target portal. A dotted aim line and a trajectory trail make the physics visible as you play.</p>
 
@@ -473,11 +492,11 @@
 
                 <p style="text-align:center">A charge puzzle &mdash; land the particle in the portal, working with (and against) the fixed charges.</p>
 
-                <h2 id="platformer">The Platformer</h2>
+                <h3 id="platformer">The Platformer</h3>
 
                 <p>A second mode: a tile&#8209;map platformer (Phaser Arcade physics) where the player crosses rooms of lasers, switches, doors and moving enemies, wiring up <strong>circuits</strong> to open the way out.</p>
 
-                <h2 id="glossary">Glossary</h2>
+                <h3 id="glossary">Glossary</h3>
 
                 <p>The menu also has a glossary of short reference cards for the course topics the levels illustrate:</p>
 
@@ -489,9 +508,17 @@
                     <li>Passive elements: resistance</li>
                 </ul>
 
-                <h2 id="repository">Repository</h2>
+                <h3 id="repository">Code Structure</h3>
 
                 <p>The game lives in the <a href="https://github.com/leonardoward/leonardoward.github.io/tree/master/game"><code>game/</code></a> folder of this site's repository &mdash; <code>index.html</code> loads Phaser and every game state, <code>js/</code> holds the charge&#8209;puzzle levels, glossary and menus, and <code>p_js/</code> holds the platformer. It runs from any static web server; there is no build step.</p>
+
+                <h2 id="play" class="cs-after__title">Play It</h2>
+
+                <p style="text-align:center; margin:2.4rem 0;">
+                    <a class="btn btn--primary" href="game/index.html" target="_blank" rel="noopener" style="font-size:1.7rem; padding:1.2rem 2.8rem;">&#9654;&nbsp; Play the game</a>
+                </p>
+
+                <p style="text-align:center">Opens in a new tab. Use the mouse to aim and launch; press <strong>M</strong> for the in&#8209;game menu.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

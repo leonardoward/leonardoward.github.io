@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -469,7 +470,36 @@
 
                 <p class="lead drop-cap" id="description">This project contains a GUI for the <a href="onboardgateway.html">Onboard Gateway</a> PCB design. The microcontroller used in the PCB is the ESP32.</p>
 
-                <h2 id="requirements">Requirements</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="what-it-had-to-do">What It Had to Do</h3>
+
+                <p>The Onboard Gateway is the topside half of EJA: it stays with the operator as a hand&#8209;held LoRa link to a deployed buoy (see the <a href="onboardgateway.html">Onboard Gateway</a> board). In EJA's operating process the fishers set the maximum time the gear will stay underwater, and the buoy is released when that time runs out (<a href="eja.html">EJA project page</a>); this interface sets that time remotely, over LoRa. There is no written spec in the repository; the list below is what the firmware shows it had to do:</p>
+
+                <ul class="cs-spec" aria-label="Onboard Gateway web interface requirements">
+                    <li><b>Access</b>Work from any phone or laptop browser, with no app and no router: the ESP32 runs its own Wi&#8209;Fi access point</li>
+                    <li><b>Address</b>Open by a name, www.onboard_gateway.eja, instead of an IP address</li>
+                    <li><b>Position</b>Show the buoy's GPS data, received over LoRa: the gateway has no GPS of its own</li>
+                    <li><b>Timer</b>Set or cancel the buoy's release countdown over LoRa, and show the countdown only after the buoy confirms it</li>
+                    <li><b>Monitor</b>Show LoRa traffic and the board's internal messages</li>
+                    <li><b>Status</b>Light LEDs for LoRa receive, LoRa transmit and recent web&#8209;page requests, plus one LED switched from the web page</li>
+                    <li><b>Update</b>Take new firmware over Wi&#8209;Fi (over&#8209;the&#8209;air updates)</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="requirements">Libraries &amp; Tools</h3>
 
                 <ol>
                     <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
@@ -479,6 +509,8 @@
                     <li id="ota"><a href="https://github.com/ayushsharma82/AsyncElegantOTA">ESP32 Async Over The Air</a></li>
                     <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa</a></li>
                 </ol>
+
+                <h3 id="access-point">Wi&#8209;Fi Access Point &amp; DNS</h3>
 
                 <p id="async-web-server">The ESP32 creates an Asynchronous Web Server, with the following credentials:</p>
 
@@ -506,7 +538,7 @@
                   http://www.onboard_gateway.eja/
                 </code></pre>
 
-                <h2 id="home">Home</h2>
+                <h3 id="home">Home</h3>
 
                 <p>The previous link displays the web page used for HOME:</p>
 
@@ -524,7 +556,7 @@
 
                 <p style="text-align:center">Side Menu.</p>
 
-                <h2 id="gps">GPS</h2>
+                <h3 id="gps">GPS</h3>
 
                 <p>The page http://www.onboard_gateway.eja/gps shows the data from the GPS module.</p>
 
@@ -534,7 +566,7 @@
 
                 <p style="text-align:center">GPS Screen.</p>
 
-                <h2 id="timer">Timer</h2>
+                <h3 id="timer">Timer</h3>
 
                 <p>The page http://www.onboard_gateway.eja/timer shows the interface to create a timer in the Buoy. The timer represents a countdown that activates the release mechanism when the time has reached zero. The initial page allows the user to set the timer.</p>
 
@@ -576,7 +608,7 @@
 
                 <p style="text-align:center">Screen after the timer is deleted.</p>
 
-                <h2 id="lora">LoRa</h2>
+                <h3 id="lora">LoRa</h3>
 
                 <p>The page http://www.onboard_gateway.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
 
@@ -590,7 +622,7 @@
 
                 <p style="text-align:center">LoRa Screen.</p>
 
-                <h2 id="terminal">Terminal</h2>
+                <h3 id="terminal">Terminal</h3>
 
                 <p>The page http://www.onboard_gateway.eja/terminal shows internal messages. In the ESP32 that information is stored in the variable:</p>
 
@@ -604,7 +636,7 @@
 
                 <p style="text-align:center">Terminal Screen.</p>
 
-                <h2 id="led-test">LED Test</h2>
+                <h3 id="led-test">LED Test</h3>
 
                 <p>There is an additional page http://www.onboard_gateway.eja/toggle_led_on that can be use to change the state of a LED, the GPIO port used is define in the following variable of the script:</p>
 
@@ -626,9 +658,26 @@
 
                 <p style="text-align:center">Screen used to turn ON/OFF the Led, state OFF.</p>
 
-                <h2 id="future_improvements">Future Improvements</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="link-check">LoRa Link Check</h3>
+
+                <p>The gateway has no GPS, and its countdown depends on the buoy, so two sets of screenshots above are also evidence that the LoRa link to the buoy worked:</p>
+
+                <ul>
+                    <li><strong>GPS</strong> &mdash; the gateway's <code>/gps_data</code> route returns the last LoRa packet it received, so the values on the GPS screen are the buoy's own GPS message, carried over the air. The buoy had no fix at the time: 0 satellites and no latitude or longitude.</li>
+                    <li><strong>Timer</strong> &mdash; after <strong>Submit</strong>, the gateway keeps showing &ldquo;Updating timer in Buoy...&rdquo; until the buoy sends back the same end timestamp, and only then starts its own countdown. The &ldquo;Remaining time&rdquo; screen (00:00:56 left of a 2&#8209;minute timer) can only appear after that confirmation has arrived.</li>
+                </ul>
+
+                <p>The screenshots don't record how far apart the two boards were, so the range of the link is not measured here.</p>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="future_improvements">Future Improvements</h3>
 
                 <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
+
+                <p>The electronics were carried forward in 2021: <a href="ejam.html">EJA&nbsp;M</a> replaces the Onboard Gateway board, together with Buoy&nbsp;A and Buoy&nbsp;B, with a single PCB.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,11 +456,22 @@
 
                 <p class="lead drop-cap">An electronic wheel&#8209;alignment system for the <strong>Baja SAE USB</strong> off&#8209;road vehicle prototypes (Universidad Sim&oacute;n Bol&iacute;var). It reads each wheel's <strong>camber</strong> with an accelerometer and the <strong>toe</strong> with ultrasonic sensors, then shows the mechanic what to adjust on a small handheld display. It is one of the sub&#8209;systems of the wider <a href="bajasae.html">Baja SAE USB electronics</a> work &mdash; <em>Divisiones de Electr&oacute;nica y de Suspensi&oacute;n, August&nbsp;2013</em>.</p>
 
-                <h2 id="why">Why</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="why">Why</h3>
 
                 <p>The team aligned its cars <strong>by hand</strong>: parallel lines chalked on the floor (or cones joined with string), then a tape measure to set each wheel parallel to them. There was no way to read the actual <strong>camber</strong> angle, or to check that the four wheels were symmetric. Commercial electronic aligners &mdash; infrared heads bolted to a bench, a PC doing the maths &mdash; are far too big and expensive for a student team.</p>
-
-                <p>The brief: cost under 3000&nbsp;Bsf, everything inside 50&times;50&times;50&nbsp;cm, a simple interface, and a written guide.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/wheel_alignment/car-on-jig.jpg" width="720" alt="The Baja SAE USB buggy raised on the alignment jig, ready for measurement">
@@ -467,7 +479,52 @@
 
                 <p style="text-align:center">The car on the alignment jig.</p>
 
-                <h2 id="architecture">System Architecture</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The August 2013 report names two problems &mdash; the car was not symmetric, and there was no way to measure each tyre's inclination or how it relates to the others &mdash; and sets an objective against each; its system description adds what the display had to do:</p>
+
+                <ul class="cs-spec" aria-label="Wheel alignment system requirements">
+                    <li><b>Symmetry</b>Make the car symmetric: the paired distances between the four wheels must match</li>
+                    <li><b>Camber</b>Measure each tyre's inclination angle and compare it with the other three</li>
+                    <li><b>Guidance</b>Show the angles and a simple wheel diagram of which way to adjust, not just numbers</li>
+                </ul>
+
+                <p>The brief: cost under 3000&nbsp;Bsf, everything inside 50&times;50&times;50&nbsp;cm, a simple interface, and a written guide.</p>
+
+                <h3 id="procedure">How It Would Be Used</h3>
+
+                <p>The team's function&#8209;tree notes lay out the procedure the system had to support, from start to finish:</p>
+
+                <ol>
+                    <li>Seat the driver in the car and level the car.</li>
+                    <li>Fit a measuring unit to each wheel and wire the units together.</li>
+                    <li>Power up and switch on.</li>
+                    <li>Fire the ultrasonic sensors and check the measurements.</li>
+                    <li>Enter the target setup.</li>
+                    <li>Read the instructions on the display and adjust the suspension; repeat until the target setup is reached.</li>
+                    <li>Switch off and take the units off the car.</li>
+                </ol>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="ultrasonic-circuit">The Ultrasonic Transceiver</h3>
+
+                <p>The ultrasonic driver circuits were prototyped in Multisim &mdash; the repository keeps the receiver (<code>Receptor.ms12</code>) and two versions of an alternate system (<code>Sistema de alineaci&oacute;n alterno</code>). The schematic saved with them (<em>Driver Ultrasonido</em>, November&nbsp;2013) uses one transducer for both jobs, switched by a relay (driven by a 2N3904 from a <code>Tx/Rx</code> line) between the driver and the receiver:</p>
+
+                <ul>
+                    <li><strong>Transmit</strong> &mdash; an NE555, enabled by an input signal, feeds a MAX232 directly on one channel and through a 2N3904 inverter on the other, so its two outputs drive the transducer from both ends.</li>
+                    <li><strong>Receive</strong> &mdash; the echo goes through two TL082 inverting stages (680&nbsp;&Omega; in, 22&nbsp;k&Omega; feedback), a 1N4004&nbsp;+&nbsp;100&nbsp;nF peak detector, and a TL082 comparator that turns it into a digital output signal.</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/ultrasonic-transceiver.png" width="720" alt="Schematic of the ultrasonic transceiver: a MAX232 and 2N3904 inverter driven by an NE555 at the top, a relay that switches the transducer between the emitter outputs and the receiver at left, and two TL082 amplifier stages, a diode peak detector and a TL082 comparator along the bottom">
+                </div>
+
+                <p style="text-align:center">The ultrasonic transceiver schematic &mdash; 555&nbsp;+&nbsp;MAX232 driver at the top, the relay that swaps the transducer between transmit and receive at left, the receiver chain along the bottom.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="architecture">System Architecture</h3>
 
                 <p>Five modules:</p>
 
@@ -493,13 +550,21 @@
 
                 <p style="text-align:center">The on&#8209;car I&sup2;C bus, and the module list.</p>
 
-                <h2 id="camber">Camber &mdash; the Accelerometer</h2>
+                <p>The &micro;C in every module is an <strong>ATmega328P</strong>. In the handheld unit it runs the four push&#8209;buttons, the 16&times;2 LCD and the XBee; in each wheel module it handles the three ultrasonic sensors, the status LEDs and the I&sup2;C link to the other three wheels, with the ADXL335 on three of its analog inputs.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/wheel_alignment/wheel-module-schematic.jpg" width="480" alt="Hand-drawn schematic of a wheel module: a switch and L7805CV and L33V regulators at the top, an XBee on an XBee Explorer Regulated at left, the ADXL335 at right wired to A0 to A2 of an ATmega328P, three ultrasonic connectors on D2 to D4, I2C pull-ups on A4 and A5, four status LEDs, a 16 MHz crystal and a five-pin programming header">
+                </div>
+
+                <p style="text-align:center">The wheel&#8209;module schematic &mdash; regulators, XBee, ADXL335, three ultrasonic connectors and the I&sup2;C pins around the ATmega328P.</p>
+
+                <h3 id="camber">Camber &mdash; the Accelerometer</h3>
 
                 <p>An <a href="https://www.analog.com/en/products/adxl335.html">ADXL335</a> (&plusmn;3&nbsp;g, 3&#8209;axis) is mounted parallel to the wheel. With the car stationary the only acceleration is gravity, so the sensor's X/Y/Z outputs give the wheel plane's tilt away from vertical. At a 3.3&nbsp;V supply it sits at 0&nbsp;g&nbsp;=&nbsp;1.65&nbsp;V with a 330&nbsp;mV/g scale; read through a 10&#8209;bit ADC:</p>
 
                 <pre><code>a [m/s&sup2;] = ( reading_mV &minus; 1650 ) / 330 &times; 9.80665</code></pre>
 
-                <h2 id="toe">Toe &mdash; the Ultrasonic Sensors</h2>
+                <h3 id="toe">Toe &mdash; the Ultrasonic Sensors</h3>
 
                 <p>40&nbsp;kHz ultrasonic emitter/detector pairs on the <strong>inner</strong> face of each tyre (the wave can't pass through the wheel). Time&#8209;of&#8209;flight &times; the speed of sound gives the distance to a reference point on another wheel; for a symmetric car the paired distances must match &mdash; <code>D1&nbsp;=&nbsp;D2</code>, <code>D3&nbsp;=&nbsp;D4</code>, <code>D5&nbsp;=&nbsp;D6</code>. Ultrasonic was chosen over laser: cheaper, smaller, and no separate receiver structure to mount.</p>
 
@@ -509,7 +574,7 @@
 
                 <p style="text-align:center">The measured distances between the wheels.</p>
 
-                <h2 id="mechanical">Mechanical Coupling</h2>
+                <h3 id="mechanical">Mechanical Coupling</h3>
 
                 <p>SolidWorks parts and assemblies attach the electronics to the car: a spring&#8209;loaded clamp (<em>pinza</em>) that grips each tyre, an articulated <strong>link&#8209;chain arm</strong> that references a longitudinal axis of the car, plus the tube&#8209;axle parts and base plates.</p>
 
@@ -519,9 +584,32 @@
 
                 <p style="text-align:center">The link&#8209;chain coupling arm (SolidWorks).</p>
 
-                <h2 id="tests">Tests</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
 
-                <p>The ADXL335 was bench&#8209;tested in the datasheet's three reference orientations. The raw sensor showed a clear zero offset and scale error &mdash; on one axis it read about 1.3&nbsp;g where 1&nbsp;g was expected &mdash; so a per&#8209;axis calibration is needed before the angle can be trusted. The ultrasonic driver circuits were prototyped in Multisim.</p>
+                <h3 id="tests">Tests</h3>
+
+                <p>The ADXL335 was bench&#8209;tested in the datasheet's three reference orientations. The raw sensor showed a clear zero offset and scale error &mdash; on one axis it read about 1.3&nbsp;g where 1&nbsp;g was expected &mdash; so a per&#8209;axis calibration is needed before the angle can be trusted.</p>
+
+                <p>For the test the sensor was wired to an Arduino: X, Y and Z into analog inputs A0&ndash;A2, power from the Arduino's 3.3&nbsp;V output. Each orientation puts gravity on a different axis, and the 10&#8209;bit readings go through the conversion above. The report's results, ideal against measured:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Gravity on</th><th>X (g)</th><th>Y (g)</th><th>Z (g)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Z</strong></td><td>0 &rarr; 0.27</td><td>0 &rarr; 0.04</td><td>1 &rarr; 1.31</td></tr>
+                            <tr><td><strong>Y</strong></td><td>0 &rarr; 0.29</td><td>1 &rarr; 1.18</td><td>0 &rarr; 0.27</td></tr>
+                            <tr><td><strong>X</strong></td><td>1 &rarr; 1.29</td><td>0 &rarr; 0.12</td><td>0 &rarr; 0.36</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="next-steps">Next Steps</h3>
+
+                <p>The report's conclusions name two changes: the accelerometer tests gave the expected results, but the readings should be adjusted to come out more exact &mdash; the per&#8209;axis calibration the table above calls for &mdash; and the ultrasonic sensors will have to be coordinated so they don't interfere with one another.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

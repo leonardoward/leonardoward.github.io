@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,6 +456,30 @@
 
                 <p class="lead drop-cap">A short Python&nbsp;3 + <a href="https://opencv.org/">OpenCV</a> script that turns a photo into a <a href="https://en.wikipedia.org/wiki/Pointillism">pointillism</a>-style image &mdash; a scatter of non-overlapping coloured dots, each sampled from the source.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>A small experiment with no written brief; the script&rsquo;s design shows what it had to do:</p>
+
+                <ul class="cs-spec" aria-label="Pointillize script requirements">
+                    <li><b>Look</b>Round dots that never overlap, on a white canvas</li>
+                    <li><b>Colour</b>Each dot takes the colour of the source pixel at its centre</li>
+                    <li><b>Size</b>Output at the source image&rsquo;s full resolution</li>
+                    <li><b>Control</b>Dot radius and number of attempts set from the command line</li>
+                </ul>
+
                 <div class="row">
                   <div class="col-six">
                     <p>
@@ -470,7 +495,9 @@
 
                 <p style="text-align:center">Source photo and the pointillized output (radius&nbsp;6).</p>
 
-                <h2 id="how-it-works">How It Works</h2>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="how-it-works">How It Works</h3>
 
                 <p>The output starts as a white canvas and gains one dot at a time:</p>
 
@@ -486,7 +513,7 @@
 
                 <p>Because circles can never overlap, the canvas saturates and later attempts are mostly rejected &mdash; the dot density plateaus on its own, which is what gives the hand&#8209;stippled look rather than a solid mosaic.</p>
 
-                <h2 id="usage">Usage</h2>
+                <h3 id="usage">Usage</h3>
 
                 <pre><code>python3 pointillize.py --image ./images/01.jpg --radius 10 --cycles 20 --debug True</code></pre>
 
@@ -504,7 +531,9 @@
 
                 <p>Needs Python&nbsp;3, <code>opencv-python</code> and <code>numpy</code>; the result is written to <code>resultado.png</code>.</p>
 
-                <h2 id="portrait">Another Example</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="portrait">Another Example</h3>
 
                 <div class="row">
                   <div class="col-six">
@@ -521,10 +550,40 @@
 
                 <p style="text-align:center">A portrait at a small radius &mdash; the effect becomes a fine grain.</p>
 
-                <h2 id="notes">Notes</h2>
+                <h3 id="notes">What the Run Log Shows</h3>
+
+                <p>The repository keeps the console log of the test runs (<code>nohup.out</code>, written with <code>--debug True</code>), which records every attempt and whether its dot was kept. The portrait above is the output of the longest run in it: 1,000,000 attempts on the full 1836&times;3264 photo, which placed 473,500 dots. The share of attempts that still found free space fell steadily as the canvas filled:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Attempts so far</th><th>Dots placed</th><th>Kept, over the last 1,000 attempts</th></tr></thead>
+                        <tbody>
+                            <tr><td>1,000</td><td>999</td><td>99.9%</td></tr>
+                            <tr><td>10,000</td><td>9,901</td><td>97.9%</td></tr>
+                            <tr><td>100,000</td><td>90,217</td><td>83.4%</td></tr>
+                            <tr><td>500,000</td><td>322,638</td><td>41.6%</td></tr>
+                            <tr><td>1,000,000</td><td>473,500</td><td>21.4%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/cv_pointillize/attempts-progression.jpg" width="800" alt="Three pointillized versions of the same small portrait crop, left to right after 1,000, 10,000 and 1,000,000 attempts: scattered sparse dots, then a recognisable face, then dense fine stippling">
+                </div>
+
+                <p style="text-align:center">The 271&times;295 portrait crop after 1,000, 10,000 and 1,000,000 attempts &mdash; outputs saved in the repository&rsquo;s first commit.</p>
 
                 <ul>
                     <li>With a small radius you need tens of thousands of attempts to cover a photo, since <code>--cycles</code> counts tries, not hits.</li>
+                </ul>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="collision-check">A Faster Collision Check</h3>
+
+                <p>The first version of the script (initial commit, 23&nbsp;October&nbsp;2017) checked each candidate dot pixel by pixel: it scanned the whole candidate image in Python to list the circle&rsquo;s pixels, then compared every one of them against the stored pixel list of every dot already placed, so each attempt got slower as dots piled up. A commit later the same day replaced that with the mask test described under <a href="#how-it-works">How It Works</a>: one running mask of all placed dots, checked with a single <code>cv2.bitwise_xor</code> per attempt.</p>
+
+                <ul>
                     <li>An earlier per&#8209;pixel collision function is still in the file but unused &mdash; the mask&#8209;XOR approach replaced it.</li>
                 </ul>
 

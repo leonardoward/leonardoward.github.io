@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,9 +456,53 @@
 
                 <p class="lead drop-cap">The <strong>HELA Module</strong> is a modular ambient&#8209;light controller: one piece of hardware that can switch an ordinary mains <strong>110&nbsp;V / 220&nbsp;V AC LED strip</strong> on and off <strong>manually</strong>, on a <strong>schedule</strong>, or <strong>automatically from the ambient light level</strong>. It was built for <em>PG&#8209;7232 Embedded Systems</em> at the <a href="http://www.usb.ve/">Universidad Sim&oacute;n Bol&iacute;var</a> as a six&#8209;person team project, with the firmware on a <a href="https://www.microchip.com/en-us/product/pic16f1768">PIC16F1768</a> and the whole circuit validated in <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
                 <p>The brief was written as a product exercise: build to a target cost (electronics under US$7), run straight off mains, keep the operating mode through a power cut, and provide a simple user interface. The design that came out of it is deliberately conservative &mdash; a small non&#8209;isolated 5&nbsp;V supply for the logic and a relay to switch the mains strip.</p>
 
-                <h2 id="hardware">Hardware</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The March 2021 project report sets the general goal as a prototype of a modular lighting system that can operate different types of bulb, then lists the specific requirements (translated from Spanish):</p>
+
+                <ul class="cs-spec" aria-label="HELA Module requirements">
+                    <li><b>Timeline</b>Ready to go into production in 4 weeks</li>
+                    <li><b>Power</b>Run from 110&nbsp;VAC, 60&nbsp;Hz</li>
+                    <li><b>Cost</b>US$7 of electronic components, not counting the bulb or light source</li>
+                    <li><b>MCU</b>An 8&#8209;bit PIC</li>
+                    <li><b>Modes</b>On and off from a light&#8209;intensity sensor; on by alarm; off by timer after 15, 30, 45 or 60&nbsp;minutes</li>
+                    <li><b>Interface</b>A way for the user to interact with the module</li>
+                    <li><b>Memory</b>Keep its operating mode after a power failure</li>
+                    <li><b>Parts</b>Components that are available, affordable and supported on the market</li>
+                    <li><b>Factory</b>A way to program the module and check that it works at the factory</li>
+                    <li><b>Price</b>Sell at US$70, with the total production cost at 50% of that; lamp assembly is taken as US$7 and the non&#8209;electronic lamp materials as US$14</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="simulation">Simulation</h3>
+
+                <p>The whole module &mdash; mains supply, regulator, PIC, LCD, RTC, sensor and relay &mdash; is simulated in Proteus using only stock library parts. A virtual terminal on the debug UART shows the time and the live light&#8209;sensor reading.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/ambient_lights/demo.jpg" width="720" alt="Proteus running the simulation: a virtual terminal printing repeated 'Current sensor value is: 120' and 'Current time is: 00:00:00' lines next to the powered circuit with the LCD showing 00:00:00">
+                </div>
+
+                <p style="text-align:center">Running in Proteus &mdash; the debug terminal streams the time and sensor value. There is also a <a href="https://youtu.be/3KqcJgEQBLA">demo video</a> of the last firmware version.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="hardware">Hardware</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/ambient_lights/block-hardware.png" width="720" alt="Hardware block diagram: a power cord into an HLK-10M05 AC/DC module giving 5 VDC to a PIC16, which connects to an ICSP header, three buttons, an APDS-9002 light sensor on an ADC, an LM016L LCD, a DS1307 RTC over I2C, a debug console over UART, and an HF46F-5-HS1 relay switching a 110 VAC LED strip">
@@ -488,7 +533,7 @@
 
                 <p style="text-align:center">The complete circuit as simulated in Proteus.</p>
 
-                <h2 id="modes">Operation Modes</h2>
+                <h3 id="modes">Operation Modes</h3>
 
                 <p>The LCD shows the current screen; the three buttons walk a small menu.</p>
 
@@ -514,7 +559,7 @@
 
                 <p>The relay logic is a simple priority chain: manual override &rarr; inside the scheduled window &rarr; ambient light below the captured threshold &rarr; otherwise off.</p>
 
-                <h2 id="firmware">Firmware</h2>
+                <h3 id="firmware">Firmware</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/ambient_lights/block-software.png" width="720" alt="Software block diagram: a button-logic block in the middle connected to display logic, set/get time, on/off logic and a get-luminosity block, with persistent memory, and I/O to the LCD, DS1307, relay and debug console">
@@ -540,24 +585,39 @@
                     </table>
                 </div>
 
-                <h2 id="simulation">Simulation</h2>
 
-                <p>The whole module &mdash; mains supply, regulator, PIC, LCD, RTC, sensor and relay &mdash; is simulated in Proteus using only stock library parts. A virtual terminal on the debug UART shows the time and the live light&#8209;sensor reading.</p>
+                <h3 id="cost">Cost</h3>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/ambient_lights/demo.jpg" width="720" alt="Proteus running the simulation: a virtual terminal printing repeated 'Current sensor value is: 120' and 'Current time is: 00:00:00' lines next to the powered circuit with the LCD showing 00:00:00">
+                <p>From the report's BOM analysis the electronics come to about <strong>$7</strong> in one&#8209;off quantities and the full production cost (with assembly and lamp materials) to about <strong>$31</strong> against a $70 retail target &mdash; inside the 50% goal. The report's cost table, by order quantity:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Cost</th><th>1 unit</th><th>100 units</th><th>1000 units</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Electronics, without the LED strip</td><td>$7.17</td><td>$6.83</td><td>$6.70</td></tr>
+                            <tr><td>Electronics, with 2&nbsp;m of LED strip</td><td>$10.65</td><td>$10.31</td><td>$10.18</td></tr>
+                            <tr><td>Production (adds $7 assembly and $14 lamp materials)</td><td>$31.65</td><td>$31.31</td><td>$31.18</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <p style="text-align:center">Running in Proteus &mdash; the debug terminal streams the time and sensor value. There is also a <a href="https://youtu.be/3KqcJgEQBLA">demo video</a> of the last firmware version.</p>
+                <p>That puts production at about 45% of the retail price. The strip length is left to the customer, so it stays out of the electronics figure; each extra metre adds $1.74.</p>
 
-                <h2 id="notes">Notes</h2>
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="notes">Open Items</h3>
 
                 <ul>
                     <li>The committed firmware implements the menu, the light sensor, the schedule comparison and the relay control. The DS1307 is on the board and in the schematic, but this build does not yet read it over I&sup2;C (no I&sup2;C module is generated and there is no timekeeping interrupt) &mdash; the clock is set and held through the <em>Configure time</em> screen. Wiring the RTC and writing the selected mode to Flash are the open items.</li>
-                    <li>From the report's BOM analysis the electronics come to about <strong>$7</strong> in one&#8209;off quantities and the full production cost (with assembly and lamp materials) to about <strong>$31</strong> against a $70 retail target &mdash; inside the 50% goal.</li>
+                    <li>The off&#8209;timer in the requirements (15, 30, 45 or 60&nbsp;minutes) is not a menu option in this build; the scheduled window is the only timed switch&#8209;off.</li>
                     <li>The repository has no <code>LICENSE</code> file yet.</li>
-                    <li>Team: Carlos Sanoja, Jes&uacute;s Guillen, Leonardo Ward, Mauricio Marcano, Oscar Moreno and Vincenzo D&rsquo;Argento.</li>
                 </ul>
+
+                <h2 id="team" class="cs-after__title">Team</h2>
+
+                <p>Carlos Sanoja, Jes&uacute;s Guillen, Leonardo Ward, Mauricio Marcano, Oscar Moreno and Vincenzo D&rsquo;Argento.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

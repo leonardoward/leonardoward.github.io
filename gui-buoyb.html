@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -469,7 +470,35 @@
 
                 <p class="lead drop-cap" id="description">This project contains a GUI for the <a href="buoyb.html">Buoy B</a> PCB design. The microcontroller used in the PCB is the ESP32.</p>
 
-                <h2 id="requirements">Requirements:</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="what-it-had-to-do">What It Had to Do</h3>
+
+                <p>In EJA's operating process, the fishers set the maximum time the gear will stay underwater, and the buoy is released when that time runs out (see the <a href="eja.html">EJA project page</a>). This interface is where that time is set on Buoy&nbsp;B, and it doubles as the board's test panel: GPS, LoRa and the internal messages each get a page. There is no written spec in the repository; the list below is what the firmware shows it had to do:</p>
+
+                <ul class="cs-spec" aria-label="Buoy B web interface requirements">
+                    <li><b>Access</b>Work from any phone or laptop browser, with no app and no router: the ESP32 runs its own Wi&#8209;Fi access point</li>
+                    <li><b>Address</b>Open by a name, www.buoy_b.eja, instead of an IP address</li>
+                    <li><b>Timer</b>Set, show and cancel the release countdown, up to 23&nbsp;h 59&nbsp;min 59&nbsp;s</li>
+                    <li><b>Monitor</b>Show live GPS data, LoRa traffic and the board's internal messages</li>
+                    <li><b>Link</b>Exchange GPS and timer messages with the Onboard Gateway over LoRa at 915&nbsp;MHz, one message a second</li>
+                    <li><b>Update</b>Take new firmware over Wi&#8209;Fi (over&#8209;the&#8209;air updates)</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="requirements">Libraries &amp; Tools</h3>
 
                 <ol>
                     <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
@@ -480,6 +509,8 @@
                     <li><a href="https://github.com/mikalhart/TinyGPSPlus">TinyGPSPlus</a></li>
                     <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa</a></li>
                 </ol>
+
+                <h3 id="access-point">Wi&#8209;Fi Access Point &amp; DNS</h3>
 
                 <p id="async-web-server">The ESP32 creates an Asynchronous Web Server, with the following credentials:</p>
 
@@ -508,7 +539,7 @@
                   http://www.buoy_b.eja/
                 </code></pre>
 
-                <h2 id="home">Home</h2>
+                <h3 id="home">Home</h3>
 
                 <p>The previous link displays the web page used for HOME:</p>
 
@@ -526,7 +557,7 @@
 
                 <p style="text-align:center">Side Menu.</p>
 
-                <h2 id="gps">GPS</h2>
+                <h3 id="gps">GPS</h3>
 
                 <p>The page http://www.buoy_b.eja/gps shows the data from the GPS module.</p>
 
@@ -536,7 +567,7 @@
 
                 <p style="text-align:center">GPS Screen.</p>
 
-                <h2 id="timer">Timer</h2>
+                <h3 id="timer">Timer</h3>
 
                 <p>The page http://www.buoy_b.eja/timer shows the interface to create a timer in the Buoy. The timer represents a countdown that activates the release mechanism when the time has reached zero. The initial page allows the user to set the timer.</p>
 
@@ -570,7 +601,7 @@
 
                 <p style="text-align:center">Screen after the timer is deleted.</p>
 
-                <h2 id="lora">LoRa</h2>
+                <h3 id="lora">LoRa</h3>
 
                 <p>The page http://www.buoy_b.eja/lora shows internal messages related to LoRa. In the ESP32 that information is stored in the variable:</p>
 
@@ -584,7 +615,7 @@
 
                 <p style="text-align:center">LoRa Screen.</p>
 
-                <h2 id="terminal">Terminal</h2>
+                <h3 id="terminal">Terminal</h3>
 
                 <p>The page "http://www.buoy_b.eja/terminal" shows internal messages. In the ESP32 that information is stored in the variable:</p>
 
@@ -598,11 +629,23 @@
 
                 <p style="text-align:center">Terminal Screen.</p>
 
-                <h2 id="future_improvements">Future Improvements</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="what-the-screenshots-show">What the Screenshots Show</h3>
+
+                <p>The Terminal screenshot doubles as a GPS bring&#8209;up check. The module's serial stream was arriving cleanly: one line per second, &ldquo;Chars Processed&rdquo; climbs from 12,924 to 13,566 in four seconds with 0 failed checksums (the firmware adds &ldquo;No GPS data received: check wiring&rdquo; to the terminal when fewer than 10 characters have arrived after 5&nbsp;s). But the receiver had no fix: 0 satellites, 0 sentences with a fix, and no latitude or longitude.</p>
+
+                <p>The LoRa link is confirmed from the other end. The <a href="gui-onboardgateway.html#test">Onboard Gateway's link check</a> shows its GPS page displaying a buoy GPS message received over LoRa, and its timer starting only after the buoy echoed the end time back &mdash; the reply this firmware sends in its timer message.</p>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="future_improvements">Future Improvements</h3>
 
                 <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
 
+                <p>The electronics were carried forward in 2021: <a href="ejam.html">EJA&nbsp;M</a> replaces the Buoy&nbsp;B board, together with Buoy&nbsp;A and the Onboard Gateway, with a single PCB.</p>
 
+                <p>One item is still open in this firmware: the release itself. When the countdown reaches zero the sketch sets its <code>timer_reached_end</code> flag, but the block meant to drive the release actuator is still empty (<code>// Activate release mechanism</code>). The countdown, the web interface and the LoRa reporting are done; the final output to the actuator is not.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

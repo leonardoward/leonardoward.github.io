@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,17 +456,39 @@
 
                 <p class="lead drop-cap">The driver's display and control panel for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). A chevron&#8209;shaped board that mounts on the steering&#8209;wheel hub: a <strong>graphic LCD</strong> in the centre shows speed, RPM, fuel and warning tell&#8209;tales, and <strong>four illuminated buttons</strong> at the corners work the turn signals, hazards, night lights and handbrake indicator. It is the companion to the <a href="car-dashboard.html">dashboard module</a> &mdash; the two talk over the car's CAN bus. <em>2011&#8209;2012.</em></p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/steering_wheel/display.jpg" width="640" alt="The board powered on: four illuminated corner buttons and a graphic LCD showing speed, an RPM bar and a fuel bar">
-                </div>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <p style="text-align:center">The board on the bench &mdash; speed, RPM bar and fuel bar on the LCD, a button at each corner.</p>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
-                <h2 id="why">Why</h2>
+                <h3 id="why">Why</h3>
 
                 <p>The driver's hands stay on the wheel, so the display and the switches go on the wheel too. Speed, RPM, fuel and the warning tell&#8209;tales are all on one small graphic LCD; the turn signals, hazards, night lights and handbrake indicator are four buttons within thumb&#8209;reach. A single wire loom to the hub &mdash; power and <strong>CAN</strong> &mdash; carries everything.</p>
 
-                <h2 id="display">The Display</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>No requirements document survives in the repository; these are the goals the finished board clearly had to meet:</p>
+
+                <ul class="cs-spec" aria-label="Steering-wheel display requirements">
+                    <li><b>Display</b>Speed, RPM, fuel and the warning tell&#8209;tales on one screen, on the wheel itself</li>
+                    <li><b>Controls</b>Turn signals, hazards, night lights and the handbrake indicator within thumb&#8209;reach</li>
+                    <li><b>Wiring</b>One four&#8209;wire connection to the car: +V, GND, CANH, CANL</li>
+                    <li><b>Bus</b>Send the button state to the dashboard, which drives the lamps; take the gauge values and fuel level from the bus</li>
+                    <li><b>Night</b>A backlight that dims when the night lights are on</li>
+                    <li><b>Mount</b>Sit on a steering&#8209;wheel spoke</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="display">The Display</h3>
 
                 <p>A <strong>graphic LCD</strong> (with a touch panel) driven over <strong>SPI</strong>, redrawn whenever a CAN frame arrives. It shows a large <strong>speed</strong> readout in <code>KPH</code> (or <code>WAIT&hellip;</code> until the first frame), an <strong>RPM&nbsp;&times;100</strong> bar down the left edge, a <strong>fuel</strong> bar (E&ndash;F) with a pump icon down the right, and a row of <strong>tell&#8209;tales</strong> along the bottom &mdash; headlights, high beam, temperature, brake and a <code>LOW&nbsp;GAS</code> warning.</p>
 
@@ -477,7 +500,7 @@
 
                 <p>The values come from the dashboard's <code>0x111</code> frame &mdash; <code>RPM = data[0] / 5</code> (clamped to 40 levels), speed units and tenths from <code>data[1]</code>, a temperature flag from <code>data[2]</code> &mdash; and fuel from <code>data[0]</code> of <code>0x222</code>. The white&#8209;LED <strong>backlight</strong> is a PWM&#8209;dimmed boost (CAT4238): bright by day, dimmed in night mode.</p>
 
-                <h2 id="buttons">The Buttons</h2>
+                <h3 id="buttons">The Buttons</h3>
 
                 <p>Four illuminated tactile switches on a keyboard&#8209;interrupt port, one at each corner of the board:</p>
 
@@ -497,7 +520,7 @@
 
                 <p>Each press updates the four corner LEDs, sends a 5&#8209;byte frame to the LCD over SPI, and transmits the state on <strong>CAN <code>0x333</code></strong> &mdash; one byte, <code>bit0</code> night, <code>bit1</code> right, <code>bit2</code> left, <code>bit3</code> brake. The <a href="car-dashboard.html">dashboard module</a> reads that frame and drives the actual lamps; the turn arrows blink by re&#8209;arming a timer interrupt.</p>
 
-                <h2 id="firmware">Firmware</h2>
+                <h3 id="firmware">Firmware</h3>
 
                 <p>The MCU is a Freescale <strong>MC9S08DZ60</strong> (8&#8209;bit S08 with on&#8209;chip MSCAN), <strong>CodeWarrior</strong> + <strong>Processor Expert 3.07</strong>, flashed through the 6&#8209;pin BDM header with a P&amp;E Multilink. The main loop is tiny &mdash; a start&#8209;up routine, then poll the buttons; everything else happens in interrupt handlers:</p>
 
@@ -510,9 +533,15 @@ for(;;) Botones();     // on a keypress: update LEDs, send SPI + CAN 0x333
 
                 <p>An alternate <strong>MCF51JM128</strong> (ColdFire&nbsp;V1) build of the same application is also in the repository.</p>
 
-                <h2 id="hardware">Hardware</h2>
+                <h3 id="hardware">Hardware</h3>
 
                 <p>A <strong>chevron / arrow outline</strong> &mdash; wide at the top, pointed at the bottom &mdash; so it sits on a steering&#8209;wheel spoke, with the LCD framed in the centre and a button at each corner (Altium Designer).</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/steering_wheel/display.jpg" width="640" alt="The board powered on: four illuminated corner buttons and a graphic LCD showing speed, an RPM bar and a fuel bar">
+                </div>
+
+                <p style="text-align:center">The board on the bench &mdash; speed, RPM bar and fuel bar on the LCD, a button at each corner.</p>
 
                 <div class="table-responsive">
                     <table>

@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -463,13 +464,26 @@
 
                 <p class="lead drop-cap">El siguiente trabajo presenta las etapas del diseño de un prototipo de sistema de luces traseras para una bicicleta. Se realiza la selección de los componentes adecuados a los requerimientos del proyecto y a los criterios del equipo de trabajo. Se realizó la simulación del funcionamiento del sistema en el software Proteus y la codificación con la ayuda de MPLAB X. Adicionalmente, se presenta el diseño PCB del circuito y las modificaciones a la propuesta de la competencia.</p>
 
-                <h2 id="requerimientos">Requerimientos</h2>
+                <nav class="cs-steps" aria-label="Pasos documentados en esta página">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">Un método, cinco pasos</a> &middot; los pasos encendidos están documentados abajo</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Definir</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simular</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Construir</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Probar<span class="u-screen-reader-text"> (no documentado)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refinar<span class="u-screen-reader-text"> (no documentado)</span></span></li>
+                    </ol>
+                </nav>
 
-                <h3>Requerimientos generales</h3>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Paso 1</span>Definir</h2>
+
+                <h3 id="requerimientos">Requerimientos</h3>
+
+                <h4>Requerimientos generales</h4>
 
                 <p>Diseñar un prototipo de un sistema de luces traseras para bicicletas.</p>
 
-                <h3>Requerimientos específicos</h3>
+                <h4>Requerimientos específicos</h4>
 
                 <ul>
                   <li>Autonomía de 25 horas en funcionamiento continuo.</li>
@@ -493,26 +507,39 @@
                     <p>Figura 1: diagrama que muestra los modos de uso de las luces traseras.</p>
                 </div>
 
-                <h2 id="diseno">Diseño</h2>
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Paso 2</span>Simular</h2>
 
-                <h3>Hardware</h3>
+                <h3 id="battery-sizing">Dimensionamiento de las baterías</h3>
 
-                <p>En la Figura 2 se puede observar el diagrama de bloques de hardware del prototipo. Incluye los componentes esenciales del diseño: pulsadores, baterías, cargador de baterías, luces y los transistores que representan la etapa de control de potencia de cada luz LED. En la Figura 2 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
+                <p>Para dimensionar las baterías se tomó como referencia que el dispositivo debe ser capaz de ofrecer un funcionamiento de 26 horas continuas con ambas luces principales encendidas a máxima potencia, dejando margen sobre el requerimiento de 25 horas. Cada LED presenta un consumo máximo de 180&nbsp;mA, de manera que: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Se decidió usar un arreglo de 4 baterías de 2600&nbsp;mAh en paralelo, lo que ofrece 10&nbsp;400&nbsp;mAh y permite cubrir la demanda de los LED descrita.</p>
+
+                <h3 id="resultados">Simulación en Proteus</h3>
+
+                <p>Se realizó la simulación del circuito propuesto en Proteus; en la Figura 2 se aprecia el diseño realizado. Los interruptores del mando se modelaron como switches, mientras que para el control de los distintos modos se incorporó un botón. El sistema de alimentación no se ilustra en la simulación; únicamente se incorporan fuentes del voltaje correspondiente. Los integrados seleccionados como transistores (BTS3405GXUMA1) no se pueden simular en Proteus, por lo que se representaron mediante sus equivalentes MOSFET. Se lograron simular exitosamente los distintos modos de operación; en el vídeo entregado se muestra su funcionamiento.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Simulación en Proteus del circuito propuesto">
+                    <p>Figura 2: modelo del circuito en Proteus.</p>
+                </div>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Paso 3</span>Construir</h2>
+
+                <h3 id="diseno">Hardware</h3>
+
+                <p>En la Figura 3 se puede observar el diagrama de bloques de hardware del prototipo. Incluye los componentes esenciales del diseño: pulsadores, baterías, cargador de baterías, luces y los transistores que representan la etapa de control de potencia de cada luz LED. En la Figura 3 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_Hardware.jpg" alt="Diagrama de bloques de hardware del prototipo">
-                    <p>Figura 2: diagrama de bloques de hardware.</p>
+                    <p>Figura 3: diagrama de bloques de hardware.</p>
                 </div>
 
                 <h4>Alimentación</h4>
 
-                <p>Para incorporar baterías de litio recargables al diseño se seleccionó un módulo basado en el integrado TP4056, que contiene un cargador de corriente y voltaje constante para baterías de ion litio de una celda (Figura 3). Las baterías de 1 celda tienen un voltaje nominal de 3,7&nbsp;V, valor que se establece como el voltaje de alimentación de los circuitos lógicos en el diseño.</p>
-
-                <p>Para dimensionar las baterías se tomó como referencia que el dispositivo debe ser capaz de ofrecer un funcionamiento de 26 horas continuas con ambas luces principales encendidas a máxima potencia, dejando margen sobre el requerimiento de 25 horas. Cada LED presenta un consumo máximo de 180&nbsp;mA, de manera que: 2 &times; 180&nbsp;mA &times; 26&nbsp;h = 9360&nbsp;mAh. Se decidió usar un arreglo de 4 baterías de 2600&nbsp;mAh en paralelo, lo que ofrece 10&nbsp;400&nbsp;mAh y permite cubrir la demanda de los LED descrita.</p>
+                <p>Para incorporar baterías de litio recargables al diseño se seleccionó un módulo basado en el integrado TP4056, que contiene un cargador de corriente y voltaje constante para baterías de ion litio de una celda (Figura 4). Las baterías de 1 celda tienen un voltaje nominal de 3,7&nbsp;V, valor que se establece como el voltaje de alimentación de los circuitos lógicos en el diseño.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/BatC.png" alt="Módulo cargador de baterías TP4056 de corriente y voltaje constante">
-                    <p>Figura 3: módulo TP4056, cargador de batería.</p>
+                    <p>Figura 4: módulo TP4056, cargador de batería.</p>
                 </div>
 
                 <h4>Microcontrolador</h4>
@@ -540,23 +567,23 @@
                   <li>Dos temporizadores de 8 bits.</li>
                 </ul>
 
-                <p>Además, este dispositivo cuenta con otros periféricos como un convertidor analógico-digital (ADC) de 10 bits y 5 canales y un puerto serie síncrono maestro (MSSP) con SPI e I2C; sin embargo, no se utilizan. El pinout del dispositivo puede observarse en la Figura 4.</p>
+                <p>Además, este dispositivo cuenta con otros periféricos como un convertidor analógico-digital (ADC) de 10 bits y 5 canales y un puerto serie síncrono maestro (MSSP) con SPI e I2C; sin embargo, no se utilizan. El pinout del dispositivo puede observarse en la Figura 5.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/Pinout.jpg" alt="Pinout del PIC16F1455">
-                    <p>Figura 4: pinout del PIC16F1455.</p>
+                    <p>Figura 5: pinout del PIC16F1455.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/pic.png" alt="Símbolo esquemático del PIC16F1455">
-                    <p>Figura 5: símbolo del PIC16F1455 en el esquemático.</p>
+                    <p>Figura 6: símbolo del PIC16F1455 en el esquemático.</p>
                 </div>
 
-                <p>Se puede programar el microcontrolador con un programador ICSP (utilizable con cualquier chip PIC). Las conexiones ICSP se muestran en el siguiente diagrama (Figura 6).</p>
+                <p>Se puede programar el microcontrolador con un programador ICSP (utilizable con cualquier chip PIC). Las conexiones ICSP se muestran en el siguiente diagrama (Figura 7).</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/icsp.png" alt="Conector de programación ICSP en el esquemático">
-                    <p>Figura 6: símbolo para la entrada ICSP en el esquemático.</p>
+                    <p>Figura 7: símbolo para la entrada ICSP en el esquemático.</p>
                 </div>
 
                 <p>Para el presente diseño no se consideró necesario el uso de un oscilador externo por dos razones:</p>
@@ -575,7 +602,7 @@
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/leds.png" alt="Etapa de control de potencia de los LED">
-                    <p>Figura 7: sistema de control para las luces LED.</p>
+                    <p>Figura 8: sistema de control para las luces LED.</p>
                 </div>
 
                 <h4>Interfaz de control</h4>
@@ -584,27 +611,27 @@
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/Case2.PNG" alt="Control de un solo botón en la carcasa del dispositivo">
-                    <p>Figura 8: sistema de control para las luces LED.</p>
+                    <p>Figura 9: sistema de control para las luces LED.</p>
                 </div>
 
                 <p>El segundo formato usa un mando de control. A través de esta opción se pueden incorporar más funciones &mdash; entre ellas luces intermitentes y luces de cruce &mdash;, además de los modos de operación, que se mantienen igual. Esta versión del producto tiene un costo extra y puede observarse a continuación.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/mando.png" alt="Mando de control externo para el manillar">
-                    <p>Figura 9: sistema de control externo para las luces LED.</p>
+                    <p>Figura 10: sistema de control externo para las luces LED.</p>
                 </div>
 
                 <h3>Software</h3>
 
-                <p>En la Figura 10 se puede observar el diagrama de bloques del software para el microcontrolador. Cada pulsador se encuentra conectado a un puerto de entrada/salida configurado como entrada. El microcontrolador debe identificar el estado en el puerto de entrada y manejar los posibles rebotes asociados.</p>
+                <p>En la Figura 11 se puede observar el diagrama de bloques del software para el microcontrolador. Cada pulsador se encuentra conectado a un puerto de entrada/salida configurado como entrada. El microcontrolador debe identificar el estado en el puerto de entrada y manejar los posibles rebotes asociados.</p>
 
                 <p>Un deslizador selecciona la luz de cruce que se va a utilizar. Un botón coloca ambas luces de cruce en modo intermitente. Un pulsador cambia el estado de las luces traseras, que siguen los modos presentados en la Figura 1.</p>
 
                 <p>Dado que no se utiliza ningún periférico, la única configuración realizada al microcontrolador fue la de escoger el oscilador. Como se mencionó, se optó por el oscilador interno del dispositivo con una frecuencia de 31&nbsp;kHz, la menor posible, porque no se necesita un nivel de precisión elevado y además permite un menor consumo de las baterías.</p>
 
-                <p>Una vez realizada la selección del hardware, se realizó el diagrama de bloques de software que se muestra en la Figura 10. Dicho diagrama muestra los periféricos utilizados y los elementos indispensables del software: la lectura de los puertos, el manejo de rebotes cuando es necesario y un controlador que establece las señales para las luces y maneja los puertos de salida conectados a los transistores de potencia. También se realizó un diagrama jerárquico de software (Figura 11), que muestra cómo se relacionan los elementos antes mencionados. Finalmente se realizó el diagrama de capas de software (Figura 12), que se enfoca en establecer qué elementos podrían tener mayor complejidad; los bloques considerados de mayor complejidad son los controladores, porque deben manejar los estados de cada luz, y el diagrama también muestra el amplio uso de los puertos de entrada y salida en el proyecto.</p>
+                <p>Una vez realizada la selección del hardware, se realizó el diagrama de bloques de software que se muestra en la Figura 11. Dicho diagrama muestra los periféricos utilizados y los elementos indispensables del software: la lectura de los puertos, el manejo de rebotes cuando es necesario y un controlador que establece las señales para las luces y maneja los puertos de salida conectados a los transistores de potencia. También se realizó un diagrama jerárquico de software (Figura 12), que muestra cómo se relacionan los elementos antes mencionados. Finalmente se realizó el diagrama de capas de software (Figura 13), que se enfoca en establecer qué elementos podrían tener mayor complejidad; los bloques considerados de mayor complejidad son los controladores, porque deben manejar los estados de cada luz, y el diagrama también muestra el amplio uso de los puertos de entrada y salida en el proyecto.</p>
 
-                <p>En las Figuras 10, 11 y 12 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
+                <p>En las Figuras 11, 12 y 13 se llama luces de freno a las luces traseras que no se utilizan para indicar cruces.</p>
 
                 <h4>Implementación</h4>
 
@@ -634,29 +661,20 @@
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_BloquesSoft.jpg" alt="Diagrama de bloques del software">
-                    <p>Figura 10: diagrama de bloques de software.</p>
+                    <p>Figura 11: diagrama de bloques de software.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_jerarquico.jpg" alt="Diagrama jerárquico del software">
-                    <p>Figura 11: diagrama jerárquico de software.</p>
+                    <p>Figura 12: diagrama jerárquico de software.</p>
                 </div>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/helios_ren/D_decapas.jpg" alt="Diagrama de capas del software">
-                    <p>Figura 12: diagrama de capas de software.</p>
+                    <p>Figura 13: diagrama de capas de software.</p>
                 </div>
 
-                <h2 id="resultados">Resultados</h2>
-
-                <p>Se realizó la simulación del circuito propuesto en Proteus; en la Figura 13 se aprecia el diseño realizado. Los interruptores del mando se modelaron como switches, mientras que para el control de los distintos modos se incorporó un botón. El sistema de alimentación no se ilustra en la simulación; únicamente se incorporan fuentes del voltaje correspondiente. Los integrados seleccionados como transistores (BTS3405GXUMA1) no se pueden simular en Proteus, por lo que se representaron mediante sus equivalentes MOSFET. Se lograron simular exitosamente los distintos modos de operación; en el vídeo entregado se muestra su funcionamiento.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/helios_ren/Simulacion_Proteus.jpg" alt="Simulación en Proteus del circuito propuesto">
-                    <p>Figura 13: modelo del circuito en Proteus.</p>
-                </div>
-
-                <p>Se puede concluir que los precios finales de venta se encuentran dentro de los márgenes de los requerimientos y, dependiendo de la configuración y el tamaño de la compra, se obtienen más beneficios con nuestra solución a un precio competitivo.</p>
+                <h3 id="pcb-enclosure">PCB y carcasa</h3>
 
                 <p>Como paso extra para desarrollar el proyecto, se hizo el diseño del PCB del sistema completo. Se realizó con el software Altium Designer y los resultados pueden observarse a continuación.</p>
 
@@ -677,6 +695,7 @@
                     <p>Figura 16: carcasa del PCB.</p>
                 </div>
 
+                <p>Se puede concluir que los precios finales de venta se encuentran dentro de los márgenes de los requerimientos y, dependiendo de la configuración y el tamaño de la compra, se obtienen más beneficios con nuestra solución a un precio competitivo.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

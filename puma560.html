@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,9 +456,22 @@
 
                 <p class="lead drop-cap">Two MATLAB GUIs for exploring serial&#8209;robot kinematics with <a href="https://petercorke.com/toolboxes/robotics-toolbox/">Peter Corke's Robotics Toolbox</a> &mdash; one for a teaching <strong>RRR</strong> arm (3 revolute joints) and one for the classic <strong>Unimation PUMA&nbsp;560</strong> (6 joints), animated with the real STL link meshes from the <a href="https://arvc.umh.es/arte/index_en.html">ARTE</a> library.</p>
 
-                <h2 id="how-it-works">What the GUIs Do</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Define<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <h3>puma560_gui</h3>
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="how-it-works">What the GUIs Do</h3>
+
+                <h4>puma560_gui</h4>
 
                 <p>The PUMA&nbsp;560 GUI (built with GUIDE) runs a full forward / inverse kinematics round trip and shows the robotics maths along the way:</p>
 
@@ -468,11 +482,41 @@
                     <li><strong>2D or 3D</strong> &mdash; a toggle switches between the fast wire&#8209;frame plot and the textured STL model; the frames are written out to build the GIFs below.</li>
                 </ul>
 
-                <h3>RRR_Robot_GUI</h3>
+                <h4>RRR_Robot_GUI</h4>
 
                 <p>A stripped&#8209;down version for a 3&#8209;revolute (RRR) arm &mdash; the same forward / inverse kinematics on a robot simple enough to check by hand, with the link geometry defined directly through <code>Link</code> / <code>SerialLink</code>.</p>
 
-                <h2>Repository</h2>
+                <h3 id="robot-manipulator">RRR Robot Manipulator</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
+                </div>
+
+                <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
+                </div>
+
+                <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
+
+                <h3 id="puma-560">PUMA 560</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
+                </div>
+
+                <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
+
+                <div class="col-full" style="text-align:center" id="gui">
+                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
+                </div>
+
+                <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3>Repository</h3>
 
                 <p>To get a copy of this project you can use git, and clone the repository:</p>
 
@@ -482,7 +526,7 @@
 
                 <p>Or you can download the <a href="https://github.com/leonardoward/PUMA560-MATLAB-Simulations/archive/master.zip">zip file</a> with the project and extract it to get the files.</p>
 
-                <h2 id="prerequisites">Prerequisites</h2>
+                <h3 id="prerequisites">Prerequisites</h3>
 
                 <ol>
                     <li>MATLAB (Developed using MATLAB R2015b)</li>
@@ -490,16 +534,16 @@
                     <li><a href="http://arvc.umh.es/arte/index_en.html">ARTE Library</a>: This library contains the needed STL models for the PUMA560.</li>
                 </ol>
 
-                <h2>Installation</h2>
+                <h3>Installation</h3>
 
-                <h3 id="robotics-toolbox">Peter Corke's Robotics Toolbox</h3>
+                <h4 id="robotics-toolbox">Peter Corke's Robotics Toolbox</h4>
 
                 <ul>
                     <li>Download the mltbx file, this project was developed using <a href="http://petercorke.com/wordpress/?ddownload=574">RTB-10.3.1</a>.</li>
                     <li>From within the MATLAB file browser double click on this file (mltbx), it will install and configure the paths correctly.</li>
                 </ul>
 
-                <h3 id="stl-model">ARTE Library (STL Models)</h3>
+                <h4 id="stl-model">ARTE Library (STL Models)</h4>
 
                 <ul>
                     <li>Download the <a href="http://arvc.umh.es/arte/arte.zip">zip file with the ARTE Library</a>.</li>
@@ -515,34 +559,6 @@
                   ans =
                   UNIMATE/puma560
                 </code></pre>
-
-                <h2 id="robot-manipulator">RRR Robot Manipulator</h2>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/rrr_robot.jpg" width="640" alt="Matlab simulation of the RRR Robot Manipulator">
-                </div>
-
-                <p style="text-align:center">Matlab simulation of the RRR Robot Manipulator.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <video src="images/puma560/rrr_robot.mp4" width="620" poster="images/puma560/rrr_robot.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the RRR robot GUI moving the 3-joint arm"></video>
-                </div>
-
-                <p style="text-align:center">GUI for the RRR Robot Manipulator.</p>
-
-                <h2 id="puma-560">PUMA 560</h2>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" width="640" alt="Matlab simulation of the Puma 560 Robot Manipulator">
-                </div>
-
-                <p style="text-align:center">Matlab simulation of the Puma 560 Robot Manipulator.</p>
-
-                <div class="col-full" style="text-align:center" id="gui">
-                    <video src="images/puma560/puma_560_3d_vel20_2.mp4" width="620" poster="images/puma560/puma_560_3d_vel20_2.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Animation of the PUMA 560 GUI moving the 6-joint arm with the 3D STL model"></video>
-                </div>
-
-                <p style="text-align:center">GUI for the Puma 560 Robot Manipulator.</p>
 
 
                 <div class="entry__taxonomies">

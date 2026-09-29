@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -452,9 +453,26 @@
 
                 <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC and Stepper motors.</p>
 
-                <h2 id="uln2003_stepper_stepper">Stepper Motors Drivers with ULN2003</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Define<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <p>The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The following videos present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.</p>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="uln2003_stepper_stepper">Stepper Motors Drivers with ULN2003</h3>
+
+                <p>The integrated circuit ULN2003 can be used as a motor driver for unipolar stepper motors (5 and 6 wires). The videos under <a href="#test">Test</a> present circuit implementations with ULN2003 and Arduino Uno or PIC16f877A.</p>
+
+                <p id="stepper-motors">Using 4 ULN2003 and a PIC16F877A I created a Perfboard prototype for multiple applications. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
+
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
 
                 <h3 id="arduino">ULN2003 and Arduino Uno</h3>
 
@@ -478,7 +496,7 @@
 
                 <p style="text-align:center">Controlling 2 unipolar motors with ULN2003 and a PIC16F877A.</p>
 
-                <p id="stepper-motors">Using 4 ULN2003 and a PIC16F877A I created a Perfboard prototype for multiple applications. In the following video the circuit controls <strong>2 stepper motors</strong>. An Arduino Uno communicates with the perfboard to change the configurations using I2C/Serial communication.</p>
+                <p>In the following video the perfboard prototype controls <strong>2 stepper motors</strong>.</p>
 
                 <div class="video-container">
                     <iframe src="https://www.youtube-nocookie.com/embed/IR5aowlEpMI" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player"></iframe>
@@ -493,6 +511,7 @@
                 </div>
 
                 <p style="text-align:center">Controlling 2 stepper motors and a solenoid with ULN2003, a PIC16F877A and an Arduino UNO.</p>
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

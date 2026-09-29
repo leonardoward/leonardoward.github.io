@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -447,6 +448,31 @@
 
                 <p class="lead drop-cap">Every electrocardiogram (ECG) machine in routine clinical use does the same thing with its result: it prints it on a strip of paper. The waveform that follows is proof &mdash; a cardiologist can read it, but a computer can't, and the reading is stuck on that one piece of paper forever unless someone re-measures it by hand with a ruler. This is an undergraduate thesis project (Universidad Sim&oacute;n Bol&iacute;var, Ingenier&iacute;a Electr&oacute;nica, defended May 2018, advised by Prof. Masun Homsi) built with Emanuel S&aacute;nchez to close that gap: a photo of a printed 12-lead ECG goes in, and a calibrated millivolts-vs-milliseconds signal comes out &mdash; exportable as JSON, WFDB, MATLAB, or the FDA-backed <a href="https://en.wikipedia.org/wiki/Health_Level_7">HL7</a> annotated-ECG (aECG) XML standard used in clinical trials.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The thesis states its general objective in one line: design and develop a service that extracts the electrocardiographic information from the image of a routine ECG exam. It breaks that into five specific objectives:</p>
+
+                <ul class="cs-spec" aria-label="ECG digitization service objectives">
+                    <li><b>Locate</b>Extract the region of the image that holds the ECG, correct its orientation and filter out image noise</li>
+                    <li><b>Extract</b>Pull the ECG signal out of the image as a vector of millivolts vs. milliseconds</li>
+                    <li><b>Analyse</b>Evaluate whether heart rate and pathologies can be detected by processing that signal</li>
+                    <li><b>Serve</b>A server with multi&#8209;user access, and a database for the data and images users send</li>
+                    <li><b>Integrate</b>Run the image&#8209;analysis algorithm on the server for every image and send the result back to the user</li>
+                </ul>
+
                 <p>The project has three parts that all shipped together: a Python/OpenCV <strong>image-processing pipeline</strong> that does the actual digitization, a Node.js <strong>RESTful API</strong> that exposes it to the world with user accounts and a MongoDB-backed job queue, and a companion Android app that lets a patient photograph their own ECG strip, watch it get processed, and pull up the resulting waveform on their phone.</p>
 
                 <div class="row">
@@ -463,7 +489,7 @@
                 </div>
                 <p style="text-align:center">The two kinds of input the pipeline had to handle: a clean scan (left) and an uncontrolled phone photo (right).</p>
 
-                <h2 id="ecg-basics">A Very Short ECG Primer</h2>
+                <h3 id="ecg-basics">A Very Short ECG Primer</h3>
 
                 <p>A standard resting ECG records 12 different views ("leads") of the heart's electrical activity from combinations of electrodes on the limbs and chest, and prints them on grid paper where <strong>1&nbsp;small square = 40&nbsp;ms horizontally and 100&nbsp;&micro;V vertically</strong>. That grid calibration is exactly what makes digitization possible: if you can find the grid, you can convert pixels back into real units.</p>
 
@@ -483,21 +509,20 @@
 
                 <p>The pipeline targets the printout convention most machines default to: a 4&times;4 grid &mdash; row&nbsp;1: I, aVR, V1, V4; row&nbsp;2: II, aVL, V2, V5; row&nbsp;3: III, aVF, V3, V6; row&nbsp;4: an extended single-lead rhythm strip (usually lead&nbsp;II) &mdash; which is also why lead&nbsp;II ends up being the one the thesis analyzes in full depth.</p>
 
-                <h2 id="datasets">Two Test Datasets, on Purpose</h2>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
 
-                <p>Two datasets were built specifically to separate two very different failure modes:</p>
+                <h3 id="methodology">Working in Sprints</h3>
 
-                <div class="table-responsive">
-                    <table>
-                        <thead><tr><th>Dataset</th><th>Source</th><th>Size</th><th>Purpose</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>Database&nbsp;1</strong></td><td>Web-collected scanned ECG images</td><td>107 collected &rarr; 54 kept (right grid spec + 4&times;4 layout), avg.&nbsp;~1200&times;640&nbsp;px</td><td>Already flat &mdash; used to evaluate segmentation and signal extraction in isolation</td></tr>
-                            <tr><td><strong>Database&nbsp;2</strong></td><td>Self-captured phone photos</td><td>10 images, uncontrolled angle &amp; lighting</td><td>The only dataset that can test perspective correction</td></tr>
-                        </tbody>
-                    </table>
+                <p>The service and app were built with SCRUM &mdash; a backlog of requirements broken into sprints, each aiming to ship a genuinely usable increment.</p>
+
+                <p>Development ran as three large iterations &mdash; the web service, the ECG image digitization, and the mobile app &mdash; each split into smaller iterations of three to five weeks.</p>
+
+                <div class="col-full">
+                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/scrum-diagram.jpg" width="500" alt="A simple SCRUM diagram: requirements feed a sprint backlog, daily and monthly meetings drive each sprint iteration toward a deliverable">
+                  </p>
                 </div>
 
-                <h2 id="architecture">System Architecture</h2>
+                <h3 id="architecture">System Architecture</h3>
 
                 <p>The three pieces talk over a JSON/multipart REST API; the heavy image processing runs in Python and is invoked from the Node service via <code>python-shell</code> rather than being reimplemented in JavaScript.</p>
 
@@ -532,7 +557,7 @@
 
                 <p>Auth is stateless: <code>bcrypt</code> (cost factor 10, random salt) hashes passwords, and a signed JWT &mdash; its payload additionally protected with SHA-256 and a server secret &mdash; travels in an <code>x-api-key</code> header on every subsequent request.</p>
 
-                <h2 id="pipeline">The Digitization Pipeline</h2>
+                <h3 id="pipeline">The Digitization Pipeline</h3>
 
                 <p>This is the core of the thesis: turning a photograph of a paper ECG into a clean, calibrated signal. It runs in three stages.</p>
 
@@ -543,7 +568,7 @@
                 </div>
                 <p style="text-align:center">Top-level flow: acquire &rarr; correct perspective (phone photos only) &rarr; segment into the four lead-rows &rarr; extract &amp; calibrate the target lead.</p>
 
-                <h3 id="perspective-correction">Stage 1 &mdash; Perspective Correction</h3>
+                <h4 id="perspective-correction">Stage 1 &mdash; Perspective Correction</h4>
 
                 <p>Only phone photos need this stage &mdash; scans are already flat. It assumes the paper is the largest object in frame and all four corners are visible:</p>
 
@@ -577,9 +602,7 @@
                   </div>
                 </div>
 
-                <p>This turned out to be the <strong>weakest link in the whole pipeline</strong>: roughly half of the 10 phone photos in Database&nbsp;2 failed here, mostly to uneven lighting (of the failures, 30% found no corners at all, 20% found the wrong ones). Because it's also the <em>first</em> stage, a bad result here poisons everything downstream with no fallback &mdash; which is why the accuracy numbers further down were only measured on the already-flat Database&nbsp;1.</p>
-
-                <h3 id="segmentation">Stage 2 &mdash; Splitting the Four Lead Rows</h3>
+                <h4 id="segmentation">Stage 2 &mdash; Splitting the Four Lead Rows</h4>
 
                 <p>A flat 4&times;4 image is next split into its four row-groups (and the row-4 rhythm strip is set aside for full analysis). Two independent signals are combined to find the row boundaries:</p>
 
@@ -613,9 +636,7 @@
                   </div>
                 </div>
 
-                <p>Combining color and entropy clearly beats either alone at this stage: row-boundary accuracy was 48.1% with color only, 63.0% with entropy only, and the two together landed at 61.1% &mdash; a large jump over color alone, though roughly a wash against entropy on its own. For the narrower job of separating lead&nbsp;II specifically, the combination did win outright: 85.2% (color), 83.3% (entropy), <strong>90.7% combined</strong> &mdash; the version actually carried forward.</p>
-
-                <h3 id="lead-analysis">Stage 3 &mdash; Extracting and Calibrating the Signal</h3>
+                <h4 id="lead-analysis">Stage 3 &mdash; Extracting and Calibrating the Signal</h4>
 
                 <p>The same 3-cluster/entropy pass is repeated at the single-lead crop scale (the earlier row-scale masks are too coarse to trace a single line reliably). From there:</p>
 
@@ -649,15 +670,13 @@
                 </div>
                 <p style="text-align:center">The end product of the pipeline: a calibrated, plottable signal.</p>
 
-                <p>Grid calibration turned out uneven &mdash; correct to within 1&nbsp;px on width in 59.3% of images but on height in only 33.3% (RMSE 0.407 vs. 1.111 grid squares), which the thesis flags as a real weak point, since height error propagates directly into amplitude error.</p>
-
                 <div class="col-full" style="text-align:center">
                   <p><img loading="lazy" decoding="async" src="images/ecg-digitization/debug-desktop.jpg" width="800" alt="A development screenshot: the pipeline's OpenCV debug viewer and a Matplotlib figure showing the same digitized ECG lead side by side">
                   </p>
                 </div>
                 <p style="text-align:center">The debug tooling used while developing the extraction stage &mdash; an OpenCV image viewer next to the equivalent Matplotlib plot.</p>
 
-                <h2 id="api">The REST API</h2>
+                <h3 id="api">The REST API</h3>
 
                 <p>Everything is under <code>/api-v1</code> and returns JSON with a <code>success</code> flag (except binary/XML result downloads):</p>
 
@@ -691,17 +710,7 @@
                 </div>
                 <p style="text-align:center">Interactive API docs, generated straight from the OpenAPI v3 spec.</p>
 
-                <div class="row">
-                  <div class="col-six">
-                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/postman-upload.jpg" alt="A Postman request uploading an ECG image to the digitization endpoint"></p>
-                  </div>
-                  <div class="col-six">
-                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/postman-hl7-result.jpg" alt="A Postman response showing a digitization result exported as HL7 annotated-ECG XML"></p>
-                  </div>
-                </div>
-                <p style="text-align:center">Submitting an image for digitization, and pulling the result back out as HL7-aECG XML.</p>
-
-                <h2 id="app">The Android App</h2>
+                <h3 id="app">The Android App</h3>
 
                 <p>The mobile client wraps the whole API behind a reusable API-client class, targets API&nbsp;16+, and mirrors the server-side pipeline locally with OpenCV4Android for the parts a phone can do on its own.</p>
 
@@ -738,18 +747,35 @@
                 </div>
                 <p style="text-align:center">How a finished digitization reaches the phone without polling.</p>
 
-                <h2 id="methodology">Project Methodology</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
 
-                <p>The service and app were built with SCRUM &mdash; a backlog of requirements broken into sprints, each aiming to ship a genuinely usable increment.</p>
+                <h3 id="datasets">Two Test Datasets, on Purpose</h3>
 
-                <div class="col-full">
-                  <p><img loading="lazy" decoding="async" src="images/ecg-digitization/scrum-diagram.jpg" width="500" alt="A simple SCRUM diagram: requirements feed a sprint backlog, daily and monthly meetings drive each sprint iteration toward a deliverable">
-                  </p>
+                <p>Two datasets were built specifically to separate two very different failure modes:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Dataset</th><th>Source</th><th>Size</th><th>Purpose</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Database&nbsp;1</strong></td><td>Web-collected scanned ECG images</td><td>107 collected &rarr; 54 kept (right grid spec + 4&times;4 layout), avg.&nbsp;~1200&times;640&nbsp;px</td><td>Already flat &mdash; used to evaluate segmentation and signal extraction in isolation</td></tr>
+                            <tr><td><strong>Database&nbsp;2</strong></td><td>Self-captured phone photos</td><td>10 images, uncontrolled angle &amp; lighting</td><td>The only dataset that can test perspective correction</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <h2 id="results">Results</h2>
+                <p>Each stage was scored with one of two metrics: accuracy, (TP&nbsp;+&nbsp;TN)&nbsp;/&nbsp;(TP&nbsp;+&nbsp;FP&nbsp;+&nbsp;TN&nbsp;+&nbsp;FN), for the pass/fail checks, and RMSE against hand&#8209;measured references for quantities such as grid size and heart rate.</p>
 
-                <h3>Digitization Accuracy</h3>
+                <h3 id="results">Results</h3>
+
+                <h4 id="stage-results">Stage by Stage</h4>
+
+                <p>Stage&nbsp;1, perspective correction, turned out to be the <strong>weakest link in the whole pipeline</strong>: roughly half of the 10 phone photos in Database&nbsp;2 failed here, mostly to uneven lighting (of the failures, 30% found no corners at all, 20% found the wrong ones). Because it's also the <em>first</em> stage, a bad result here poisons everything downstream with no fallback &mdash; which is why the accuracy numbers further down were only measured on the already-flat Database&nbsp;1.</p>
+
+                <p>In Stage&nbsp;2, combining color and entropy clearly beats either alone: row-boundary accuracy was 48.1% with color only, 63.0% with entropy only, and the two together landed at 61.1% &mdash; a large jump over color alone, though roughly a wash against entropy on its own. For the narrower job of separating lead&nbsp;II specifically, the combination did win outright: 85.2% (color), 83.3% (entropy), <strong>90.7% combined</strong> &mdash; the version actually carried forward.</p>
+
+                <p>Stage&nbsp;3&rsquo;s grid calibration turned out uneven &mdash; correct to within 1&nbsp;px on width in 59.3% of images but on height in only 33.3% (RMSE 0.407 vs. 1.111 grid squares), which the thesis flags as a real weak point, since height error propagates directly into amplitude error.</p>
+
+                <h4>Digitization Accuracy</h4>
 
                 <p>Measured on Database&nbsp;1's 54 images (perspective correction on Database&nbsp;2's phone photos failed too often &mdash; about half &mdash; to build a fair accuracy number on, so later stages were only scored on already-flat scans):</p>
 
@@ -784,7 +810,21 @@
 
                 <p>Two consistent findings across all of this: identifying regions by <strong>distance from the RGB origin clearly beats classifying by raw pixel percentage</strong>, and <strong>combining color and entropy clearly beats using either alone</strong> for segmentation. Also worth noting: accuracy held up similarly whether the source printout was in color or grayscale, so the pipeline doesn't quietly depend on colored ink.</p>
 
-                <h3>Load Testing</h3>
+                <h4 id="api-checks">The API, End to End</h4>
+
+                <p>Each API function was first exercised by hand in <a href="https://www.postman.com/">Postman</a> on the same test server used for the load test below: registering returns the access token and the user&rsquo;s id, submitting an image returns the id of the new ECG job, and the result comes back as JSON or as HL7&#8209;aECG XML.</p>
+
+                <div class="row">
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/postman-upload.jpg" alt="A Postman request uploading an ECG image to the digitization endpoint"></p>
+                  </div>
+                  <div class="col-six">
+                    <p><img loading="lazy" decoding="async" src="images/ecg-digitization/postman-hl7-result.jpg" alt="A Postman response showing a digitization result exported as HL7 annotated-ECG XML"></p>
+                  </div>
+                </div>
+                <p style="text-align:center">Submitting an image for digitization, and pulling the result back out as HL7-aECG XML.</p>
+
+                <h4>Load Testing</h4>
 
                 <p>The API was load-tested with <a href="https://www.artillery.io/">Artillery</a> against a modest test server (2&times; Intel Xeon @3.20GHz, 4GB RAM, Ubuntu Server 16.04), sustaining about 1 request/second per virtual user for one minute per tier:</p>
 
@@ -802,7 +842,9 @@
 
                 <p>The service handled 20 concurrent users cleanly (0% errors), stayed reasonably usable at 50 (~89% success), and degraded sharply past that on this single, unscaled instance &mdash; the recommendations section below is mostly about fixing exactly that.</p>
 
-                <h2 id="limitations">Limitations</h2>
+                <p>The load test targeted the endpoint that returns results, not digitization itself. Digitization is the expensive part: the thesis found that the number of simultaneous digitization requests the server can take is directly proportional to its number of processors.</p>
+
+                <h3 id="limitations">Limitations</h3>
 
                 <ul>
                     <li>At 39% end-to-end accuracy, <strong>this is a research prototype, not a clinically reliable digitizer</strong> &mdash; it was never claimed to be one.</li>
@@ -812,11 +854,13 @@
                     <li>Grid-height detection and the point-selection step are the weakest individual links, and they're exactly what feeds the poor heart-rate estimate.</li>
                 </ul>
 
-                <h2 id="future-work">Future Work &amp; Recommendations</h2>
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="future-work">Future Work &amp; Recommendations</h3>
 
                 <div class="row">
                   <div class="col-six">
-                    <h4>From the thesis's own future-work list</h4>
+                    <h5>From the thesis's own future-work list</h5>
                     <ul>
                         <li>A web app and an iOS app, alongside the existing Android client</li>
                         <li>Pathology-detection algorithms built on top of the extracted signal</li>
@@ -828,7 +872,7 @@
                     </ul>
                   </div>
                   <div class="col-six">
-                    <h4>Recommendations for the service itself</h4>
+                    <h5>Recommendations for the service itself</h5>
                     <ul>
                         <li>Scale out with a load balancer / server cluster, or a job queue, to survive the 100&ndash;150 concurrent-user range</li>
                         <li>Test the Android app across more API levels (only 4.3/4.4 were verified)</li>

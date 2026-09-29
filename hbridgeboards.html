@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -452,7 +453,20 @@
 
                 <p class="lead drop-cap">This page presents images and videos about different motor drivers developed to control DC and Stepper motors.</p>
 
-                <h2 id="h-bridges-stepper">Stepper Motors Drivers with H Bridges</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Define<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="h-bridges-stepper">Stepper Motors Drivers with H Bridges</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/stepper_drivers/diagram_01.JPG" alt="Schematic for a bipolar motor driver using the L297 and L298">
@@ -466,7 +480,7 @@
 
                 <p style="text-align:center">Schematic for a bipolar motor driver using the L297 and L298.</p>
 
-                <h3>L297 and H Bridge Circuits on Breadboard</h3>
+                <h4>L297 and H Bridge Circuits on Breadboard</h4>
 
                 <p>The circuit uses an Arduino Uno and a L297 to create the control signals. It also uses two H Bridges with TIP142T transistors.</p>
 
@@ -509,15 +523,7 @@
                   </div>
                 </div>
 
-                <p>The following video presents the initial circuit tests on a Breadboard.</p>
-
-                <div class="video-container">
-                    <iframe src="https://www.youtube-nocookie.com/embed/H_VI4z4Bqo4" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player"></iframe>
-                </div>
-
-                <p style="text-align:center">Testing of the bipolar motor driver on the breadboard.</p>
-
-                <h3 id="stepper-motor">Stepper Motor Drivers with L297 and H Bridge Circuits</h3>
+                <h4 id="stepper-motor">Perfboard Prototype</h4>
 
                 The circuit previously tested on a breadboard was placed on a perfboard to create a prototype.
 
@@ -533,6 +539,24 @@
                     </p>
                   </div>
                 </div>
+
+                <h3 id="dc-motors">DC Motor Drivers with H Bridges</h3>
+
+                <p>The circuit uses an H Bridges implemented with TIP120 transistors and HD74LS08P AND Gates.</p>
+
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="breadboard-test">Stepper Driver on the Breadboard</h3>
+
+                <p>The following video presents the initial circuit tests on a Breadboard.</p>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/H_VI4z4Bqo4" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player"></iframe>
+                </div>
+
+                <p style="text-align:center">Testing of the bipolar motor driver on the breadboard.</p>
+
+                <h3 id="perfboard-test">Stepper Perfboard Prototype</h3>
 
                 <div class="row">
                   <div class="col-six" style="text-align:center">
@@ -596,9 +620,7 @@
 
                 <p style="text-align:center">Testing of a 10 W unipolar motor driver using the final design.</p>
 
-                <h2 id="dc-motors">DC Motor Drivers with H Bridges</h2>
-
-                <p>The circuit uses an H Bridges implemented with TIP120 transistors and HD74LS08P AND Gates.</p>
+                <h3 id="dc-test">DC Motor Driver</h3>
 
                 <p>The motor used to test the circuit had the following characteristics:</p>
 
@@ -623,6 +645,7 @@
                 </div>
 
                 <p style="text-align:center">Perfboard design connected to the DC motor.</p>
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

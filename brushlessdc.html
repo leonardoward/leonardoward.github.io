@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,6 +456,21 @@
 
                 <p class="lead drop-cap">A digital control interface for the <strong>Kelly KEB72601XF</strong> brushless&#8209;DC motor controllers used by the <strong>USB&nbsp;Solar</strong> team (the Universidad Sim&oacute;n Bol&iacute;var solar car). The Kelly controllers give you the power hardware but expect mechanical switches and potentiometers on their input connector; this project replaces those with an <strong>Arduino Uno</strong> driven over serial, so a control board can set the motor's speed and direction.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="why">Why</h3>
+
                 <p>Built for the course <em>EC&#8209;4162 &mdash; Dise&ntilde;o y construcci&oacute;n de un carro solar II</em> (Universidad Sim&oacute;n Bol&iacute;var, Sep&ndash;Dec&nbsp;2016).</p>
 
                 <p id="motor-driver">The motor drivers Kelly KEB72601XF (24&ndash;72&nbsp;V, 6&nbsp;kW) provide the necessary hardware to drive brushless DC motors, but their interface is not fully digital: the wiring in the user manual uses two potentiometers for the 0&ndash;5&nbsp;V throttle and brake inputs and three switches for the micro, reverse and brake signals. In this project a circuit is designed to drive that interface <strong>digitally</strong> from a development board and change the speed and direction of the motors.</p>
@@ -476,7 +492,21 @@
 
                 <p style="text-align:center">Motor driver Kelly KEB72601XF.</p>
 
-                <h2 id="circuit">Circuit</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The 2016 course report sets two objectives: build a test rig for the controllers, and check that both of them could accelerate, decelerate and change the direction of the motors. The rest follows from where the controllers were going &mdash; onto the new solar car, driven by a control board instead of by hand:</p>
+
+                <ul class="cs-spec" aria-label="Motor controller interface requirements">
+                    <li><b>Control</b>Set each motor's speed and direction from a development board, not from knobs and switches</li>
+                    <li><b>Motion</b>Forward and reverse, at different speeds</li>
+                    <li><b>Interface</b>Drive the controller's own <code>J2</code> inputs: two 0&ndash;5&nbsp;V analog lines and three switch lines</li>
+                    <li><b>Host</b>Take commands over a serial link: a PC on the bench, the car's control board later</li>
+                    <li><b>Verify</b>Check both controllers, one new and one used, before they go on the car</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="circuit">Circuit</h3>
 
                 <p>The manual of the controller recommends the circuit presented in the following figure to create an interface with it. In the next figure two potentiometers and three switches are used to accelerate (throttle), decelerate (brake) and change the direction of the motor.</p>
 
@@ -514,7 +544,7 @@
 
                 <p style="text-align:center">J2 Pin Description.</p>
 
-                <h2 id="firmware"><a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino"><i class="fab fa-github"></i></a>&nbsp; Firmware</h2>
+                <h3 id="firmware"><a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino"><i class="fab fa-github"></i></a>&nbsp; Firmware</h3>
 
                 <p>The <a href="https://github.com/leonardoward/brushless-motor-compactrio-arduino/blob/main/firmware/BrushlessSolar/BrushlessSolar.ino">Arduino sketch</a> is a small serial&#8209;to&#8209;I/O bridge. It drives <strong>two</strong> motors &mdash; <code>M1</code> (right) and <code>M2</code> (left) &mdash; so the same board can run a dual&#8209;motor rear axle:</p>
 
@@ -549,6 +579,12 @@
                 </div>
 
                 <p>Everything received is echoed back for debugging. Per&#8209;motor direction and brake commands (<code>1FON</code>, <code>2ROFF</code>, &hellip;) are in the source but left commented out.</p>
+
+                <h3 id="compactrio">On the Car &mdash; the CompactRIO</h3>
+
+                <p>On the bench the host on the serial port is a <strong>PC</strong>. On the car it is a <strong>NI CompactRIO</strong> (a real&#8209;time controller with an FPGA) running <strong>LabVIEW</strong>: it reads the driver's pedals and commands and sends the same tagged serial lines to the Arduino, which drives the two Kelly controllers.</p>
+
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
 
                 <h3 id="testing">Testing</h3>
 
@@ -594,11 +630,11 @@
                     <li>The <strong>used</strong> controller could accelerate and decelerate in one direction but <strong>failed on direction change</strong>. It was opened up; the fault was not a quick fix, so testing stopped and it was recommended for replacement.</li>
                 </ul>
 
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="recommendations">Recommended Changes</h3>
+
                 <p>The report's other recommendation: replace the relay&#8209;based switches with <strong>transistor&#8209;based</strong> ones. The board already carries the three transistors that energise the relay coils, so the relays could be dropped entirely &mdash; simpler, and lower current draw.</p>
-
-                <h2 id="compactrio">On the Car &mdash; the CompactRIO</h2>
-
-                <p>On the bench the host on the serial port is a <strong>PC</strong>. On the car it is a <strong>NI CompactRIO</strong> (a real&#8209;time controller with an FPGA) running <strong>LabVIEW</strong>: it reads the driver's pedals and commands and sends the same tagged serial lines to the Arduino, which drives the two Kelly controllers.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

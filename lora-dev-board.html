@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -469,9 +470,36 @@
 
                 <p class="lead drop-cap">The <a href="https://hackaday.io/project/173457/log/196116-lora-rfm95w-915s2-development-board">RFM95W-915S2 Development board</a> is a PCB that contains an RFM95W LoRa transceiver, a <a href="https://www.digikey.com/en/products/detail/hirose-electric-co-ltd/U-FL-R-SMT-1-10/2391570">U.FL connector</a> for the external antenna, a decoupling capacitor and a group of headers connected to the different pins of the transceiver. The transceiver can be used as a sender or a receiver.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
                 <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team). LoRa is how the buoy reports its position to a surface gateway, so the RFM95W was proved out here before going onto the <a href="ejam.html">EJA&nbsp;M</a> board and the <a href="onboardgateway.html">Onboard Gateway</a>.</p>
 
-                <h2 id="schematic">Schematic</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>There is no written spec for the board; the repository README calls it intentionally minimal, and the design shows what it had to do:</p>
+
+                <ul class="cs-spec" aria-label="LoRa development board requirements">
+                    <li><b>Radio</b>Carry an RFM95W&#8209;915S2 LoRa transceiver (915&nbsp;MHz band) that can work as sender or receiver</li>
+                    <li><b>Antenna</b>Take an external antenna through a U.FL connector</li>
+                    <li><b>Minimal</b>Nothing else on the board but one decoupling capacitor and the headers</li>
+                    <li><b>Access</b>Every useful pin on 2.54&nbsp;mm headers: power (3.3&nbsp;V, GND), SPI (MISO, MOSI, SCK, CS, RST) and IO0&ndash;IO5</li>
+                    <li><b>Host</b>Be driven over SPI by an ESP32, the microcontroller selected for the EJA designs</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="schematic">Schematic</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/lora_development_board/schematic-v1.0.jpg" width="640" alt="Schematic of the LoRa Development Board">
@@ -479,7 +507,7 @@
 
                 <p style="text-align:center">Schematic of the LoRa Development Board.</p>
 
-                <h2 id="bill_of_materials">Bill of Materials</h2>
+                <h3 id="bill_of_materials">Bill of Materials</h3>
 
                 <div class="row add-bottom">
                     <div class="col-twelve">
@@ -514,7 +542,7 @@
                     </div>
                 </div> <!-- end row -->
 
-                <h2 id="pcb">PCB</h2>
+                <h3 id="pcb">PCB</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/lora_development_board/lora-testing-board01.jpg" width="640" alt="3D Model of the LoRa Development Board">
@@ -528,13 +556,28 @@
 
                 <p style="text-align:center">3D Model of the LoRa Development Board.</p>
 
-                <h2 id="firmware-and-testing">Firmware and Testing</h2>
+                <h3 id="firmware-and-testing">Firmware</h3>
 
                 <p>The webpage randomnerdtutorials.com has an amazing tutorial named <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">ESP32 with LoRa using Arduino IDE – Getting Started</a>, that tutorial contains detailed information about how to use the RFM95 with an ESP32 (the same microcontroller that was selected for our designs). I used the same firmware and connections provided by the tutorial.</p>
 
-                <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
+                <p>This repository contains a folder named /Firmware/ that contains the project for the transceiver as a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_receiver/esp32_RFM95_receiver.ino">receiver</a> and a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_sender/esp32_RFM95_sender.ino">sender</a>.</p>
 
                 <p><strong>Before flashing:</strong> the sketches call <code>LoRa.begin(915E6)</code> to match the RFM95W&#8209;<strong>915</strong>S2 (915&nbsp;MHz) module fitted to this board; change that argument only if you pair it with a module for another band (<code>433E6</code> Asia, <code>866E6</code> Europe). The sender and receiver must also share the same sync word (<code>LoRa.setSyncWord(0xF3)</code>) or they ignore each other.</p>
+
+                <h4>Arduino Setup</h4>
+
+                <ol>
+                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
+                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa Library</a></li>
+                </ol>
+
+                <p>For more information about the firmware visit the <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">original tutorial for the RFM95W</a>.</p>
+
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="link-test">Sender and Receiver Test</h3>
+
+                <p>The test requires 2 transceivers, one of them will be used as a sender and the other as a receiver. In this case, one of the transceivers is the  RFM95W-915S2 Development board and the other one is the <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a>.</p>
 
                 <p>The connections are the following:</p>
 
@@ -648,16 +691,7 @@
 
                 <p style="text-align:center"><a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/3072/6005357">RFM95W transceiver from Adafruit</a> and ESP32 used in the test.</p>
 
-                <p>This repository contains a folder named /Firmware/ that contains the project for the transceiver as a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_receiver/esp32_RFM95_receiver.ino">receiver</a> and a <a href="https://github.com/leonardoward/lora-development-boards/blob/main/Firmware/esp32_RFM95_sender/esp32_RFM95_sender.ino">sender</a>.</p>
-
                 <p>Both of the RFM95W Boards were used as a sender and receiver, the result was successful in both cases. During the test, one of the transceivers sends the package "hello counter", where the counter is a number that goes from 0 to 32767. The other transceiver receives the package and prints the message through serial.</p>
-
-                <h3>Requirements</h3>
-
-                <ol>
-                    <li><a href="https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/">ESP32 Add-on in Arduino IDE</a></li>
-                    <li><a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">LoRa Library</a></li>
-                </ol>
 
                 <p>Results visualized in the serial monitor from the receiver circuit:</p>
 
@@ -667,7 +701,7 @@
 
                 <p style="text-align:center">Results from the test.</p>
 
-                <p>For more information about the firmware visit the <a href="https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/">original tutorial for the RFM95W</a>.</p>
+                <p>The capture shows packets <code>hello 0</code> to <code>hello 17</code> arriving in order, none missing, with an RSSI between &minus;78 and &minus;92&nbsp;dBm. The repository doesn't record the distance between the two boards, or which of them was receiving in that capture.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

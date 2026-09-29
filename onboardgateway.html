@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -475,7 +476,40 @@
 
                 <p class="lead drop-cap">The Onboard Gateway is a 134.11 mm x 62.48 mm PCB that integrates the 3 main components (ESP32, LoRa and USB LiIon/LiPoly charger).</p>
 
-                <h2 id="main_components">Main Components</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The Onboard Gateway is the topside half of the system: it stays with the operator on the boat and is the link to a deployed <a href="buoyb.html">buoy</a>. It has no GPS and no motor driver of its own. The list below is read from the board's schematic, wiring diagram and firmware rather than from a written spec:</p>
+
+                <ul class="cs-spec" aria-label="Onboard Gateway requirements, read from the design">
+                    <li><b>Link</b>Reach a deployed buoy over 915&nbsp;MHz LoRa (RFM95W) and relay its GPS position and release timer</li>
+                    <li><b>Interface</b>Serve its own web UI over a Wi&#8209;Fi access point, so the operator only needs a phone and a browser</li>
+                    <li><b>Control</b>Set or cancel the buoy's release timer, and show the countdown only once the buoy confirms it</li>
+                    <li><b>Power</b>Run from a single 3.7&nbsp;V Li&#8209;ion/LiPo cell, charged over USB through the on&#8209;board charger module</li>
+                    <li><b>Status</b>Show LoRa RX, LoRa TX and a connected Wi&#8209;Fi client on LEDs, next to the charger's Charge and Done LEDs</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/ejam/hardware_block_diagram_onboard_gateway.jpg" width="640" alt="Hardware block diagram of the Onboard Gateway v1.0: an ESP32-DevKitC wired to the RFM95W LoRa radio over SPI and to the LEDs, with a 3.7 V battery behind the USB Li-Ion/LiPoly charger board">
+                </div>
+
+                <p style="text-align:center">Hardware block diagram of the Onboard Gateway v1.0, from the <a href="ejam.html#planning">EJA&nbsp;M planning</a>.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="main_components">Main Components</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/onboard_gateway/Components_onboard_gateway_4_light40.jpg" width="480" alt="Main components of the Onboard Gateway v1.0">
@@ -491,7 +525,7 @@
                     <li><a href="https://www.adafruit.com/product/259">USB LiIon/LiPoly charger</a></li>
                 </ul>
 
-                <h2 id="schematic">Schematic</h2>
+                <h3 id="schematic">Schematic</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/onboard_gateway/Schematic_Onboard_Gateway.png" width="640" alt="Schematic of the Onboard Gateway v1.0">
@@ -501,7 +535,7 @@
 
                 <p>For more information about the design check the original <a href="https://hackaday.io/project/173457/log/181839-onboard-gateway-v10-schematic-and-pcb-design">post</a> in the project's page.</p>
 
-                <h2 id="pcb_layout">Layout</h2>
+                <h3 id="pcb_layout">Layout</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/onboard_gateway/Layout_Onboard_Gateway.png" width="480" alt="PCB Layout of the Onboard Gateway v1.0">
@@ -509,7 +543,7 @@
 
                 <p style="text-align:center">PCB Layout of the Onboard Gateway v1.0.</p>
 
-                <h2 id="pcb">PCB</h2>
+                <h3 id="pcb">PCB</h3>
 
                 <div class="row">
                   <div class="col-six">
@@ -558,7 +592,7 @@
 
                 <p style="text-align:center">PCB Design: Front and Back.</p>
 
-                <h2 id="assembly_guide">Assembly</h2>
+                <h3 id="assembly_guide">Assembly</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/onboard_gateway/Assembly_N_01_Onboard_Gateway-All_4_light40.jpg" width="640" alt="Components of the Onboard Gateway v1.0">
@@ -608,7 +642,7 @@
 
                 <p>For a detailed explanation about the soldering and assembly procedure visit the following <a href="https://hackaday.io/project/173457/log/183665-onboard-gateway-v10-assembly">post</a>.</p>
 
-                <h2 id="wiring_diagrams">Wiring Diagrams</h2>
+                <h3 id="wiring_diagrams">Wiring Diagrams</h3>
 
                 <p>The following diagram presents the physical connections of the different boards and components of the Onboard Gateway, that includes:</p>
 
@@ -627,7 +661,7 @@
 
                 <p style="text-align:center">Wiring diagram for the Onboard Gateway v1.0.</p>
 
-                <h2 id="firmware"><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a>&nbsp; Firmware</h2>
+                <h3 id="firmware"><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a>&nbsp; Firmware</h3>
 
                 <p>The Onboard Gateway is the <strong>topside</strong> unit &mdash; it stays with the operator and is a hand&#8209;held LoRa link to a deployed <a href="buoya.html">buoy</a>. Its <a href="https://github.com/leonardoward/eja-onboard-gateway-firmware">ESP32 firmware</a> mirrors the <a href="buoyb.html#firmware">buoy firmware</a>:</p>
 
@@ -637,13 +671,33 @@
                     <li><strong>Status LEDs</strong> &mdash; LED1 (GPIO22) LoRa RX, LED2 (GPIO5) LoRa TX, LED3 (GPIO16) Wi&#8209;Fi client connected, LED4 (GPIO17) the web&#8209;controllable test LED.</li>
                 </ul>
 
-                <h2 id="user_interface"><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a>&nbsp; User Interface</h2>
+                <h3 id="user_interface"><a href="https://github.com/leonardoward/eja-onboard-gateway-firmware"><i class="fab fa-github"></i></a>&nbsp; User Interface</h3>
 
                 <p>For more information about the GUI visit the following <a href="gui-onboardgateway.html">post</a>.</p>
 
-                <h2 id="future_improvements">Future Improvements</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="bench-bring-up">Bench Bring&#8209;Up</h3>
+
+                <p>The gateway was run on the bench next to a <a href="buoyb.html">Buoy&nbsp;B</a>, with a phone connected to the gateway's access point. The gateway has no GPS of its own, so the GPS page on the phone is filled from the buoy's messages over LoRa; in the photo it shows a GPS date and time (16&nbsp;September&nbsp;2020, 21:19:56) but 0 satellites and no position fix.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/onboard_gateway/bench-buoy-b-and-gateway.jpg" width="640" alt="Buoy B and the Onboard Gateway boards side by side on a white bench, next to a phone showing the EJA Onboard Gateway GPS page with a date and time but 0 satellites">
+                </div>
+
+                <p style="text-align:center">The Onboard Gateway (centre) next to a Buoy&nbsp;B, with the gateway's GPS page open on a phone.</p>
+
+                <p>The <a href="gui-onboardgateway.html#timer">timer screenshots</a> in the GUI post cover the other direction. After <strong>Submit</strong> the page reads &ldquo;Updating timer in Buoy&hellip;&rdquo; while the gateway resends the new end time every second; the firmware only switches to the countdown once the buoy echoes the same end time back over LoRa, and the next screenshot shows that countdown running. No position fix or range test is documented in the repository.</p>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="future_improvements">Future Improvements</h3>
 
                 <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
+
+                <h3 id="next-board">The Next Board: EJA&nbsp;M</h3>
+
+                <p>For the project's <a href="eja.html#prototype2">second prototype</a>, the Onboard Gateway, <a href="buoya.html">Buoy&nbsp;A</a> and <a href="buoyb.html">Buoy&nbsp;B</a> were replaced by a single PCB, <a href="ejam.html">EJA&nbsp;M v1.0</a>. Battery charging, which only this board had, became one of the targets in its <a href="ejam.html#planning">planning</a>, alongside lower cost (with these boards' bill of materials as the reference), a smaller board and a battery&#8209;level measurement. The plug&#8209;in ESP32&#8209;DevKitC, LoRa breakout and charger board give way to EJA&nbsp;M's own circuits, with a TP4056 linear Li&#8209;ion charger in place of the charger board.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

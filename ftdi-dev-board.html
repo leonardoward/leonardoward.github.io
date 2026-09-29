@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -469,29 +470,39 @@
 
                 <p class="lead drop-cap">A KiCad breakout board for two FTDI USB interface chips &mdash; the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S</a> and the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D</a> &mdash; alongside a USB&#8209;C EMC front end, an ESP32 with an auto&#8209;reset circuit and a TS5A3153 analog switch.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
                 <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team). The question it was built to answer: is there a single USB&#8209;C interface chip that can both <em>program the ESP32</em> (via the RTS/DTR auto&#8209;reset handshake) and act as a <em>serial console</em>, so the buoy needs only one USB connector?</p>
 
-                <h2 id="findings">Findings</h2>
+                <h3 id="requirements">What It Had to Do</h3>
 
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr><th>Under test</th><th>Result</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>FT260S</strong></td><td>A <strong>USB&#8209;HID</strong> device, not USB&#8209;CDC &mdash; it exposes <strong>no virtual COM port</strong>. Talking to it needs FTDI's <code>LibFT260</code> helper library, so it can't transparently program the ESP32 from the Arduino IDE without extra software work.</td></tr>
-                            <tr><td><strong>FT312D</strong></td><td>A USB&#8209;Host UART bridge that <strong>does not expose DTR/DSR</strong> &mdash; the lines the ESP32 auto&#8209;reset circuit needs. On the board only as a fallback.</td></tr>
-                            <tr><td><strong>ESP32 auto&#8209;reset circuit</strong></td><td>Verified working when driven by a standard FT232RL cable (3V3, GND, TX, RX, RTS, DTR): the two&#8209;transistor circuit correctly sequences <code>EN</code> and <code>IO0</code> for reset and bootloader entry.</td></tr>
-                            <tr><td><strong>USB&#8209;C EMC front end / TS5A3153 switch</strong></td><td>Populated and validated for reuse.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <p>There is no written spec for the board; what it had to do follows from that question and from the way the board is laid out:</p>
 
-                <p>Neither FTDI part turned out to be a drop&#8209;in replacement for an FT232&#8209;style programmer, but the board proved out the USB&#8209;C EMC front end and the ESP32 auto&#8209;reset circuit that were carried into <a href="ejam.html">EJA&nbsp;M</a>.</p>
+                <ul class="cs-spec" aria-label="FTDI development board requirements">
+                    <li><b>Candidates</b>Carry both FTDI candidates, the FT260S and the FT312D, each in its own section of the board</li>
+                    <li><b>Program</b>Reset the ESP32 and put it in bootloader mode from RTS and DTR, through a two&#8209;transistor auto&#8209;reset circuit</li>
+                    <li><b>Console</b>Give the ESP32 a UART serial console over the same USB link</li>
+                    <li><b>Connector</b>One USB&#8209;C port, with TVS diodes and ferrite beads for EMC</li>
+                    <li><b>Modular</b>Each block (USB&#8209;C front end, FT260S, FT312D, ESP32, analog switches) on its own 2.54&nbsp;mm headers, joined with jumper wires rather than on&#8209;board traces</li>
+                    <li><b>Header</b>The ESP32 takes 3V3, GND, TX, RX, RTS and DTR on one 6&#8209;pin header, so any USB&#8209;serial source can drive it, including a standard FT232RL cable</li>
+                </ul>
 
-                <h2 id="hardware-design">Hardware Design</h2>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
 
-                <h3 id="usb-c-port-with-electromagnetic-compatibility-emc">USB C Port with Electromagnetic Compatibility EMC</h3>
+                <h3 id="hardware-design">Hardware Design</h3>
+
+                <h4 id="usb-c-port-with-electromagnetic-compatibility-emc">USB C Port with Electromagnetic Compatibility EMC</h4>
 
                 <p>Everything starts with the USB C port, this type of USB was selected because of its size and the growing trend of using this port to charge and communicate with portable devices.</p>
 
@@ -503,7 +514,7 @@
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: USB C and EMC protections.</p>
 
-                <h3 id="ft260s">FTDI 1 - FT260S</h3>
+                <h4 id="ft260s">FTDI 1 - FT260S</h4>
 
                 <p>The first USB-to-UART/I2C FTDI device being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>. The design only considers the USB to UART, therefore the I2C is left unconnected.</p>
 
@@ -513,9 +524,9 @@
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT260S-U/6124909">FT260S-U</a>.</p>
 
-                <p><strong>Note:</strong> the FT260S was originally picked to both program the ESP32 and provide the serial console. It turned out to be a <strong>USB&#8209;HID</strong> class device, so &mdash; unlike the FT232R &mdash; it does <strong>not</strong> enumerate as a virtual COM port; interfacing with it requires FTDI's <code>LibFT260</code> helper library (<a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf">AN&nbsp;394</a>, <a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf">AN&nbsp;395</a>). That extra software layer is why it can't seamlessly program the ESP32 from a stock toolchain &mdash; see <a href="#findings">Findings</a> above.</p>
+                <p><strong>Note:</strong> the FT260S was originally picked to both program the ESP32 and provide the serial console. It turned out to be a <strong>USB&#8209;HID</strong> class device, so &mdash; unlike the FT232R &mdash; it does <strong>not</strong> enumerate as a virtual COM port; interfacing with it requires FTDI's <code>LibFT260</code> helper library (<a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_394_User_Guide_for_FT260.pdf">AN&nbsp;394</a>, <a href="https://www.ftdichip.com/Support/Documents/AppNotes/AN_395_User_Guide_for_LibFT260.pdf">AN&nbsp;395</a>). That extra software layer is why it can't seamlessly program the ESP32 from a stock toolchain &mdash; see <a href="#findings">Findings</a> below.</p>
 
-                <h3 id="ft312d">FTDI 2 - FT312D</h3>
+                <h4 id="ft312d">FTDI 2 - FT312D</h4>
 
                 <p>The second USB TO UART/I2C FTDI that is being tested is the <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>. This IC does not support DTR/DSR for the UART, a feature that is required for the auto reset circuit of the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a> that was implemented, nevertheless the PCB has it as a second alternative.</p>
 
@@ -525,7 +536,7 @@
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the FTDI <a href="https://www.digikey.com/en/products/detail/ftdi-future-technology-devices-international-ltd/FT312D-32L1C-R/4047486">FT312D-32L1C-R</a>.</p>
 
-                <h3 id="esp32-with-auto-reset">ESP32 with Auto Reset</h3>
+                <h4 id="esp32-with-auto-reset">ESP32 with Auto Reset</h4>
 
                 <p>Finally, the <a href="https://www.digikey.com/en/products/detail/espressif-systems/ESP32-WROOM-32D-4MB/9381716">ESP32</a>. The design includes an auto reset circuit that uses RTS and DTR to reset and put in bootloader mode the ESP32. For more information about this circuit, these blogs <a href="https://qsantos.fr/2025/05/09/espressifs-automatic-reset/">[1]</a> <a href="https://forums.adafruit.com/viewtopic.php?f=57&p=483993#p487891">[2]</a> can be useful.</p>
 
@@ -535,7 +546,7 @@
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Auto reset circuit for the ESP32.</p>
 
-                <h3 id="ic-switch">SPDT Switch</h3>
+                <h4 id="ic-switch">SPDT Switch</h4>
 
                 <p>The design includes a couple of <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a> that will be tested for future implementations.</p>
 
@@ -545,7 +556,7 @@
 
                 <p style="text-align:center">Schematic of the FTDI Dev Board: Circuit for the SPDT switch <a href="https://www.digikey.com/en/products/detail/texas-instruments/TS5A3153DCUR/1216791">TS5A3153DCUR</a>.</p>
 
-                <h2 id="bill-of-materials">Bill of Materials</h2>
+                <h3 id="bill-of-materials">Bill of Materials</h3>
 
                 <div class="row add-bottom">
                     <div class="col-twelve">
@@ -644,7 +655,7 @@
                     </div>
                 </div> <!-- end row -->
 
-                <h2 id="pcb">PCB</h2>
+                <h3 id="pcb">PCB</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/ftdi_development_board/ftdi-testing-board01.jpg" width="640" alt="3D Model of the PCB design of the FTDI Dev Board">
@@ -658,7 +669,9 @@
 
                 <p style="text-align:center">3D Model of the PCB design of the FTDI Dev Board.</p>
 
-                <h2 id="testing">Testing</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="testing">Auto&#8209;Reset Bench Test</h3>
 
                 <p>The designed auto reset circuit requires the signals 3.3V, GND, TX, RX, RTS and DTR. The commercial <a href="https://www.amazon.com/gp/product/B075N82CDL/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&language=en_US&psc=1">USB to Serial Converter</a> (FT232RL) was used to test the circuit, it provides all the required signals.</p>
 
@@ -714,6 +727,24 @@
                 </div>
 
                 <p style="text-align:center">Results of the test.</p>
+
+                <h3 id="findings">Findings</h3>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Under test</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>FT260S</strong></td><td>A <strong>USB&#8209;HID</strong> device, not USB&#8209;CDC &mdash; it exposes <strong>no virtual COM port</strong>. Talking to it needs FTDI's <code>LibFT260</code> helper library, so it can't transparently program the ESP32 from the Arduino IDE without extra software work.</td></tr>
+                            <tr><td><strong>FT312D</strong></td><td>A USB&#8209;Host UART bridge that <strong>does not expose DTR/DSR</strong> &mdash; the lines the ESP32 auto&#8209;reset circuit needs. On the board only as a fallback.</td></tr>
+                            <tr><td><strong>ESP32 auto&#8209;reset circuit</strong></td><td>Verified working when driven by a standard FT232RL cable (3V3, GND, TX, RX, RTS, DTR): the two&#8209;transistor circuit correctly sequences <code>EN</code> and <code>IO0</code> for reset and bootloader entry.</td></tr>
+                            <tr><td><strong>USB&#8209;C EMC front end / TS5A3153 switch</strong></td><td>Populated and validated for reuse.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Neither FTDI part turned out to be a drop&#8209;in replacement for an FT232&#8209;style programmer, but the board proved out the USB&#8209;C EMC front end and the ESP32 auto&#8209;reset circuit that were carried into <a href="ejam.html">EJA&nbsp;M</a>.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

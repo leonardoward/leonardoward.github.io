@@ -1,0 +1,783 @@
+/* ===================================================================
+ * # the method: how i work + problem-first project cards
+ *
+ * One method (Define, Simulate, Build, Test, Refine) shown in two places:
+ * the "How I work" section, and a row of five LEDs on every project card.
+ * The copper trace and the amber LEDs are the only new colors; everything
+ * else follows main.css.
+ *
+ * ------------------------------------------------------------------- */
+
+.s-how {
+  --how-copper: #b8692f;
+  --how-copper-text: #93501f;
+  --how-led: #f2a900;
+  --how-led-ring: #c98700;
+  --how-muted: rgba(0, 0, 0, 0.6);
+  --how-rule: #e0e0e0;
+  --how-gap: 2.4rem;
+
+  background-color: #ffffff;
+  padding: 9rem 0 9.6rem;
+}
+
+.how__header {
+  max-width: 760px;
+  margin-bottom: 5.4rem;
+}
+
+.how__eyebrow {
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+  color: #1d28a1;
+  margin: 0 0 1.2rem;
+}
+
+.how__title {
+  font-family: "Libre Baskerville", serif;
+  font-size: 4.4rem;
+  line-height: 1.2;
+  letter-spacing: -.1rem;
+  margin: 0 0 1.8rem;
+}
+
+.how__intro {
+  font-size: 1.9rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+/* steps
+ * ------------------------------------------------------------------- */
+.how__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3.2rem var(--how-gap);
+}
+
+/* the trace runs from the first LED to the last one */
+.how__steps::before {
+  content: "";
+  position: absolute;
+  top: .8rem;
+  left: .9rem;
+  right: calc((100% - 4 * var(--how-gap)) / 5 - .9rem);
+  height: 2px;
+  background: var(--how-copper);
+}
+
+.how__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "led" "name" "media" "text" "proj";
+  align-content: start;
+  row-gap: 1.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.how__led {
+  grid-area: led;
+  position: relative;
+  z-index: 1;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--how-led);
+  border: 2px solid var(--how-led-ring);
+  box-shadow: 0 0 0 4px rgba(242, 169, 0, 0.18), 0 0 12px rgba(242, 169, 0, 0.55);
+}
+
+.how__name {
+  grid-area: name;
+  font-family: "Libre Baskerville", serif;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.how__num {
+  display: block;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  color: var(--how-muted);
+  margin-bottom: .4rem;
+}
+
+.how__media {
+  grid-area: media;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--how-rule);
+  border-radius: 3px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.how__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.how__media:hover img {
+  transform: scale(1.05);
+}
+
+/* charts keep their axes visible at any crop */
+.how__media--chart img {
+  object-fit: contain;
+}
+
+/* the Define step shows its requirements instead of a photo */
+.how__spec {
+  list-style: none;
+  margin: 0;
+  padding: .8rem 1.4rem;
+  display: grid;
+  align-content: center;
+  font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: #000000;
+}
+
+.how__spec li {
+  display: flex;
+  gap: .8rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--how-rule);
+}
+
+.how__spec li:last-child {
+  border-bottom: 0;
+}
+
+.how__spec b {
+  flex: none;
+  color: var(--how-copper-text);
+}
+
+.how__text {
+  grid-area: text;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+.how__project {
+  grid-area: proj;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.how__project span {
+  display: block;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--how-muted);
+}
+
+.how__legend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 5.4rem 0 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--how-muted);
+}
+
+.how__legend .how__led {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .how__media img, .how__media:hover img {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* -------------------------------------------------------------------
+ * responsive:
+ * how i work
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width:1000px) {
+  .how__steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4rem;
+    padding-left: 4rem;
+  }
+  /* vertical trace: each step draws the segment down to the next LED */
+  .how__steps::before {
+    display: none;
+  }
+  .how__step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    bottom: -4.6rem;
+    left: -3.2rem;
+    width: 2px;
+    background: var(--how-copper);
+  }
+  .how__step {
+    grid-template-columns: 24rem minmax(0, 1fr);
+    grid-template-areas: "media name" "media text" "media proj";
+    column-gap: 2.8rem;
+  }
+  .how__step .how__led {
+    position: absolute;
+    left: -4rem;
+    top: .2rem;
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .s-how {
+    padding: 6rem 0 6.4rem;
+  }
+  .how__title {
+    font-size: 3.2rem;
+  }
+  .how__intro {
+    font-size: 1.7rem;
+  }
+  .how__steps {
+    padding-left: 3.2rem;
+  }
+  .how__step .how__led {
+    left: -3.2rem;
+  }
+  .how__step:not(:last-child)::before {
+    left: -2.4rem;
+  }
+  .how__step {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "name" "media" "text" "proj";
+  }
+  .how__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+
+/* ===================================================================
+ * # project cards: problem first
+ *
+ * Variant of the template's .item-entry card: the problem leads, then
+ * one line on what I did, then the five step LEDs, each labelled with its
+ * step name. A lit LED means the project page documents that step.
+ *
+ * ------------------------------------------------------------------- */
+
+.entries .item-entry--problem {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-bottom: 0;
+}
+
+.entries .item-entry--problem .item-entry__thumb-link {
+  display: block;
+}
+
+.entries .item-entry--problem .item-entry__thumb-link img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.entries .item-entry--problem .item-entry__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2rem 2.2rem 2.2rem;
+}
+
+.item-entry__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.item-entry__meta span:first-child {
+  color: #1d28a1;
+}
+
+.item-entry__problem {
+  font-family: "Libre Baskerville", serif;
+  font-size: 2rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.item-entry__problem a {
+  color: #000000;
+  border-bottom: 1px solid transparent;
+}
+
+.item-entry__problem a:hover, .item-entry__problem a:focus {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.item-entry__did {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+/* LEDs sit at the bottom of the card so rows line up across the grid */
+.item-entry__steps {
+  margin: auto 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* full step names, spread across the card; the narrowest card (~245px of
+ * text width, 4 columns just above 1480px) still fits all five on one line */
+.leds {
+  display: flex;
+  justify-content: space-between;
+  gap: .8rem;
+}
+
+.led-step {
+  display: grid;
+  justify-items: center;
+  gap: .6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.led-step i {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 2px solid #c4c4c4;
+  background: #ffffff;
+}
+
+.led-step.is-on {
+  color: #000000;
+}
+
+.led-step.is-on i {
+  background: #f2a900;
+  border-color: #c98700;
+  box-shadow: 0 0 0 3px rgba(242, 169, 0, 0.16), 0 0 8px rgba(242, 169, 0, 0.5);
+}
+
+.item-entry__name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@media only screen and (max-width:400px) {
+  .entries .item-entry--problem .item-entry__text {
+    padding: 1.8rem 1.8rem 2rem;
+  }
+  .item-entry__problem {
+    font-size: 1.9rem;
+  }
+}
+
+
+
+/* ===================================================================
+ * # project cards: hover previews
+ *
+ * js/card-preview.js fills the thumbnail with a short sequence of frames
+ * from the case study while the card is hovered or focused. The chip
+ * names the step on show and the matching LED under the card lights up.
+ *
+ * ------------------------------------------------------------------- */
+
+/* the template's white wash and "..." would cover the preview */
+.entries .item-entry--problem .item-entry__thumb-link::before,
+.entries .item-entry--problem .item-entry__thumb-link::after {
+  display: none;
+}
+
+.card-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  overflow: hidden;
+  background: #ffffff;
+  pointer-events: none; /* clicks still reach the thumbnail link */
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-preview.is-on {
+  opacity: 1;
+}
+
+.card-preview__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  -webkit-transition: opacity 0.45s ease-in-out;
+  transition: opacity 0.45s ease-in-out;
+}
+
+.card-preview__media.is-active {
+  opacity: 1;
+}
+
+/* a card with a single still drifts slowly instead of cycling */
+.card-preview.is-single .card-preview__media.is-active {
+  animation: card-preview-drift 7s ease-out both;
+}
+
+@keyframes card-preview-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08) translate(-1.5%, -1%);
+  }
+}
+
+/* the step on show, or the board name on listing cards */
+.card-preview__chip {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .6rem 1.1rem .6rem .8rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.card-preview__chip i {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #f2a900;
+  border: 1px solid #c98700;
+  box-shadow: 0 0 6px rgba(242, 169, 0, 0.7);
+}
+
+.card-preview.is-labelled .card-preview__chip i {
+  background: #1d28a1;
+  border-color: #1d28a1;
+  box-shadow: none;
+}
+
+/* one segment per frame; the current one fills while it is on show */
+.card-preview__bar {
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: flex;
+  gap: .4rem;
+}
+
+.card-preview__bar i {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(#f2a900, #f2a900) 0 0 / 0% 100% no-repeat, rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+  -webkit-transition: background-size 0s linear;
+  transition: background-size 0s linear;
+}
+
+.card-preview__bar i.is-now, .card-preview__bar i.is-done {
+  background-size: 100% 100%;
+}
+
+/* the LED of the step on show stands out; the others step back */
+.item-entry--problem .led-step {
+  -webkit-transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.item-entry--problem .led-step i {
+  -webkit-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.item-entry--problem.is-previewing .leds:has(.is-current) .led-step:not(.is-current) {
+  opacity: .45;
+}
+
+.item-entry--problem.is-previewing .led-step.is-current {
+  color: #1d28a1;
+}
+
+.item-entry--problem.is-previewing .led-step.is-current i {
+  transform: scale(1.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-preview, .card-preview__media,
+  .item-entry--problem .led-step, .item-entry--problem .led-step i {
+    transition: none;
+  }
+  .card-preview.is-single .card-preview__media.is-active {
+    animation: none;
+  }
+  .card-preview__bar i {
+    transition-duration: 0s !important;
+  }
+}
+
+/* ===================================================================
+ * # case studies: the five steps
+ *
+ * Every project page is grouped into the same five steps. A strip of
+ * LEDs under the intro shows which steps the page documents (lit LEDs
+ * link to their section); each documented step then opens with a
+ * .cs-step__title. Steps with nothing to show are left out of the body
+ * and stay unlit in the strip.
+ *
+ * ------------------------------------------------------------------- */
+
+.cs-steps {
+  margin: 0 0 1.2rem;
+  padding: 2rem 2.4rem 2.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+.cs-steps__label {
+  margin: 0 0 1.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.cs-steps__label a {
+  color: #1d28a1;
+}
+
+.cs-steps__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* the copper trace runs through the LED centres, first column to last */
+.cs-steps__list::before {
+  content: "";
+  position: absolute;
+  top: calc(.8rem - 1px);
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #b8692f;
+}
+
+.cs-steps__item {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.cs-steps__item > a, .cs-steps__item > span {
+  display: grid;
+  justify-items: center;
+  gap: .8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.cs-steps__item i {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 2px solid #c4c4c4;
+  background: #ffffff;
+}
+
+.cs-steps__item.is-on > a {
+  color: #000000;
+}
+
+.cs-steps__item.is-on > a:hover, .cs-steps__item.is-on > a:focus {
+  color: #1d28a1;
+}
+
+.cs-steps__item.is-on i {
+  background: #f2a900;
+  border-color: #c98700;
+  box-shadow: 0 0 0 3px rgba(242, 169, 0, 0.16), 0 0 8px rgba(242, 169, 0, 0.5);
+}
+
+/* step headings
+ * ------------------------------------------------------------------- */
+.cs-step__title {
+  clear: both;
+  margin: 7.2rem 0 2.4rem;
+  padding-top: 3.6rem;
+  border-top: 1px solid #e0e0e0;
+  font-family: "Libre Baskerville", serif;
+  font-size: 3.6rem;
+  line-height: 1.2;
+  letter-spacing: -.1rem;
+  scroll-margin-top: 2.4rem;
+}
+
+.cs-step__num {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  color: #93501f;
+}
+
+.cs-step__num::before {
+  content: "";
+  flex: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: #f2a900;
+  border: 2px solid #c98700;
+  box-shadow: 0 0 0 3px rgba(242, 169, 0, 0.16), 0 0 8px rgba(242, 169, 0, 0.5);
+}
+
+/* the first subsection sits closer to its step title */
+.cs-step__title + h3, .cs-step__title + h4 {
+  margin-top: 3.6rem;
+}
+
+.cs-steps + .cs-step__title {
+  margin-top: 4.8rem;
+}
+
+/* optional closing block after the last step: repository, references */
+.cs-after__title {
+  clear: both;
+  margin-top: 7.2rem;
+  padding-top: 3.6rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Define: what the project had to do, as a short spec sheet */
+.cs-spec {
+  list-style: none;
+  margin: 0 0 3rem;
+  padding: 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* the key hangs in a fixed left column; the value can hold inline
+ * markup (links, code) because the row is not a grid */
+.cs-spec li {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 1rem 0 1rem 12.6rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.cs-spec b {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 11rem;
+  font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #93501f;
+}
+
+@media only screen and (max-width:600px) {
+  .cs-steps {
+    padding: 1.6rem 1.2rem 1.8rem;
+  }
+  .cs-steps__item > a, .cs-steps__item > span {
+    font-size: 1.2rem;
+  }
+  .cs-step__title {
+    margin-top: 6rem;
+    padding-top: 3rem;
+    font-size: 3rem;
+  }
+  .cs-spec li {
+    padding-left: 0;
+  }
+  .cs-spec b {
+    position: static;
+    display: block;
+    width: auto;
+  }
+}

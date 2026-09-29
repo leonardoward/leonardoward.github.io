@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -452,6 +453,65 @@
 
                 <p class="lead drop-cap">Design and development of electronic devices for data acquisition in racing vehicles, including fuel level meters, tachometers, brake pressure meters, wheel alignment systems (toe, camber and caster), and speedometers. The process included prototyping, PCB design, firmware programming, soldering (through hole and surface-mount) and testing. The complete system included a CAN bus (Controller Area Network) for robust communication between microcontrollers.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="why">Why</h3>
+
+                <p>The Baja SAE USB cars needed electronics on two fronts. On the car: instruments and controls for the driver &mdash; speed, RPM, fuel and warning lamps on the dash and on the steering wheel &mdash; with every sensor reporting over one shared <strong>CAN bus</strong> instead of its own wire to the cockpit. Off the car: tools for the team's own setup and testing &mdash; wheel alignment, until then done by hand with chalk lines and a tape measure, and a logger for the acceleration at a wheel during brake tests.</p>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>No single requirements document covers the program; taken together, the modules show what the system had to do:</p>
+
+                <ul class="cs-spec" aria-label="Baja SAE USB electronics requirements">
+                    <li><b>Driver</b>Speed, RPM, fuel, temperature and brake warnings readable at a glance, on the dash and on the steering wheel</li>
+                    <li><b>Controls</b>Turn signals, hazards, night lights and the brake indicator worked from buttons on the wheel</li>
+                    <li><b>Bus</b>Every module on one CAN bus: a new sensor joins as one more node, with no extra wiring back to the cockpit</li>
+                    <li><b>Logging</b>Gauge values rebroadcast for the on&#8209;board logger, and streamed out over RS&#8209;232</li>
+                    <li><b>Power</b>On&#8209;car modules run from the car's 12&nbsp;V rail through automotive regulators</li>
+                    <li><b>Tools</b>An aligner under 3000&nbsp;Bsf that fits in 50&times;50&times;50&nbsp;cm, and a self&#8209;contained brake&#8209;test logger</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="simulation">Simulated Circuits</h3>
+
+                <p>Two of the sub&#8209;systems were simulated as well as built. The <a href="brake-test.html#filtering">brake&#8209;test logger</a>'s anti&#8209;vibration filter &mdash; the ADXL335's internal 32&nbsp;k&Omega; against the breakout's 0.1&nbsp;&micro;F (&asymp;49.7&nbsp;Hz), then an external 10&nbsp;k&Omega;&nbsp;+&nbsp;1&nbsp;&micro;F RC at 15.9&nbsp;Hz &mdash; comes with its simulated frequency response, and the <a href="wheel-alignment.html#ultrasonic-circuit">wheel&#8209;alignment system</a>'s ultrasonic transceiver was prototyped in Multisim.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="network">The CAN Network</h3>
+
+                <p>Three modules share the car's CAN bus. Each one broadcasts its own frame and picks the frames it needs out of the others':</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Module</th><th>MCU</th><th>Sends</th><th>Listens for</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="car-dashboard.html"><strong>Dashboard</strong></a></td><td>MCF51JM128 (ColdFire&nbsp;V1)</td><td><code>0x111</code> &mdash; RPM, speed, temperature</td><td><code>0x222</code>, <code>0x333</code></td></tr>
+                            <tr><td><a href="steering-wheel.html"><strong>Steering&#8209;wheel display</strong></a></td><td>MC9S08DZ60 (S08)</td><td><code>0x333</code> &mdash; night lights, turn signals, brake; on each button press</td><td><code>0x111</code>, <code>0x222</code></td></tr>
+                            <tr><td><a href="gasoline-module.html"><strong>Fuel&#8209;level module</strong></a></td><td>MC9S08DZ60 (S08)</td><td><code>0x222</code> &mdash; fuel level 0&ndash;11, every ~2&nbsp;s</td><td>&mdash;</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The dashboard's <code>0x111</code> frame also feeds the on&#8209;board logger, and the dashboard streams a six&#8209;byte telemetry frame out over RS&#8209;232. At power&#8209;up it blinks its four LEDs until the first CAN frame arrives, so a dead bus shows before the car moves. All three boards were laid out in Altium Designer and programmed in CodeWarrior with Processor Expert, flashed through a BDM header with a P&amp;E Multilink.</p>
+
+                <h3 id="modules">The Modules</h3>
+
                 <div class="row">
                   <div class="col-six">
                     <p>
@@ -460,22 +520,47 @@
                   </div>
                   <div class="col-six">
                     <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00018248_light40.jpg" width="400" alt="The Baja SAE data-acquisition board, top view">
+                    <img loading="lazy" decoding="async" src="images/bajasae/00018248_light40.jpg" width="400" alt="The steering-wheel display running on the bench: a chevron-shaped board with a graphic LCD showing 00 KPH, an RPM bar and a fuel bar, and a button at each corner">
                     </p>
                   </div>
                 </div>
+
+                <p style="text-align:center">The <a href="car-dashboard.html">dashboard module</a> with its keyed harness connectors, and the <a href="steering-wheel.html">steering&#8209;wheel display</a> running on the bench.</p>
+
                 <div class="row">
                   <div class="col-six">
                     <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00017557_light40.jpg" width="400" alt="The Baja SAE dashboard module with its wiring-harness connectors fitted">
+                    <img loading="lazy" decoding="async" src="images/bajasae/00017557_light40.jpg" width="400" alt="The fuel-level module: a long, narrow PCB with the Baja USB rabbit logo, its microcontroller and the 40117 board tag">
                     </p>
                   </div>
                   <div class="col-six">
                     <p>
-                    <img loading="lazy" decoding="async" src="images/bajasae/00017171_light40.jpg" width="400" alt="Close-up of the Baja SAE board's microcontroller and sensor-conditioning section">
+                    <img loading="lazy" decoding="async" src="images/bajasae/00017171_light40.jpg" width="400" alt="Two TRISCO 60-0-60 automotive gauges, one opened up with its dial face lying beside it">
                     </p>
                   </div>
                 </div>
+
+                <p style="text-align:center">The <a href="gasoline-module.html">fuel&#8209;level module</a>, the long narrow board that runs along the tank, and a pair of moving&#8209;coil gauges opened up on the bench.</p>
+
+                <p>Two tools work off the car's bus. The <a href="wheel-alignment.html">wheel&#8209;alignment system</a> puts an ATmega328P, an ADXL335 and ultrasonic sensors on each wheel, linked over I&sup2;C, with an XBee radio to a handheld display. The <a href="brake-test.html">brake&#8209;test logger</a> is an Arduino, an ADXL335 and a microSD card in a box that bolts onto a wheel hub.</p>
+
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="tests">What Was Tested</h3>
+
+                <p>The test records that survive belong to three of the sub&#8209;systems:</p>
+
+                <ul>
+                    <li><a href="brake-test.html#data"><strong>Brake&#8209;test logger</strong></a> &mdash; driven and braked around Centro San Ignacio in Chacao, Caracas: a reconnaissance lap, then several braking laps per wheel (front&#8209;right, front&#8209;left, rear&#8209;right), logged to the SD card and converted to m/s&sup2; with a two&#8209;orientation calibration.</li>
+                    <li><a href="wheel-alignment.html#tests"><strong>Wheel alignment</strong></a> &mdash; the ADXL335 bench&#8209;tested in its three reference orientations; the raw sensor read about 1.3&nbsp;g where 1&nbsp;g was expected, so each axis needs its own calibration.</li>
+                    <li><a href="gasoline-module.html#tests"><strong>Fuel&#8209;level module</strong></a> &mdash; powered on the bench: power LED on, heartbeat LED blinking at the 5&nbsp;Hz sample rate. Tank&#8209;side testing still needed the float, magnet and a calibrated fill.</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/brake_test/acceleration-plot.png" width="720" alt="Line chart of X, Y and Z acceleration in m/s squared over about 60 seconds for the front-right wheel's first brake-test lap, showing a noisy signal swinging roughly between minus 30 and plus 25">
+                </div>
+
+                <p style="text-align:center">Brake&#8209;test logger, front&#8209;right wheel, lap&nbsp;1 &mdash; X, Y and Z acceleration over one run.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

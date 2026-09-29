@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,7 +456,34 @@
 
                 <p class="lead drop-cap">A small Python module that exports an ECG recording to the <strong>HL7&nbsp;v3 / FDA Annotated ECG (aECG)</strong> XML format &mdash; the format used to submit digital ECG data to the FDA in clinical trials.</p>
 
-                <h2 id="overview">Overview</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>There's no written brief in the repository; the module's design shows what it had to do:</p>
+
+                <ul class="cs-spec" aria-label="pyHL7_aECG requirements">
+                    <li><b>Format</b>Write an ECG lead out as an HL7&nbsp;v3 / FDA aECG XML file</li>
+                    <li><b>Leads</b>Hold any of the 12 standard leads, each with its own samples, resolution and units</li>
+                    <li><b>Metadata</b>Carry the trial, subject, timepoint and device fields an aECG file expects</li>
+                    <li><b>Encoding</b>Store the waveform the way aECG does: integer counts times a scale, in &micro;V</li>
+                    <li><b>Stack</b>Python&nbsp;3 and numpy only</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="overview">How the Export Works</h3>
 
                 <p>You build an <code>ECG</code> object, load one or more of the 12 standard leads with their sample values, set the time and amplitude resolution, and call <code>exportHL7aECGTemplate()</code>. It writes a schema&#8209;shaped aECG XML file containing:</p>
 
@@ -467,7 +495,7 @@
 
                 <p>On export the waveform is converted from mV to &micro;V and divided by the amplitude resolution, because the aECG <code>digits</code> field carries integer counts that are multiplied back by <code>scale</code>.</p>
 
-                <h2 id="classes">Classes</h2>
+                <h3 id="classes">Classes</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -478,7 +506,7 @@
                     </table>
                 </div>
 
-                <h2 id="example">Example</h2>
+                <h3 id="example">Example</h3>
 
                 <p><code>example.py</code> fills lead&nbsp;I with a sample waveform, sets a 20&nbsp;ms time resolution (50&nbsp;Hz) and a 0.05&nbsp;mV amplitude resolution, and writes <code>output/ecg.xml</code>:</p>
 
@@ -508,13 +536,19 @@ e.exportHL7aECGTemplate("output/ecg.xml", "I")</code></pre>
   &lt;/value&gt;
 &lt;/sequence&gt;</code></pre>
 
-                <h2 id="notes">Notes</h2>
+                <h3 id="notes">Caveats</h3>
 
                 <ul>
                     <li>The XML is assembled by string templating, not validated against the aECG schema &mdash; run the output through an aECG validator before relying on it.</li>
                     <li>One lead per <code>export</code> call; the ID / time / subject / device fields default to the sample values baked into <code>ECG.__init__</code> and should be set for real data.</li>
                     <li>Amplitude values are mutated in place during export &mdash; pass a copy to keep the originals.</li>
                 </ul>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="ecg-library">Where It Went Next</h3>
+
+                <p>The module became the export layer of the <a href="ecg-digitization.html">ECG digitization service</a>. Its <code>ECG</code> and <code>LEAD</code> classes were carried into <code>ecg.py</code> in that project&rsquo;s <code>ECGLibrary</code> package with the existing code unchanged, and three export methods were added beside <code>exportHL7aECGTemplate()</code>: <code>exportLeadMAT()</code>, which writes a MATLAB <code>.m</code> script that plots the lead; <code>exportLeadJSON()</code>; and <code>exportIWFDB()</code>, which writes a PhysioNet WFDB record. After digitizing a lead the library calls all four, which is where the service&rsquo;s JSON, WFDB, MATLAB and HL7&#8209;aECG result formats come from.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

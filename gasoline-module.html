@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,19 +456,40 @@
 
                 <p class="lead drop-cap">A CAN&#8209;bus <strong>fuel&#8209;level sender</strong> for the off&#8209;road cars built by the <strong>Baja SAE team of Universidad Sim&oacute;n Bol&iacute;var</strong> ("Baja&nbsp;USB"). A magnet riding on the fuel&#8209;tank float passes a vertical row of six Hall&#8209;effect switches; a Freescale&nbsp;S08 microcontroller turns that into an 11&#8209;step &ldquo;how much fuel is left&rdquo; reading and broadcasts it on the car's CAN bus, where the dashboard and on&#8209;board data system pick it up. It is one module of the wider <a href="bajasae.html">Baja SAE USB vehicle electronics</a> &mdash; <em>2012</em>.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/gasoline_module/board-bench.jpg" width="440" alt="The assembled module powered up on the bench, fed from a lab supply through clip leads on the 4-pin header, power LED lit">
-                </div>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <p style="text-align:center">The assembled board on the bench &mdash; powered through the 4&#8209;pin harness header, power LED lit.</p>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
-                <h2 id="why">Why</h2>
+                <h3 id="why">Why</h3>
 
                 <p>A Baja car has a small tank and a long enduro. The driver and pit crew need to know when to fuel &mdash; but there is no room on the dash for a mechanical gauge, and every other sensor on the car (tachometer, brake pressure, speed) already reports over a shared <strong>CAN bus</strong>. The fuel reading should join them: one more small module on the bus, no extra wiring back to the cockpit.</p>
 
                 <p>The float&#8209;and&#8209;magnet approach keeps the electronics <strong>out of the fuel</strong> &mdash; the Hall switches sense the magnet through the tank wall, with nothing but a sealed magnet inside.</p>
 
-                <h2 id="sensing">Sensing &mdash; Six Hall Switches</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>No requirements document survives in the repository; these are the goals the finished board clearly had to meet:</p>
+
+                <ul class="cs-spec" aria-label="Fuel-level module requirements">
+                    <li><b>Sense</b>Read the fuel level with nothing electronic inside the tank</li>
+                    <li><b>Bus</b>Report on the car's CAN bus, where the dashboard and the on&#8209;board data system already listen</li>
+                    <li><b>Steady</b>A reading that doesn't jump around as the fuel sloshes</li>
+                    <li><b>Fit</b>A board narrow enough to run along the tank, next to the float</li>
+                    <li><b>Power</b>Run from the car rail through its own regulator</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="sensing">Sensing &mdash; Six Hall Switches</h3>
 
                 <p>The PCB mounts alongside the float's travel with <strong>six Micronas Hall&#8209;effect switches (HS1&ndash;HS6)</strong> in a straight line. As the level changes the float&#8209;borne magnet moves along that line and trips one &mdash; or two adjacent &mdash; switches. The switches are open&#8209;drain, active&#8209;low, pulled up to port pins <strong>PTA1&ndash;PTA6</strong>.</p>
 
@@ -492,13 +514,13 @@
 
                 <p>A single switch gives an odd level, an adjacent pair gives the even level between &mdash; so six switches resolve <strong>11 discrete steps</strong>. Three&#8209;in&#8209;a&#8209;row patterns are folded onto the middle step, so a wide magnet still reads cleanly.</p>
 
-                <h2 id="firmware">Sampling &amp; Averaging</h2>
+                <h3 id="firmware">Sampling &amp; Averaging</h3>
 
                 <p>A <strong>TPM1 timer interrupt runs every 200&nbsp;ms (5&nbsp;Hz)</strong>. On each tick the firmware reads and decodes the Hall pattern, adds the level to an accumulator, and toggles the heartbeat LED (DM1). Every <strong>10 ticks (2&nbsp;s)</strong> the main loop divides the accumulator by&nbsp;10 &mdash; a simple running average that rejects float slosh &mdash; and transmits the result.</p>
 
                 <p>The microcontroller is a Freescale <a href="https://www.nxp.com/docs/en/data-sheet/MC9S08DZ60.pdf">MC9S08DZ60</a> (8&#8209;bit S08, 32&#8209;pin LQFP, on&#8209;chip MSCAN, 16&nbsp;MHz bus). The firmware is <strong>CodeWarrior for HCS08</strong> with <strong>Processor Expert 3.07</strong>; the hand&#8209;written code is just the 2&nbsp;s average loop (<code>Gasolina.c</code>) and the sample&#8209;and&#8209;decode timer handler (<code>Events.c</code>). It is flashed through the 6&#8209;pin BDM header with a P&amp;E Multilink.</p>
 
-                <h2 id="can">CAN Output</h2>
+                <h3 id="can">CAN Output</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -515,7 +537,7 @@
 
                 <p>Frames are sent round&#8209;robin through the three MSCAN transmit buffers &mdash; <code>CAN1_SendFrame(buffer, 0x222, DATA_FRAME, 1, &amp;level)</code> with <code>buffer</code> cycling 0&nbsp;&rarr;&nbsp;1&nbsp;&rarr;&nbsp;2. Bit timing is SJW&nbsp;1, TSEG1&nbsp;6, TSEG2&nbsp;7 (&asymp;&nbsp;50&nbsp;% sample point).</p>
 
-                <h2 id="hardware">Hardware</h2>
+                <h3 id="hardware">Hardware</h3>
 
                 <p>A long, narrow <strong>2&#8209;layer board</strong> (Altium Designer) so it fits along the tank next to the float.</p>
 
@@ -545,7 +567,15 @@
 
                 <p>The Altium project also carries custom library parts for the Micronas sensor, a TIP31C power transistor and a <em>PCB_DisplayGas</em> footprint library &mdash; leftovers from an earlier fuel&#8209;gauge <strong>display</strong> board that are not populated on this design.</p>
 
-                <h2 id="tests">Bench Bring-up</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="tests">Bench Bring-up</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/gasoline_module/board-bench.jpg" width="440" alt="The assembled module powered up on the bench, fed from a lab supply through clip leads on the 4-pin header, power LED lit">
+                </div>
+
+                <p style="text-align:center">The assembled board on the bench &mdash; powered through the 4&#8209;pin harness header, power LED lit.</p>
 
                 <p>The board was assembled and powered from a lab supply through clip leads on the 4&#8209;pin header (photo above); the power LED lights and the firmware's heartbeat LED blinks at the 5&nbsp;Hz sample rate. Full tank&#8209;side testing needs the float, magnet and a calibrated fill.</p>
 

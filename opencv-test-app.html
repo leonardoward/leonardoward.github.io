@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,9 +456,37 @@
 
                 <p class="lead drop-cap">An Android app for trying <a href="https://opencv.org/">OpenCV</a> image&#8209;processing algorithms on the phone &mdash; from the camera or the gallery. Built as a sandbox while learning the OpenCV Android SDK.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>A learning sandbox with no written brief; the app&rsquo;s design shows what it had to do:</p>
+
+                <ul class="cs-spec" aria-label="OpenCV test app requirements">
+                    <li><b>Input</b>A still photo from the camera or the gallery, or the live camera feed</li>
+                    <li><b>Choice</b>Pick which algorithm to run from the main screen</li>
+                    <li><b>Standalone</b>Run OpenCV without asking the user to install OpenCV Manager</li>
+                    <li><b>Devices</b>Android API level 15 and up</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="overview">The App</h3>
+
                 <p>The main screen has a spinner to choose an algorithm and a toolbar to load a picture. OpenCV&nbsp;3.2.0 is bundled (Java bindings + native libraries) and loaded at runtime, so no separate <em>OpenCV Manager</em> install is needed. Targets <code>compileSdk&nbsp;25</code> / <code>minSdk&nbsp;15</code>.</p>
 
-                <h2 id="canny">Canny Edge Detection</h2>
+                <h3 id="canny">Canny Edge Detection</h3>
 
                 <p>Two variants of the same operation &mdash; grayscale, then <code>Imgproc.Canny(gray, out, 50, 150)</code>:</p>
 
@@ -472,7 +501,7 @@
 
                 <p style="text-align:center">The edge&#8209;detection stage, run here on a sample photo.</p>
 
-                <h2 id="scanner">Document Scanner</h2>
+                <h3 id="scanner">Document Scanner</h3>
 
                 <p><code>Scanner.java</code> finds a page in a photo and flattens it to a clean rectangle:</p>
 
@@ -486,7 +515,7 @@
 
                 <p>If fewer than four corners turn up it reports <em>"Cannot detect perfect corners"</em> and shows the points it did find. An alternative page&#8209;vs&#8209;background split using 2&#8209;cluster k&#8209;means (pick the cluster nearest pure white) is in the code but commented out.</p>
 
-                <h2 id="layout">Code</h2>
+                <h3 id="layout">Code</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -499,13 +528,19 @@
                     </table>
                 </div>
 
-                <h2 id="notes">Notes</h2>
+                <h3 id="notes">Caveats</h3>
 
                 <ul>
                     <li>Old SDK (25) and OpenCV&nbsp;3.2.0; the OpenCV API is largely unchanged in 4.x but the Gradle/SDK setup would need updating.</li>
                     <li>The scanner's Hough&#8209;intersection corner finding is brittle on cluttered backgrounds &mdash; an <code>approxPolyDP</code> on the largest contour is usually steadier.</li>
                     <li>The vendored native libraries and OpenCV build output are committed, which makes the repo large.</li>
                 </ul>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="scanner-next">Where the Scanner Went Next</h3>
+
+                <p>The scanner&rsquo;s pipeline reappears as Stage&nbsp;1 of the 2018 <a href="ecg-digitization.html#perspective-correction">ECG digitization thesis</a>, and in that project&rsquo;s Android app, which runs it on the phone to outline the ECG sheet. The core settings are the same &mdash; a downscale toward 320&times;240, Canny at 50/150, the largest contour, a Hough transform with a 70&#8209;vote threshold, pairwise line intersections and a perspective warp &mdash; but the rule for picking corners changed: of all the intersections, the thesis keeps the four that form the largest quadrilateral, where this app takes the four farthest from their centroid. <a href="ecg-digitization.html#stage-results">Tested there</a> on ten phone photos of ECG strips, about half failed, mostly because of uneven lighting.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

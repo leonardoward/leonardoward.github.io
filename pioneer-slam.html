@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,9 +456,39 @@
 
                 <p class="lead drop-cap">A <a href="https://www.ros.org/">ROS</a> project that drives a simulated <a href="https://www.generationrobots.com/en/402397-robot-mobile-pioneer-3-dx.html">Pioneer&nbsp;P3&#8209;DX</a> around a <a href="https://www.coppeliarobotics.com/">V&#8209;REP</a> scene from an Android phone, and feeds a simulated Hokuyo laser scanner into <a href="http://wiki.ros.org/gmapping">gmapping</a> to build a 2D occupancy&#8209;grid map. The custom part is a Python bridge node that reshapes V&#8209;REP's topics into the odometry, TF and laser scan that ROS SLAM expects.</p>
 
-                <h2 id="overview">Overview</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="overview">Overview</h3>
 
                 <p>The robot lives in a V&#8209;REP scene &mdash; a Pioneer&nbsp;P3&#8209;DX differential&#8209;drive base with a laser scanner and a small vision sensor, in a room with furniture. You drive it by keyboard or from the <a href="https://github.com/ros-autom/RobotCA">ROS Control</a> Android app; the laser scan and the robot pose come back out of the simulator over ROS, and gmapping turns them into a map you watch build in RViz.</p>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>There is no written brief in the repository; read from how the setup is built, it had to:</p>
+
+                <ul class="cs-spec" aria-label="Teleoperated SLAM setup requirements">
+                    <li><b>Drive</b>Teleoperate the simulated Pioneer from an Android phone, or from the keyboard</li>
+                    <li><b>Map</b>Build a 2D occupancy&#8209;grid map from the laser with gmapping, watched live in RViz</li>
+                    <li><b>Bridge</b>Turn V&#8209;REP's topics into what gmapping expects: a laser scan in the robot's frame, odometry and a TF tree</li>
+                    <li><b>Platform</b>ROS Kinetic on Ubuntu 16.04, with V&#8209;REP 3.x PRO EDU as the simulator</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="vrep-scene">The V&#8209;REP Scene</h3>
+
+                <p>Everything the robot senses comes out of the simulator. The scene (<code>scenes/slam_peoneer_p3dx_2.ttt</code>) holds the Pioneer with its laser scanner and vision sensor in a furnished room, and V&#8209;REP's <code>RosInterface</code> plugin publishes the laser scan, the robot's ground&#8209;truth pose and the camera image as ROS topics.</p>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/teleop_slam/laser_scan.jpg" width="640" alt="V-REP simulation with the laser scanner active, its rays sweeping the room floor and furniture as a dense red point pattern">
@@ -465,7 +496,23 @@
 
                 <p style="text-align:center">The Pioneer's laser scanner sweeping the V&#8209;REP scene.</p>
 
-                <h2 id="architecture">ROS Architecture</h2>
+                <h3 id="slam">SLAM</h3>
+
+                <p>With a laser scan, an odometry source and a valid TF tree in place (all supplied by the <a href="#bridge-node">bridge node</a>), <a href="http://wiki.ros.org/gmapping">gmapping</a> (a particle&#8209;filter SLAM package) estimates the robot's trajectory and accumulates an occupancy&#8209;grid map, published on <code>/map</code> and viewed in RViz. gmapping and its dependencies are built as part of the workspace.</p>
+
+                <h3 id="vision-sensor">Vision Sensor</h3>
+
+                <p>The scene also carries a low&#8209;resolution vision sensor on the robot, published on <code>/image</code> &mdash; a forward camera view of the room, separate from the laser used for mapping.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/teleop_slam/vision_sensor.jpg" width="380" alt="The robot's on-board vision sensor feed shown in rqt image view: a pixelated view of a table and floor">
+                </div>
+
+                <p style="text-align:center">The on&#8209;board vision sensor feed.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="architecture">ROS Architecture</h3>
 
                 <p>Three sources feed a single bridge node:</p>
 
@@ -481,7 +528,7 @@
 
                 <p style="text-align:center">The running node graph (<code>rqt_graph</code>).</p>
 
-                <h2 id="bridge-node">The Bridge Node</h2>
+                <h3 id="bridge-node">The Bridge Node</h3>
 
                 <p>V&#8209;REP's topics aren't in the shape gmapping and the Android app expect &mdash; the scan has the wrong frame, there is no odometry, and there is no TF tree. <code>subscriber_teleop.py</code> fills those gaps:</p>
 
@@ -504,11 +551,7 @@
 
                 <p style="text-align:center">The bridge node's inputs and outputs.</p>
 
-                <h2 id="slam">SLAM</h2>
-
-                <p>With a laser scan, an odometry source and a valid TF tree in place, <a href="http://wiki.ros.org/gmapping">gmapping</a> (a particle&#8209;filter SLAM package) estimates the robot's trajectory and accumulates an occupancy&#8209;grid map, published on <code>/map</code> and viewed in RViz. gmapping and its dependencies are built as part of the workspace.</p>
-
-                <h2 id="android-app">Android Control</h2>
+                <h3 id="android-app">Android Control</h3>
 
                 <p>The <a href="https://github.com/ros-autom/RobotCA">ROS Control</a> app connects straight to the ROS master. Add a robot, set its <em>Master URI</em> to the PC running <code>roscore</code> (its LAN IP, not <code>localhost</code>), and pick Joystick mode.</p>
 
@@ -527,17 +570,7 @@
 
                 <p>The phone's camera can also be published into ROS as a compressed image stream, which is why the workspace includes the <code>image_transport</code> and <code>compressed_image_transport</code> packages.</p>
 
-                <h2 id="vision-sensor">Vision Sensor</h2>
-
-                <p>The scene also carries a low&#8209;resolution vision sensor on the robot, published on <code>/image</code> &mdash; a forward camera view of the room, separate from the laser used for mapping.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/teleop_slam/vision_sensor.jpg" width="380" alt="The robot's on-board vision sensor feed shown in rqt image view: a pixelated view of a table and floor">
-                </div>
-
-                <p style="text-align:center">The on&#8209;board vision sensor feed.</p>
-
-                <h2 id="running">Running It</h2>
+                <h3 id="running">Running It</h3>
 
                 <p>Built for <strong>ROS Kinetic</strong> on Ubuntu, with <strong>V&#8209;REP&nbsp;3.x PRO&nbsp;EDU</strong>. Outline:</p>
 
@@ -551,13 +584,14 @@
 
                 <p>The repository README has the full step&#8209;by&#8209;step, and the repo ships the V&#8209;REP scene, the RosInterface plugin binaries and the prebuilt packages.</p>
 
-                <h2 id="notes">Notes</h2>
+                <h2 id="notes" class="cs-after__title">Notes</h2>
 
                 <ul>
                     <li>Built on ROS&nbsp;1 Kinetic and V&#8209;REP, both now superseded by newer ROS distributions and CoppeliaSim &mdash; the ideas carry over but the exact commands do not.</li>
                     <li>The odometry in the bridge node is a rough differentiation of the simulator pose; a cleaner version would integrate wheel velocities and add covariance.</li>
                     <li>The committed workspace includes catkin <code>build/</code> and <code>devel/</code> artifacts and two large image files misnamed <code>.msg</code> &mdash; worth pruning from version control.</li>
                 </ul>
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

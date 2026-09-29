@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -473,6 +474,32 @@
             <div class="col-full entry__main">
 
                 <p class="lead drop-cap">This web application contains a world map that runs on the web page. The center of the map is the Arc de Triomphe, its latitude and longitude are marked on the map.</p>
+
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>Read back from the finished page, these are the goals the map had to meet:</p>
+
+                <ul class="cs-spec" aria-label="Interactive map design goals">
+                    <li><b>Map</b>A world map that runs inside a web page</li>
+                    <li><b>Center</b>Open centered on the Arc de Triomphe, with its latitude and longitude marked on the map</li>
+                    <li><b>Marker</b>Draw the eye to that location with a pulsing marker</li>
+                    <li><b>Interaction</b>Zoom in and out and pan with the mouse</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
 
                 <p>The map requires the Javascript library from <a href="https://openlayers.org/">OpenLayers</a>, an open source project that facilitates the use of dynamic maps in the web page. It can display map tiles, vector data and markers.</p>
 

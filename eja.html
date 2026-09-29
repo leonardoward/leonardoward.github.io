@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -463,9 +464,24 @@
 
                 <p class="lead drop-cap">Eja is an Open Source project that is developing an intelligent popup buoy.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
                 <div class="video-container">
                     <iframe src="https://www.youtube-nocookie.com/embed/aVAkWYeyZuw" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player"></iframe>
                 </div>
+
+                <h3 id="problem">The Problem</h3>
 
                 <p>This type of ropeless fishing gear aims to decrease the occurrence of marine species entanglements with fishing gear, prevent ghost gear creation, and provide novel technologies for the fishing process.</p>
 
@@ -479,7 +495,7 @@
 
                 <p>The proposed solution includes an intelligent buoy that allows fishers to track the position of the traps, and a ropeless mechanism that prevents entanglements.</p>
 
-                <h2 id="operation-process">Operation Process</h2>
+                <h3 id="operation-process">Operation Process</h3>
 
                 <ul>
                     <li>
@@ -512,11 +528,26 @@
                     </li>
                 </ul>
 
-                <h2 id="prototypes">Prototypes</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>Read as requirements for the electronics, the operation process above asks for four things:</p>
+
+                <ul class="cs-spec" aria-label="EJA popup buoy requirements, from the operation process">
+                    <li><b>Schedule</b>Let the fishers set the maximum time the gear stays underwater before it is deployed</li>
+                    <li><b>Locate</b>Store the deployment position and send it to the server/app</li>
+                    <li><b>Release</b>Free the buoy when that time runs out, or when the trap is detected to be full</li>
+                    <li><b>Report</b>Transmit the buoy's location once it reaches the surface, so the fishers can find it and retrieve the gear</li>
+                </ul>
+
+                <p>The first prototype's electronics split this across three boards: a buoy board that rides with the trap, in two versions (<a href="buoya.html">Buoy&nbsp;A</a> with an optional 4G(LTE) uplink, <a href="buoyb.html">Buoy&nbsp;B</a> without it), and an <a href="onboardgateway.html">Onboard Gateway</a> that stays on the boat and reaches the buoy over a 915&nbsp;MHz LoRa link. Each board serves its own web page over Wi&#8209;Fi, so the user interface is a phone's browser rather than a screen on the board.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="prototypes">Prototypes</h3>
 
                 <p>There are 2 versions of the prototype, the first one was developed in 2020 and the second one is currently being developed. For more information about the prototypes (including videos) <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">visit the original project page</a>.</p>
 
-                <h3 id="prototype1">First Prototype</h3>
+                <h4 id="prototype1">First Prototype</h4>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/eja/ejav2-prototype1.jpg" width="400" alt="First Prototype">
@@ -616,7 +647,10 @@
                     <p><a href="buoya.html">[Detailed Post]</a></p>
                 </div>
 
-                <h3 id="prototype2">Second Prototype</h3>
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h4 id="prototype2">Second Prototype</h4>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/eja/ejav2-prototype2.jpg" width="400" alt="Second Prototype">
@@ -647,6 +681,19 @@
                     </div> <!-- end entry__tags -->
                     <p><a href="ejam.html">[Detailed Post]</a></p>
                 </div>
+
+                <h4 id="what-changed">What Changed in the Electronics</h4>
+
+                <p>The <a href="ejam.html#planning">EJA&nbsp;M planning</a> keeps the features of the three first&#8209;prototype boards (some of them redundant) and sets four targets for the single board that replaces them:</p>
+
+                <ul class="cs-spec" aria-label="Targets for the EJA M board, from the EJA M planning">
+                    <li><b>Cost</b>Reduce the cost, with the previous boards' bill of materials as the reference</li>
+                    <li><b>Charging</b>Battery charging on the board, a feature only the Onboard Gateway had</li>
+                    <li><b>Size</b>Reduce the size</li>
+                    <li><b>Battery</b>Measure the battery level</li>
+                </ul>
+
+                <p>To get there, the plug&#8209;in development boards of the first prototype (the ESP32&#8209;DevKitC and the Adafruit GPS and LoRa breakouts) give way to EJA&nbsp;M's own ESP32, LoRa, GPS, RTC and power&#8209;supply circuits, and two parts are dropped because the project was no longer using them: the TB6612FNG motor driver and the 4G(LTE) module. The block diagrams of the old and new boards are compared on the <a href="ejam.html#planning">EJA&nbsp;M page</a>.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

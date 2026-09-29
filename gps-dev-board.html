@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -469,11 +470,39 @@
 
                 <p class="lead drop-cap">A KiCad breakout board for evaluating two GPS modules side by side &mdash; the <a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">ANTENOVA M20050-1</a> and the <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a> &mdash; plus two footprints for 20&nbsp;mm coin&#8209;cell holders that keep the module's almanac powered for a warm start.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
                 <p>It is one of the breakout boards for the <a href="https://hackaday.io/project/173457-2021-hdp-dream-team-eja">EJA "Intelligent Popup Buoy"</a> project (2021 Hackaday Dream Team): every candidate part for the <a href="ejam.html">EJA&nbsp;M</a> board was tried first on a small dedicated PCB. Both modules speak plain NMEA over UART and share an identical header pinout here, so the same firmware runs against either. The <strong>ATGM332D-5N31</strong> was the one carried into EJA&nbsp;M.</p>
 
-                <h2 id="schematic">Schematic</h2>
+                <h3 id="requirements">What It Had to Do</h3>
 
-                <h3 id="gps-antenova-m20050">ANTENOVA M20050-1</h3>
+                <p>There is no written spec for the board; what it had to do can be read from its schematic and the repository README:</p>
+
+                <ul class="cs-spec" aria-label="GPS development board requirements">
+                    <li><b>Compare</b>Carry both candidate modules, the ANTENOVA M20050&#8209;1 and the ATGM332D&#8209;5N31, each in its own section with its own headers, exercised one at a time</li>
+                    <li><b>Interface</b>NMEA over UART on the same header pinout for both modules, so one ESP32 sketch runs against either</li>
+                    <li><b>Antenna</b>A U.FL connector per module for an external active antenna</li>
+                    <li><b>Backup</b>A coin&#8209;cell backup input per module, to keep the almanac powered for a warm start</li>
+                    <li><b>Holder</b>Two 20&nbsp;mm coin&#8209;cell holder footprints, a Linx BAT&#8209;HLD&#8209;001 retainer and a Keystone 1066 open holder, so the mechanically better one could be picked for the buoy</li>
+                    <li><b>Breakout</b>Each module's UART (TX, RX) and I2C (SDA, SCL) on 2.54&nbsp;mm headers</li>
+                </ul>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="schematic">Schematic</h3>
+
+                <h4 id="gps-antenova-m20050">ANTENOVA M20050-1</h4>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/gps_development_board/schematic_antenova_m20050.jpg" width="640" alt="Schematic of the GPS Dev Board: Circuit for the GPS ANTENOVA M20050-1">
@@ -481,7 +510,7 @@
 
                 <p style="text-align:center">Schematic of the GPS Dev Board: Circuit for the GPS <a href="https://www.digikey.com/en/products/detail/antenova/M20050-1/7931495">ANTENOVA M20050-1</a>.</p>
 
-                <h3 id="gps-antenova-atgm332d">ATGM332D-5N31</h3>
+                <h4 id="gps-antenova-atgm332d">ATGM332D-5N31</h4>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/gps_development_board/schematic_atgm332d-5n31.jpg" width="640" alt="Schematic of the GPS Dev Board: Circuit for the GPS ATGM332D-5N31">
@@ -489,7 +518,7 @@
 
                 <p style="text-align:center">Schematic of the GPS Dev Board: Circuit for the GPS <a href="https://lcsc.com/product-detail/Satellite-Positioning-Modules_ZHONGKEWEI-ATGM332D-5N31_C128659.html">ATGM332D-5N31</a>.</p>
 
-                <h3 id="battery-holders">Additional Coin Battery Holders</h3>
+                <h4 id="battery-holders">Additional Coin Battery Holders</h4>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/gps_development_board/schematic_battery_holders.jpg" width="640" alt="Schematic of the GPS Dev Board: Circuit to test coin cell battery holders">
@@ -497,8 +526,7 @@
 
                 <p style="text-align:center">Schematic of the GPS Dev Board: Circuit to test coin cell battery holders.</p>
 
-
-                <h2 id="bill_of_materials">Bill of Materials</h2>
+                <h3 id="bill_of_materials">Bill of Materials</h3>
 
                 <div class="row add-bottom">
                     <div class="col-twelve">
@@ -565,7 +593,7 @@
                     </div>
                 </div> <!-- end row -->
 
-                <h2 id="pcb">PCB</h2>
+                <h3 id="pcb">PCB</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/gps_development_board/gps-testing-board01.jpg" width="640" alt="3D Model of the PCB design of the GPS Dev Board">
@@ -579,7 +607,7 @@
 
                 <p style="text-align:center">3D Model of the PCB design of the GPS Dev Board.</p>
 
-                <h2 id="firmware">Firmware &amp; Testing</h2>
+                <h3 id="firmware">Firmware</h3>
 
                 <p>The <code>Firmware/</code> folder in the repository has an Arduino sketch for each module (<code>esp32_atgm332d</code> and <code>esp32_antenova_m20050</code>) &mdash; the same code with a different banner, since only one module is exercised at a time.</p>
 
@@ -589,6 +617,10 @@
                     <li>On a fix it prints fix quality, satellite count, HDOP, altitude and a ready&#8209;to&#8209;click <code>google.com/maps</code> link with the current coordinates; if the module goes quiet for ~10&nbsp;s it prints a "not responding" warning.</li>
                 </ul>
 
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="bench-test">Bench Test</h3>
+
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/gps_development_board/gps-test-setup.jpg" width="640" alt="The assembled green GPS testing board with both modules and a coin-cell holder populated, wired to an ESP32 devkit for the serial test">
                 </div>
@@ -596,6 +628,8 @@
                 <p style="text-align:center">Test rig &mdash; the board's UART header wired to an ESP32; an active antenna goes on the U.FL connector.</p>
 
                 <p>Wire <code>VIN&rarr;3V3</code>, <code>GND&rarr;GND</code>, <code>TX&rarr;GPIO16</code>, <code>RX&rarr;GPIO17</code>, open the matching sketch (ESP32 board support + the FuGPS library installed) and watch the serial monitor at 115200&nbsp;baud. A first outdoor fix takes a few minutes cold, seconds warm with the backup cell fitted.</p>
+
+                <p>The repository keeps photos of this rig from 19&nbsp;August 2021, the day the firmware was committed, with the ATGM332D&#8209;5N31 section wired to an ESP32 devkit. It keeps no serial output from those runs.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

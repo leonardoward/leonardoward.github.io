@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -457,6 +458,35 @@
 
                 <p class="lead drop-cap">A cover of the classic 1978 videogame Space Invaders, written in C for the 16&#8209;bit <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> and simulated in <a href="https://www.labcenter.com/simulation/">Proteus</a>, with a T6963C&#8209;driven 240&times;128 graphics LCD. Built with Mauricio Marcano for <em>PG&#8209;7233 &mdash; C for Embedded Systems</em>.</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The repository has no requirements document; this is what the design had to satisfy, read from the README and the firmware:</p>
+
+                <ul class="cs-spec" aria-label="Space Invaders design goals">
+                    <li><b>Game</b>A playable cover of the 1978 original: three types of invader, a mothership, four barriers that break after three hits, three lives and a score</li>
+                    <li><b>MCU</b>Written in C for the 16&#8209;bit PIC24FJ128GA010</li>
+                    <li><b>Display</b>A T6963C&#8209;driven 240&times;128 graphics LCD; every sprite had to fit the controller's 8&times;8 character cells, on a 30&nbsp;&times;&nbsp;16 grid</li>
+                    <li><b>Input</b>Three push buttons: move left, move right and fire</li>
+                    <li><b>Platform</b>Run in a Proteus simulation from the <code>.hex</code> that MPLAB X builds, using only parts from Proteus's default library</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="simulation">Simulation</h3>
+
                 <div class="col-full" style="text-align:center">
                     <video src="images/space_invaders/space-invaders-1.mp4" width="460" poster="images/space_invaders/space-invaders-1.poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Space Invaders running on the PIC24FJ128GA010, simulated in Proteus"></video>
                 </div>
@@ -465,54 +495,28 @@
 
                 <p style="text-align:center"><small> (video with increased speed) </small></p>
 
-                <h2 id="getting_started">Getting Started</h2>
+                <p>In the following video you can see the gameplay of this Space Invaders cover in Proteus Simulation.</p>
 
-                <h3>Source Code</h3>
+                <p>At the beginning the landing page is shown, then the user can use the buttons to play the game.</p>
 
-                <p>This project is <a href="https://github.com/leonardoward/space-invaders-pic-proteus/">hosted on GitHub</a>. You can clone this project directly using this command:</p>
-
-                <pre><code>git clone https://github.com/leonardoward/space-invaders-pic-proteus.git</code></pre>
-
-                <h3 id="dependencies">Dependencies</h3>
-
-                <p>The project only requires the following development environments:</p>
-
-                <ul>
-                    <li><a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a></li>
-                    <li><a href="https://www.labcenter.com/simulation/">Proteus</a></li>
-                </ul>
-
-                <p>The Proteus project uses components included in the environment by default and does not require additional component imports.</p>
-
-                <h3 id="building">Building</h3>
-
-                <p>The building process is performed in the <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a> development environment to generate the .hex file necessary for the Proteus Simulation. This is done by clicking the clean and build button in MPLAB.</p>
-
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/space_invaders/mplabx-building.png" alt="Menu on MPLABX">
+                <div class="entry__media col-full" style="text-align:center">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/l3vaxV_vUPE" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player"></iframe>
+                    </div>
                 </div>
 
-                <p style="text-align:center">Menu on <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a>.</p>
+                <p style="text-align:center">Video of the game Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> microcontroller.</p>
 
 
-                <h3 id="setup">Setup</h3>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
 
-                <p>In order to run the simulation in Proteus, the user has to insert the .hex file path in the PIC preferences.</p>
+                <h3 id="design_and_architecture">Design and Architecture</h3>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" width="640" src="images/space_invaders/proteus-setup.png" alt="Component settings on Proteus">
-                </div>
-
-                <p style="text-align:center">Component settings on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
-
-
-                <h2 id="design_and_architecture">Design and Architecture</h2>
-
-                <h3 id="pic">PIC</h3>
+                <h4 id="pic">PIC</h4>
 
                 <p>This project was developed on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> microcontroller.</p>
 
-                <h3 id="lcd">LCD Screen</h3>
+                <h4 id="lcd">LCD Screen</h4>
 
                 <p>The LCD controller used was a T6963C to drive a screen of 240 x 128 pixels. In this project enhancements were made to the library <a href="https://github.com/camilstaps/T6963C_PIC.git">T6963C_PIC</a> of camilstaps in order to drive the screen.</p>
 
@@ -526,7 +530,7 @@
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3 id="buttons">Buttons</h3>
+                <h4 id="buttons">Buttons</h4>
 
                 <p>The buttons used were three push buttons native of proteus in pull-up configuration, two of them for lateral movement and the other one to shoot.</p>
 
@@ -536,7 +540,7 @@
 
                 <p style="text-align:center">Pull up circuits on the Schematic.</p>
 
-                <h3 id="render">Two Way Render</h3>
+                <h4 id="render">Two Way Render</h4>
 
                 <p>The way the invaders render is variable: When the invaders move from right to left the rendering direction is from left to right, and vice versa. This mechanism allows collision detection to be performed on the outermost invader only once at the beginning of the update cycle, regardless of the number of live invaders.</p>
 
@@ -550,7 +554,7 @@
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3 id="sprites">Custom Made Sprites</h3>
+                <h4 id="sprites">Custom Made Sprites</h4>
 
                 <p>In order to draw in the screen with the T6963C symbol generator, custom 8x8 sprites were made for each character in the game. The three types of invaders sprites were implemented with their respective four animations:</p>
 
@@ -581,7 +585,7 @@
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3>Game Logic</h3>
+                <h4>Game Logic</h4>
 
                 <p>Attack intelligence for invaders has been implemented to spice up the gameplay. Also collision detector alien/barrier and collision detector alien/spaceship, live and score systems, and game over/restart screen were implemented.</p>
 
@@ -596,7 +600,7 @@
                   <small> (video with increased speed) </small>
                 </p>
 
-                <h3 id="game-architecture">Game Architecture</h3>
+                <h4 id="game-architecture">Game Architecture</h4>
 
                 <p>We implemented the game using 4 basic design patterns:</p>
 
@@ -617,7 +621,7 @@
 
                 <p>We implemented different structures to solve specific problems that arise during development, we will describe a little bit more about them in the following sections.</p>
 
-                <h4 id="animations">Animation of a Single Game Object</h4>
+                <h5 id="animations">Animation of a Single Game Object</h5>
 
                 <p>We are using <a href="https://en.wikipedia.org/wiki/Linked_list">Singly Linked Circular Lists</a> to manage the animations of the game objects. We only required one or two sprites, but the list is also very convenient during the rendering phase.</p>
 
@@ -627,7 +631,7 @@
 
                 <p style="text-align:center">Animation List.</p>
 
-                <h4>Animation of a Group of Invaders</h4>
+                <h5>Animation of a Group of Invaders</h5>
 
                 <p>The invaders have a different rendering order depending of the direction in which the group is moving:</p>
 
@@ -643,7 +647,7 @@
                     <li>If the group is moving from <strong>top to bottom</strong>, it will render the invader from bottom to top depending on its position in the group. From "Head Horizontal" to "Tail Horizontal" in the image.</li>
                 </ul>
 
-                <h4>Game Map</h4>
+                <h5>Game Map</h5>
 
                 <p>To detect the collisions between game objects we created a game map, a 2D array with the size of the screen where each element contains a pointer to the game object that is associated to that X Y position. This map is updated with each frame according to the new positions of the objects.</p>
 
@@ -653,22 +657,50 @@
 
                 <p style="text-align:center">Game Map.</p>
 
-                <h2 id="simulation">Simulation</h2>
+                <h3 id="getting_started">Getting Started</h3>
 
-                <p>In the following video you can see the gameplay of this Space Invaders cover in Proteus Simulation.</p>
+                <h4>Source Code</h4>
 
-                <p>At the beginning the landing page is shown, then the user can use the buttons to play the game.</p>
+                <p>This project is <a href="https://github.com/leonardoward/space-invaders-pic-proteus/">hosted on GitHub</a>. You can clone this project directly using this command:</p>
 
-                <div class="entry__media col-full" style="text-align:center">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/l3vaxV_vUPE" width="640" height="360" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube video player"></iframe>
-                    </div>
+                <pre><code>git clone https://github.com/leonardoward/space-invaders-pic-proteus.git</code></pre>
+
+                <h4 id="dependencies">Dependencies</h4>
+
+                <p>The project only requires the following development environments:</p>
+
+                <ul>
+                    <li><a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a></li>
+                    <li><a href="https://www.labcenter.com/simulation/">Proteus</a></li>
+                </ul>
+
+                <p>The Proteus project uses components included in the environment by default and does not require additional component imports.</p>
+
+                <h4 id="building">Building</h4>
+
+                <p>The building process is performed in the <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a> development environment to generate the .hex file necessary for the Proteus Simulation. This is done by clicking the clean and build button in MPLAB.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/space_invaders/mplabx-building.png" alt="Menu on MPLABX">
                 </div>
 
-                <p style="text-align:center">Video of the game Space Invaders running on the <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/39747F.pdf">PIC24FJ128GA010</a> microcontroller.</p>
+                <p style="text-align:center">Menu on <a href="https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide">MPLABX</a>.</p>
 
 
-                <h2 id="future_improvements">Future Improvements</h2>
+                <h4 id="setup">Setup</h4>
+
+                <p>In order to run the simulation in Proteus, the user has to insert the .hex file path in the PIC preferences.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" width="640" src="images/space_invaders/proteus-setup.png" alt="Component settings on Proteus">
+                </div>
+
+                <p style="text-align:center">Component settings on <a href="https://www.labcenter.com/simulation/">Proteus</a>.</p>
+
+
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="future_improvements">Future Improvements</h3>
 
                 <p>Integrate audio to gameplay, this was tried without success in another project (mplab_audio) using the "output comparator interruptions" of the PIC to generate a PWM signal that later in Proteus is filtered to get the sound. The main problem encountered was the delay of the Proteus Simulation.</p>
 

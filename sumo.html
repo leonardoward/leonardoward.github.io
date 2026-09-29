@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,15 +456,22 @@
 
                 <p class="lead drop-cap">Atlas is an autonomous sumo robot built for the VI Venezuelan National Robotics Competition (USB BOTS 2016), where it took <strong>2nd place</strong> in the Sumo category. It was developed by the FutBot&nbsp;&ndash;&nbsp;Future Robotics team at the Universidad Sim&oacute;n Bol&iacute;var (USB).</p>
 
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
                 <p>Atlas is a two&#8209;wheeled, differential&#8209;drive robot. Its job is to find the opposing robot inside the ring, drive into it and push it out &mdash; without driving itself out in the process. It runs on an Arduino Nano, with a closed&#8209;loop speed controller on each wheel and a sensor&#8209;driven state machine that decides how to move.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/sumo/atlas_render_light.jpg" width="620" alt="CAD render of the Atlas sumo robot: a compact box chassis on two drive wheels with a curved aluminium scoop blade at the front">
-                </div>
-
-                <p style="text-align:center">CAD model of Atlas, showing the drive wheels and the front scoop blade.</p>
-
-                <h2 id="competition">The Arena</h2>
+                <h3 id="competition">The Arena</h3>
 
                 <p>A sumo match is fought inside a circular ring (the <em>dohy&#333;</em>): 150&nbsp;cm in diameter, with a 5&nbsp;cm border marking the edge and two short starting lines at the centre. The two robots start back&#8209;to&#8209;back and, after a mandatory delay following the start signal, must push the opponent out of the ring or immobilise it. Leaving the ring on your own means losing the round, so edge awareness matters as much as attacking.</p>
 
@@ -473,7 +481,32 @@
 
                 <p style="text-align:center">Competition arena &mdash; 150&nbsp;cm ring, 5&nbsp;cm edge border, central start lines.</p>
 
-                <h2 id="system-overview">System Overview</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>There is no requirements document in the repository; this is what the design had to satisfy, taken from the ring rules above and from how Atlas was built:</p>
+
+                <ul class="cs-spec" aria-label="Atlas design requirements">
+                    <li><b>Find</b>Locate the opponent anywhere around the robot: front, sides and rear</li>
+                    <li><b>Push</b>Get under the opponent, lift its wheels and drive it out of the ring</li>
+                    <li><b>Edge</b>Never leave the ring on its own</li>
+                    <li><b>Start</b>Hold still for the mandatory delay after the start signal</li>
+                    <li><b>Protect</b>Survive a stalled push without burning out the salvaged motor drivers</li>
+                    <li><b>Autonomy</b>No operator input once the match has started</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="kinematics-model">Kinematics Model</h3>
+
+                <p>Atlas is commanded like a unicycle &mdash; a forward speed <em>V</em> and a turn rate <em>&omega;</em> &mdash; and each command has to become a target speed for each of its two wheels (the full chain is under <a href="#control">Control System</a>).</p>
+
+                <p>Before writing the Arduino code, the kinematics were modelled and plotted in <strong>MATLAB</strong> (<code>matlab/Sumo&nbsp;Atlas/</code>) &mdash; sweeping <em>V</em> and <em>&omega;</em> to check the resulting wheel velocities and RPM &mdash; and then ported to C.</p>
+
+                <p>The script <code>main.m</code> uses Atlas's own dimensions (0.25&nbsp;m track, 0.08&nbsp;m wheel radius) and runs two sweeps: <em>&omega;</em> from 0 to 10&nbsp;rad/s with <em>V</em>&nbsp;=&nbsp;0 (spinning in place), then <em>V</em> from 0 to 10&nbsp;m/s with <em>&omega;</em>&nbsp;=&nbsp;0 (driving straight), plotting the target RPM and the speed of each wheel for both.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="system-overview">System Overview</h3>
 
                 <div class="table-responsive">
                     <table>
@@ -489,13 +522,19 @@
                     </table>
                 </div>
 
-                <h2 id="mechanical">Mechanical Design</h2>
+                <h3 id="mechanical">Mechanical Design</h3>
 
                 <p>The chassis is 3D&#8209;printed and was designed in SolidWorks; it went through three iterations before the competition version. A curved aluminium <strong>scoop blade</strong> across the front is the offensive tool &mdash; angled to slip under the opposing robot and lift its wheels off the ground so it loses traction. A roller&#8209;ball caster at the rear keeps the robot level while the two driven wheels do the work, each turned through a small gear train from its motor.</p>
 
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/sumo/atlas_render_light.jpg" width="620" alt="CAD render of the Atlas sumo robot: a compact box chassis on two drive wheels with a curved aluminium scoop blade at the front">
+                </div>
+
+                <p style="text-align:center">CAD model of Atlas, showing the drive wheels and the front scoop blade.</p>
+
                 <p>The full part files and 2D manufacturing drawings for every version are in the repository.</p>
 
-                <h2 id="drivetrain">Drivetrain &amp; Motors</h2>
+                <h3 id="drivetrain">Drivetrain &amp; Motors</h3>
 
                 <div class="col-six">
                   <p>
@@ -525,7 +564,7 @@
                   </div>
                 </div>
 
-                <h2 id="sensing">Sensing</h2>
+                <h3 id="sensing">Sensing</h3>
 
                 <p>Atlas locates its opponent with distance sensors covering the front, sides and rear of the chassis:</p>
 
@@ -534,15 +573,13 @@
                     <li id="ultrasonic-sensor"><strong>Ultrasonic</strong> &mdash; an <a href="https://www.sparkfun.com/products/15569">HC&#8209;SR04</a> ultrasonic ranging module.</li>
                 </ul>
 
-                <p>The firmware turns each into a distance reading and the strategy code compares it against a per&#8209;sensor threshold, backed by measured ADC&#8209;vs&#8209;distance calibration tables. A <strong>TLC2543</strong> &mdash; an 11&#8209;channel, 12&#8209;bit SPI ADC &mdash; adds the extra analog inputs the Nano runs out of: two forward&#8209;facing proximity sensors, four downward reflectance sensors for the ring edge, and a 3&#8209;axis accelerometer. The competition firmware acts on the proximity channels; the edge and accelerometer channels are read but were not yet wired into the behaviour.</p>
+                <p>The firmware turns each into a distance reading and the strategy code compares it against a per&#8209;sensor threshold, backed by measured ADC&#8209;vs&#8209;distance calibration tables (see <a href="#sensor-calibration">Sensor Calibration</a>). A <strong>TLC2543</strong> &mdash; an 11&#8209;channel, 12&#8209;bit SPI ADC &mdash; adds the extra analog inputs the Nano runs out of: two forward&#8209;facing proximity sensors, four downward reflectance sensors for the ring edge, and a 3&#8209;axis accelerometer. The competition firmware acts on the proximity channels; the edge and accelerometer channels are read but were not yet wired into the behaviour.</p>
 
                 <p>The KiCad electronics design in the repository documents a fuller sensor ring &mdash; four Sharp analog IR sensors, one per side &mdash; from a later revision of the same layout.</p>
 
-                <h2 id="control">Control System</h2>
+                <h3 id="control">Control System</h3>
 
                 <p>Motion commands are given in <em>unicycle</em> form &mdash; a forward speed <em>V</em> and a turn rate <em>&omega;</em>. A differential&#8209;drive kinematics step converts <em>(V,&nbsp;&omega;)</em> into a target speed for each wheel, which becomes a target RPM. Two independent <strong>PID loops</strong> then track those targets: each loop compares the commanded RPM against the RPM measured from the tacho pulses (counted over 100&nbsp;ms windows) and adjusts the motor PWM.</p>
-
-                <p>Before writing the Arduino code, the kinematics were modelled and plotted in <strong>MATLAB</strong> (<code>matlab/Sumo&nbsp;Atlas/</code>) &mdash; sweeping <em>V</em> and <em>&omega;</em> to check the resulting wheel velocities and RPM &mdash; and then ported to C.</p>
 
                 <p>Each motor also has an <strong>ACS711 current sensor</strong>. If a motor draws more than its current limit &mdash; typically during a sustained push against the opponent &mdash; a fold&#8209;back limiter lowers that wheel's PID output ceiling until the current comes back down, protecting the driver board from a stalled push.</p>
 
@@ -552,7 +589,7 @@
 
                 <p style="text-align:center">The hand&#8209;wired control board: Arduino Nano, sensor conditioning and the connectors to the motor drivers.</p>
 
-                <h2 id="strategy">Match Strategy</h2>
+                <h3 id="strategy">Match Strategy</h3>
 
                 <p>Tactics are a small state machine. Every loop, <code>estrategia()</code> looks at the sensors and picks a target state; a dispatcher then runs the matching behaviour:</p>
 
@@ -566,7 +603,28 @@
 
                 <p>The sensors are checked in priority order &mdash; front&#8209;centre first, then the front&#8209;left and front&#8209;right proximity channels, then the side Sharps &mdash; so the robot always commits to the most head&#8209;on contact available. For example, a front&#8209;centre reading past its ~80&nbsp;cm threshold triggers a straight charge at full commanded speed.</p>
 
-                <h2 id="result">Competition Result</h2>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="sensor-calibration">Sensor Calibration</h3>
+
+                <p>Each Sharp sensor was calibrated on its own. The tables kept at the top of <code>Sharps.ino</code> give the raw ADC reading every 10&nbsp;cm from 10 to 150&nbsp;cm for the front, right and left sensors, plus two points (40 and 80&nbsp;cm) for each front proximity channel, in volts. A selection:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Distance</th><th>Front</th><th>Right</th><th>Left</th></tr></thead>
+                        <tbody>
+                        <tr><td>10&nbsp;cm</td><td>727</td><td>775</td><td>727</td></tr>
+                        <tr><td>20&nbsp;cm</td><td>400</td><td>431</td><td>415</td></tr>
+                        <tr><td>40&nbsp;cm</td><td>256</td><td>268</td><td>248</td></tr>
+                        <tr><td>80&nbsp;cm</td><td>173</td><td>184</td><td>165</td></tr>
+                        <tr><td>150&nbsp;cm</td><td>111</td><td>115</td><td>117</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The three sensors don't read alike &mdash; at 80&nbsp;cm the right one gives 184 counts and the left one 165 &mdash; so each gets its own threshold, and every threshold the strategy acts on is that sensor's own 80&nbsp;cm reading: 173 front, 184 right, 165 left, and 0.78&nbsp;V and 0.30&nbsp;V on the front&#8209;right and front&#8209;left proximity channels.</p>
+
+                <h3 id="result">Competition Result</h3>
 
                 <p><strong>2nd place, Sumo category</strong> &mdash; VI Competencia Nacional de Rob&oacute;tica (USB BOTS 2016), Centro &Iacute;talo Venezolano, Caracas, 7&ndash;9 November 2016. Built with Javier Inojosa for FutBot&nbsp;&ndash;&nbsp;Future Robotics.</p>
 
@@ -576,7 +634,21 @@
 
                 <p style="text-align:center">Atlas next to the USB&nbsp;BOTS&nbsp;2016 second&#8209;place certificate.</p>
 
-                <h2 id="repository">Repository</h2>
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="next-revision">What I'd Change</h3>
+
+                <p>Going back through the firmware later turned up bugs, and the repository README now lists them with a suggested order of fixes. The first ones on that list:</p>
+
+                <ul>
+                    <li><strong>Ring&#8209;edge escape</strong> &mdash; the four edge reflectance channels are sampled, but nothing reacts to them. A back&#8209;up&#8209;and&#8209;turn reaction to any edge reading comes first.</li>
+                    <li><strong>Kinematics units</strong> &mdash; the wheel&#8209;speed step already returns rad/s, and the RPM conversion divides by the wheel radius a second time, so target RPM comes out about 12.5&times; too high. The MATLAB model has the same extra division, so its plots didn't catch it.</li>
+                    <li><strong>Command types</strong> &mdash; <code>Vc</code> and <code>Wc</code> are declared <code>int</code>, so a turn rate such as 1.1&pi;&nbsp;rad/s truncates to 3.</li>
+                    <li><strong>Non&#8209;blocking ADC reads</strong> &mdash; each TLC2543 read waits about 10&nbsp;ms, which throttles the whole control loop.</li>
+                    <li><strong>Re&#8209;calibration</strong> &mdash; the current conversion uses ACS712 scaling while the schematic shows ACS711 sensors, so the 3.5&nbsp;A limit needs checking on the real board, along with the Sharp tables.</li>
+                </ul>
+
+                <h2 id="repository" class="cs-after__title">Repository</h2>
 
                 <p>The <a href="https://github.com/leonardoward/Atlas-Sumo-Robot">GitHub repository</a> holds the complete project: the Arduino firmware (11 modules &mdash; motor driver, kinematics, PID, state machine, sensor drivers), the KiCad electronics design, the SolidWorks CAD and drawings for all three chassis versions, and the MATLAB kinematics scripts. The README documents the full hardware and firmware architecture, plus a look back at the bugs and the changes I would make revisiting it today.</p>
 

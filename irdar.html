@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,13 +456,20 @@
 
                 <p class="lead drop-cap"><strong>IRDAR</strong> ("IR radar") is a scanning infrared rangefinder built on a Freescale <a href="https://www.nxp.com/products/no-longer-manufactured/8-bit-mcu-mc9s08qe128:MC9S08QE128">MC9S08QE128</a> (HCS08 8-bit). A servo pans a pair of Sharp infrared distance sensors through a full circle while the microcontroller streams angle and range to a <a href="https://processing.org/">Processing</a> sketch that draws a radar-style sweep.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/irdar/turret.jpg" width="440" alt="The assembled IRDAR turret: a servo at the base, a hand-wired signal board on its front, and an aluminium bracket on top holding an infrared sensor, mounted on a slip-ring bearing">
-                </div>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
 
-                <p style="text-align:center">The assembled scanning head &mdash; servo, slip-ring joint, sensor bracket and signal board.</p>
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
 
-                <h2 id="how-it-works">How It Works</h2>
+                <h3 id="how-it-works">How It Works</h3>
 
                 <ol>
                     <li>A servo continuously pans a bracket carrying <strong>two Sharp IR distance sensors mounted back-to-back</strong>, so between them they see all the way around.</li>
@@ -470,7 +478,15 @@
                     <li>The Processing sketch converts each reading to centimetres, places it at the right angle, and paints it on a green radar display with range rings.</li>
                 </ol>
 
-                <h2 id="hardware">Hardware</h2>
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="hardware">Hardware</h3>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/irdar/turret.jpg" width="440" alt="The assembled IRDAR turret: a servo at the base, a hand-wired signal board on its front, and an aluminium bracket on top holding an infrared sensor, mounted on a slip-ring bearing">
+                </div>
+
+                <p style="text-align:center">The assembled scanning head &mdash; servo, slip-ring joint, sensor bracket and signal board.</p>
 
                 <div class="table-responsive">
                     <table>
@@ -498,7 +514,7 @@
                   </div>
                 </div>
 
-                <h2 id="firmware">Firmware</h2>
+                <h3 id="firmware">Firmware</h3>
 
                 <p>Written in CodeWarrior for HCS08 with <strong>Processor Expert</strong> generating the peripheral drivers. The work splits between three interrupts and a small state machine:</p>
 
@@ -515,7 +531,7 @@
 'A'  sharp1  sharp2          the two ADC readings
 'E'                          end of frame</code></pre>
 
-                <h2 id="gui">The Radar Display</h2>
+                <h3 id="gui">The Radar Display</h3>
 
                 <p>The Processing sketch (in <code>GUI/</code>) opens the serial port, parses each frame and:</p>
 
@@ -526,19 +542,36 @@
                     <li>draws it all on a green scope-style display with range rings at 10, 30, 60 and 120&nbsp;cm and a rotating sweep bar.</li>
                 </ul>
 
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
+
+                <h3 id="sensor-calibration">Sensor Calibration</h3>
+
+                <p>Each Sharp was calibrated on its own, read through the DEMOQE board and the signal board: <code>Ecuaciones sharps.xlsx</code> holds one reading per centimetre from 1 to 50&nbsp;cm for each sensor. Both curves peak at 100 counts around 5&ndash;6&nbsp;cm and fall away on both sides, so very close objects are ambiguous &mdash; sensor&nbsp;1 reads 69 at 1&nbsp;cm and 70 at 12&nbsp;cm &mdash; and the spreadsheet charts distance against reading only from 5&nbsp;cm out. The two sensors don't read alike (22 against 26 counts at 40&nbsp;cm), which is why the display gives each its own curve: <code>89.41&nbsp;&middot;&nbsp;e^(-0.04&nbsp;&middot;&nbsp;adc)&nbsp;+&nbsp;6.41</code> for sensor&nbsp;1 and <code>105.27&nbsp;&middot;&nbsp;e^(-0.04&nbsp;&middot;&nbsp;adc)&nbsp;+&nbsp;6.36</code> for sensor&nbsp;2.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/irdar/sharp-calibration.png" width="900" alt="Scatter plot of distance in centimetres against ADC reading for IRDAR's two Sharp sensors, with the two exponential conversion curves; the points fall from about 50 cm at a reading of 20 to about 6 cm at 100, and both curves run a little above the points between 25 and 45 cm">
+                </div>
+
+                <p style="text-align:center">Distance against ADC reading for both sensors, one point per centimetre from 1 to 50&nbsp;cm, with the conversion curves the radar display uses. The stray points along the bottom are the 1&ndash;4&nbsp;cm readings, below the peak.</p>
+
+                <p>Plotted against the measurements, both conversions land within about half a centimetre from 9 to 14&nbsp;cm, and read about 2 to 4&nbsp;cm long between roughly 27 and 42&nbsp;cm.</p>
+
+                <h3 id="running-live">Running Live</h3>
+
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/irdar/gui_photo.jpg" width="600" alt="The IRDAR radar display running on a monitor, showing the sweep bar and two short arcs of detected points from the two sensors">
                 </div>
 
                 <p style="text-align:center">The display running live, with obstacle points picked up on both sides of the sweep.</p>
 
-                <h2 id="notes">Notes</h2>
+                <h2 id="notes" class="cs-after__title">Notes</h2>
 
                 <ul>
                     <li>Built on the HCS08 / CodeWarrior / Processor Expert toolchain, all now legacy &mdash; the design ideas carry over to any small MCU with a timer, an ADC and a UART.</li>
                     <li>The serial frame is parsed by fixed byte position, so a sensor or count byte that happens to equal a delimiter letter can misalign it; a length-prefixed or escaped framing would be more robust.</li>
                     <li>The two-Sharp / 180&deg;-offset trick trades a full second sensor for full-circle coverage from a half-circle sweep &mdash; neat, but the two sensors need matched calibration.</li>
                 </ul>
+
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

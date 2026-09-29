@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -475,7 +476,41 @@
 
                 <p class="lead drop-cap">Buoy A V1.0 is a 141.73 mm x 54.86 mm PCB that integrates the 5 main components (ESP32, LoRa, GPS, Motor Driver and GSM/GPRS).</p>
 
-                <h2 id="main_components">Main Components</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Simulate<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Test<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                        <li class="cs-steps__item is-on"><a href="#refine"><i aria-hidden="true"></i>Refine</a></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>Buoy&nbsp;A is the fuller of the two buoy boards: it goes into the buoy on the trap, keeps the release timer and reports its GPS position so the gear can be recovered (the full <a href="eja.html#operation-process">operation process</a> is on the project page). The list below is read from the board's schematic, wiring diagrams and firmware rather than from a written spec:</p>
+
+                <ul class="cs-spec" aria-label="Buoy A requirements, read from the design">
+                    <li><b>Locate</b>Read position and time from an Adafruit Ultimate GPS over UART</li>
+                    <li><b>Link</b>Report to the Onboard Gateway over a 915&nbsp;MHz LoRa link (RFM95W)</li>
+                    <li><b>Release</b>Drive the release actuator: a servo from a PWM pin, or a DC motor through the TB6612FNG driver</li>
+                    <li><b>Uplink</b>Carry an optional SIM7600 4G(LTE) shield for a cellular link where there is coverage</li>
+                    <li><b>Interface</b>Let a phone set the release timer through the board's own Wi&#8209;Fi access point</li>
+                    <li><b>Power</b>Run from a 5&ndash;15&nbsp;V battery through a buck converter, or from a single 3.7&nbsp;V cell through a boost converter</li>
+                </ul>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/ejam/hardware_block_diagram_buoy_a_b.jpg" width="640" alt="Hardware block diagram of Buoy A and Buoy B v1.0: an ESP32-DevKitC wired to the Adafruit Ultimate GPS over UART, the RFM95W LoRa radio over SPI, a PWM output for a servo motor and the TB6612FNG DC motor controller, with a battery above 5 V stepped down to 5 V; Buoy A adds a SIM7600 4G(LTE) module on a second UART">
+                </div>
+
+                <p style="text-align:center">Hardware block diagram of Buoy&nbsp;A and Buoy&nbsp;B v1.0 (Buoy&nbsp;B is the inner box), from the <a href="ejam.html#planning">EJA&nbsp;M planning</a>.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="main_components">Main Components</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/buoy_a/Components_Buoy_4_light40.jpg" width="640" alt="Main components of Buoy A v1.0">
@@ -493,7 +528,7 @@
                     <li><strong>4G(LTE):</strong> <a href="https://www.mouser.com/ProductDetail/DFRobot/TEL0124?qs=17u8i%2FzlE88MEbXRJuYFsA==">SIM7600CE-T 4G(LTE) Arduino Shield</a></li>
                 </ul>
 
-                <h2 id="schematic">Schematic</h2>
+                <h3 id="schematic">Schematic</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/buoy_a/Schematic_Buoy_A.png" width="640" alt="Schematic of Buoy A v1.0">
@@ -503,7 +538,7 @@
 
                 <p>For more information about the design check the original <a href="https://hackaday.io/project/173457/log/181830-buoy-a-v10-schematic-and-pcb-design">post</a> in the project's page.</p>
 
-                <h2 id="pcb_layout">Layout</h2>
+                <h3 id="pcb_layout">Layout</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/buoy_a/Layout_Buoy_A.png" width="640" alt="PCB Layout of Buoy A v1.0">
@@ -511,7 +546,7 @@
 
                 <p style="text-align:center">PCB Layout of Buoy A v1.0.</p>
 
-                <h2 id="pcb">PCB</h2>
+                <h3 id="pcb">PCB</h3>
 
                 <div class="row">
                   <div class="col-six" style="text-align:center">
@@ -585,7 +620,7 @@
 
                 <p style="text-align:center">PCB: Front Layer.</p>
 
-                <h2 id="assembly_guide">Assembly</h2>
+                <h3 id="assembly_guide">Assembly</h3>
 
                 <div class="col-full" style="text-align:center">
                     <img loading="lazy" decoding="async" src="images/buoy_a/Assembly_N_01_Buoy_A-All_2_light40.jpg" width="640" alt="Components of Buoy A v1.0">
@@ -625,11 +660,11 @@
 
                 <p>For a detailed explanation about the soldering and assembly procedure visit the following <a href="https://hackaday.io/project/173457/log/183738-buoy-a-v10-assembly">post</a>.</p>
 
-                <h2 id="wiring_diagrams">Wiring Diagrams</h2>
+                <h3 id="wiring_diagrams">Wiring Diagrams</h3>
 
                 <p>The following diagrams present the physical connections of the different boards and components of the Buoy A V1.0:</p>
 
-                <h3 id="power-management">Power Management</h3>
+                <h4 id="power-management">Power Management</h4>
 
                 <ul>
                     <li>Battery (5V < Voltage < 15V)</li>
@@ -666,7 +701,7 @@
 
                 <p>This alternative is valid and possible, but is not ideal for longer working time (compared to the first one). It is important to consider the efficiency of the boost converter. The selected boost converter will have a voltage drop at a current higher than 500mA, that should be taken into consideration.</p>
 
-                <h3>Motors</h3>
+                <h4>Motors</h4>
 
                 <p>The board was designed to handle 2 different types of motors, those are:</p>
 
@@ -688,15 +723,21 @@
 
                 <p>For more information about the wiring diagrams and the project visit the following <a href="https://hackaday.io/project/173457/log/182856-buoy-a-v10-wiring-diagrams">post</a>.</p>
 
-                <h2 id="firmware"><a href="https://github.com/leonardoward/eja-intelligent-buoy-a-firmware"><i class="fab fa-github"></i></a>&nbsp; Firmware</h2>
+                <h3 id="firmware"><a href="https://github.com/leonardoward/eja-intelligent-buoy-a-firmware"><i class="fab fa-github"></i></a>&nbsp; Firmware</h3>
 
                 <p>Buoy A and <a href="buoyb.html#firmware">Buoy B</a> run the <strong>same ESP32 firmware</strong> &mdash; a captive Wi&#8209;Fi access point with a DNS&#8209;resolved web UI served from SPIFFS, <a href="https://github.com/mikalhart/TinyGPSPlus">TinyGPSPlus</a> for the GPS, a 915&nbsp;MHz RFM95W LoRa link to the topside <a href="onboardgateway.html">Onboard Gateway</a>, and the release&#8209;timer countdown. Buoy A differs only in which parts are populated: it also carries the <strong>TB6612FNG</strong> motor driver and an optional <strong>SIM7600 GSM/GPRS</strong> shield for a cellular uplink where there is coverage.</p>
 
                 <p>The <a href="https://github.com/leonardoward/eja-intelligent-buoy-a-firmware">Buoy&nbsp;A firmware repository</a> holds the library requirements; the buildable sketch is in the <a href="https://github.com/leonardoward/eja-intelligent-buoy-b-firmware">Buoy&nbsp;B firmware repository</a>.</p>
 
-                <h2 id="future_improvements">Future Improvements</h2>
+                <h2 id="refine" class="cs-step__title"><span class="cs-step__num">Step 5</span>Refine</h2>
+
+                <h3 id="future_improvements">Future Improvements</h3>
 
                 <p>For more information about the recommended future improvements for the electronic design visit the following <a href="https://hackaday.io/project/173457/log/183807-future-improvements-pcb-design">post</a>.</p>
+
+                <h3 id="next-board">The Next Board: EJA&nbsp;M</h3>
+
+                <p>For the project's <a href="eja.html#prototype2">second prototype</a>, Buoy&nbsp;A, <a href="buoyb.html">Buoy&nbsp;B</a> and the <a href="onboardgateway.html">Onboard Gateway</a> were replaced by a single PCB, <a href="ejam.html">EJA&nbsp;M v1.0</a>. Its <a href="ejam.html#planning">planning</a> keeps their features and adds four targets: lower cost (with these boards' bill of materials as the reference), a smaller board, battery charging on the board and a battery&#8209;level measurement. The plug&#8209;in modules give way to EJA&nbsp;M's own ESP32, LoRa, GPS, RTC and power&#8209;supply circuits. The servo connector stays, now with its own 5&nbsp;V&nbsp;2&nbsp;A step&#8209;up; the TB6612FNG motor driver and the 4G(LTE) module do not, because the project was no longer using them.</p>
 
                 <div class="entry__taxonomies">
                     <div class="entry__cat">

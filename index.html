@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -1001,6 +1002,85 @@
     </section> <!-- end s-featured -->
 
 
+    <!-- how i work
+    ================================================== -->
+    <section class="s-how" id="how-i-work" aria-labelledby="how-title">
+        <div class="row">
+
+            <div class="how__header">
+                <p class="how__eyebrow">How I work</p>
+                <h2 id="how-title" class="how__title">One method, whatever the field.</h2>
+                <p class="how__intro">Whether it is a race car, a robot or a buoy, I work through the same five steps. Here is one example of each, from five different fields.</p>
+            </div>
+
+            <ol class="how__steps">
+
+                <!-- Define: HELIOS REN -->
+                <li class="how__step">
+                    <span class="how__led" aria-hidden="true"></span>
+                    <h3 class="how__name"><span class="how__num">Step 1</span>Define</h3>
+                    <ul class="how__media how__spec" aria-label="HELIOS REN requirements">
+                        <li><b>REQ-1</b>&ge; 25 h battery</li>
+                        <li><b>REQ-2</b>USB charging</li>
+                        <li><b>REQ-3</b>3 light modes</li>
+                        <li><b>REQ-4</b>&euro;25&ndash;40 price</li>
+                    </ul>
+                    <p class="how__text">Requirements for a bicycle tail light, set before choosing a single part.</p>
+                    <a class="how__project" href="helios_ren.html#requirements">HELIOS REN &rarr;<span>Consumer electronics</span></a>
+                </li>
+
+                <!-- Simulate: MultiMPPT -->
+                <li class="how__step">
+                    <span class="how__led" aria-hidden="true"></span>
+                    <h3 class="how__name"><span class="how__num">Step 2</span>Simulate</h3>
+                    <a class="how__media how__media--chart" href="multimppt.html#results" tabindex="-1" aria-hidden="true">
+                        <img loading="lazy" decoding="async" src="images/how-i-work/multimppt-simulation.jpg" width="720" height="540" alt="">
+                    </a>
+                    <p class="how__text">A Simulink model showed that per-panel converters keep one higher power peak under partial shading.</p>
+                    <a class="how__project" href="multimppt.html#results">MultiMPPT &rarr;<span>Power electronics</span></a>
+                </li>
+
+                <!-- Build: Baja SAE -->
+                <li class="how__step">
+                    <span class="how__led" aria-hidden="true"></span>
+                    <h3 class="how__name"><span class="how__num">Step 3</span>Build</h3>
+                    <a class="how__media" href="bajasae.html#network" tabindex="-1" aria-hidden="true">
+                        <img loading="lazy" decoding="async" src="images/how-i-work/bajasae-dashboard.jpg" width="720" height="540" alt="">
+                    </a>
+                    <p class="how__text">Dashboard, steering-wheel display and fuel-level modules sharing one CAN bus in a Baja SAE car.</p>
+                    <a class="how__project" href="bajasae.html#network">Baja SAE &rarr;<span>Vehicles</span></a>
+                </li>
+
+                <!-- Test: E-wanna -->
+                <li class="how__step">
+                    <span class="how__led" aria-hidden="true"></span>
+                    <h3 class="how__name"><span class="how__num">Step 4</span>Test</h3>
+                    <a class="how__media" href="unetbot.html#test-rigs" tabindex="-1" aria-hidden="true">
+                        <img loading="lazy" decoding="async" src="images/how-i-work/ewanna-test-rig.jpg" width="720" height="540" alt="">
+                    </a>
+                    <p class="how__text">A cable rig we built at home so the vision code could practise before the official course existed.</p>
+                    <a class="how__project" href="unetbot.html#test-rigs">E-wanna &rarr;<span>Robotics</span></a>
+                </li>
+
+                <!-- Refine: EJA M -->
+                <li class="how__step">
+                    <span class="how__led" aria-hidden="true"></span>
+                    <h3 class="how__name"><span class="how__num">Step 5</span>Refine</h3>
+                    <a class="how__media" href="ejam.html#three-boards-to-one" tabindex="-1" aria-hidden="true">
+                        <img loading="lazy" decoding="async" src="images/how-i-work/ejam-board.jpg" width="720" height="540" alt="">
+                    </a>
+                    <p class="how__text">Three earlier boards merged into one, aiming for lower cost, smaller size and built-in battery charging.</p>
+                    <a class="how__project" href="ejam.html#three-boards-to-one">EJA M &rarr;<span>Marine IoT</span></a>
+                </li>
+
+            </ol>
+
+            <p class="how__legend"><span class="how__led" aria-hidden="true"></span>The five lights under each project below show which of these steps its page covers.</p>
+
+        </div>
+    </section> <!-- end s-how -->
+
+
     <!-- s-content
     ================================================== -->
     <section class="s-content">
@@ -1011,279 +1091,263 @@
                 <!-- MultiMPPT -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","i":"images/previews/multimppt/1.jpg"},{"s":"simulate","i":"images/previews/multimppt/2.jpg"},{"s":"build","i":"images/previews/multimppt/3.jpg"},{"s":"build","i":"images/previews/multimppt/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="multimppt.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/multimppt/pcb-render.jpg"
-                                     srcset="images/multimppt/pcb-render.jpg 1x, images/multimppt/pcb-render.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/multimppt/pcb-render.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="multimppt.html">Power Electronics</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Power electronics</span><span>2022</span></p>
 
-                            <h2 class="item-entry__title"><a href="multimppt.html">MultiMPPT &mdash; a DPP-Architecture MPPT</a></h2>
+                            <h2 class="item-entry__problem"><a href="multimppt.html"><span class="u-screen-reader-text">MultiMPPT: </span>One shaded panel drags down a whole solar string.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="multimppt.html#why-dpp">DPP</a>
-                                    <a href="multimppt.html#why-dpp">MPPT</a>
-                                    <a href="multimppt.html#circuit">Flyback</a>
-                                    <a href="multimppt.html#simulation">Simulink</a>
-                                    <a href="multimppt.html#results">Partial Shading</a>
-                                    <a href="multimppt.html#board">KiCad</a>
+                            <p class="item-entry__did">I modelled a per-panel converter that only handles the difference, then designed a test board for one cell.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="multimppt.html">April&ndash;May, 2022</a>
-                            </div>
+                            <a class="item-entry__name" href="multimppt.html" tabindex="-1" aria-hidden="true">MultiMPPT &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- EJA Project -->
+                <!-- EJA popup buoy -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"define","i":"images/previews/eja/1.jpg"},{"s":"build","i":"images/previews/eja/2.jpg"},{"s":"build","i":"images/previews/eja/3.jpg"},{"s":"refine","i":"images/previews/eja/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="eja.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/eja/ejav2-3dmodel.jpg"
-                                     srcset="images/eja/ejav2-3dmodel.jpg 1x, images/eja/ejav2-3dmodel.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/eja/ejav2-3dmodel.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="eja.html">Project</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Marine IoT</span><span>2020&ndash;21</span></p>
 
-                            <h2 class="item-entry__title"><a href="eja.html">EJA<br>Intelligent Popup Buoy</a></h2>
+                            <h2 class="item-entry__problem"><a href="eja.html"><span class="u-screen-reader-text">EJA popup buoy: </span>Vertical fishing lines entangle whales and leave ghost gear on the seabed.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="eja.html#prototype1">First Prototype | 2020</a>
-                                    <a href="eja.html#prototype2">Second Prototype | 2021</a>
+                            <p class="item-entry__did">A ropeless popup buoy that surfaces on a timer or when the trap is full. I designed its boards, firmware and GUIs.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="eja.html">October, 2021</a>
-                            </div>
+                            <a class="item-entry__name" href="eja.html" tabindex="-1" aria-hidden="true">EJA popup buoy &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- PCB Designs -->
+                <!-- PCB designs -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"l":"FTDI board","i":"images/previews/embedded-hardware/1.jpg"},{"l":"GPS board","i":"images/previews/embedded-hardware/2.jpg"},{"l":"LoRa board","i":"images/previews/embedded-hardware/3.jpg"},{"l":"Onboard Gateway","i":"images/previews/embedded-hardware/4.jpg"},{"l":"Buoy B","i":"images/previews/embedded-hardware/5.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="embedded-hardware.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/ejam/ejam-pcb-top-01.jpg"
-                                     srcset="images/ejam/ejam-pcb-top-01.jpg 1x, images/ejam/ejam-pcb-top-01.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/ejam/ejam-pcb-top-01.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="embedded-hardware.html">Project</a>
-                            </div>
+                            <p class="item-entry__meta"><span>PCB design</span><span>2020&ndash;21</span></p>
 
-                            <h2 class="item-entry__title"><a href="embedded-hardware.html">PCB Designs</a></h2>
+                            <h2 class="item-entry__problem"><a href="embedded-hardware.html"><span class="u-screen-reader-text">PCB designs: </span>Each new module needed testing before it could go on the final board.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="ejam.html#pcb">Eja M</a>
-                                    <a href="ftdi-dev-board.html#pcb">FTDI</a>
-                                    <a href="gps-dev-board.html#pcb">GPS</a>
-                                    <a href="lora-dev-board.html#pcb">LoRa</a>
-                                    <a href="buoyb.html#pcb">Buoy B</a>
-                                    <a href="buoya.html#pcb">Buoy A</a>
-                                    <a href="onboardgateway.html#pcb">Onboard Gateway</a>
-                                    <a href="helios_ren.html#design">HELIOS REN</a>
+                            <p class="item-entry__did">Eight boards, from dev boards that test one module each to EJA M, which replaced three earlier designs.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <!-- <div class="item-entry__date">
-                                <a href="embedded-hardware.html">October, 2021</a>
-                            </div> -->
+                            <a class="item-entry__name" href="embedded-hardware.html" tabindex="-1" aria-hidden="true">PCB designs &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Space Invaders -->
+                <!-- Space Invaders on a PIC -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","v":"images/previews/pic-proteus-space-invaders/1.mp4","p":"images/previews/pic-proteus-space-invaders/1.jpg","d":5},{"s":"build","i":"images/previews/pic-proteus-space-invaders/2.jpg"},{"s":"build","i":"images/previews/pic-proteus-space-invaders/3.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="pic-proteus-space-invaders.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/space_invaders/space-invaders1.png"
-                                     srcset="images/space_invaders/space-invaders1.png 1x, images/space_invaders/space-invaders1.png 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/space_invaders/space-invaders1.png" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="embedded-software.html">Embedded Software</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Embedded firmware</span><span>2021</span></p>
 
-                            <h2 class="item-entry__title"><a href="pic-proteus-space-invaders.html">Space Invaders adaptation for a 16-Bit PIC microcontroller</a></h2>
+                            <h2 class="item-entry__problem"><a href="pic-proteus-space-invaders.html"><span class="u-screen-reader-text">Space Invaders on a PIC: </span>Fit a full arcade game into a 16-bit PIC and a 240×128 graphics LCD.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="pic-proteus-space-invaders.html#pic">PIC</a>
-                                    <a href="pic-proteus-space-invaders.html#dependencies">MPLABX</a>
-                                    <a href="pic-proteus-space-invaders.html#simulation">PROTEUS</a>
-                                    <a href="pic-proteus-space-invaders.html#lcd">LCD</a>
-                                    <a href="pic-proteus-space-invaders.html#buttons">Buttons</a>
-                                    <a href="pic-proteus-space-invaders.html#game-architecture">Software Architecture</a>
-                                    <a href="pic-proteus-space-invaders.html#animations">Animations</a>
+                            <p class="item-entry__did">Written in C with Mauricio Marcano for a course, and simulated in Proteus.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="pic-proteus-space-invaders.html">July, 2021</a>
-                            </div>
+                            <a class="item-entry__name" href="pic-proteus-space-invaders.html" tabindex="-1" aria-hidden="true">Space Invaders on a PIC &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- WS2812 on a PIC -->
+                <!-- WS2812 driver -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","i":"images/previews/pic-ws2812/1.jpg"},{"s":"build","i":"images/previews/pic-ws2812/2.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="pic-ws2812.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/pic_ws2812/simulation.jpg"
-                                     srcset="images/pic_ws2812/simulation.jpg 1x, images/pic_ws2812/simulation.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/pic_ws2812/simulation.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="embedded-software.html">Embedded Software</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Embedded firmware</span><span>2021</span></p>
 
-                            <h2 class="item-entry__title"><a href="pic-ws2812.html">Driving WS2812 LEDs with a PIC16F1717</a></h2>
+                            <h2 class="item-entry__problem"><a href="pic-ws2812.html"><span class="u-screen-reader-text">WS2812 driver: </span>WS2812 LEDs need timing so tight that bit-banging it keeps the CPU busy.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="pic-ws2812.html#the-approach">PIC16F1717</a>
-                                    <a href="pic-ws2812.html#the-approach">WS2812</a>
-                                    <a href="pic-ws2812.html#clc">CLC</a>
-                                    <a href="pic-ws2812.html#spi">SPI</a>
-                                    <a href="pic-ws2812.html#configuration">MCC</a>
-                                    <a href="pic-ws2812.html#simulation">Proteus</a>
+                            <p class="item-entry__did">I let the PIC16F1717's own peripherals build the waveform, so the CPU spends no cycles on it.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="pic-ws2812.html">April, 2021</a>
-                            </div>
+                            <a class="item-entry__name" href="pic-ws2812.html" tabindex="-1" aria-hidden="true">WS2812 driver &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Ambient Lights -->
+                <!-- HELA ambient lights -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","i":"images/previews/ambient-lights/1.jpg"},{"s":"build","i":"images/previews/ambient-lights/2.jpg"},{"s":"build","i":"images/previews/ambient-lights/3.jpg"},{"s":"build","i":"images/previews/ambient-lights/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="ambient-lights.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/ambient_lights/proteus-schematic.png"
-                                     srcset="images/ambient_lights/proteus-schematic.png 1x, images/ambient_lights/proteus-schematic.png 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/ambient_lights/proteus-schematic.png" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="embedded-software.html">Embedded Software</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Embedded firmware</span><span>2021</span></p>
 
-                            <h2 class="item-entry__title"><a href="ambient-lights.html">Sensor-Based Ambient Lights &mdash; the HELA Module</a></h2>
+                            <h2 class="item-entry__problem"><a href="ambient-lights.html"><span class="u-screen-reader-text">HELA ambient lights: </span>Switch a mains LED strip by hand, on a schedule or by ambient light, for under US$7 of electronics.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="ambient-lights.html#hardware">PIC16F1768</a>
-                                    <a href="ambient-lights.html#hardware">DS1307</a>
-                                    <a href="ambient-lights.html#hardware">APDS-9002</a>
-                                    <a href="ambient-lights.html#modes">State Machine</a>
-                                    <a href="ambient-lights.html#simulation">Proteus</a>
+                            <p class="item-entry__did">Our six-person team built it around a PIC16F1768 and validated the circuit in Proteus.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="ambient-lights.html">March, 2021</a>
-                            </div>
+                            <a class="item-entry__name" href="ambient-lights.html" tabindex="-1" aria-hidden="true">HELA ambient lights &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Interactive Map -->
+                <!-- Interactive map -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/interactive-map/1.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="interactive-map.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/interactive_map/arc-de-triomphe.jpg"
-                                     srcset="images/interactive_map/arc-de-triomphe.jpg 1x, images/interactive_map/arc-de-triomphe.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/interactive_map/arc-de-triomphe.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="interactive-map.html">Web Applications</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Web</span><span>2020</span></p>
 
-                            <h2 class="item-entry__title"><a href="interactive-map.html">Interactive Map<br>OpenLayers</a></h2>
+                            <h2 class="item-entry__problem"><a href="interactive-map.html"><span class="u-screen-reader-text">Interactive map: </span>Put a zoomable world map with markers on a plain web page.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="interactive-map.html#description">HTML</a>
-                                    <a href="interactive-map.html#description">CSS</a>
-                                    <a href="interactive-map.html#description">Javascript</a>
+                            <p class="item-entry__did">Built with the open-source OpenLayers library, centred on the Arc de Triomphe.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="interactive-map.html">February, 2020</a>
-                            </div>
+                            <a class="item-entry__name" href="interactive-map.html" tabindex="-1" aria-hidden="true">Interactive map &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- 3D Map -->
+                <!-- 3D printed map -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/3dmap/1.jpg"},{"s":"build","i":"images/previews/3dmap/2.jpg"},{"s":"build","i":"images/previews/3dmap/3.jpg"},{"s":"build","i":"images/previews/3dmap/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="3dmap.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/3dmap/IMG-20190707-WA0010.jpg"
-                                     srcset="images/3dmap/IMG-20190707-WA0010.jpg 1x, images/3dmap/IMG-20190707-WA0010.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/3dmap/IMG-20190707-WA0010.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="3dmap.html">3D Printing</a>
-                            </div>
+                            <p class="item-entry__meta"><span>3D printing</span><span>2019</span></p>
 
-                            <h2 class="item-entry__title"><a href="3dmap.html">Real-Time Monitoring on a 3D Printed Map</a></h2>
+                            <h2 class="item-entry__problem"><a href="3dmap.html"><span class="u-screen-reader-text">3D printed map: </span>Alerts on a map are easier to read when the map itself lights up.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="3dmap.html#printing">3D Printing</a>
-                                    <a href="3dmap.html#raspberrypi">Raspberry Pi</a>
-                                    <a href="3dmap.html#neopixels">Neopixels</a>
+                            <p class="item-entry__did">A 3D-printed map with 99 RGB LEDs, at least one per state, driven by a Raspberry Pi that other apps control over the network.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="3dmap.html">August, 2019</a>
-                            </div>
+                            <a class="item-entry__name" href="3dmap.html" tabindex="-1" aria-hidden="true">3D printed map &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
@@ -1291,103 +1355,98 @@
                 <!-- Pioneer SLAM -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","i":"images/previews/pioneer-slam/1.jpg"},{"s":"simulate","i":"images/previews/pioneer-slam/2.jpg"},{"s":"build","i":"images/previews/pioneer-slam/3.jpg"},{"s":"build","i":"images/previews/pioneer-slam/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="pioneer-slam.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/teleop_slam/scene.jpg"
-                                     srcset="images/teleop_slam/scene.jpg 1x, images/teleop_slam/scene.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/teleop_slam/scene.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="robotics.html">ROBOTICS</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Robotics</span><span>2019</span></p>
 
-                            <h2 class="item-entry__title"><a href="pioneer-slam.html">Teleoperated SLAM with a Pioneer P3-DX</a></h2>
+                            <h2 class="item-entry__problem"><a href="pioneer-slam.html"><span class="u-screen-reader-text">Pioneer SLAM: </span>ROS SLAM expects odometry and laser scans in a shape the V-REP simulator doesn't provide.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="pioneer-slam.html#architecture">ROS</a>
-                                    <a href="pioneer-slam.html#overview">V-REP</a>
-                                    <a href="pioneer-slam.html#slam">SLAM</a>
-                                    <a href="pioneer-slam.html#slam">gmapping</a>
-                                    <a href="pioneer-slam.html#android-app">Android</a>
+                            <p class="item-entry__did">I wrote a Python bridge node, then drove a simulated Pioneer P3-DX from an Android phone while gmapping built the map.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="pioneer-slam.html">June, 2019</a>
-                            </div>
+                            <a class="item-entry__name" href="pioneer-slam.html" tabindex="-1" aria-hidden="true">Pioneer SLAM &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- PUMA 560 Matlab Simulations -->
+                <!-- PUMA 560 -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","v":"images/previews/puma560/1.mp4","p":"images/previews/puma560/1.jpg","d":5},{"s":"simulate","v":"images/previews/puma560/2.mp4","p":"images/previews/puma560/2.jpg","d":5}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="puma560.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg"
-                                     srcset="images/puma560/puma560.jpg 1x, images/puma560/puma560.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/puma560/puma560.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="robotics.html">ROBOTICS</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Robotics</span><span>2019</span></p>
 
-                            <h2 class="item-entry__title"><a href="puma560.html">PUMA 560 Matlab Simulations<br>Robotic Manipulator</a></h2>
+                            <h2 class="item-entry__problem"><a href="puma560.html"><span class="u-screen-reader-text">PUMA 560: </span>Robot kinematics is hard to picture from equations alone.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="puma560.html#description">Matlab</a>
-                                    <a href="puma560.html#robotics-toolbox">Robotics Toolbox</a>
-                                    <a href="puma560.html#gui">GUI</a>
-                                    <a href="puma560.html#robot-manipulator">RRR Manipulator</a>
-                                    <a href="puma560.html#puma-560">Puma 560</a>
+                            <p class="item-entry__did">Two MATLAB GUIs that animate an RRR arm and a PUMA 560 through forward and inverse kinematics.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Simulate, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="puma560.html">May, 2019</a>
-                            </div>
+                            <a class="item-entry__name" href="puma560.html" tabindex="-1" aria-hidden="true">PUMA 560 &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- ECG Digitization Service -->
+                <!-- ECG digitization -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"define","i":"images/previews/ecg-digitization/1.jpg"},{"s":"build","i":"images/previews/ecg-digitization/2.jpg"},{"s":"build","i":"images/previews/ecg-digitization/3.jpg"},{"s":"build","i":"images/previews/ecg-digitization/4.jpg"},{"s":"test","i":"images/previews/ecg-digitization/5.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="ecg-digitization.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/ecg-digitization/hero.jpg"
-                                     srcset="images/ecg-digitization/hero.jpg 1x, images/ecg-digitization/hero.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/ecg-digitization/hero.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="opencv-pointillize.html">Computer Vision</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Medical</span><span>2018</span></p>
 
-                            <h2 class="item-entry__title"><a href="ecg-digitization.html">ECG Digitization Service<br>from a Photo</a></h2>
+                            <h2 class="item-entry__problem"><a href="ecg-digitization.html"><span class="u-screen-reader-text">ECG digitization: </span>A cardiologist can read a paper ECG. A computer can't.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="ecg-digitization.html#pipeline">OpenCV</a>
-                                    <a href="ecg-digitization.html#api">Node.js</a>
-                                    <a href="ecg-digitization.html#api">REST API</a>
-                                    <a href="ecg-digitization.html#app">Android</a>
+                            <p class="item-entry__did">Our thesis turned a phone photo of the strip into a digital signal, with an API and an Android app.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="ecg-digitization.html">May, 2018</a>
-                            </div>
+                            <a class="item-entry__name" href="ecg-digitization.html" tabindex="-1" aria-hidden="true">ECG digitization &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
@@ -1395,33 +1454,32 @@
                 <!-- Pointillize -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"define","i":"images/previews/opencv-pointillize/1.jpg"},{"s":"test","i":"images/previews/opencv-pointillize/2.jpg"},{"s":"test","i":"images/previews/opencv-pointillize/3.jpg"},{"s":"test","i":"images/previews/opencv-pointillize/4.jpg"},{"s":"test","i":"images/previews/opencv-pointillize/5.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="opencv-pointillize.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/cv_pointillize/result.jpg"
-                                     srcset="images/cv_pointillize/result.jpg 1x, images/cv_pointillize/result.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/cv_pointillize/result.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="opencv-pointillize.html">Computer Vision</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Computer vision</span><span>2017</span></p>
 
-                            <h2 class="item-entry__title"><a href="opencv-pointillize.html">Pointillize &mdash; a Photo-to-Dots Filter</a></h2>
+                            <h2 class="item-entry__problem"><a href="opencv-pointillize.html"><span class="u-screen-reader-text">Pointillize: </span>Turn any photo into a pointillist painting made of dots.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="opencv-pointillize.html#how-it-works">OpenCV</a>
-                                    <a href="opencv-pointillize.html#how-it-works">Python</a>
-                                    <a href="opencv-pointillize.html#how-it-works">Image Processing</a>
-                                    <a href="opencv-pointillize.html#usage">CLI</a>
+                            <p class="item-entry__did">A short Python and OpenCV script that places non-overlapping coloured dots sampled from the photo.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="opencv-pointillize.html">October, 2017</a>
-                            </div>
+                            <a class="item-entry__name" href="opencv-pointillize.html" tabindex="-1" aria-hidden="true">Pointillize &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
@@ -1429,34 +1487,32 @@
                 <!-- pyHL7 aECG -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/pyhl7-aecg/1.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="pyhl7-aecg.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/pyhl7_aecg/ecg_waveform.png"
-                                     srcset="images/pyhl7_aecg/ecg_waveform.png 1x, images/pyhl7_aecg/ecg_waveform.png 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/pyhl7_aecg/ecg_waveform.png" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="embedded-software.html">Embedded Software</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Medical</span><span>2017</span></p>
 
-                            <h2 class="item-entry__title"><a href="pyhl7-aecg.html">pyHL7 aECG &mdash; HL7 Annotated ECG Export</a></h2>
+                            <h2 class="item-entry__problem"><a href="pyhl7-aecg.html"><span class="u-screen-reader-text">pyHL7 aECG: </span>Clinical trials submit digital ECGs to the FDA in one strict XML format.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="pyhl7-aecg.html#overview">HL7</a>
-                                    <a href="pyhl7-aecg.html#overview">aECG</a>
-                                    <a href="pyhl7-aecg.html#overview">ECG</a>
-                                    <a href="pyhl7-aecg.html#classes">Python</a>
-                                    <a href="pyhl7-aecg.html#example">XML</a>
+                            <p class="item-entry__did">A small Python module that exports 12-lead ECG recordings to that HL7 aECG format.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="pyhl7-aecg.html">July, 2017</a>
-                            </div>
+                            <a class="item-entry__name" href="pyhl7-aecg.html" tabindex="-1" aria-hidden="true">pyHL7 aECG &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
@@ -1464,101 +1520,98 @@
                 <!-- OpenCV Test App -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="opencv-test-app.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/cv_testapp/canny.jpg"
-                                     srcset="images/cv_testapp/canny.jpg 1x, images/cv_testapp/canny.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/cv_testapp/canny.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="opencv-pointillize.html">Computer Vision</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Computer vision</span><span>2017</span></p>
 
-                            <h2 class="item-entry__title"><a href="opencv-test-app.html">OpenCV Test App</a></h2>
+                            <h2 class="item-entry__problem"><a href="opencv-test-app.html"><span class="u-screen-reader-text">OpenCV Test App: </span>Try OpenCV algorithms on a phone's camera and gallery photos.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="opencv-test-app.html#canny">OpenCV</a>
-                                    <a href="opencv-test-app.html#canny">Android</a>
-                                    <a href="opencv-test-app.html#canny">Canny</a>
-                                    <a href="opencv-test-app.html#scanner">Document Scanner</a>
+                            <p class="item-entry__did">An Android sandbox I built while learning the OpenCV SDK, with edge detection and a document scanner.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="opencv-test-app.html">May, 2017</a>
-                            </div>
+                            <a class="item-entry__name" href="opencv-test-app.html" tabindex="-1" aria-hidden="true">OpenCV Test App &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Electromagnetism Game -->
+                <!-- EM learning game -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/em-game/1.jpg"},{"s":"build","i":"images/previews/em-game/2.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="em-game.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/charges_game/hero.jpg"
-                                     srcset="images/charges_game/hero.jpg 1x, images/charges_game/hero.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/charges_game/hero.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="interactive-map.html">Web Applications</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Education</span><span>2017</span></p>
 
-                            <h2 class="item-entry__title"><a href="em-game.html">An Electromagnetism Learning Game</a></h2>
+                            <h2 class="item-entry__problem"><a href="em-game.html"><span class="u-screen-reader-text">EM learning game: </span>Coulomb's law is abstract until you can see charges push and pull.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="em-game.html#charges">Phaser</a>
-                                    <a href="em-game.html#charges">Coulomb's Law</a>
-                                    <a href="em-game.html#platformer">Platformer</a>
-                                    <a href="em-game.html#glossary">Educational</a>
+                            <p class="item-entry__did">A browser game where you steer charged particles past fixed charges, built with two teammates as a community-service project.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="em-game.html">2017</a>
-                            </div>
+                            <a class="item-entry__name" href="em-game.html" tabindex="-1" aria-hidden="true">EM learning game &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Sumo Robot -->
+                <!-- ATLAS sumo robot -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"define","i":"images/previews/sumo/1.jpg"},{"s":"build","i":"images/previews/sumo/2.jpg"},{"s":"build","i":"images/previews/sumo/3.jpg"},{"s":"test","i":"images/previews/sumo/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="sumo.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/sumo/20161101_085539_light60.jpg"
-                                     srcset="images/sumo/20161101_085539_light60.jpg 1x, images/sumo/20161101_085539_light60.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/sumo/20161101_085539_light60.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="robotics.html">Robotics</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Robotics</span><span>2016</span></p>
 
-                            <h2 class="item-entry__title"><a href="sumo.html">ATLAS<br>a Robot for Sumo Competitions</a></h2>
+                            <h2 class="item-entry__problem"><a href="sumo.html"><span class="u-screen-reader-text">ATLAS sumo robot: </span>Find the opponent in the ring and push it out without driving out yourself.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="sumo.html#system-overview">Arduino</a>
-                                    <a href="sumo.html#drivetrain">Brushless DC</a>
-                                    <a href="sumo.html#ultrasonic-sensor">Ultrasonic Sensor</a>
-                                    <a href="sumo.html#infrared-sensor">Infrared Proximity Sensor</a>
+                            <p class="item-entry__did">Our autonomous sumo robot took 2nd place at USB BOTS 2016, Venezuela's national robotics competition.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="sumo.html">October, 2016</a>
-                            </div>
+                            <a class="item-entry__name" href="sumo.html" tabindex="-1" aria-hidden="true">ATLAS sumo robot &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
@@ -1566,371 +1619,362 @@
                 <!-- IRDAR -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/irdar/1.jpg"},{"s":"build","i":"images/previews/irdar/2.jpg"},{"s":"build","i":"images/previews/irdar/3.jpg"},{"s":"test","i":"images/previews/irdar/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="irdar.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/irdar/gui_radar.jpg"
-                                     srcset="images/irdar/gui_radar.jpg 1x, images/irdar/gui_radar.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/irdar/gui_radar.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="embedded-software.html">Embedded Software</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Sensors</span><span>2016</span></p>
 
-                            <h2 class="item-entry__title"><a href="irdar.html">IRDAR &mdash; a Scanning Infrared Rangefinder</a></h2>
+                            <h2 class="item-entry__problem"><a href="irdar.html"><span class="u-screen-reader-text">IRDAR: </span>Map a room's outline with two low-cost infrared distance sensors.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="irdar.html#hardware">HCS08</a>
-                                    <a href="irdar.html#hardware">Sharp IR Sensor</a>
-                                    <a href="irdar.html#firmware">Processor Expert</a>
-                                    <a href="irdar.html#gui">Processing</a>
-                                    <a href="irdar.html#how-it-works">Rangefinder</a>
+                            <p class="item-entry__did">A servo pans the sensors through a full circle while an HCS08 microcontroller streams a radar sweep to the PC.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Test.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="irdar.html">March, 2016</a>
-                            </div>
+                            <a class="item-entry__name" href="irdar.html" tabindex="-1" aria-hidden="true">IRDAR &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Brushless DC Motor -->
+                <!-- Solar car motor interface -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"define","i":"images/previews/brushlessdc/1.jpg"},{"s":"define","i":"images/previews/brushlessdc/2.jpg"},{"s":"test","i":"images/previews/brushlessdc/3.jpg"},{"s":"test","i":"images/previews/brushlessdc/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="brushlessdc.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/brushless_dc_drivers/motor_light60.jpg"
-                                     srcset="images/brushless_dc_drivers/motor_light60.jpg 1x, images/brushless_dc_drivers/motor_light60.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/brushless_dc_drivers/motor_light60.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="robotics.html">Robotics</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2016</span></p>
 
-                            <h2 class="item-entry__title"><a href="brushlessdc.html">Brushless DC Motor Drivers</a></h2>
+                            <h2 class="item-entry__problem"><a href="brushlessdc.html"><span class="u-screen-reader-text">Solar car motor interface: </span>The solar car's motor controllers expected switches and knobs, not a computer.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="brushlessdc.html#firmware">Arduino</a>
-                                    <a href="brushlessdc.html#motor-driver">Kelly KEB72601XF</a>
-                                    <a href="brushlessdc.html#description">USB Solar</a>
-                                    <a href="brushlessdc.html#relays">Relays</a>
-                                    <a href="brushlessdc.html#compactrio">CompactRIO</a>
+                            <p class="item-entry__did">An Arduino interface that sets speed and direction over serial, bench-tested before going on the USB Solar car.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="brushlessdc.html">December, 2016</a>
-                            </div>
+                            <a class="item-entry__name" href="brushlessdc.html" tabindex="-1" aria-hidden="true">Solar car motor interface &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- ULN2003 Perfboard Designs -->
+                <!-- ULN2003 drivers -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/uln2003board/1.jpg"},{"s":"build","i":"images/previews/uln2003board/2.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="uln2003board.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/uln2003_designs/upper_2_light40.jpg"
-                                     srcset="images/uln2003_designs/upper_2_light40.jpg 1x, images/uln2003_designs/upper_2_light40.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/uln2003_designs/upper_2_light40.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="robotics.html">Robotics</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Motor control</span><span>2015</span></p>
 
-                            <h2 class="item-entry__title"><a href="uln2003board.html">ULN2003 Perfboard Designs</a></h2>
+                            <h2 class="item-entry__problem"><a href="uln2003board.html"><span class="u-screen-reader-text">ULN2003 drivers: </span>A microcontroller pin can't drive a stepper motor on its own.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="uln2003board.html#arduino">Arduino</a>
-                                    <a href="uln2003board.html#pic">PIC</a>
-                                    <a href="uln2003board.html#stepper-motors">Stepper Motor</a>
-                                    <a href="uln2003board.html#solenoid">Solenoid</a>
+                            <p class="item-entry__did">Perfboard drivers built on ULN2003 Darlington arrays, run from an Arduino Uno or a PIC16F877A.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Build, Test.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="uln2003board.html">October, 2015</a>
-                            </div>
+                            <a class="item-entry__name" href="uln2003board.html" tabindex="-1" aria-hidden="true">ULN2003 drivers &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- E-wanna Power-Line Robot -->
+                <!-- E-wanna -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"define","i":"images/previews/unetbot/1.jpg"},{"s":"simulate","i":"images/previews/unetbot/2.jpg"},{"s":"build","i":"images/previews/unetbot/3.jpg"},{"s":"test","i":"images/previews/unetbot/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="unetbot.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/unetbot/robot-closeup.jpg"
-                                     srcset="images/unetbot/robot-closeup.jpg 1x, images/unetbot/robot-closeup.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/unetbot/robot-closeup.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="sumo.html">Robotics</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Robotics</span><span>2015</span></p>
 
-                            <h2 class="item-entry__title"><a href="unetbot.html">E-wanna<br>Power-Line Inspection Robot</a></h2>
+                            <h2 class="item-entry__problem"><a href="unetbot.html"><span class="u-screen-reader-text">E-wanna: </span>Inspecting power lines means climbing towers or renting a helicopter.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="unetbot.html#architecture">Raspberry Pi</a>
-                                    <a href="unetbot.html#electronics">PIC</a>
-                                    <a href="unetbot.html#vision">OpenCV</a>
-                                    <a href="unetbot.html#mechanical">Stepper Motors</a>
+                            <p class="item-entry__did">Our team built a robot that rides the cable, finds hot spots and clears vegetation.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="unetbot.html">October, 2015</a>
-                            </div>
+                            <a class="item-entry__name" href="unetbot.html" tabindex="-1" aria-hidden="true">E-wanna &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- Vehicles -->
+                <!-- Baja SAE electronics -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/bajasae/1.jpg"},{"s":"build","i":"images/previews/bajasae/2.jpg"},{"s":"build","i":"images/previews/bajasae/3.jpg"},{"s":"test","i":"images/previews/bajasae/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="bajasae.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/bajasae/00009795.jpg"
-                                     srcset="images/bajasae/00009795.jpg 1x, images/bajasae/00009795.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/bajasae/00009795.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="bajasae.html">Vehicles</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2011&ndash;14</span></p>
 
-                            <h2 class="item-entry__title"><a href="bajasae.html">Electronic Devices for Racing Vehicles</a></h2>
+                            <h2 class="item-entry__problem"><a href="bajasae.html"><span class="u-screen-reader-text">Baja SAE electronics: </span>Every sensor on a race car needs a reliable way to report.</a></h2>
 
-                            <div class="item-entry__date">
-                                <a href="bajasae.html">April, 2014</a>
-                            </div>
+                            <p class="item-entry__did">Fuel, speed, RPM, brake and alignment devices for the Baja SAE USB cars, all on one CAN bus.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Test.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
+                                </span>
+                            </p>
+
+                            <a class="item-entry__name" href="bajasae.html" tabindex="-1" aria-hidden="true">Baja SAE electronics &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-                <!-- H-Bridge Perfboard -->
+                <!-- H-bridge drivers -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/hbridgeboards/1.jpg"},{"s":"build","i":"images/previews/hbridgeboards/2.jpg"},{"s":"test","i":"images/previews/hbridgeboards/3.jpg"},{"s":"test","i":"images/previews/hbridgeboards/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="hbridgeboards.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/all_motor_drivers_light40.JPG"
-                                     srcset="images/all_motor_drivers_light40.JPG 1x, images/all_motor_drivers_light40.JPG 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/all_motor_drivers_light40.JPG" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="robotics.html">Robotics</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Motor control</span><span>2014</span></p>
 
-                            <h2 class="item-entry__title"><a href="hbridgeboards.html">H-Bridge Perfboard Designs | DC | Stepper</a></h2>
+                            <h2 class="item-entry__problem"><a href="hbridgeboards.html"><span class="u-screen-reader-text">H-bridge drivers: </span>Motors need more current, in both directions, than a logic pin can give.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="hbridgeboards.html#h-bridges-stepper">H Bridge</a>
-                                    <a href="hbridgeboards.html#stepper-motor">Perfboard</a>
-                                    <a href="hbridgeboards.html#stepper-motor">Stepper Motor</a>
-                                    <a href="hbridgeboards.html#dc-motors">DC Motor</a>
+                            <p class="item-entry__did">Perfboard drivers built on H-bridges such as the L297 and L298, tested with DC and stepper motors.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Build, Test.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="hbridgeboards.html">April, 2014</a>
-                            </div>
+                            <a class="item-entry__name" href="hbridgeboards.html" tabindex="-1" aria-hidden="true">H-bridge drivers &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-
-                <!-- Electronic Wheel Alignment -->
+                <!-- Wheel alignment -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","i":"images/previews/wheel-alignment/1.jpg"},{"s":"build","i":"images/previews/wheel-alignment/2.jpg"},{"s":"build","i":"images/previews/wheel-alignment/3.jpg"},{"s":"build","i":"images/previews/wheel-alignment/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="wheel-alignment.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/wheel_alignment/car-on-jig.jpg"
-                                     srcset="images/wheel_alignment/car-on-jig.jpg 1x, images/wheel_alignment/car-on-jig.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/wheel_alignment/car-on-jig.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="bajasae.html">Vehicles</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2013</span></p>
 
-                            <h2 class="item-entry__title"><a href="wheel-alignment.html">Electronic Wheel Alignment</a></h2>
+                            <h2 class="item-entry__problem"><a href="wheel-alignment.html"><span class="u-screen-reader-text">Wheel alignment: </span>The team aligned its cars with chalk lines and a tape measure.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="wheel-alignment.html#description">Baja SAE USB</a>
-                                    <a href="wheel-alignment.html#camber">ADXL335</a>
-                                    <a href="wheel-alignment.html#toe">Ultrasonic</a>
-                                    <a href="wheel-alignment.html#architecture">XBee / I2C</a>
+                            <p class="item-entry__did">An accelerometer reads camber and ultrasonic sensors read toe, shown on a handheld display.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Test, Refine.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step is-on"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="wheel-alignment.html">August, 2013</a>
-                            </div>
+                            <a class="item-entry__name" href="wheel-alignment.html" tabindex="-1" aria-hidden="true">Wheel alignment &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-
-                <!-- Brake Test Data Logger -->
+                <!-- Brake test logger -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"simulate","i":"images/previews/brake-test/1.jpg"},{"s":"build","i":"images/previews/brake-test/2.jpg"},{"s":"build","i":"images/previews/brake-test/3.jpg"},{"s":"test","i":"images/previews/brake-test/4.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="brake-test.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/brake_test/box-mounted.jpg"
-                                     srcset="images/brake_test/box-mounted.jpg 1x, images/brake_test/box-mounted.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/brake_test/box-mounted.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="bajasae.html">Vehicles</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2013</span></p>
 
-                            <h2 class="item-entry__title"><a href="brake-test.html">Brake Test Data Logger</a></h2>
+                            <h2 class="item-entry__problem"><a href="brake-test.html"><span class="u-screen-reader-text">Brake test logger: </span>A brake test shouldn't need the car's full telemetry system.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="brake-test.html#description">Baja SAE USB</a>
-                                    <a href="brake-test.html#hardware">ADXL335</a>
-                                    <a href="brake-test.html#filtering">RC Filter</a>
-                                    <a href="brake-test.html#data">Data Logging</a>
+                            <p class="item-entry__did">A self-contained logger that bolts to the wheel hub and records 3-axis acceleration to an SD card.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Simulate, Build, Test.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step is-on"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="brake-test.html">December, 2013</a>
-                            </div>
+                            <a class="item-entry__name" href="brake-test.html" tabindex="-1" aria-hidden="true">Brake test logger &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-
-                <!-- Dashboard Module -->
+                <!-- Dashboard module -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/car-dashboard/1.jpg"},{"s":"build","i":"images/previews/car-dashboard/2.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="car-dashboard.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/car_dashboard/board.jpg"
-                                     srcset="images/car_dashboard/board.jpg 1x, images/car_dashboard/board.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/car_dashboard/board.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="bajasae.html">Vehicles</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2012&ndash;13</span></p>
 
-                            <h2 class="item-entry__title"><a href="car-dashboard.html">Dashboard Module</a></h2>
+                            <h2 class="item-entry__problem"><a href="car-dashboard.html"><span class="u-screen-reader-text">Dashboard module: </span>The driver needs speed, RPM and warnings at a glance.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="car-dashboard.html#description">Baja SAE USB</a>
-                                    <a href="car-dashboard.html#bus">CAN Bus</a>
-                                    <a href="car-dashboard.html#firmware">ColdFire</a>
-                                    <a href="car-dashboard.html#outputs">PWM Gauges</a>
+                            <p class="item-entry__did">One ColdFire board reads the sensors and the CAN bus, and drives both gauges and every lamp.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="car-dashboard.html">2012&ndash;2013</a>
-                            </div>
+                            <a class="item-entry__name" href="car-dashboard.html" tabindex="-1" aria-hidden="true">Dashboard module &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-
-                <!-- Steering-Wheel Display -->
+                <!-- Steering-wheel display -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/steering-wheel/1.jpg"},{"s":"build","i":"images/previews/steering-wheel/2.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="steering-wheel.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/steering_wheel/display.jpg"
-                                     srcset="images/steering_wheel/display.jpg 1x, images/steering_wheel/display.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/steering_wheel/display.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="bajasae.html">Vehicles</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2011&ndash;12</span></p>
 
-                            <h2 class="item-entry__title"><a href="steering-wheel.html">Steering-Wheel Display</a></h2>
+                            <h2 class="item-entry__problem"><a href="steering-wheel.html"><span class="u-screen-reader-text">Steering-wheel display: </span>The driver's hands stay on the wheel, so the controls must too.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="steering-wheel.html#description">Baja SAE USB</a>
-                                    <a href="steering-wheel.html#display">Graphic LCD</a>
-                                    <a href="steering-wheel.html#buttons">CAN Bus</a>
-                                    <a href="steering-wheel.html#firmware">MC9S08DZ60</a>
+                            <p class="item-entry__did">A graphic LCD and four thumb-reach buttons on the wheel hub, fed by one power-and-CAN cable.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="steering-wheel.html">2011&ndash;2012</a>
-                            </div>
+                            <a class="item-entry__name" href="steering-wheel.html" tabindex="-1" aria-hidden="true">Steering-wheel display &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
                 </article> <!-- end article -->
-
-                <!-- Fuel-Level Module -->
+                <!-- Fuel-level module -->
                 <article class="col-block">
 
-                    <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry item-entry--problem" data-preview='[{"s":"build","i":"images/previews/gasoline-module/1.jpg"}]' data-aos="zoom-in">
                         <div class="item-entry__thumb">
                             <a href="gasoline-module.html" class="item-entry__thumb-link" tabindex="-1" aria-hidden="true">
-                                <img loading="lazy" decoding="async" src="images/gasoline_module/board-bench.jpg"
-                                     srcset="images/gasoline_module/board-bench.jpg 1x, images/gasoline_module/board-bench.jpg 2x" alt="">
+                                <img loading="lazy" decoding="async" src="images/gasoline_module/board-bench.jpg" alt="">
                             </a>
                         </div>
 
                         <div class="item-entry__text">
-                            <div class="item-entry__cat">
-                                <a href="bajasae.html">Vehicles</a>
-                            </div>
+                            <p class="item-entry__meta"><span>Vehicles</span><span>2012</span></p>
 
-                            <h2 class="item-entry__title"><a href="gasoline-module.html">Fuel-Level Module</a></h2>
+                            <h2 class="item-entry__problem"><a href="gasoline-module.html"><span class="u-screen-reader-text">Fuel-level module: </span>Small tank, long race, and no room on the dash for a fuel gauge.</a></h2>
 
-                            <div class="entry__tags">
-                                <span class="entry__tax-list entry__tax-list--pill">
-                                    <a href="gasoline-module.html#description">Baja SAE USB</a>
-                                    <a href="gasoline-module.html#can">CAN Bus</a>
-                                    <a href="gasoline-module.html#sensing">Hall Effect</a>
-                                    <a href="gasoline-module.html#firmware">MC9S08DZ60</a>
+                            <p class="item-entry__did">Six Hall switches track a float magnet through the tank wall and report the level on the CAN bus.</p>
+
+                            <p class="item-entry__steps">
+                                <span class="u-screen-reader-text">Steps covered: Define, Build, Test.</span>
+                                <span class="leds" aria-hidden="true">
+                                    <span class="led-step is-on"><i></i>Define</span>
+                                    <span class="led-step"><i></i>Simulate</span>
+                                    <span class="led-step is-on"><i></i>Build</span>
+                                    <span class="led-step is-on"><i></i>Test</span>
+                                    <span class="led-step"><i></i>Refine</span>
                                 </span>
-                            </div> <!-- end entry__tags -->
+                            </p>
 
-                            <div class="item-entry__date">
-                                <a href="gasoline-module.html">2012</a>
-                            </div>
+                            <a class="item-entry__name" href="gasoline-module.html" tabindex="-1" aria-hidden="true">Fuel-level module &rarr;</a>
                         </div>
                     </div> <!-- item-entry -->
 
@@ -2042,6 +2086,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/card-preview.js"></script>
 
 </body>
 

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/method.css">
 
     <!-- script
     ================================================== -->
@@ -455,11 +456,51 @@
 
                 <p class="lead drop-cap">An axle&#8209;tip acceleration logger for <strong>Baja SAE USB</strong> brake tests (Universidad Sim&oacute;n Bol&iacute;var, Divisi&oacute;n de Electr&oacute;nica). A hand&#8209;formed metal box bolts straight onto a wheel hub and logs 3&#8209;axis acceleration to an SD card as the car is driven and braked &mdash; closer to the wheel/road interface than a chassis&#8209;mounted sensor, and self&#8209;contained rather than needing a live telemetry link. Another of the <a href="bajasae.html">Baja SAE USB electronics</a> sub&#8209;systems &mdash; <em>December&nbsp;2013</em>.</p>
 
-                <h2 id="why">Why</h2>
+                <nav class="cs-steps" aria-label="Steps documented on this page">
+                    <p class="cs-steps__label"><a href="index.html#how-i-work">One method, five steps</a> &middot; lit steps are documented below</p>
+                    <ol class="cs-steps__list">
+                        <li class="cs-steps__item is-on"><a href="#define"><i aria-hidden="true"></i>Define</a></li>
+                        <li class="cs-steps__item is-on"><a href="#simulate"><i aria-hidden="true"></i>Simulate</a></li>
+                        <li class="cs-steps__item is-on"><a href="#build"><i aria-hidden="true"></i>Build</a></li>
+                        <li class="cs-steps__item is-on"><a href="#test"><i aria-hidden="true"></i>Test</a></li>
+                        <li class="cs-steps__item"><span><i aria-hidden="true"></i>Refine<span class="u-screen-reader-text"> (not documented)</span></span></li>
+                    </ol>
+                </nav>
+
+                <h2 id="define" class="cs-step__title"><span class="cs-step__num">Step 1</span>Define</h2>
+
+                <h3 id="why">Why</h3>
 
                 <p>The team's existing telemetry system &mdash; a prior thesis project built around Freescale MCUs, GPS, a gyroscope, Hall&#8209;effect and IR sensors, and XBee/ZigBee links into a CAN network, all displayed live in LabVIEW &mdash; is a full vehicle telemetry suite. For a focused brake test, that's a lot of system to bring up. This logger is the opposite trade&#8209;off: one sensor, one axis of the car, no radio link, no live display &mdash; just an accelerometer at the axle tip and a microSD card, small enough to bolt onto a wheel and forget about until the run is over.</p>
 
-                <h2 id="hardware">Hardware</h2>
+                <h3 id="requirements">What It Had to Do</h3>
+
+                <p>The 2013 build report states the goal in one line: measure the accelerations in X, Y and Z at the axle tip of the team's Baja prototype. The rest of the brief follows from how the logger was going to be used:</p>
+
+                <ul class="cs-spec" aria-label="Brake test logger requirements">
+                    <li><b>Measure</b>X, Y and Z acceleration at the axle tip, not on the chassis</li>
+                    <li><b>Mount</b>Bolt straight onto a wheel hub, through the wheel's own lug holes</li>
+                    <li><b>Standalone</b>No radio link or live display: log to a microSD card and analyse after the run</li>
+                    <li><b>Power</b>Run from a single 9&nbsp;V battery</li>
+                    <li><b>Signal</b>Keep high&#8209;frequency vibration from the wheel/road interface out of the log</li>
+                    <li><b>Orientation</b>Every log must map back to the car's real X, Y and Z axes</li>
+                </ul>
+
+                <h2 id="simulate" class="cs-step__title"><span class="cs-step__num">Step 2</span>Simulate</h2>
+
+                <h3 id="filtering">Filter Design</h3>
+
+                <p>Each axis is filtered twice before it reaches the ADC. The ADXL335 itself has 32&nbsp;k&Omega; internal resistors that form an RC low&#8209;pass with whatever capacitor sits on its X/Y/Z pins &mdash; the breakout board's 0.1&nbsp;&micro;F caps put that corner at &asymp;49.7&nbsp;Hz. On top of that, each output runs through an external 10&nbsp;k&Omega; + 1&nbsp;&micro;F RC low&#8209;pass, cutting at 15.915&nbsp;Hz, to knock down high&#8209;frequency vibration from the wheel/road interface before logging.</p>
+
+                <div class="col-full" style="text-align:center">
+                    <img loading="lazy" decoding="async" src="images/brake_test/rc-filter.png" width="480" alt="RC low-pass filter schematic and simulated frequency-response curve, cutoff marked at 15.916 Hz">
+                </div>
+
+                <p style="text-align:center">The external RC low&#8209;pass stage and its simulated response.</p>
+
+                <h2 id="build" class="cs-step__title"><span class="cs-step__num">Step 3</span>Build</h2>
+
+                <h3 id="hardware">Hardware</h3>
 
                 <p>An <a href="https://www.analog.com/en/products/adxl335.html">ADXL335</a> (&plusmn;3&nbsp;g, 3&#8209;axis, analog output) on a small breakout board, wired into an <strong>Arduino Uno</strong> together with a microSD &ldquo;SD Card Shield&rdquo; over SPI. A single 9&nbsp;V battery feeds an <code>L7805CV</code> (5&nbsp;V, for the Arduino) and an <code>LD33V</code> (3.3&nbsp;V, for the accelerometer), each with 4.7&nbsp;nF bypass caps.</p>
 
@@ -470,25 +511,19 @@
 
                 <p style="text-align:center">The full kit &mdash; Arduino, SD shield and battery &mdash; and a close&#8209;up of the ADXL335 filter board.</p>
 
-                <h2 id="filtering">Filtering &amp; Calibration</h2>
+                <h3 id="mounting">Mounting</h3>
 
-                <p>Each axis is filtered twice before it reaches the ADC. The ADXL335 itself has 32&nbsp;k&Omega; internal resistors that form an RC low&#8209;pass with whatever capacitor sits on its X/Y/Z pins &mdash; the breakout board's 0.1&nbsp;&micro;F caps put that corner at &asymp;49.7&nbsp;Hz. On top of that, each output runs through an external 10&nbsp;k&Omega; + 1&nbsp;&micro;F RC low&#8209;pass, cutting at 15.915&nbsp;Hz, to knock down high&#8209;frequency vibration from the wheel/road interface before logging.</p>
+                <p>The enclosure &mdash; hand&#8209;formed sheet metal, the sensor circuit itself on a bakelite perfboard &mdash; bolts directly to a wheel hub through the wheel's own lug holes, putting the accelerometer as close to the axle tip as the hardware allows. The X, Y and Z axes are marked in pen straight on the box so a run's raw log can be matched back to the car's real orientation during analysis; a switch on the side turns logging on and off.</p>
 
-                <div class="col-full" style="text-align:center">
-                    <img loading="lazy" decoding="async" src="images/brake_test/rc-filter.png" width="480" alt="RC low-pass filter schematic and simulated frequency-response curve, cutoff marked at 15.916 Hz">
-                </div>
+                <h2 id="test" class="cs-step__title"><span class="cs-step__num">Step 4</span>Test</h2>
 
-                <p style="text-align:center">The external RC low&#8209;pass stage and its simulated response.</p>
+                <h3 id="calibration">Calibration</h3>
 
                 <p>The ADXL335 is a raw&#8209;voltage sensor, so each axis still needs its own zero&#8209;offset and scale before the logged counts mean anything. The calibration used here: with the sensor at rest, read the raw ADC count on an axis in two orientations 180&deg; apart (+1&nbsp;g and &minus;1&nbsp;g on that axis); the midpoint of the two readings is the zero&#8209;g offset, half their difference is the 1&nbsp;g scale:</p>
 
                 <pre><code>acceleration [m/s&sup2;] = ( raw_count &minus; zero_offset ) / scale &times; 9.80665</code></pre>
 
-                <h2 id="mounting">Mounting</h2>
-
-                <p>The enclosure &mdash; hand&#8209;formed sheet metal, the sensor circuit itself on a bakelite perfboard &mdash; bolts directly to a wheel hub through the wheel's own lug holes, putting the accelerometer as close to the axle tip as the hardware allows. The X, Y and Z axes are marked in pen straight on the box so a run's raw log can be matched back to the car's real orientation during analysis; a switch on the side turns logging on and off.</p>
-
-                <h2 id="data">The Data</h2>
+                <h3 id="data">The Data</h3>
 
                 <p>Runs were driven and braked around Centro San Ignacio in Chacao, Caracas &mdash; a reconnaissance lap, then several braking laps per wheel (front&#8209;right, front&#8209;left, rear&#8209;right), each logged as raw <code>TIEMPO,ACEX,ACEY,ACEZ</code> counts to the SD card and converted to m/s&sup2; afterwards with the calibration above.</p>
 
@@ -498,7 +533,7 @@
 
                 <p style="text-align:center">Front&#8209;right wheel, brake&#8209;test lap&nbsp;1 &mdash; X, Y and Z acceleration over one run.</p>
 
-                <h2 id="notes">Notes</h2>
+                <h3 id="notes">What the Data Showed</h3>
 
                 <p>Mounted directly on the hub, the signal is dominated by wheel rotation and road texture rather than a clean braking signature &mdash; there's no obvious single deceleration spike to pick out by eye in the raw trace above; extracting a braking event from this data would need proper filtering or event detection downstream, which this project didn't get to. The logger's own Arduino sketch wasn't preserved in the repository &mdash; only its logged output and the analysis spreadsheets survive.</p>
 
